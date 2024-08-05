@@ -1,0 +1,23 @@
+{
+    'name': "Emata HMS",
+
+    'summary': 'Emata HMS',
+
+    'description': '',
+
+    'author': "Emata",
+    'website': "https://emata.com.tr",
+    'category': 'Tools',
+    'version': '17.0.0.0',
+    'installable': True,
+
+    'depends': ['base', 'mail'],
+
+    'data': [
+        'security/ir.model.access.csv',
+
+        'views/phc_clinic_visit_view.xml',
+        
+        'views/menus_view.xml',
+    ],
+}

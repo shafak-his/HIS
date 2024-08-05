@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <menuitem id="menu_em_hms_phc_root"
+                  name="PHC"
+                  web_icon="emata_helpdesk,static/description/icon.png"
+                  sequence="10"
+        />
+
+        <menuitem id="menu_em_hms_phc_clinic_visit"
+                  name="PHC Clinic"
+                  parent="menu_em_hms_phc_root"
+                  action="emata_hms.em_hms_phc_clinic_visit_action"
+                  sequence="10"/>
+
+    </data>
+</odoo>
