@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="em_hms_phc_clinic_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.phc.clinic.view.tree</field>
+        <field name="model">em.hms.phc.clinic</field>
+        <field name="arch" type="xml">
+            <tree string="PHC Clinic List" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_phc_clinic_view_form" model="ir.ui.view">
+        <field name="name">em.hms.phc.clinic.view.form</field>
+        <field name="model">em.hms.phc.clinic</field>
+        <field name="arch" type="xml">
+            <form string="PHC Clinic List">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="name_lang" />
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_phc_clinic_action" model="ir.actions.act_window">
+        <field name="name">PHC Clinic List</field>
+        <field name="res_model">em.hms.phc.clinic</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+</odoo>

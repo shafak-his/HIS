@@ -9,6 +9,8 @@
     'website': "https://emata.com.tr",
     'category': 'Tools',
     'version': '17.0.0.0',
+    'application': True,
+    'sequence': 1,
     'installable': True,
 
     'depends': ['base', 'mail'],
@@ -17,6 +19,8 @@
         'security/ir.model.access.csv',
 
         'views/phc_clinic_visit_view.xml',
+        'views/phc_clinic_view.xml',
+        'views/phc_icd10_view.xml',
         
         'views/menus_view.xml',
     ],

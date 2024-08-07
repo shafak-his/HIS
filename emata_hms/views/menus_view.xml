@@ -5,7 +5,7 @@
         <menuitem id="menu_em_hms_phc_root"
                   name="PHC"
                   web_icon="emata_helpdesk,static/description/icon.png"
-                  sequence="10"
+                  sequence="3"
         />
 
         <menuitem id="menu_em_hms_phc_clinic_visit"
