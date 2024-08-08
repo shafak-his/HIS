@@ -82,9 +82,9 @@
                             <field name="other_type_of_procedure" />
                         </group>
                         <group>
-                            <field name="medication_request" />
-                            <field name="analysis_request" />
-                            <field name="image_request" />
+                            <field name="medication_request" domain="[('is_phc_medication', '=', True)]" />
+                            <field name="analysis_request" domain="[('is_phc_analysis', '=', True)]" />
+                            <field name="image_request" domain="[('is_phc_image', '=', True)]" />
                         </group>
                     </group>
                     <group>

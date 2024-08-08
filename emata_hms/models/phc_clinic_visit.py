@@ -22,12 +22,12 @@ class EmHmsPhcClinicVisit(models.Model):
     allergic_history = fields.Char('Allergic History')
     current_complaint = fields.Char('Current Complaint')
     diagnosis = fields.Many2one('em.hms.phc.icd10', required=True)
-    diagnosis_code = fields.Char(string='Diagnosis Code', related='diagnosis_code.code')
+    diagnosis_code = fields.Char(string='Diagnosis Code', related='diagnosis.code')
     procedures_followed = fields.Char('Procedures Followed')
     type_of_procedure = fields.Selection([
-        ('إسعافي', 'urgent'),
-        ('بارد', 'cool'),
-        ('آخر', 'other')
+        ('Emergency', 'emergency'),
+        ('Non-Emergency', 'non_emergency'),
+        ('Other', 'other')
     ], string='Type Of Procedure', required=True, tracking=True)
     other_type_of_procedure = fields.Char('Other Type Of Procedure')
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
