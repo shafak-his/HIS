@@ -1,9 +1,9 @@
 from odoo import _, api, fields, models, exceptions, tools
 
 
-class EmHmsMentalHealthMHReferral(models.Model):
-    _name = 'em.hms.mentalhealth.mh.referral'
-    _description = 'PHC Clinic Visit'
+class EmHmsMHReferral(models.Model):
+    _name = 'em.hms.mh.referral'
+    _description = 'Mental Health Referral'
     _rec_name = 'referral_date'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
