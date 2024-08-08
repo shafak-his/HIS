@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_mental_health_mh_referral_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.mentalhealth.mh.referral.view.tree</field>
+        <field name="model">em.hms.mentalhealth.mh.referral</field>
+        <field name="arch" type="xml">
+            <tree string="Mental Health MH Referral">
+                <field name="referral_date" />
+                <field name="referral_path" />
+                <field name="referred_via" />
+                <field name="severity" />
+                <field name="referral_code" />
+                <field name="privacy_confidentiality" />
+                <field name="key_protection_risks" />
+                <field name="referred_by_entity" />
+                <field name="referred_by_address" />
+                <field name="referred_by_telephone" />
+                <field name="referred_by_email" />
+                <field name="referred_to_entity" />
+                <field name="referred_to_address" />
+                <field name="referred_to_telephone" />
+                <field name="referred_to_email" />
+                <field name="services_required" />
+                <field name="where_to_submit_the_referral" />
+                <field name="explain_that_telephone_number_is_private" />
+                <field name="is_bnf_provided_referral_provider_address_contact" />
+                <field name="is_bnf_provided_referrer_address_contact" />
+                <field name="response_to_the_case" />
+                <field name="service_providing_date" />
+                <field name="service_provision_confirmed_by" />
+                <field name="reason_of_not_confirming_service_provision" />
+                <field name="other_reason_of_not_confirming_service_provision" />
+                <field name="referral_provider_id" />
+                <field name="referral_provider_manager_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_mental_health_mh_referral_view_form" model="ir.ui.view">
+        <field name="name">em.hms.mentalhealth.mh.referral.view.form</field>
+        <field name="model">em.hms.mentalhealth.mh.referral</field>
+        <field name="arch" type="xml">
+            <form string="Mental Health MH Referral">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="referral_date" />
+                            <field name="referral_path" />
+                            <field name="referral_via" />
+                        </group>
+                        <group>
+                            <field name="severity" widget="radio" />
+                            <field name="referral_code" />
+                            <field name="privacy_confidentiality" widget="radio" />
+                            <field name="key_protection_risks" widget="radio" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="referred_by_entity" />
+                            <field name="referred_by_address" />
+                            <field name="referred_by_telephone" />
+                            <field name="referred_by_email" widget="email" />
+                        </group>
+                        <group>
+                            <field name="referred_to_entity" />
+                            <field name="referred_to_address" />
+                            <field name="referred_to_telephone" />
+                            <field name="referred_to_email" widget="email" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="services_required" />
+                            <field name="where_to_submit_the_referral" />
+                            <field name="explain_that_telephone_number_is_private" />
+                        </group>
+                        <group>
+                            <field name="is_bnf_provided_referral_provider_address_contact" />
+                            <field name="is_bnf_provided_referrer_address_contact" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="response_to_the_case" />
+                            <field name="service_providing_date" />
+                        </group>
+                        <group>
+                            <field name="service_provision_confirmed_by" />
+                            <field name="reason_of_not_confirming_service_provision" attrs="{'invisible': [('service_provision_confirmed_by','!=','not_confirmed')]}" />
+                            <field name="other_reason_of_not_confirming_service_provision" attrs="{'invisible': [('reason_of_not_confirming_service_provision','!=','other')]}" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="referral_provider_id" />
+                            <field name="referral_provider_manager_id" />
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_mental_health_mh_referral_action" model="ir.actions.act_window">
+        <field name="name">Mental Health MH Referrals</field>
+        <field name="res_model">em.hms.mentalhealth.mh.referral</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

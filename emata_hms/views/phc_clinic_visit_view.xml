@@ -79,7 +79,7 @@
                         <group>
                             <field name="procedures_followed" widget="integer" />
                             <field name="type_of_procedure" />
-                            <field name="other_type_of_procedure" />
+                            <field name="other_type_of_procedure" attrs="{'invisible': [('type_of_procedure','!=','other')]}"/>
                         </group>
                         <group>
                             <field name="medication_request" domain="[('is_phc_medication', '=', True)]" />
