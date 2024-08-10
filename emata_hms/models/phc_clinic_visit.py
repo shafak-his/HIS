@@ -21,18 +21,18 @@ class EmHmsPhcClinicVisit(models.Model):
     medical_history = fields.Char('Medical History')
     allergic_history = fields.Char('Allergic History')
     current_complaint = fields.Char('Current Complaint')
-    diagnosis = fields.Many2one('em.hms.phc.icd10', required=True)
-    diagnosis_code = fields.Char(string='Diagnosis Code', related='diagnosis.code')
+    diagnosis_id = fields.Many2one('em.hms.phc.icd10', required=True)
+    diagnosis_code = fields.Char(string='Diagnosis Code', related='diagnosis_id.code')
     procedures_followed = fields.Char('Procedures Followed')
     type_of_procedure = fields.Selection([
-        ('Emergency', 'emergency'),
-        ('Non-Emergency', 'non_emergency'),
-        ('Other', 'other')
+        ('emergency', 'Emergency'),
+        ('non_emergency', 'Non-Emergency'),
+        ('Other', 'Other')
     ], string='Type Of Procedure', required=True, tracking=True)
     other_type_of_procedure = fields.Char('Other Type Of Procedure')
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
-    medication_request = fields.Many2many('product.template', string='Medication request')
-    analysis_request = fields.Many2many('product.template', string='Analysis request')
-    image_request = fields.Many2many('product.template', string='Image request')
+    medication_request_ids = fields.Many2many('product.template', 'phc_clinic_visit_product_rel', 'clinic_visit_id', 'product_id', string='Medication request')
+    analysis_request_ids = fields.Many2many('product.template', 'phc_clinic_visit_product_rel', 'clinic_visit_id', 'product_id', string='Analysis request')
+    image_request_ids = fields.Many2many('product.template', 'phc_clinic_visit_product_rel', 'clinic_visit_id', 'product_id', string='Image request')
     medical_center_id = fields.Many2one('res.company', 'Medical center', default = lambda self: self.env.company)
     notes = fields.Char('Notes')

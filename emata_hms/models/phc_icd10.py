@@ -7,9 +7,9 @@ class EmHmsPhcICD10(models.Model):
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
-    name = fields.Datetime('Diagnosis name', required=True)
-    name_lang = fields.Datetime('Diagnosis Arabic name', required=True)
-    code = fields.Datetime('Code', required=True)
+    code = fields.Char('Code', required=True)
+    name = fields.Char('Diagnosis name', required=True)
+    name_lang = fields.Char('Diagnosis Arabic name', required=True)
     is_ncd = fields.Boolean('Is NCD')
     is_traumatic = fields.Boolean('Is Traumatic')
     is_diabetes = fields.Boolean('Is Diabetes')

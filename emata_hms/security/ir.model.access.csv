@@ -2,3 +2,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_em_hms_phc_clinic_visit_admin,em_hms_phc_clinic_visit_admin,model_em_hms_phc_clinic_visit,base.group_system,1,1,1,1
 access_em_hms_phc_clinic_admin,em_hms_phc_clinic_admin,model_em_hms_phc_clinic,base.group_system,1,1,1,1
 access_em_hms_phc_icd10_admin,em_hms_phc_icd10_admin,model_em_hms_phc_icd10,base.group_system,1,1,1,1
+access_em_hms_mh_referral_admin,em_hms_mh_referral_admin,model_em_hms_mh_referral,base.group_system,1,1,1,1
+access_em_hms_mh_gap_admin,em_hms_mh_gap_admin,model_em_hms_mh_gap,base.group_system,1,1,1,1
+access_em_hms_rhs_anc_admin,em_hms_rhs_anc_admin,model_em_hms_rhs_anc,base.group_system,1,1,1,1
+access_em_hms_rhs_anc_visit_admin,em_hms_rhs_anc_visit_admin,model_em_hms_rhs_anc_visit,base.group_system,1,1,1,1

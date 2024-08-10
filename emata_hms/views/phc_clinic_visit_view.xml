@@ -20,16 +20,16 @@
                 <field name="medical_history" />
                 <field name="allergic_history" />
                 <field name="current_complaint" />
-                <field name="diagnosis" />
+                <field name="diagnosis_id" />
                 <field name="diagnosis_code" readonly="1" force_save="1" />
                 <field name="procedures_followed" />
                 <field name="type_of_procedure" />
                 <field name="other_type_of_procedure" />
+                <field name="medication_request_ids" widget="many2many_tags" />
+                <field name="analysis_request_ids" widget="many2many_tags" />
+                <field name="image_request_ids" widget="many2many_tags" />
                 <field name="doctor_id" />
-                <field name="medication_request" widget="many2many_tags" />
-                <field name="analysis_request" widget="many2many_tags" />
-                <field name="aimage_request" widget="many2many_tags" />
-                <field name="medical_center_id" widget="many2many_tags" />
+                <field name="medical_center_id" />
                 <field name="notes" />
             </tree>
         </field>
@@ -55,12 +55,12 @@
                     <group>
                         <group>
                             <field name="temperature" widget="integer" />
-                            <field name="pulse" />
+                            <field name="pulse" widget="integer" />
                             <field name="pressure" />
                         </group>
                         <group>
-                            <field name="weight" />
-                            <field name="height" />
+                            <field name="weight" widget="integer" />
+                            <field name="height" widget="integer" />
                             <field name="respiratory_rate" widget="integer" />
                         </group>
                     </group>
@@ -71,7 +71,7 @@
                             <field name="current_complaint" />
                         </group>
                         <group>
-                            <field name="diagnosis" />
+                            <field name="diagnosis_id" />
                             <field name="diagnosis_code" readonly="1" force_save="1" />
                         </group>
                     </group>
@@ -79,17 +79,24 @@
                         <group>
                             <field name="procedures_followed" widget="integer" />
                             <field name="type_of_procedure" />
-                            <field name="other_type_of_procedure" attrs="{'invisible': [('type_of_procedure','!=','other')]}"/>
+                            <field name="other_type_of_procedure"
+                                invisible="type_of_procedure != 'other'" />
                         </group>
                         <group>
-                            <field name="medication_request" domain="[('is_phc_medication', '=', True)]" />
-                            <field name="analysis_request" domain="[('is_phc_analysis', '=', True)]" />
-                            <field name="image_request" domain="[('is_phc_image', '=', True)]" />
+                            <field name="medication_request_ids"
+                                domain="[('is_phc_medication', '=', True)]">
+                                <tree create="0" delete="0" editable="bottom">
+                                    <field name="name" />
+                                </tree>
+                            </field>
+                            <field name="analysis_request_ids"
+                                domain="[('is_phc_analysis', '=', True)]" />
+                            <field name="image_request_ids" domain="[('is_phc_image', '=', True)]" />
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field name="doctor_id" widget="integer" />
+                            <field name="doctor_id" />
                             <field name="medical_center_id" />
                         </group>
                         <group>
@@ -98,9 +105,9 @@
                     </group>
                 </sheet>
                 <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="activity_ids" widget="mail_activity"/>
-                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
                 </div>
             </form>
         </field>

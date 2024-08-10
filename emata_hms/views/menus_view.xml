@@ -1,18 +1,56 @@
 <?xml version="1.0"?>
 <odoo>
     <data>
-
         <menuitem id="menu_em_hms_phc_root"
-                  name="PHC"
-                  web_icon="emata_helpdesk,static/description/icon.png"
-                  sequence="3"
+            name="PHC"
+            web_icon="emata_helpdesk,static/description/icon.png"
+            sequence="3"
         />
 
         <menuitem id="menu_em_hms_phc_clinic_visit"
-                  name="PHC Clinic"
-                  parent="menu_em_hms_phc_root"
-                  action="emata_hms.em_hms_phc_clinic_visit_action"
-                  sequence="10"/>
+            name="Clinic Visit"
+            parent="menu_em_hms_phc_root"
+            action="emata_hms.em_hms_phc_clinic_visit_action"
+            sequence="31" />
+        <menuitem id="menu_em_hms_phc_clinic"
+            name="Clinic"
+            parent="menu_em_hms_phc_root"
+            action="emata_hms.em_hms_phc_clinic_action"
+            sequence="33" />
+        <menuitem id="menu_em_hms_phc_icd10"
+            name="ICD10 List"
+            parent="menu_em_hms_phc_root"
+            action="emata_hms.em_hms_phc_icd10_action"
+            sequence="33" />
 
+        <menuitem id="menu_em_hms_mh_root"
+            name="Mental Health"
+            sequence="4"
+        />
+        <menuitem id="menu_em_hms_mh_referral"
+            name="MH Referral"
+            parent="menu_em_hms_mh_root"
+            action="emata_hms.em_hms_mh_referral_action"
+            sequence="41" />
+        <menuitem id="menu_em_hms_mh_gap"
+            name="MH GAP"
+            parent="menu_em_hms_mh_root"
+            action="emata_hms.em_hms_mh_gap_action"
+            sequence="42" />
+
+        <menuitem id="menu_em_hms_rhs_root"
+            name="RH Service"
+            sequence="5"
+        />
+        <menuitem id="menu_em_hms_rhs_anc"
+            name="RH Service ANC"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_anc_action"
+            sequence="51" />
+        <menuitem id="menu_em_hms_rhs_anc_visit"
+            name="ANC Visits"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_anc_visit_action"
+            sequence="52" />
     </data>
 </odoo>

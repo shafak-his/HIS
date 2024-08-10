@@ -8,34 +8,35 @@ class EmHmsMHReferral(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
     referral_date = fields.Date('Referral Date', required=True)
+    patient_id = fields.Many2one('res.partner', 'Patient name', required=True)
     
     referral_path = fields.Selection([
-        ('Internal - Project Services', 'project_internal'),
-        ('External - Another Shafak Projects', 'shafak_internal'),
-        ('External - Another Services Providers', 'external')
+        ('project_internal', 'Internal - Project Services'),
+        ('shafak_internal', 'External - Another Shafak Projects'),
+        ('external', 'External - Another Services Providers')
     ], string='Referral Path', required=True, tracking=True)
     referred_via = fields.Selection([
-        ('Telephone', 'telephone'),
-        ('Self referral', 'self_referral'),
-        ('E-mail', 'email'),
-        ('Skype', 'skype')
+        ('telephone', 'Telephone'),
+        ('self_referral', 'Self referral'),
+        ('email', 'E-mail'),
+        ('skype', 'Skype')
     ], string='Referred Via', required=True, tracking=True)
     severity = fields.Selection([
-        ('High (follow-up within 24 hours)', 'high'),
-        ('Moderate (follow-up within 3 days)', 'moderate'),
-        ('Low (follow-up within 7 days)', 'low')
+        ('high', 'High (follow-up within 24 hours)'),
+        ('moderate', 'Moderate (follow-up within 3 days)'),
+        ('low', 'Low (follow-up within 7 days)')
     ], string='Severity', required=True, tracking=True)
     referral_code = fields.Char('Referral Code', required=True)
     privacy_confidentiality = fields.Selection([
-        ('High', 'high'),
-        ('Moderate', 'moderate'),
-        ('Low', 'low')
+        ('high', 'High'),
+        ('moderate', 'Moderate'),
+        ('low', 'Low')
     ], string='Privacy and Confidentiality Required for This Referral', required=True, tracking=True)
     key_protection_risks = fields.Selection([
-        ('Gender Based Violation (GBV)', 'gbv'),
-        ('Sexual Gender Based Violation (SGBV)', 'sgbv'),
-        ('General Protection (GP)', 'gp'),
-        ('Child Protection (CP)', 'cp')
+        ('gbv', 'Gender Based Violation (GBV)'),
+        ('sgbv', 'Sexual Gender Based Violation (SGBV)'),
+        ('gp', 'General Protection (GP)'),
+        ('cp', 'Child Protection (CP)')
     ], string='Privacy and Confidentiality Required for This Referral', required=True, tracking=True)
     referred_by_entity = fields.Char('Referred By (Entity)', required=True)
     referred_by_address = fields.Char('Referred By (Address)')
@@ -46,44 +47,44 @@ class EmHmsMHReferral(models.Model):
     referred_to_telephone = fields.Char('Referred To (Telephone)')
     referred_to_email = fields.Char('Referred To (E-mail)')
     services_required = fields.Selection([
-        ('Protection', 'protection'),
-        ('Mecical', 'mecical'),
-        ('Mental health', 'mental_health'),
-        ('Psychosocial support', 'psychological_Support'),
-        ('Legal advice', 'legal_advice'),
-        ('Livelihoods', 'livelihoods'),
-        ('Shelter', 'shelter'),
-        ('NFI', 'nfi'),
-        ('Food Security', 'food_security'),
-        ('Nutrition', 'nutrition'),
-        ('CVA', 'cva'),
-        ('Other (Please specify)', 'other')
+        ('protection', 'Protection'),
+        ('mecical', 'Mecical'),
+        ('mental_health', 'Mental health'),
+        ('psychological_Support', 'Psychosocial support'),
+        ('legal_advice', 'Legal advice'),
+        ('livelihoods', 'Livelihoods'),
+        ('shelter', 'Shelter'),
+        ('nfi', 'NFI'),
+        ('food_security', 'Food Security'),
+        ('nutrition', 'Nutrition'),
+        ('cva', 'CVA'),
+        ('other', 'Other (Please specify)')
     ], string='Services Required', required=True, tracking=True)
     where_to_submit_the_referral = fields.Char('Where To Submit The Referral')
     explain_that_telephone_number_is_private = fields.Selection([
-        ('Beneficiary will call referral provider', 'bnf_call'),
-        ('Beneficiary will visit project office', 'bnf_visit'),
-        ('Allow referral provider to call referrerr', 'allow_rp_call_referrer')
-    ], string='Explain to the beneficiary that the phone number must be private and that calling it will not cause any harm to the beneficiary or expose privacy or breach confidentiality')
+        ('bnf_call', 'Beneficiary will call referral provider'),
+        ('bnf_visit', 'Beneficiary will visit project office'),
+        ('allow_rp_call_referrer', 'Allow referral provider to call referrerr')
+    ], string='Explain to the beneficiary that the phone number must be private and that calling it will not cause any harm to the beneficiary or expose privacy or breach confidentiality', required=True)
     is_bnf_provided_referral_provider_address_contact = fields.Boolean('The beneficiary has been provided with the address and contact numbers of the referral provider')
     is_bnf_provided_referrer_address_contact = fields.Boolean('The beneficiary has been provided with the address and contact numbers of the referrer')
     response_to_the_case = fields.Char('Response To The Case')
-    service_providing_date = fields.Date('Service Providing Date', required=True)
+    service_providing_date = fields.Date('Service Providing Date', required=True, tracking=True)
     service_provision_confirmed_by = fields.Selection([
-        ('Beneficiary', 'bnf'),
-        ('Referrer', 'referrer'),
-        ('Referral Provider', 'referral_provider'),
-        ('Not confirmed', 'not_confirmed')
-    ], string='Service Provision Confirmed By')
+        ('bnf', 'Beneficiary'),
+        ('referrer', 'Referrer'),
+        ('referral_provider', 'Referral Provider'),
+        ('not_confirmed', 'Not confirmed')
+    ], string='Service Provision Confirmed By', required=True, tracking=True)
     reason_of_not_confirming_service_provision = fields.Selection([
-        ('High Privacy and Confidentiality', 'high_privacy_and_confidentiality'),
-        ('The beneficiary is definitely not interested', 'bnf_not_interested'),
-        ('Difficulty communicating with the service provider', 'difficulty_communicating_sp'),
-        ('The service provider is not cooperative', 'sp_not_cooperative'),
-        ('Interruption of communication between the beneficiary and the referral provider', 'interruption_bnf_referral_provider'),
-        ('Not yet', 'not_yet'),
-        ('Other (Please Specify)', 'other')
-    ], string='Reason Of Not Confirming Service Provision')
+        ('high_privacy_and_confidentiality', 'High Privacy and Confidentiality'),
+        ('bnf_not_interested', 'The beneficiary is definitely not interested'),
+        ('difficulty_communicating_sp', 'Difficulty communicating with the service provider'),
+        ('sp_not_cooperative', 'The service provider is not cooperative'),
+        ('interruption_bnf_referral_provider', 'Interruption of communication between the beneficiary and the referral provider'),
+        ('not_yet', 'Not yet'),
+        ('other', 'Other (Please Specify)')
+    ], string='Reason Of Not Confirming Service Provision', required=True, tracking=True)
     other_reason_of_not_confirming_service_provision = fields.Char('Other Reason Of Not Confirming Service Provision')
     referral_provider_id = fields.Many2one('hr.employee', string='Referral Provider')
     referral_provider_manager_id = fields.Many2one('hr.employee', string='Referral Provider Line Manager')

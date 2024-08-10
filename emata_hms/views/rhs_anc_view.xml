@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_rhs_anc_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.anc.view.tree</field>
+        <field name="model">em.hms.rhs.anc</field>
+        <field name="arch" type="xml">
+            <tree string="RH Service ANC">
+                <field name="patient_id" />
+                <field name="number_of_previous_cesarean_sections" />
+                <field name="family_medical_history" />
+                <field name="is_breastfeeding" />
+                <field name="drug_history" />
+                <field name="is_smoking" />
+                <field name="medical_history" />
+                <field name="allergic_history" />
+                <field name="is_referral" />
+                <field name="referral_center_reason" />
+                <field name="complications" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_anc_view_form" model="ir.ui.view">
+        <field name="name">em.hms.rhs.anc.view.form</field>
+        <field name="model">em.hms.rhs.anc</field>
+        <field name="arch" type="xml">
+            <form string="RH Service ANC">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" />
+                            <field name="number_of_previous_cesarean_sections" widget="integer" />
+                            <field name="family_medical_history" />
+                            <field name="is_breastfeeding" widget="checkbox" />
+                        </group>
+                        <group>
+                            <field name="drug_history" />
+                            <field name="is_smoking" widget="checkbox" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="medical_history" />
+                            <field name="allergic_history" />
+                        </group>
+                        <group>
+                            <field name="is_referral" widget="checkbox" />
+                            <field name="referral_center_reason" invisible="is_referral != True" />
+                            <field name="complications" />
+                        </group>
+                    </group>
+                    <group string="Previous obstetric history">
+                        <group>
+                            <field name="number_of_pregnancies" widget="ineteger" />
+                            <field name="number_of_premature_births" widget="ineteger" />
+                            <field name="number_of_miscarriages" widget="ineteger" />
+                            <field name="live_births" widget="ineteger" />
+                            <field name="number_of_deaths" widget="ineteger" />
+                        </group>
+                        <group>
+                            <field name="last_menstrual_date" widget="date" />
+                            <field name="expected_due_date" widget="date" />
+                            <field name="nature_of_previous_births" widget="radio" />
+                        </group>
+                    </group>
+                    <separator string="Periodic Visits" />
+                    <field name="visit_ids">
+                        <tree create="1" delete="1" editable="bottom">
+                            <field name="visit_date" />
+                            <field name="is_signs" />
+                            <field name="arterial_position" />
+                            <field name="weight" />
+                            <field name="fetal_hr" />
+                            <field name="main_complaint" />
+                            <field name="head_diameter" />
+                            <field name="thigh_height" />
+                            <field name="presence" />
+                            <field name="fluid" />
+                            <field name="deformities" />
+                            <field name="genital_age_in_weeks" />
+                            <field name="vaginal_examination_if_performed" />
+                            <field name="treatment" />
+                            <field name="is_tetanus_vaccined" />
+                            <field name="next_visit_date" />
+                            <field name="name_of_examiner" />
+                            <field name="additional_notes" />
+                            <field name="analysis_request_ids" widget="many2many_tags" />
+                        </tree>
+                    </field>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_anc_action" model="ir.actions.act_window">
+        <field name="name">RH Service ANC</field>
+        <field name="res_model">em.hms.rhs.anc</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

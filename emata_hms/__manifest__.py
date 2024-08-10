@@ -13,7 +13,7 @@
     'sequence': 1,
     'installable': True,
 
-    'depends': ['base', 'mail'],
+    'depends': ['base', 'mail', 'product', 'hr'],
 
     'data': [
         'security/ir.model.access.csv',
@@ -22,6 +22,9 @@
         'views/phc_clinic_view.xml',
         'views/phc_icd10_view.xml',
         'views/mh_referral_view.xml',
+        'views/mh_gap_view.xml',
+        'views/rhs_anc_view.xml',
+        'views/rhs_anc_visit_view.xml',
         
         'views/menus_view.xml',
     ],
