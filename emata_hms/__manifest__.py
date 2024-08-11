@@ -25,6 +25,9 @@
         'views/mh_gap_view.xml',
         'views/rhs_anc_view.xml',
         'views/rhs_anc_visit_view.xml',
+        'views/rhs_delvery_view.xml',
+        'views/rhs_pnc_view.xml',
+        'views/rhs_pnc_visit_view.xml',
         
         'views/menus_view.xml',
     ],

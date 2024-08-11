@@ -51,16 +51,16 @@
                         </group>
                         <group>
                             <field name="referral_path" />
-                            <field name="referred_via" widget="selection_badge" />
+                            <field name="referred_via" widget="radio" />
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field name="severity" widget="selection_badge" />
+                            <field name="severity" widget="radio" />
                             <field name="referral_code" />
                         </group>
                         <group>
-                            <field name="privacy_confidentiality" widget="selection_badge" />
+                            <field name="privacy_confidentiality" widget="radio" />
                             <field name="key_protection_risks" />
                         </group>
                     </group>
@@ -82,7 +82,7 @@
                         <group>
                             <field name="services_required" />
                             <field name="where_to_submit_the_referral" />
-                            <field name="explain_that_telephone_number_is_private" widget="selection_badge" />
+                            <field name="explain_that_telephone_number_is_private" widget="radio" />
                         </group>
                         <group>
                             <field name="is_bnf_provided_referral_provider_address_contact" widget="boolean_toggle" />
@@ -95,7 +95,7 @@
                             <field name="service_providing_date" widget="date" />
                         </group>
                         <group>
-                            <field name="service_provision_confirmed_by" widget="selection_badge" />
+                            <field name="service_provision_confirmed_by" widget="radio" />
                             <field name="reason_of_not_confirming_service_provision" invisible="service_provision_confirmed_by != 'not_confirmed'" />
                             <field name="other_reason_of_not_confirming_service_provision" invisible="reason_of_not_confirming_service_provision != 'other'" />
                         </group>

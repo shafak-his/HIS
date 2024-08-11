@@ -84,7 +84,7 @@ class EmHmsMHReferral(models.Model):
         ('interruption_bnf_referral_provider', 'Interruption of communication between the beneficiary and the referral provider'),
         ('not_yet', 'Not yet'),
         ('other', 'Other (Please Specify)')
-    ], string='Reason Of Not Confirming Service Provision', required=True, tracking=True)
+    ], string='Reason Of Not Confirming Service Provision', tracking=True)
     other_reason_of_not_confirming_service_provision = fields.Char('Other Reason Of Not Confirming Service Provision')
-    referral_provider_id = fields.Many2one('hr.employee', string='Referral Provider')
-    referral_provider_manager_id = fields.Many2one('hr.employee', string='Referral Provider Line Manager')
+    referral_provider_id = fields.Many2one('hr.employee', string='Referral Provider', required=True)
+    referral_provider_manager_id = fields.Many2one('hr.employee', string='Referral Provider Line Manager', required=True)

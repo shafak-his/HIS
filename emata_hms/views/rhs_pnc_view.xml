@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_rhs_pnc_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.pnc.view.tree</field>
+        <field name="model">em.hms.rhs.pnc</field>
+        <field name="arch" type="xml">
+            <tree string="RH Service PNC">
+                <field name="patient_id" />
+                <field name="husband_name" />
+                <field name="date_of_birth" />
+                <field name="type_of_birth" />
+                <field name="is_baby_alive" />
+                <field name="body_weight" />
+                <field name="is_full_term_pregnancy" />
+                <field name="type_of_birth" />
+                <field name="previous_complications" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_pnc_view_form" model="ir.ui.view">
+        <field name="name">em.hms.rhs.pnc.view.form</field>
+        <field name="model">em.hms.rhs.pnc</field>
+        <field name="arch" type="xml">
+            <form string="RH Service PNC">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" />
+                            <field name="husband_name" />
+                            <field name="date_of_birth" widget="date"/>
+                            <field name="type_of_birth" widget="radio" />
+                            <field name="is_baby_alive" widget="checkbox" />
+                        </group>
+                        <group>
+                            <field name="body_weight" widget="float" />
+                            <field name="is_full_term_pregnancy" widget="checkbox" />
+                            <field name="place_of_birth" widget="radio" />
+                            <field name="previous_complications" />
+                        </group>
+                    </group>
+                    <separator string="Periodic Visits" />
+                    <field name="visit_ids">
+                        <tree create="1" delete="1">
+                            <field name="visit_date" />
+                            <field name="arterial_pressure" />
+                            <field name="temperature" />
+                            <field name="pulse" />
+                            <field name="breastfeeding" />
+                            <field name="is_tetanus_vaccined" />
+                            <field name="patient_complaint" />
+                            <field name="echo_findings" />
+                            <field name="name_of_examiner" />
+                            <field name="pathological_finding_ids" widget="many2many_tags" />
+                            <field name="postpartum_complication_ids" widget="many2many_tags" />
+                            <field name="existing_wound_ids" widget="many2many_tags" />
+                        </tree>
+                    </field>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_pnc_action" model="ir.actions.act_window">
+        <field name="name">RH Service PNC</field>
+        <field name="res_model">em.hms.rhs.pnc</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

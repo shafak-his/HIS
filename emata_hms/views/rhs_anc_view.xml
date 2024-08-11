@@ -16,7 +16,7 @@
                 <field name="allergic_history" />
                 <field name="is_referral" />
                 <field name="referral_center_reason" />
-                <field name="complications" />
+                <field name="previous_complications" />
             </tree>
         </field>
     </record>
@@ -47,7 +47,7 @@
                         <group>
                             <field name="is_referral" widget="checkbox" />
                             <field name="referral_center_reason" invisible="is_referral != True" />
-                            <field name="complications" />
+                            <field name="previous_complications" />
                         </group>
                     </group>
                     <group string="Previous obstetric history">
@@ -66,7 +66,7 @@
                     </group>
                     <separator string="Periodic Visits" />
                     <field name="visit_ids">
-                        <tree create="1" delete="1" editable="bottom">
+                        <tree create="1" delete="1">
                             <field name="visit_date" />
                             <field name="is_signs" />
                             <field name="arterial_position" />

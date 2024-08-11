@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_rhs_delvery_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.delvery.view.tree</field>
+        <field name="model">em.hms.rhs.delvery</field>
+        <field name="arch" type="xml">
+            <tree string="RH Normal Delveries">
+                <field name="patient_id" />
+                <field name="admission_date" />
+                <field name="admitting_midwife_id" />
+                <field name="admitting_physician_id" />
+                <field name="husband_name" />
+                <field name="guardian_name" />
+                <field name="allergic_history" />
+                <field name="drug_history" />
+                <field name="surgical_history" />
+                <field name="medical_history" />
+                <field name="child_name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_delvery_view_form" model="ir.ui.view">
+        <field name="name">em.hms.rhs.delvery.view.form</field>
+        <field name="model">em.hms.rhs.delvery</field>
+        <field name="arch" type="xml">
+            <form string="RH Normal Delvery">
+                <sheet>
+                    <group string="Main">
+                        <group>
+                            <field name="patient_id" />
+                            <field name="admission_date" widget="date" />
+                            <field name="admitting_midwife_id" />
+                            <field name="admitting_physician_id" />
+                            <field name="husband_name" />
+                            <field name="guardian_name" />
+                        </group>
+                        <group>
+                            <field name="allergic_history" />
+                            <field name="drug_history" />
+                            <field name="surgical_history" />
+                            <field name="medical_history" />
+                            <field name="child_name" />
+                        </group>
+                    </group>
+                    <group string="Biological signs on admission">
+                        <group>
+                            <field name="pre_birth_pressure" />
+                            <field name="pre_birth_pulse" widget="integer" />
+                        </group>
+                        <group>
+                            <field name="pre_birth_temperature" widget="float" />
+                            <field name="pre_birth_awareness" />
+                        </group>
+                    </group>
+                    <group string="Previous pregnancies">
+                        <group>
+                            <field name="number_of_natural_births" widget="integer" />
+                            <field name="number_of_cesarean_births" widget="integer" />
+                        </group>
+                        <group>
+                            <field name="number_of_miscarriages" widget="integer" />
+                            <field name="pregnancy_related_diseases" />
+                        </group>
+                    </group>
+                    <group string="Eco when admitting">
+                        <group>
+                            <field name="gestational_age" widget="integer" />
+                            <field name="arrival" />
+                            <field name="eco_auscultation" widget="integer" />
+                        </group>
+                        <group>
+                            <field name="placenta" />
+                            <field name="amniotic_fluid" />
+                        </group>
+                    </group>
+                    <group string="Travail monitoring table">
+                        <group>
+                            <field name="travail_hour" widget="datetime" />
+                            <field name="contraction_duration" widget="integer" />
+                            <field name="interval_between_contractions" widget="integer" />
+                        </group>
+                        <group>
+                            <field name="travail_auscultation" />
+                            <field name="dilation" widget="integer" />
+                            <field name="erasure" widget="integer" />
+                        </group>
+                    </group>
+                    <group string="Birth report">
+                        <group>
+                            <field name="birth_datetime" widget="datetime" />
+                            <field name="medications_birth" />
+                            <field name="birth_report" />
+                            <field name="newborn_condition" />
+                        </group>
+                        <group>
+                            <field name="newborn_gender" widget="radio"/>
+                            <field name="newborn_weight" widget="float" />
+                            <field name="is_breastfeeding_first_hour" widget="checkbox" />
+                        </group>
+                    </group>
+                    <group string="Post-birth monitoring table">
+                        <group>
+                            <field name="post_birth_datetime" widget="datetime" />
+                            <field name="post_birth_pressure" />
+                            <field name="post_birth_pulse" widget="integer" />
+                            <field name="post_birth_temperature" widget="float" />
+                        </group>
+                        <group>
+                            <field name="is_post_birth_safety_ball" widget="checkbox" />
+                            <field name="is_post_birth_urine_voiding" widget="checkbox" />
+                            <field name="post_birth_notes" />
+                        </group>
+                    </group>
+                    <group string="Discharge card">
+                        <group>
+                            <field name="discharge_datetime" widget="datetime" />
+                            <field name="discharge_supervising_physician_id" />
+                            <field name="discharge_duty_midwife_id" />
+                            <field name="post_birth_temperature" widget="float" />
+                        </group>
+                        <group>
+                            <field name="patient_condition"/>
+                            <field name="newborn_condition"/>
+                            <field name="patient_companion_name"/>
+                            <field name="patient_companion_relationship" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_delvery_action" model="ir.actions.act_window">
+        <field name="name">RH Normal Delveries</field>
+        <field name="res_model">em.hms.rhs.delvery</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

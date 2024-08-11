@@ -37,11 +37,12 @@
                         <group>
                             <field name="session_date" />
                             <field name="patient_id" />
+                            <field name="educational_level" widget="radio" />
                             <field name="service_type" widget="radio" />
-                            <field name="is_mh_assessment" widget="boolean_toggle" />
-                            <field name="is_pss_service" widget="boolean_toggle" />
                         </group>
                         <group>
+                            <field name="is_mh_assessment" widget="boolean_toggle" />
+                            <field name="is_pss_service" widget="boolean_toggle" />
                             <field name="severity_score" widget="radio" />
                             <field name="principal_diagnosis" />
                         </group>

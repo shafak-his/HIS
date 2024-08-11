@@ -48,25 +48,25 @@
                             <field name="clinic_id" />
                         </group>
                         <group>
-                            <field name="is_pregnant" widget="boolean_toggle" />
-                            <field name="is_lactating" widget="boolean_toggle" />
+                            <field name="is_pregnant" widget="checkbox" />
+                            <field name="is_lactating" widget="checkbox" />
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field name="temperature" widget="integer" />
-                            <field name="pulse" widget="integer" />
+                            <field name="temperature" widget="float" />
+                            <field name="pulse" widget="float" />
                             <field name="pressure" />
                         </group>
                         <group>
-                            <field name="weight" widget="integer" />
-                            <field name="height" widget="integer" />
+                            <field name="weight" widget="float" />
+                            <field name="height" widget="float" />
                             <field name="respiratory_rate" widget="integer" />
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field name="medical_history" widget="integer" />
+                            <field name="medical_history" />
                             <field name="allergic_history" />
                             <field name="current_complaint" />
                         </group>
@@ -77,11 +77,15 @@
                     </group>
                     <group>
                         <group>
-                            <field name="procedures_followed" widget="integer" />
+                            <field name="procedures_followed" />
+                        </group>
+                        <group>
                             <field name="type_of_procedure" />
                             <field name="other_type_of_procedure"
                                 invisible="type_of_procedure != 'other'" />
                         </group>
+                    </group>
+                    <group>
                         <group>
                             <field name="medication_request_ids"
                                 domain="[('is_phc_medication', '=', True)]">
@@ -90,8 +94,19 @@
                                 </tree>
                             </field>
                             <field name="analysis_request_ids"
-                                domain="[('is_phc_analysis', '=', True)]" />
-                            <field name="image_request_ids" domain="[('is_phc_image', '=', True)]" />
+                                domain="[('is_phc_analysis', '=', True)]">
+                                <tree create="0" delete="0" editable="bottom">
+                                    <field name="name" />
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <field name="image_request_ids"
+                                domain="[('is_phc_image', '=', True)]">
+                                <tree create="0" delete="0" editable="bottom">
+                                    <field name="name" />
+                                </tree>
+                            </field>
                         </group>
                     </group>
                     <group>

@@ -7,6 +7,6 @@ class EmHmsPhcClinic(models.Model):
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
-    name = fields.Datetime('Clinic name', required=True)
-    name_lang = fields.Datetime('Clinic Arabic name', required=True)
+    name = fields.Char('Clinic name', required=True)
+    name_lang = fields.Char('Clinic Arabic name', required=True)
     
