@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <record id="em_hms_phc_clinic_view_tree" model="ir.ui.view">
-        <field name="name">em.hms.phc.clinic.view.tree</field>
-        <field name="model">em.hms.phc.clinic</field>
+    <record id="em_hms_clinic_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.clinic.view.tree</field>
+        <field name="model">em.hms.clinic</field>
         <field name="arch" type="xml">
-            <tree string="PHC Clinic List" editable="bottom">
+            <tree string="Clinics" editable="bottom">
                 <field name="name" />
                 <field name="name_lang" />
             </tree>
         </field>
     </record>
 
-    <record id="em_hms_phc_clinic_view_form" model="ir.ui.view">
-        <field name="name">em.hms.phc.clinic.view.form</field>
-        <field name="model">em.hms.phc.clinic</field>
+    <record id="em_hms_clinic_view_form" model="ir.ui.view">
+        <field name="name">em.hms.clinic.view.form</field>
+        <field name="model">em.hms.clinic</field>
         <field name="arch" type="xml">
-            <form string="PHC Clinic List">
+            <form string="Clinic">
                 <header>
                 </header>
                 <sheet>
@@ -38,9 +38,9 @@
         </field>
     </record>
 
-    <record id="em_hms_phc_clinic_action" model="ir.actions.act_window">
-        <field name="name">PHC Clinic List</field>
-        <field name="res_model">em.hms.phc.clinic</field>
+    <record id="em_hms_clinic_action" model="ir.actions.act_window">
+        <field name="name">Clinics</field>
+        <field name="res_model">em.hms.clinic</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>

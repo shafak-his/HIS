@@ -12,15 +12,15 @@
             parent="menu_em_hms_phc_root"
             action="emata_hms.em_hms_phc_clinic_visit_action"
             sequence="31" />
-        <menuitem id="menu_em_hms_phc_clinic"
+        <menuitem id="menu_em_hms_clinic"
             name="Clinic"
             parent="menu_em_hms_phc_root"
-            action="emata_hms.em_hms_phc_clinic_action"
+            action="emata_hms.em_hms_clinic_action"
             sequence="33" />
-        <menuitem id="menu_em_hms_phc_icd10"
-            name="ICD10 List"
+        <menuitem id="menu_em_hms_icd10"
+            name="ICD10"
             parent="menu_em_hms_phc_root"
-            action="emata_hms.em_hms_phc_icd10_action"
+            action="emata_hms.em_hms_icd10_action"
             sequence="33" />
 
         <menuitem id="menu_em_hms_mh_root"

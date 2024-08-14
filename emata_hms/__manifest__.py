@@ -19,8 +19,8 @@
         'security/ir.model.access.csv',
 
         'views/phc_clinic_visit_view.xml',
-        'views/phc_clinic_view.xml',
-        'views/phc_icd10_view.xml',
+        'views/clinic_view.xml',
+        'views/icd10_view.xml',
         'views/mh_referral_view.xml',
         'views/mh_gap_view.xml',
         'views/rhs_anc_view.xml',

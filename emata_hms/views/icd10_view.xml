@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <record id="em_hms_phc_icd10_view_tree" model="ir.ui.view">
-        <field name="name">em.hms.phc.icd10.view.tree</field>
-        <field name="model">em.hms.phc.icd10</field>
+    <record id="em_hms_icd10_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.icd10.view.tree</field>
+        <field name="model">em.hms.icd10</field>
         <field name="arch" type="xml">
-            <tree string="PHC ICD10 List" editable="bottom">
+            <tree string="ICD10" editable="bottom">
                 <field name="code" />
                 <field name="name" />
                 <field name="name_lang" />
@@ -16,11 +16,11 @@
         </field>
     </record>
 
-    <record id="em_hms_phc_icd10_view_form" model="ir.ui.view">
-        <field name="name">em.hms.phc.icd10.view.form</field>
-        <field name="model">em.hms.phc.icd10</field>
+    <record id="em_hms_icd10_view_form" model="ir.ui.view">
+        <field name="name">em.hms.icd10.view.form</field>
+        <field name="model">em.hms.icd10</field>
         <field name="arch" type="xml">
-            <form string="PHC ICD10 List">
+            <form string="ICD10">
                 <header>
                 </header>
                 <sheet>
@@ -51,9 +51,9 @@
         </field>
     </record>
 
-    <record id="em_hms_phc_icd10_action" model="ir.actions.act_window">
-        <field name="name">PHC ICD10 List</field>
-        <field name="res_model">em.hms.phc.icd10</field>
+    <record id="em_hms_icd10_action" model="ir.actions.act_window">
+        <field name="name">ICD10</field>
+        <field name="res_model">em.hms.icd10</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>

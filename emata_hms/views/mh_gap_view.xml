@@ -20,7 +20,7 @@
                 <field name="post_gap" />
                 <field name="reasons_for_closure" />
                 <field name="other_reason_for_closure" />
-                <field name="medical_center_id" />
+                <field name="company_id" />
                 <field name="service_provider_id" />
                 <field name="medication_request_ids" widget="many2many_tags" />
             </tree>
@@ -61,12 +61,12 @@
                     </group>
                     <group>
                         <group>
-                            <field name="medical_center_id" />
+                            <field name="company_id" />
                             <field name="service_provider_id" />
                         </group>
                         <group>
                             <field name="medication_request_ids"
-                                domain="[('is_phc_medication', '=', True)]">
+                                domain="[('is_medication', '=', True)]">
                                 <tree create="0" delete="0" editable="bottom">
                                     <field name="name" />
                                 </tree>

@@ -1,9 +1,9 @@
 from odoo import _, api, fields, models, exceptions, tools
 
 
-class EmHmsPhcICD10(models.Model):
-    _name = 'em.hms.phc.icd10'
-    _description = 'PHC ICD10'
+class EmHmsICD10(models.Model):
+    _name = 'em.hms.icd10'
+    _description = 'ICD10'
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
