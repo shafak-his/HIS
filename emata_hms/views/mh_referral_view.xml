@@ -5,35 +5,35 @@
         <field name="name">em.hms.mh.referral.view.tree</field>
         <field name="model">em.hms.mh.referral</field>
         <field name="arch" type="xml">
-            <tree string="Mental Health Referral">
+            <tree string="Referrals">
                 <field name="referral_date" />
                 <field name="patient_id" />
                 <field name="referral_path" />
                 <field name="referred_via" />
                 <field name="severity" />
                 <field name="referral_code" />
-                <field name="privacy_confidentiality" />
-                <field name="key_protection_risks" />
-                <field name="referred_by_entity" />
-                <field name="referred_by_address" />
-                <field name="referred_by_telephone" />
-                <field name="referred_by_email" />
-                <field name="referred_to_entity" />
-                <field name="referred_to_address" />
-                <field name="referred_to_telephone" />
-                <field name="referred_to_email" />
-                <field name="services_required" />
-                <field name="where_to_submit_the_referral" />
-                <field name="explain_that_telephone_number_is_private" />
-                <field name="is_bnf_provided_referral_provider_address_contact" />
-                <field name="is_bnf_provided_referrer_address_contact" />
-                <field name="response_to_the_case" />
-                <field name="service_providing_date" />
-                <field name="service_provision_confirmed_by" />
-                <field name="reason_of_not_confirming_service_provision" />
-                <field name="other_reason_of_not_confirming_service_provision" />
-                <field name="referral_provider_id" />
-                <field name="referral_provider_manager_id" />
+                <field name="privacy_confidentiality" optional="hide" />
+                <field name="key_protection_risks" optional="hide" />
+                <field name="referred_by_entity" optional="hide" />
+                <field name="referred_by_address" optional="hide" />
+                <field name="referred_by_telephone" optional="hide" />
+                <field name="referred_by_email" optional="hide" />
+                <field name="referred_to_entity" optional="hide" />
+                <field name="referred_to_address" optional="hide" />
+                <field name="referred_to_telephone" optional="hide" />
+                <field name="referred_to_email" optional="hide" />
+                <field name="services_required" optional="hide" />
+                <field name="where_to_submit_the_referral" optional="hide" />
+                <field name="explain_that_telephone_number_is_private" optional="hide" />
+                <field name="is_bnf_provided_referral_provider_address_contact" optional="hide" />
+                <field name="is_bnf_provided_referrer_address_contact" optional="hide" />
+                <field name="response_to_the_case" optional="hide" />
+                <field name="service_providing_date" optional="hide" />
+                <field name="service_provision_confirmed_by" optional="hide" />
+                <field name="reason_of_not_confirming_service_provision" optional="hide" />
+                <field name="other_reason_of_not_confirming_service_provision" optional="hide" />
+                <field name="referral_provider_id" optional="hide" />
+                <field name="referral_provider_manager_id" optional="hide" />
             </tree>
         </field>
     </record>
@@ -42,7 +42,7 @@
         <field name="name">em.hms.mh.referral.view.form</field>
         <field name="model">em.hms.mh.referral</field>
         <field name="arch" type="xml">
-            <form string="Mental Health Referral">
+            <form string="Referral">
                 <sheet>
                     <group>
                         <group>
@@ -85,8 +85,10 @@
                             <field name="explain_that_telephone_number_is_private" widget="radio" />
                         </group>
                         <group>
-                            <field name="is_bnf_provided_referral_provider_address_contact" widget="boolean_toggle" />
-                            <field name="is_bnf_provided_referrer_address_contact" widget="boolean_toggle" />
+                            <field name="is_bnf_provided_referral_provider_address_contact"
+                                widget="boolean_toggle" />
+                            <field name="is_bnf_provided_referrer_address_contact"
+                                widget="boolean_toggle" />
                         </group>
                     </group>
                     <group>
@@ -96,8 +98,10 @@
                         </group>
                         <group>
                             <field name="service_provision_confirmed_by" widget="radio" />
-                            <field name="reason_of_not_confirming_service_provision" invisible="service_provision_confirmed_by != 'not_confirmed'" />
-                            <field name="other_reason_of_not_confirming_service_provision" invisible="reason_of_not_confirming_service_provision != 'other'" />
+                            <field name="reason_of_not_confirming_service_provision"
+                                invisible="service_provision_confirmed_by != 'not_confirmed'" />
+                            <field name="other_reason_of_not_confirming_service_provision"
+                                invisible="reason_of_not_confirming_service_provision != 'other'" />
                         </group>
                     </group>
                     <group>
@@ -110,16 +114,16 @@
                     </group>
                 </sheet>
                 <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="activity_ids" widget="mail_activity"/>
-                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
                 </div>
             </form>
         </field>
     </record>
 
     <record id="em_hms_mh_referral_action" model="ir.actions.act_window">
-        <field name="name">Mental Health Referrals</field>
+        <field name="name">Referrals</field>
         <field name="res_model">em.hms.mh.referral</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>

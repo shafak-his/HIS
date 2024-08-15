@@ -23,6 +23,8 @@
         'views/icd10_view.xml',
         'views/mh_referral_view.xml',
         'views/mh_gap_view.xml',
+        'views/mh_awareness_view.xml',
+        'views/mh_pmplus_view.xml',
         'views/rhs_anc_view.xml',
         'views/rhs_anc_visit_view.xml',
         'views/rhs_delvery_view.xml',

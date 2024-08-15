@@ -1,76 +1,94 @@
 <?xml version="1.0"?>
 <odoo>
     <data>
+        <!-- Administration -->
+        <menuitem id="menu_em_hms_admin_root"
+            name="Administration"
+            sequence="0"
+        />
+        <menuitem id="menu_em_hms_clinic"
+            name="Clinic"
+            parent="menu_em_hms_admin_root"
+            action="emata_hms.em_hms_clinic_action"
+            sequence="01" />
+        <menuitem id="menu_em_hms_icd10"
+            name="ICD10"
+            parent="menu_em_hms_admin_root"
+            action="emata_hms.em_hms_icd10_action"
+            sequence="02" />
+
+        <!-- PHC -->
         <menuitem id="menu_em_hms_phc_root"
             name="PHC"
             web_icon="emata_helpdesk,static/description/icon.png"
-            sequence="3"
+            sequence="1"
         />
-
         <menuitem id="menu_em_hms_phc_clinic_visit"
             name="Clinic Visit"
             parent="menu_em_hms_phc_root"
             action="emata_hms.em_hms_phc_clinic_visit_action"
-            sequence="31" />
-        <menuitem id="menu_em_hms_clinic"
-            name="Clinic"
-            parent="menu_em_hms_phc_root"
-            action="emata_hms.em_hms_clinic_action"
-            sequence="33" />
-        <menuitem id="menu_em_hms_icd10"
-            name="ICD10"
-            parent="menu_em_hms_phc_root"
-            action="emata_hms.em_hms_icd10_action"
-            sequence="33" />
+            sequence="11" />
 
+        <!-- Mental Health -->
         <menuitem id="menu_em_hms_mh_root"
             name="Mental Health"
-            sequence="4"
+            sequence="2"
         />
         <menuitem id="menu_em_hms_mh_referral"
-            name="MH Referral"
+            name="Referral"
             parent="menu_em_hms_mh_root"
             action="emata_hms.em_hms_mh_referral_action"
-            sequence="41" />
+            sequence="21" />
         <menuitem id="menu_em_hms_mh_gap"
-            name="MH GAP"
+            name="Gap"
             parent="menu_em_hms_mh_root"
             action="emata_hms.em_hms_mh_gap_action"
-            sequence="42" />
+            sequence="22" />
+        <menuitem id="menu_em_hms_mh_awareness"
+            name="Group Awareness Session"
+            parent="menu_em_hms_mh_root"
+            action="emata_hms.em_hms_mh_awareness_action"
+            sequence="23" />
+        <menuitem id="menu_em_hms_mh_psplus"
+            name="PM+"
+            parent="menu_em_hms_mh_root"
+            action="emata_hms.em_hms_mh_pmplus_action"
+            sequence="24" />
 
+        <!-- RH Service -->
         <menuitem id="menu_em_hms_rhs_root"
             name="RH Service"
-            sequence="5"
+            sequence="3"
         />
         <menuitem id="menu_em_hms_rhs_anc"
             name="RH Service ANC"
             parent="menu_em_hms_rhs_root"
             action="emata_hms.em_hms_rhs_anc_action"
-            sequence="51" />
+            sequence="31" />
         <menuitem id="menu_em_hms_rhs_anc_visit"
             name="ANC Visits"
             parent="menu_em_hms_rhs_root"
             action="emata_hms.em_hms_rhs_anc_visit_action"
-            sequence="52" />
+            sequence="32" />
         <menuitem id="menu_em_hms_rhs_pnc"
             name="RH Service PNC"
             parent="menu_em_hms_rhs_root"
             action="emata_hms.em_hms_rhs_pnc_action"
-            sequence="53" />
+            sequence="33" />
         <menuitem id="menu_em_hms_rhs_pnc_visit"
             name="PNC Visits"
             parent="menu_em_hms_rhs_root"
             action="emata_hms.em_hms_rhs_pnc_visit_action"
-            sequence="54" />
+            sequence="34" />
         <menuitem id="menu_em_hms_rhs_delvery"
             name="RH Service Delvery"
             parent="menu_em_hms_rhs_root"
             action="emata_hms.em_hms_rhs_delvery_action"
-            sequence="55" />
+            sequence="35" />
         <menuitem id="menu_em_hms_rhs_helper_lists"
             name="Helper Lists"
             parent="menu_em_hms_rhs_root"
-            sequence="56" />
+            sequence="36" />
         <menuitem id="menu_em_hms_rhs_pnc_visit_path_find"
             name="Pathological findings"
             parent="menu_em_hms_rhs_helper_lists"

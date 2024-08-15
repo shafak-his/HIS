@@ -5,18 +5,18 @@
         <field name="name">em.hms.rhs.anc.view.tree</field>
         <field name="model">em.hms.rhs.anc</field>
         <field name="arch" type="xml">
-            <tree string="RH Service ANC">
+            <tree string="ANCs">
                 <field name="patient_id" />
                 <field name="number_of_previous_cesarean_sections" />
                 <field name="family_medical_history" />
-                <field name="is_breastfeeding" />
-                <field name="drug_history" />
-                <field name="is_smoking" />
-                <field name="medical_history" />
-                <field name="allergic_history" />
-                <field name="is_referral" />
-                <field name="referral_center_reason" />
-                <field name="previous_complications" />
+                <field name="is_breastfeeding" optional="hide" />
+                <field name="drug_history" optional="hide" />
+                <field name="is_smoking" optional="hide" />
+                <field name="medical_history" optional="hide" />
+                <field name="allergic_history" optional="hide" />
+                <field name="is_referral" optional="hide" />
+                <field name="referral_center_reason" optional="hide" />
+                <field name="previous_complications" optional="hide" />
             </tree>
         </field>
     </record>
@@ -25,38 +25,46 @@
         <field name="name">em.hms.rhs.anc.view.form</field>
         <field name="model">em.hms.rhs.anc</field>
         <field name="arch" type="xml">
-            <form string="RH Service ANC">
+            <form string="ANC">
+                <header>
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button" type="object" icon="fa-user-md"
+                            name="action_get_anc_visits_record">
+                            <field string="Periodeic Visits" name="visits_count" widget="statinfo" />
+                        </button>
+                    </div>
+                </header>
                 <sheet>
                     <group>
                         <group>
                             <field name="patient_id" />
-                            <field name="number_of_previous_cesarean_sections" widget="integer" />
-                            <field name="family_medical_history" />
+                            <field name="number_of_previous_cesarean_sections" />
+                            <field name="family_medical_history" widget="text" />
                             <field name="is_breastfeeding" widget="checkbox" />
                         </group>
                         <group>
-                            <field name="drug_history" />
+                            <field name="drug_history" widget="text" />
                             <field name="is_smoking" widget="checkbox" />
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field name="medical_history" />
-                            <field name="allergic_history" />
+                            <field name="medical_history" widget="text" />
+                            <field name="allergic_history" widget="text" />
                         </group>
                         <group>
                             <field name="is_referral" widget="checkbox" />
-                            <field name="referral_center_reason" invisible="is_referral != True" />
-                            <field name="previous_complications" />
+                            <field name="referral_center_reason" invisible="is_referral != True" widget="text" />
+                            <field name="previous_complications" widget="text" />
                         </group>
                     </group>
-                    <group string="Previous obstetric history">
+                    <group string="Previous Obstetric History">
                         <group>
-                            <field name="number_of_pregnancies" widget="ineteger" />
-                            <field name="number_of_premature_births" widget="ineteger" />
-                            <field name="number_of_miscarriages" widget="ineteger" />
-                            <field name="live_births" widget="ineteger" />
-                            <field name="number_of_deaths" widget="ineteger" />
+                            <field name="number_of_pregnancies" />
+                            <field name="number_of_premature_births" />
+                            <field name="number_of_miscarriages" />
+                            <field name="live_births" />
+                            <field name="number_of_deaths" />
                         </group>
                         <group>
                             <field name="last_menstrual_date" widget="date" />
@@ -69,23 +77,23 @@
                         <tree create="1" delete="1">
                             <field name="visit_date" />
                             <field name="is_signs" />
-                            <field name="arterial_position" />
-                            <field name="weight" />
-                            <field name="fetal_hr" />
-                            <field name="main_complaint" />
-                            <field name="head_diameter" />
-                            <field name="thigh_height" />
-                            <field name="presence" />
-                            <field name="fluid" />
-                            <field name="deformities" />
-                            <field name="genital_age_in_weeks" />
-                            <field name="vaginal_examination_if_performed" />
-                            <field name="treatment" />
-                            <field name="is_tetanus_vaccined" />
-                            <field name="next_visit_date" />
-                            <field name="name_of_examiner" />
-                            <field name="additional_notes" />
-                            <field name="analysis_request_ids" widget="many2many_tags" />
+                            <field name="arterial_position" optional="hide" />
+                            <field name="weight" optional="hide" />
+                            <field name="fetal_hr" optional="hide" />
+                            <field name="main_complaint" optional="hide" />
+                            <field name="head_diameter" optional="hide" />
+                            <field name="thigh_height" optional="hide" />
+                            <field name="presence" optional="hide" />
+                            <field name="fluid" optional="hide" />
+                            <field name="deformities" optional="hide" />
+                            <field name="genital_age_in_weeks" optional="hide" />
+                            <field name="vaginal_examination_if_performed" optional="hide" />
+                            <field name="treatment" optional="hide" />
+                            <field name="is_tetanus_vaccined" optional="hide" />
+                            <field name="next_visit_date" optional="hide" />
+                            <field name="name_of_examiner" optional="hide" />
+                            <field name="additional_notes" optional="hide" />
+                            <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
                         </tree>
                     </field>
                 </sheet>
@@ -99,7 +107,7 @@
     </record>
 
     <record id="em_hms_rhs_anc_action" model="ir.actions.act_window">
-        <field name="name">RH Service ANC</field>
+        <field name="name">ANCs</field>
         <field name="res_model">em.hms.rhs.anc</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>

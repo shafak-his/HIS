@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_mh_awareness_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.mh.awareness.view.tree</field>
+        <field name="model">em.hms.mh.awareness</field>
+        <field name="arch" type="xml">
+            <tree string="Group Awareness Sessions">
+                <field name="session_date" />
+                <field name="patient_id" />
+                <field name="activity_facilitator_name" />
+                <field name="activity_name" />
+                <field name="boys" optional="hide" />
+                <field name="men" optional="hide" />
+                <field name="girls" optional="hide" />
+                <field name="women" optional="hide" />
+                <field name="company_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_mh_awareness_view_form" model="ir.ui.view">
+        <field name="name">em.hms.mh.awareness.view.form</field>
+        <field name="model">em.hms.mh.awareness</field>
+        <field name="arch" type="xml">
+            <form string="Group Awareness Session">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="session_date" widget="date" />
+                            <field name="patient_id" />
+                            <field name="activity_facilitator_name" />
+                            <field name="activity_name" widget="radio" />
+                        </group>
+                        <group>
+                            <field name="boys" />
+                            <field name="men" />
+                            <field name="girls" />
+                            <field name="women" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="company_id" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_mh_awareness_action" model="ir.actions.act_window">
+        <field name="name">Group Awareness Sessions</field>
+        <field name="res_model">em.hms.mh.awareness</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

@@ -4,6 +4,8 @@ from . import clinic
 from . import icd10
 from . import mh_referral
 from . import mh_gap
+from . import mh_awareness
+from . import mh_pmplus
 from . import rhs_anc
 from . import rhs_anc_visit
 from . import rhs_delvery

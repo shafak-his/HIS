@@ -7,30 +7,30 @@ class EmHmsRHSANC(models.Model):
     _rec_name = 'patient_id'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
-    patient_id = fields.Many2one('res.partner', 'Patient name', required=True)
-    number_of_previous_cesarean_sections = fields.Integer('Number of previous cesarean sections', required=True)
-    family_medical_history = fields.Char('Family medical history')
-    is_breastfeeding = fields.Boolean('Breastfeeding', required=True)
-    drug_history = fields.Char('Drug History')
-    is_smoking = fields.Boolean('Smoking')
-    medical_history = fields.Char('Medical History')
-    allergic_history = fields.Char('Allergic History')
-    is_referral = fields.Boolean('Has there been a referral?', required=True, tracking=True)
-    referral_center_reason = fields.Char('To which center were you referred and what was the reason for referral?')
-    previous_complications = fields.Char('Previous pregnancy and birth complications')
+    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True)
+    number_of_previous_cesarean_sections = fields.Integer('Number Of Previous Cesarean Sections', required=True, tracking=True)
+    family_medical_history = fields.Char('Family Medical History', tracking=True)
+    is_breastfeeding = fields.Boolean('Is Breastfeeding?', required=True, tracking=True)
+    drug_history = fields.Char('Drug History', tracking=True)
+    is_smoking = fields.Boolean('Is Smoking?', tracking=True)
+    medical_history = fields.Char('Medical History', tracking=True)
+    allergic_history = fields.Char('Allergic History', tracking=True)
+    is_referral = fields.Boolean('Has There Been A Referral?', required=True, tracking=True)
+    referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason For Referral?', tracking=True)
+    previous_complications = fields.Char('Previous Pregnancy And Birth Complications', tracking=True)
     
-    number_of_pregnancies = fields.Integer('Number Of Pregnancies', required=True)
-    number_of_premature_births = fields.Integer('Number of premature births', required=True)
-    number_of_miscarriages = fields.Integer('Number of miscarriages', required=True)
-    live_births = fields.Integer('Live Births', required=True)
-    number_of_deaths = fields.Integer('Number of deaths', required=True)
-    last_menstrual_date = fields.Date('First day of last menstrual period', required=True)
-    expected_due_date = fields.Date('Expected due date', required=True)
+    number_of_pregnancies = fields.Integer('Number Of Pregnancies', required=True, tracking=True)
+    number_of_premature_births = fields.Integer('Number of Premature Births', required=True, tracking=True)
+    number_of_miscarriages = fields.Integer('Number Of Miscarriages', required=True, tracking=True)
+    live_births = fields.Integer('Live Births', required=True, tracking=True)
+    number_of_deaths = fields.Integer('Number Of Deaths', required=True, tracking=True)
+    last_menstrual_date = fields.Date('First Day Of Last Menstrual Period', required=True, tracking=True)
+    expected_due_date = fields.Date('Expected Due Date', required=True, tracking=True)
     nature_of_previous_births = fields.Selection([
         ('natural', 'Natural'),
         ('cesarean', 'Cesarean'),
         ('aided', 'Aided')
-    ], string='Nature of previous births', required=True)
+    ], string='Nature Of Previous Births', required=True, tracking=True)
     
     visit_ids = fields.One2many('em.hms.rhs.anc.visit', 'anc_id', string='Periodic Visits')
     visits_count = fields.Integer(compute='_compute_visits_count', string='Visits Count')
@@ -39,4 +39,16 @@ class EmHmsRHSANC(models.Model):
     def _compute_visits_count(self):
         for record in self:
             record.visits_count=len(record.visit_ids)
+            
+            
+    def action_get_anc_visits_record(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Periodic Visits',
+            'view_mode': 'tree',
+            'res_model': 'em.hms.rhs.anc.visit',
+            'domain': [('anc_id', '=', self.id)],
+            'context': "{'create': False}"
+        }
     

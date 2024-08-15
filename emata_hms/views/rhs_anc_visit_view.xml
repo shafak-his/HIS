@@ -10,23 +10,23 @@
                 <field name="patient_id" />
                 <field name="visit_date" />
                 <field name="is_signs" />
-                <field name="arterial_position" />
-                <field name="weight" />
-                <field name="fetal_hr" />
-                <field name="main_complaint" />
-                <field name="head_diameter" />
-                <field name="thigh_height" />
-                <field name="presence" />
-                <field name="fluid" />
-                <field name="deformities" />
-                <field name="genital_age_in_weeks" />
-                <field name="vaginal_examination_if_performed" />
-                <field name="treatment" />
-                <field name="is_tetanus_vaccined" />
-                <field name="next_visit_date" />
-                <field name="name_of_examiner" />
-                <field name="additional_notes" />
-                <field name="analysis_request_ids" widget="many2many_tags" />
+                <field name="arterial_position" optional="hide" />
+                <field name="weight" optional="hide" />
+                <field name="fetal_hr" optional="hide" />
+                <field name="main_complaint" optional="hide" />
+                <field name="head_diameter" optional="hide" />
+                <field name="thigh_height" optional="hide" />
+                <field name="presence" optional="hide" />
+                <field name="fluid" optional="hide" />
+                <field name="deformities" optional="hide" />
+                <field name="genital_age_in_weeks" optional="hide" />
+                <field name="vaginal_examination_if_performed" optional="hide" />
+                <field name="treatment" optional="hide" />
+                <field name="is_tetanus_vaccined" optional="hide" />
+                <field name="next_visit_date" optional="hide" />
+                <field name="name_of_examiner" optional="hide" />
+                <field name="additional_notes" optional="hide" />
+                <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
             </tree>
         </field>
     </record>
@@ -42,31 +42,31 @@
                             <!-- <field name="anc_id" /> -->
                             <field name="patient_id" />
                             <field name="visit_date" widget="date" />
-                            <field name="is_signs" />
+                            <field name="is_signs" widget="checkbox" />
                             <field name="arterial_position" />
                             <field name="weight" />
-                            <field name="fetal_hr" widget="integer" />
+                            <field name="fetal_hr" />
                         </group>
                         <group>
-                            <field name="main_complaint" />
+                            <field name="main_complaint" widget="text" />
                             <field name="head_diameter" />
                             <field name="thigh_height" />
                             <field name="presence" />
                             <field name="fluid" />
-                            <field name="deformities" />
+                            <field name="deformities" widget="text" />
                             <field name="genital_age_in_weeks" />
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field name="vaginal_examination_if_performed" />
-                            <field name="treatment" />
+                            <field name="vaginal_examination_if_performed" widget="radio" />
+                            <field name="treatment" widget="text" />
                             <field name="is_tetanus_vaccined" />
                         </group>
                         <group>
                             <field name="next_visit_date" widget="date" />
                             <field name="name_of_examiner" />
-                            <field name="additional_notes" />
+                            <field name="additional_notes" widget="text" />
                         </group>
                     </group>
                 </sheet>

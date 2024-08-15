@@ -8,13 +8,13 @@
             <tree string="RH Service PNC">
                 <field name="patient_id" />
                 <field name="husband_name" />
-                <field name="date_of_birth" />
-                <field name="type_of_birth" />
-                <field name="is_baby_alive" />
-                <field name="body_weight" />
-                <field name="is_full_term_pregnancy" />
-                <field name="type_of_birth" />
-                <field name="previous_complications" />
+                <field name="date_of_birth" optional="hide" />
+                <field name="type_of_birth" optional="hide" />
+                <field name="is_baby_alive" optional="hide" />
+                <field name="body_weight" optional="hide" />
+                <field name="is_full_term_pregnancy" optional="hide" />
+                <field name="type_of_birth" optional="hide" />
+                <field name="previous_complications" optional="hide" />
             </tree>
         </field>
     </record>
@@ -24,6 +24,14 @@
         <field name="model">em.hms.rhs.pnc</field>
         <field name="arch" type="xml">
             <form string="RH Service PNC">
+                <header>
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button" type="object" icon="fa-user-md"
+                            name="action_get_pnc_visits_record">
+                            <field string="Periodeic Visits" name="visits_count" widget="statinfo" />
+                        </button>
+                    </div>
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -34,7 +42,7 @@
                             <field name="is_baby_alive" widget="checkbox" />
                         </group>
                         <group>
-                            <field name="body_weight" widget="float" />
+                            <field name="body_weight" />
                             <field name="is_full_term_pregnancy" widget="checkbox" />
                             <field name="place_of_birth" widget="radio" />
                             <field name="previous_complications" />
@@ -44,17 +52,17 @@
                     <field name="visit_ids">
                         <tree create="1" delete="1">
                             <field name="visit_date" />
-                            <field name="arterial_pressure" />
-                            <field name="temperature" />
-                            <field name="pulse" />
-                            <field name="breastfeeding" />
-                            <field name="is_tetanus_vaccined" />
-                            <field name="patient_complaint" />
-                            <field name="echo_findings" />
-                            <field name="name_of_examiner" />
-                            <field name="pathological_finding_ids" widget="many2many_tags" />
-                            <field name="postpartum_complication_ids" widget="many2many_tags" />
-                            <field name="existing_wound_ids" widget="many2many_tags" />
+                            <field name="arterial_pressure" optional="hide" />
+                            <field name="temperature" optional="hide" />
+                            <field name="pulse" optional="hide" />
+                            <field name="breastfeeding" optional="hide" />
+                            <field name="is_tetanus_vaccined" optional="hide" />
+                            <field name="patient_complaint" optional="hide" />
+                            <field name="echo_findings" optional="hide" />
+                            <field name="name_of_examiner" optional="hide" />
+                            <field name="pathological_finding_ids" widget="many2many_tags" optional="hide" />
+                            <field name="postpartum_complication_ids" widget="many2many_tags" optional="hide" />
+                            <field name="existing_wound_ids" widget="many2many_tags" optional="hide" />
                         </tree>
                     </field>
                 </sheet>

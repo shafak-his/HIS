@@ -7,50 +7,50 @@ class EmHmsRHSDelvery(models.Model):
     _rec_name = 'patient_id'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
-    patient_id = fields.Many2one('res.partner', 'Patient name', required=True)
-    admission_date = fields.Date('Date of admission', required=True, tracking=True)
-    admitting_midwife_id = fields.Many2one('hr.employee', string='Name of admitting midwife', required=True, tracking=True)
-    admitting_physician_id = fields.Many2one('hr.employee', string='Name of admitting physician', required=True, tracking=True)
-    husband_name = fields.Char('Name of husband', required=True)
-    guardian_name = fields.Char('Name of patient''s guardian', required=True)
-    allergic_history = fields.Char('Allergic History')
-    drug_history = fields.Char('Drug History')
-    surgical_history = fields.Char('Surgical History')
-    medical_history = fields.Char('Medical History')
-    initial_diagnosis = fields.Char('Initial diagnosis')
-    child_name = fields.Char('Name of child', required=True)
+    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True)
+    admission_date = fields.Date('Date Of Admission', required=True, tracking=True)
+    admitting_midwife_id = fields.Many2one('hr.employee', string='Name Of Admitting Midwife', required=True)
+    admitting_physician_id = fields.Many2one('hr.employee', string='Name Of Admitting Physician', required=True)
+    husband_name = fields.Char('Name Of Husband', required=True, tracking=True)
+    guardian_name = fields.Char('Name Of Patient''s Guardian', required=True, tracking=True)
+    allergic_history = fields.Char('Allergic History', tracking=True)
+    drug_history = fields.Char('Drug History', tracking=True)
+    surgical_history = fields.Char('Surgical History', tracking=True)
+    medical_history = fields.Char('Medical History', tracking=True)
+    initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True)
+    child_name = fields.Char('Name Of Child', required=True, tracking=True)
     
-    pre_birth_pressure = fields.Char('Pressure', required=True)
-    pre_birth_pulse = fields.Integer('Pulse', required=True)
-    pre_birth_temperature = fields.Float('Temperature', required=True)
+    pre_birth_pressure = fields.Char('Pressure', required=True, tracking=True)
+    pre_birth_pulse = fields.Integer('Pulse', required=True, tracking=True)
+    pre_birth_temperature = fields.Float('Temperature', required=True, tracking=True)
     pre_birth_awareness = fields.Char('Awareness')
     
-    number_of_natural_births = fields.Integer('Number of natural births', required=True)
-    number_of_cesarean_births = fields.Integer('Number of cesarean births', required=True)
-    number_of_miscarriages = fields.Integer('Number of miscarriages', required=True)
+    number_of_natural_births = fields.Integer('Number Of Natural Births', required=True, tracking=True)
+    number_of_cesarean_births = fields.Integer('Number Of Cesarean Births', required=True, tracking=True)
+    number_of_miscarriages = fields.Integer('Number Of Miscarriages', required=True, tracking=True)
     pregnancy_related_diseases = fields.Selection([
         ('gestational', 'Gestational'),
         ('gestational_diabetes', 'Gestational Diabetes'),
-        ('pre_shock', 'Pre-shock'),
+        ('pre_shock', 'Pre-Shock'),
         ('shaking', 'Shaking'),
-        ('group_dissonance', 'Group dissonance'),
+        ('group_dissonance', 'Group Dissonance'),
         ('hellp', 'HELLP'),
         ('thrombophlebitis', 'Thrombophlebitis'),
-        ('other', 'Other diseases'),
+        ('other', 'Other Diseases'),
         ('none', 'None')
-    ], string='Pregnancy-related diseases in previous pregnancies', required=True)
+    ], string='Pregnancy-Related Diseases In Previous Pregnancies', required=True, tracking=True)
     
-    gestational_age = fields.Integer('Gestational age in weeks', required=True)
+    gestational_age = fields.Integer('Gestational Age In Weeks', required=True, tracking=True)
     arrival = fields.Selection([
         ('vertical', 'Vertical'),
-        ('completely_crippled', 'Completely crippled'),
+        ('completely_crippled', 'Completely Crippled'),
         ('incompletely_crippled', 'Incompletely crippled'),
         ('feet', 'Feet'),
         ('cross', 'Cross'),
         ('frontal', 'Frontal'),
         ('facial', 'Facial')
     ], string='Arrival', required=True, tracking=True)
-    eco_auscultation = fields.Integer('Eco Auscultation', required=True)
+    eco_auscultation = fields.Integer('Eco Auscultation', required=True, tracking=True)
     placenta = fields.Selection([
         ('bottomless', 'Bottomless'),
         ('low', 'Low'),
@@ -62,17 +62,17 @@ class EmHmsRHSDelvery(models.Model):
         ('good', 'Good'),
         ('fluid_scarcity', 'Liquid Scarcity'),
         ('no_fluid', 'No Fluid'),
-        ('amniotic_hydrocephalus', 'Amniotic hydrocephalus')
-    ], string='Amniotic fluid', required=True, tracking=True)
+        ('amniotic_hydrocephalus', 'Amniotic Hydrocephalus')
+    ], string='Amniotic Fluid', required=True, tracking=True)
     
-    travail_hour = fields.Datetime('Hour', required=True)
-    contraction_duration = fields.Integer('Contraction duration', required=True)
-    interval_between_contractions = fields.Integer('Interval between contractions', required=True)
-    travail_auscultation = fields.Char('Travail Auscultation', required=True)
-    dilation = fields.Integer('Dilation', required=True)
-    erasure = fields.Integer('Erasure', required=True)
+    travail_hour = fields.Datetime('Hour', required=True, tracking=True)
+    contraction_duration = fields.Integer('Contraction Duration', required=True, tracking=True)
+    interval_between_contractions = fields.Integer('Interval Between Contractions', required=True, tracking=True)
+    travail_auscultation = fields.Char('Travail Auscultation', required=True, tracking=True)
+    dilation = fields.Integer('Dilation', required=True, tracking=True)
+    erasure = fields.Integer('Erasure', required=True, tracking=True)
     
-    birth_datetime = fields.Datetime('Date and time of birth', required=True)
+    birth_datetime = fields.Datetime('Date And Time Of Birth', required=True, tracking=True)
     medications_birth = fields.Selection([
         ('oxytocin', 'Oxytocin'),
         ('Cytotec', 'Cytotec'),
@@ -80,44 +80,44 @@ class EmHmsRHSDelvery(models.Model):
         ('catalar', 'Catalar'),
         ('propofol', 'Propofol'),
         ('midazolam', 'Midazolam')
-    ], string='Medications used during birth', required=True, tracking=True)
-    birth_report = fields.Char('Birth Report')
+    ], string='Medications Used During Birth', required=True, tracking=True)
+    birth_report = fields.Char('Birth Report', tracking=True)
     newborn_condition = fields.Selection([
-        ('good_vitality', 'Good vitality'),
-        ('transfer_to_care', 'Transfer to care'),
-        ('transfer_to_incubators', 'Transfer to incubators'),
+        ('good_vitality', 'Good Vitality'),
+        ('transfer_to_care', 'Transfer To Care'),
+        ('transfer_to_incubators', 'Transfer To Incubators'),
         ('deceased', 'Deceased')
-    ], string='General condition of the child', required=True, tracking=True)
+    ], string='General Condition Of The Child', required=True, tracking=True)
     newborn_gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female')
-    ], string='Gender of the newborn', required=True, tracking=True)
-    newborn_weight = fields.Float('Weight of the newborn', required=True)
-    is_breastfeeding_first_hour = fields.Boolean('Breastfeeding within the first hour')
+    ], string='Gender Of The Newborn', required=True, tracking=True)
+    newborn_weight = fields.Float('Weight Of The Newborn', required=True, tracking=True)
+    is_breastfeeding_first_hour = fields.Boolean('Breastfeeding Within The First Hour', tracking=True)
     
-    post_birth_datetime = fields.Datetime('Time', required=True)
-    post_birth_pressure = fields.Integer('Pressure', required=True)
-    post_birth_pulse = fields.Integer('Pulse', required=True)
-    post_birth_temperature = fields.Float('Temperature', required=True)
-    is_post_birth_safety_ball = fields.Boolean('Safety Ball')
-    is_post_birth_urine_voiding = fields.Boolean('Urine Voiding')
+    post_birth_datetime = fields.Datetime('Time', required=True, tracking=True)
+    post_birth_pressure = fields.Integer('Pressure', required=True, tracking=True)
+    post_birth_pulse = fields.Integer('Pulse', required=True, tracking=True)
+    post_birth_temperature = fields.Float('Temperature', required=True, tracking=True)
+    is_post_birth_safety_ball = fields.Boolean('Safety Ball', tracking=True)
+    is_post_birth_urine_voiding = fields.Boolean('Urine Voiding', tracking=True)
     post_birth_notes = fields.Char('Notes')
     
-    discharge_datetime = fields.Datetime('Date of discharge and time', required=True)
-    discharge_supervising_physician_id = fields.Many2one('hr.employee', string='Supervising physician', required=True, tracking=True)
-    discharge_duty_midwife_id = fields.Many2one('hr.employee', string='Midwife on duty', required=True, tracking=True)
+    discharge_datetime = fields.Datetime('Date Of Discharge And Time', required=True, tracking=True)
+    discharge_supervising_physician_id = fields.Many2one('hr.employee', string='Supervising Physician', required=True)
+    discharge_duty_midwife_id = fields.Many2one('hr.employee', string='Midwife On Duty', required=True)
     patient_condition = fields.Selection([
         ('to_home', 'To home'),
-        ('another_hospital', 'Another hospital'),
+        ('another_hospital', 'Another Hospital'),
         ('other', 'Other')
-    ], string='Patient''s condition', required=True, tracking=True)
+    ], string='Patient''s Condition', required=True, tracking=True)
     newborn_condition = fields.Selection([
-        ('to_home', 'To home'),
-        ('another_hospital', 'Another hospital'),
-        ('transfer_to_care', 'Transfer to care'),
-        ('transfer_to_incubators', 'Transfer to incubators'),
+        ('to_home', 'To Home'),
+        ('another_hospital', 'Another Hospital'),
+        ('transfer_to_care', 'Transfer To Care'),
+        ('transfer_to_incubators', 'Transfer To Incubators'),
         ('deceased', 'Deceased')
-    ], string='Newborn''s condition', required=True, tracking=True)
-    patient_companion_name = fields.Char('Patient''s companion''s name')
-    patient_companion_relationship = fields.Char('Relationship')
+    ], string='Newborn''s Condition', required=True, tracking=True)
+    patient_companion_name = fields.Char('Patient''s Companion''s Name', tracking=True)
+    patient_companion_relationship = fields.Char('Relationship', tracking=True)
     
