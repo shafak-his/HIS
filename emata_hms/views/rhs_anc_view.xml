@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <tree string="ANCs">
                 <field name="patient_id" />
-                <field name="number_of_previous_cesarean_sections" />
+                <field name="cesarean_sections_count" />
                 <field name="family_medical_history" />
                 <field name="is_breastfeeding" optional="hide" />
                 <field name="drug_history" optional="hide" />
@@ -17,6 +17,7 @@
                 <field name="is_referral" optional="hide" />
                 <field name="referral_center_reason" optional="hide" />
                 <field name="previous_complications" optional="hide" />
+                <field name="company_id" optional="hide" />
             </tree>
         </field>
     </record>
@@ -38,7 +39,7 @@
                     <group>
                         <group>
                             <field name="patient_id" />
-                            <field name="number_of_previous_cesarean_sections" />
+                            <field name="cesarean_sections_count" />
                             <field name="family_medical_history" widget="text" />
                             <field name="is_breastfeeding" widget="checkbox" />
                         </group>
@@ -60,11 +61,11 @@
                     </group>
                     <group string="Previous Obstetric History">
                         <group>
-                            <field name="number_of_pregnancies" />
-                            <field name="number_of_premature_births" />
-                            <field name="number_of_miscarriages" />
+                            <field name="pregnancies_count" />
+                            <field name="premature_births_count" />
+                            <field name="miscarriages_count" />
                             <field name="live_births" />
-                            <field name="number_of_deaths" />
+                            <field name="deaths_count" />
                         </group>
                         <group>
                             <field name="last_menstrual_date" widget="date" />
@@ -87,15 +88,20 @@
                             <field name="fluid" optional="hide" />
                             <field name="deformities" optional="hide" />
                             <field name="genital_age_in_weeks" optional="hide" />
-                            <field name="vaginal_examination_if_performed" optional="hide" />
+                            <field name="vaginal_examination" optional="hide" />
                             <field name="treatment" optional="hide" />
                             <field name="is_tetanus_vaccined" optional="hide" />
                             <field name="next_visit_date" optional="hide" />
-                            <field name="name_of_examiner" optional="hide" />
+                            <field name="examiner_name" optional="hide" />
                             <field name="additional_notes" optional="hide" />
                             <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
                         </tree>
                     </field>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" />

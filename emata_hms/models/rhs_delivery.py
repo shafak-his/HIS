@@ -1,9 +1,9 @@
 from odoo import _, api, fields, models, exceptions, tools
 
 
-class EmHmsRHSDelvery(models.Model):
-    _name = 'em.hms.rhs.delvery'
-    _description = 'RH Service - Normal Delvery'
+class EmHmsRHSDelivery(models.Model):
+    _name = 'em.hms.rhs.delivery'
+    _description = 'RH Service - Normal Delivery'
     _rec_name = 'patient_id'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
@@ -12,7 +12,7 @@ class EmHmsRHSDelvery(models.Model):
     admitting_midwife_id = fields.Many2one('hr.employee', string='Name Of Admitting Midwife', required=True)
     admitting_physician_id = fields.Many2one('hr.employee', string='Name Of Admitting Physician', required=True)
     husband_name = fields.Char('Name Of Husband', required=True, tracking=True)
-    guardian_name = fields.Char('Name Of Patient''s Guardian', required=True, tracking=True)
+    guardian_name = fields.Char('Name Of Patient\'s Guardian', required=True, tracking=True)
     allergic_history = fields.Char('Allergic History', tracking=True)
     drug_history = fields.Char('Drug History', tracking=True)
     surgical_history = fields.Char('Surgical History', tracking=True)
@@ -20,14 +20,14 @@ class EmHmsRHSDelvery(models.Model):
     initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True)
     child_name = fields.Char('Name Of Child', required=True, tracking=True)
     
-    pre_birth_pressure = fields.Char('Pressure', required=True, tracking=True)
-    pre_birth_pulse = fields.Integer('Pulse', required=True, tracking=True)
+    pre_birth_pressure = fields.Float('Pressure', required=True, tracking=True)
+    pre_birth_pulse = fields.Float('Pulse', required=True, tracking=True)
     pre_birth_temperature = fields.Float('Temperature', required=True, tracking=True)
     pre_birth_awareness = fields.Char('Awareness')
     
-    number_of_natural_births = fields.Integer('Number Of Natural Births', required=True, tracking=True)
-    number_of_cesarean_births = fields.Integer('Number Of Cesarean Births', required=True, tracking=True)
-    number_of_miscarriages = fields.Integer('Number Of Miscarriages', required=True, tracking=True)
+    natural_births_count = fields.Integer('Number Of Natural Births', required=True, tracking=True)
+    cesarean_births_count = fields.Integer('Number Of Cesarean Births', required=True, tracking=True)
+    miscarriages_count = fields.Integer('Number Of Miscarriages', required=True, tracking=True)
     pregnancy_related_diseases = fields.Selection([
         ('gestational', 'Gestational'),
         ('gestational_diabetes', 'Gestational Diabetes'),
@@ -66,11 +66,11 @@ class EmHmsRHSDelvery(models.Model):
     ], string='Amniotic Fluid', required=True, tracking=True)
     
     travail_hour = fields.Datetime('Hour', required=True, tracking=True)
-    contraction_duration = fields.Integer('Contraction Duration', required=True, tracking=True)
-    interval_between_contractions = fields.Integer('Interval Between Contractions', required=True, tracking=True)
+    contraction_duration = fields.Float('Contraction Duration', required=True, tracking=True)
+    interval_between_contractions = fields.Float('Interval Between Contractions', required=True, tracking=True)
     travail_auscultation = fields.Char('Travail Auscultation', required=True, tracking=True)
-    dilation = fields.Integer('Dilation', required=True, tracking=True)
-    erasure = fields.Integer('Erasure', required=True, tracking=True)
+    dilation = fields.Float('Dilation', required=True, tracking=True)
+    erasure = fields.Float('Erasure', required=True, tracking=True)
     
     birth_datetime = fields.Datetime('Date And Time Of Birth', required=True, tracking=True)
     medications_birth = fields.Selection([
@@ -120,4 +120,4 @@ class EmHmsRHSDelvery(models.Model):
     ], string='Newborn''s Condition', required=True, tracking=True)
     patient_companion_name = fields.Char('Patient''s Companion''s Name', tracking=True)
     patient_companion_relationship = fields.Char('Relationship', tracking=True)
-    
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

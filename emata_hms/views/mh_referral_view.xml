@@ -34,6 +34,7 @@
                 <field name="other_not_confirmed_service_response" optional="hide" />
                 <field name="referee_id" optional="hide" />
                 <field name="referee_manager_id" optional="hide" />
+                <field name="company_id" optional="hide" />
             </tree>
         </field>
     </record>
@@ -110,6 +111,7 @@
                             <field name="referee_manager_id" />
                         </group>
                         <group>
+                            <field name="company_id" readonly="1" force_save="1" />
                         </group>
                     </group>
                 </sheet>

@@ -8,13 +8,14 @@
             <tree string="RH Service PNC">
                 <field name="patient_id" />
                 <field name="husband_name" />
-                <field name="date_of_birth" optional="hide" />
-                <field name="type_of_birth" optional="hide" />
+                <field name="birth_date" optional="hide" />
+                <field name="birth_type" optional="hide" />
                 <field name="is_baby_alive" optional="hide" />
                 <field name="body_weight" optional="hide" />
                 <field name="is_full_term_pregnancy" optional="hide" />
-                <field name="type_of_birth" optional="hide" />
+                <field name="birth_type" optional="hide" />
                 <field name="previous_complications" optional="hide" />
+                <field name="company_id" optional="hide" />
             </tree>
         </field>
     </record>
@@ -37,14 +38,14 @@
                         <group>
                             <field name="patient_id" />
                             <field name="husband_name" />
-                            <field name="date_of_birth" widget="date"/>
-                            <field name="type_of_birth" widget="radio" />
+                            <field name="birth_date" widget="date"/>
+                            <field name="birth_type" widget="radio" />
                             <field name="is_baby_alive" widget="checkbox" />
                         </group>
                         <group>
                             <field name="body_weight" />
                             <field name="is_full_term_pregnancy" widget="checkbox" />
-                            <field name="place_of_birth" widget="radio" />
+                            <field name="birth_place" widget="radio" />
                             <field name="previous_complications" />
                         </group>
                     </group>
@@ -59,12 +60,17 @@
                             <field name="is_tetanus_vaccined" optional="hide" />
                             <field name="patient_complaint" optional="hide" />
                             <field name="echo_findings" optional="hide" />
-                            <field name="name_of_examiner" optional="hide" />
+                            <field name="examiner_name" optional="hide" />
                             <field name="pathological_finding_ids" widget="many2many_tags" optional="hide" />
                             <field name="postpartum_complication_ids" widget="many2many_tags" optional="hide" />
-                            <field name="existing_wound_ids" widget="many2many_tags" optional="hide" />
+                            <field name="wound_ids" widget="many2many_tags" optional="hide" />
                         </tree>
                     </field>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" />

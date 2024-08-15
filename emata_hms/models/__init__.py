@@ -8,6 +8,6 @@ from . import mh_awareness
 from . import mh_pmplus
 from . import rhs_anc
 from . import rhs_anc_visit
-from . import rhs_delvery
+from . import rhs_delivery
 from . import rhs_pnc
 from . import rhs_pnc_visit

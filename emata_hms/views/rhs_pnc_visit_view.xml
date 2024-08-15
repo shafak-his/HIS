@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="em_hms_rhs_pnc_visit_path_find_view_tree" model="ir.ui.view">
-        <field name="name">em.hms.rhs.pnc.visit.path.find.view.tree</field>
-        <field name="model">em.hms.rhs.pnc.visit.path.find</field>
+    <record id="em_hms_rhs_pathological_find_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.pathological.find.view.tree</field>
+        <field name="model">em.hms.rhs.pathological.find</field>
         <field name="arch" type="xml">
             <tree string="Pathological Findings" editable="bottom">
                 <field name="name" />
@@ -12,18 +12,18 @@
         </field>
     </record>
 
-    <record id="em_hms_rhs_pnc_visit_path_find_action" model="ir.actions.act_window">
+    <record id="em_hms_rhs_pathological_find_action" model="ir.actions.act_window">
         <field name="name">Pathological Findings</field>
-        <field name="res_model">em.hms.rhs.pnc.visit.path.find</field>
+        <field name="res_model">em.hms.rhs.pathological.find</field>
         <field name="view_mode">tree</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
     </record>
 
 
-    <record id="em_hms_rhs_pnc_visit_post_comp_view_tree" model="ir.ui.view">
-        <field name="name">em.hms.rhs.pnc.visit.post.comp.view.tree</field>
-        <field name="model">em.hms.rhs.pnc.visit.post.comp</field>
+    <record id="em_hms_rhs_postpartum_comp_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.postpartum.comp.view.tree</field>
+        <field name="model">em.hms.rhs.postpartum.comp</field>
         <field name="arch" type="xml">
             <tree string="Postpartum Complications" editable="bottom">
                 <field name="name" />
@@ -32,29 +32,29 @@
         </field>
     </record>
 
-    <record id="em_hms_rhs_pnc_visit_post_comp_action" model="ir.actions.act_window">
+    <record id="em_hms_rhs_postpartum_comp_action" model="ir.actions.act_window">
         <field name="name">Postpartum Complications</field>
-        <field name="res_model">em.hms.rhs.pnc.visit.post.comp</field>
+        <field name="res_model">em.hms.rhs.postpartum.comp</field>
         <field name="view_mode">tree</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
     </record>
 
 
-    <record id="em_hms_rhs_pnc_visit_exist_wound_view_tree" model="ir.ui.view">
-        <field name="name">em.hms.rhs.pnc.visit.exist.wound.view.tree</field>
-        <field name="model">em.hms.rhs.pnc.visit.exist.wound</field>
+    <record id="em_hms_rhs_wound_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.wound.view.tree</field>
+        <field name="model">em.hms.rhs.wound</field>
         <field name="arch" type="xml">
-            <tree string="Existing Wounds" editable="bottom">
+            <tree string="Wounds" editable="bottom">
                 <field name="name" />
                 <field name="name_lang" />
             </tree>
         </field>
     </record>
 
-    <record id="em_hms_rhs_pnc_visit_exist_wound_action" model="ir.actions.act_window">
-        <field name="name">Existing Wounds</field>
-        <field name="res_model">em.hms.rhs.pnc.visit.exist.wound</field>
+    <record id="em_hms_rhs_wound_action" model="ir.actions.act_window">
+        <field name="name">Wounds</field>
+        <field name="res_model">em.hms.rhs.wound</field>
         <field name="view_mode">tree</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
@@ -74,15 +74,16 @@
                 <field name="pulse" optional="hide" />
                 <field name="pathological_finding_ids" widget="many2many_tags" optional="hide" />
                 <field name="postpartum_complication_ids" widget="many2many_tags" optional="hide" />
-                <field name="existing_wound_ids" widget="many2many_tags" optional="hide" />
+                <field name="wound_ids" widget="many2many_tags" optional="hide" />
                 <field name="breastfeeding" optional="hide" />
                 <field name="is_tetanus_vaccined" optional="hide" />
                 <field name="patient_complaint" optional="hide" />
                 <field name="echo_findings" optional="hide" />
-                <field name="name_of_examiner" optional="hide" />
+                <field name="examiner_name" optional="hide" />
                 <field name="medication_request_ids" widget="many2many_tags" optional="hide" />
                 <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
                 <field name="image_request_ids" widget="many2many_tags" optional="hide" />
+                <field name="company_id" optional="hide" />
             </tree>
         </field>
     </record>
@@ -111,12 +112,12 @@
                         <group>
                             <field name="patient_complaint" widget="text" />
                             <field name="echo_findings" widget="text" />
-                            <field name="name_of_examiner" />
+                            <field name="examiner_name" />
                         </group>
                         <group>
                             <field name="pathological_finding_ids" widget="many2many_tags" />
                             <field name="postpartum_complication_ids" widget="many2many_tags" />
-                            <field name="existing_wound_ids" widget="many2many_tags" />
+                            <field name="wound_ids" widget="many2many_tags" />
                         </group>
                     </group>
                     <group string="Documents">
@@ -135,6 +136,11 @@
                                 <field name="name" />
                             </tree>
                         </field>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
                     </group>
                 </sheet>
                 <div class="oe_chatter">

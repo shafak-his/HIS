@@ -20,13 +20,14 @@
                 <field name="fluid" optional="hide" />
                 <field name="deformities" optional="hide" />
                 <field name="genital_age_in_weeks" optional="hide" />
-                <field name="vaginal_examination_if_performed" optional="hide" />
+                <field name="vaginal_examination" optional="hide" />
                 <field name="treatment" optional="hide" />
                 <field name="is_tetanus_vaccined" optional="hide" />
                 <field name="next_visit_date" optional="hide" />
-                <field name="name_of_examiner" optional="hide" />
+                <field name="examiner_name" optional="hide" />
                 <field name="additional_notes" optional="hide" />
                 <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
+                <field name="company_id" />
             </tree>
         </field>
     </record>
@@ -59,14 +60,15 @@
                     </group>
                     <group>
                         <group>
-                            <field name="vaginal_examination_if_performed" widget="radio" />
+                            <field name="vaginal_examination" widget="radio" />
                             <field name="treatment" widget="text" />
                             <field name="is_tetanus_vaccined" />
                         </group>
                         <group>
                             <field name="next_visit_date" widget="date" />
-                            <field name="name_of_examiner" />
+                            <field name="examiner_name" />
                             <field name="additional_notes" widget="text" />
+                            <field name="company_id" readonly="1" force_save="1" />
                         </group>
                     </group>
                 </sheet>

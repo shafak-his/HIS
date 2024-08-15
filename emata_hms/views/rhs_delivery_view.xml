@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="em_hms_rhs_delvery_view_tree" model="ir.ui.view">
-        <field name="name">em.hms.rhs.delvery.view.tree</field>
-        <field name="model">em.hms.rhs.delvery</field>
+    <record id="em_hms_rhs_delivery_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.delivery.view.tree</field>
+        <field name="model">em.hms.rhs.delivery</field>
         <field name="arch" type="xml">
             <tree string="Normal Delveries">
                 <field name="patient_id" />
@@ -18,15 +18,16 @@
                 <field name="medical_history" optional="hide" />
                 <field name="initial_diagnosis" optional="hide" />
                 <field name="child_name" optional="hide" />
+                <field name="company_id" optional="hide" />
             </tree>
         </field>
     </record>
 
-    <record id="em_hms_rhs_delvery_view_form" model="ir.ui.view">
-        <field name="name">em.hms.rhs.delvery.view.form</field>
-        <field name="model">em.hms.rhs.delvery</field>
+    <record id="em_hms_rhs_delivery_view_form" model="ir.ui.view">
+        <field name="name">em.hms.rhs.delivery.view.form</field>
+        <field name="model">em.hms.rhs.delivery</field>
         <field name="arch" type="xml">
-            <form string="Normal Delvery">
+            <form string="Normal Delivery">
                 <sheet>
                     <group string="Main">
                         <group>
@@ -57,11 +58,11 @@
                     </group>
                     <group string="Previous pregnancies">
                         <group>
-                            <field name="number_of_natural_births" />
-                            <field name="number_of_cesarean_births" />
+                            <field name="natural_births_count" />
+                            <field name="cesarean_births_count" />
                         </group>
                         <group>
-                            <field name="number_of_miscarriages" />
+                            <field name="miscarriages_count" />
                             <field name="pregnancy_related_diseases" />
                         </group>
                     </group>
@@ -127,6 +128,11 @@
                             <field name="patient_companion_name" />
                             <field name="patient_companion_relationship" />
                         </group>
+                        <group>
+                            <group>
+                                <field name="company_id" readonly="1" force_save="1" />
+                            </group>
+                        </group>
                     </group>
                 </sheet>
                 <div class="oe_chatter">
@@ -138,9 +144,9 @@
         </field>
     </record>
 
-    <record id="em_hms_rhs_delvery_action" model="ir.actions.act_window">
+    <record id="em_hms_rhs_delivery_action" model="ir.actions.act_window">
         <field name="name">Normal Delveries</field>
-        <field name="res_model">em.hms.rhs.delvery</field>
+        <field name="res_model">em.hms.rhs.delivery</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>

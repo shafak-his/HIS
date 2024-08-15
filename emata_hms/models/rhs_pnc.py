@@ -8,10 +8,10 @@ class EmHmsRHSPNC(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True)
-    husband_name = fields.Char('Husband''s Name', required=True, tracking=True)
+    husband_name = fields.Char('Husband\'s Name', required=True, tracking=True)
     
-    date_of_birth = fields.Date('Date Of Birth', required=True, tracking=True)
-    type_of_birth = fields.Selection([
+    birth_date = fields.Date('Date Of Birth', required=True, tracking=True)
+    birth_type = fields.Selection([
         ('natural', 'Natural'),
         ('cesarean', 'Cesarean'),
         ('aided', 'Aided')
@@ -19,7 +19,7 @@ class EmHmsRHSPNC(models.Model):
     is_baby_alive = fields.Boolean('Is The Baby Alive?', tracking=True)
     body_weight = fields.Float('Body Weight', required=True, tracking=True)
     is_full_term_pregnancy = fields.Boolean('Is Full Term Pregnancy (<37 weeks)?')
-    place_of_birth = fields.Selection([
+    birth_place = fields.Selection([
         ('home', 'Home'),
         ('medical_care_center', 'Medical Care Center'),
         ('hospital', 'Hospital')
@@ -29,6 +29,8 @@ class EmHmsRHSPNC(models.Model):
     visit_ids = fields.One2many('em.hms.rhs.pnc.visit', 'pnc_id', string='Periodic Visits')
     visits_count = fields.Integer(compute='_compute_visits_count', string='Visits Count')
     
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
+
     @api.depends('visit_ids')
     def _compute_visits_count(self):
         for record in self:
@@ -39,7 +41,7 @@ class EmHmsRHSPNC(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': 'Periodic Visits',
+            'name': 'PNC Visits',
             'view_mode': 'tree',
             'res_model': 'em.hms.rhs.pnc.visit',
             'domain': [('pnc_id', '=', self.id)],

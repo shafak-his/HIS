@@ -8,7 +8,7 @@ class EmHmsRHSANC(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True)
-    number_of_previous_cesarean_sections = fields.Integer('Number Of Previous Cesarean Sections', required=True, tracking=True)
+    cesarean_sections_count = fields.Integer('Number Of Previous Cesarean Sections', required=True, tracking=True)
     family_medical_history = fields.Char('Family Medical History', tracking=True)
     is_breastfeeding = fields.Boolean('Is Breastfeeding?', required=True, tracking=True)
     drug_history = fields.Char('Drug History', tracking=True)
@@ -19,11 +19,11 @@ class EmHmsRHSANC(models.Model):
     referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason For Referral?', tracking=True)
     previous_complications = fields.Char('Previous Pregnancy And Birth Complications', tracking=True)
     
-    number_of_pregnancies = fields.Integer('Number Of Pregnancies', required=True, tracking=True)
-    number_of_premature_births = fields.Integer('Number of Premature Births', required=True, tracking=True)
-    number_of_miscarriages = fields.Integer('Number Of Miscarriages', required=True, tracking=True)
+    pregnancies_count = fields.Integer('Number Of Pregnancies', required=True, tracking=True)
+    premature_births_count = fields.Integer('Number of Premature Births', required=True, tracking=True)
+    miscarriages_count = fields.Integer('Number Of Miscarriages', required=True, tracking=True)
     live_births = fields.Integer('Live Births', required=True, tracking=True)
-    number_of_deaths = fields.Integer('Number Of Deaths', required=True, tracking=True)
+    deaths_count = fields.Integer('Number Of Deaths', required=True, tracking=True)
     last_menstrual_date = fields.Date('First Day Of Last Menstrual Period', required=True, tracking=True)
     expected_due_date = fields.Date('Expected Due Date', required=True, tracking=True)
     nature_of_previous_births = fields.Selection([
@@ -34,11 +34,12 @@ class EmHmsRHSANC(models.Model):
     
     visit_ids = fields.One2many('em.hms.rhs.anc.visit', 'anc_id', string='Periodic Visits')
     visits_count = fields.Integer(compute='_compute_visits_count', string='Visits Count')
-    
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
+
     @api.depends('visit_ids')
     def _compute_visits_count(self):
         for record in self:
-            record.visits_count=len(record.visit_ids)
+            record.visits_count = len(record.visit_ids)
             
             
     def action_get_anc_visits_record(self):
