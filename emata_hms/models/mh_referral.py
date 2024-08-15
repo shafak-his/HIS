@@ -12,11 +12,11 @@ class EmHmsMHReferral(models.Model):
     
     referral_path = fields.Selection([
         ('project_internal', 'Internal - Project Services'),
-        ('shafak_internal', 'External - Another Shafak Projects'),
-        ('external', 'External - Another Services Providers')
+        ('org_external', 'External - Other Shafak Projects'),
+        ('external', 'External - Other Service Providers')
     ], string='Referral Path', required=True, tracking=True)
     referred_via = fields.Selection([
-        ('telephone', 'Telephone'),
+        ('phone', 'Phone'),
         ('self_referral', 'Self Referral'),
         ('email', 'E-mail'),
         ('skype', 'Skype')
@@ -61,30 +61,32 @@ class EmHmsMHReferral(models.Model):
         ('other', 'Other (Please Specify)')
     ], string='Services Required', required=True, tracking=True)
     where_to_submit_the_referral = fields.Char('Where To Submit The Referral', tracking=True)
-    explain_that_telephone_number_is_private = fields.Selection([
-        ('bnf_call', 'Beneficiary Will Call Referral Provider'),
+    phone_privacy = fields.Selection([
+        ('bnf_call', 'Beneficiary Will Call Referee'),
         ('bnf_visit', 'Beneficiary Will Visit Project Office'),
-        ('allow_rp_call_referrer', 'Allow Referral Provider To Call Referrerr')
+        ('allow_rp_call_service_provider', 'Allow Referee To Call Service Provider'),
+        ('not_interested', 'Not Interested')
     ], string='Explain To The Beneficiary That The Phone Number Must Be Private And That Calling It Will Not Cause Any Harm To The Beneficiary Or Expose Privacy Or Breach Confidentiality', required=True, tracking=True)
-    is_bnf_provided_referral_provider_address_contact = fields.Boolean('Is The Beneficiary Has Been Provided With The Address And Contact Numbers Of The Referral Provider?', tracking=True)
-    is_bnf_provided_referrer_address_contact = fields.Boolean('Is The Beneficiary Has Been Provided With The Address And Contact Numbers Of The Referrer?', tracking=True)
-    response_to_the_case = fields.Char('Response To The Case', tracking=True)
+    did_bnf_receive_referral_contact = fields.Boolean('The Beneficiary Has Been Provided With The Address And Contact Numbers Of The Referee?', tracking=True)
+    did_bnf_receive_service_provider_contact = fields.Boolean('The Beneficiary Has Been Provided With The Address And Contact Numbers Of The Service Provider?', tracking=True)
+    case_response = fields.Char('Response To The Case', tracking=True)
     service_providing_date = fields.Date('Service Providing Date', required=True, tracking=True)
-    service_provision_confirmed_by = fields.Selection([
+    service_confirmed_by = fields.Selection([
         ('bnf', 'Beneficiary'),
-        ('referrer', 'Referrer'),
-        ('referral_provider', 'Referral Provider'),
+        ('service_provider', 'Service Provider'),
+        ('referee', 'Referee'),
         ('not_confirmed', 'Not Confirmed')
     ], string='Service Provision Confirmed By', required=True, tracking=True)
-    reason_of_not_confirming_service_provision = fields.Selection([
-        ('high_privacy_and_confidentiality', 'High Privacy And Confidentiality'),
+    not_confirmed_service_response = fields.Selection([
+        ('high_privacy', 'High Privacy And Confidentiality'),
         ('bnf_not_interested', 'The Beneficiary Is Definitely Not Interested'),
         ('difficulty_communicating_sp', 'Difficulty Communicating With The Service Provider'),
         ('sp_not_cooperative', 'The Service Provider Is Not Cooperative'),
-        ('interruption_bnf_referral_provider', 'Interruption Of Communication Between The Beneficiary And The Referral Provider'),
+        ('interruption_bnf_referee', 'Interruption Of Communication Between The Beneficiary And The Referee'),
         ('not_yet', 'Not Yet'),
         ('other', 'Other (Please Specify)')
     ], string='Reason Of Not Confirming Service Provision', required=True, tracking=True)
-    other_reason_of_not_confirming_service_provision = fields.Char('Other Reason Of Not Confirming Service Provision', tracking=True)
-    referral_provider_id = fields.Many2one('hr.employee', string='Referral Provider', required=True)
-    referral_provider_manager_id = fields.Many2one('hr.employee', string='Referral Provider Line Manager', required=True)
+    other_not_confirmed_service_response = fields.Char('Other Reason Of Not Confirming Service Provision', tracking=True)
+    referee_id = fields.Many2one('hr.employee', string='Referee', required=True)
+    referee_manager_id = fields.Many2one('hr.employee', string='Referee Line Manager', required=True)
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

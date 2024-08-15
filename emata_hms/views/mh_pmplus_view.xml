@@ -9,10 +9,10 @@
                 <field name="session_date" />
                 <field name="patient_id" />
                 <field name="educational_status" optional="hide" />
-                <field name="main_complaints_present" optional="hide" />
+                <field name="main_complaints" optional="hide" />
                 <field name="intervention" optional="hide" />
-                <field name="type_of_visit" optional="hide" />
-                <field name="type_of_referral" optional="hide" />
+                <field name="visit_type" optional="hide" />
+                <field name="referral_type" optional="hide" />
                 <field name="internal_referral" optional="hide" />
                 <field name="other_internal_referral" optional="hide" />
                 <field name="external_referral" optional="hide" />
@@ -23,8 +23,8 @@
                 <field name="quest_centers_initial" optional="hide" />
                 <field name="quest_phq9_final" optional="hide" />
                 <field name="case_closure_date" optional="hide" />
-                <field name="reasons_for_closure" optional="hide" />
-                <field name="other_reason_for_closure" optional="hide" />
+                <field name="closure_reason" optional="hide" />
+                <field name="other_closure_reason" optional="hide" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -41,20 +41,20 @@
                             <field name="session_date" widget="date" />
                             <field name="patient_id" />
                             <field name="educational_status" widget="radio" />
-                            <field name="main_complaints_present" />
+                            <field name="main_complaints" />
                             <field name="intervention" widget="radio" />
-                            <field name="type_of_visit" widget="radio" />
+                            <field name="visit_type" widget="radio" />
                         </group>
                         <group>
-                            <field name="type_of_referral" widget="radio" />
+                            <field name="referral_type" widget="radio" />
                             <field name="internal_referral"
-                                invisible="type_of_referral != 'internal'" required="type_of_referral == 'internal'" />
+                                invisible="referral_type != 'internal'" required="referral_type == 'internal'" />
                             <field name="other_internal_referral"
-                                invisible="type_of_referral != 'internal' or internal_referral != 'other'" required="type_of_referral == 'internal' and internal_referral == 'other'" />
+                                invisible="referral_type != 'internal' or internal_referral != 'other'" required="referral_type == 'internal' and internal_referral == 'other'" />
                             <field name="external_referral"
-                                invisible="type_of_referral != 'external'" required="type_of_referral == 'external'" />
-                            <field name="referred_from_entity" invisible="type_of_referral == 'none'" required="type_of_referral != 'none'" />
-                            <field name="referred_to_entity" invisible="type_of_referral == 'none'" required="type_of_referral != 'none'" />
+                                invisible="referral_type != 'external'" required="referral_type == 'external'" />
+                            <field name="referred_from_entity" invisible="referral_type == 'none'" required="referral_type != 'none'" />
+                            <field name="referred_to_entity" invisible="referral_type == 'none'" required="referral_type != 'none'" />
                         </group>
                     </group>
                     <group>
@@ -64,13 +64,13 @@
                             <field name="quest_phq9_final" invisible="file_status != 'closed'" />
                             <field name="case_closure_date" widget="date"
                                 invisible="file_status != 'closed'" />
-                            <field name="reasons_for_closure" invisible="file_status != 'closed'" />
-                            <field name="other_reason_for_closure"
-                                invisible="file_status != 'closed' or reasons_for_closure != 'other'" />
+                            <field name="closure_reason" invisible="file_status != 'closed'" />
+                            <field name="other_closure_reason"
+                                invisible="file_status != 'closed' or closure_reason != 'other'" />
                         </group>
                         <group>
                             <field name="risk_level" widget="radio" />
-                            <field name="company_id" />
+                            <field name="company_id" readonly="1" force_save="1" />
                         </group>
                     </group>
                 </sheet>

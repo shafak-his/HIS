@@ -7,14 +7,13 @@
         <field name="arch" type="xml">
             <tree string="Group Awareness Sessions">
                 <field name="session_date" />
-                <field name="patient_id" />
-                <field name="activity_facilitator_name" />
+                <field name="facilitator_name" />
                 <field name="activity_name" />
-                <field name="boys" optional="hide" />
-                <field name="men" optional="hide" />
-                <field name="girls" optional="hide" />
-                <field name="women" optional="hide" />
-                <field name="company_id" />
+                <field name="boys_count" optional="hide" />
+                <field name="men_count" optional="hide" />
+                <field name="girls_count" optional="hide" />
+                <field name="women_count" optional="hide" />
+                <field name="company_id" readonly="1" force_save="1" />
             </tree>
         </field>
     </record>
@@ -28,20 +27,19 @@
                     <group>
                         <group>
                             <field name="session_date" widget="date" />
-                            <field name="patient_id" />
-                            <field name="activity_facilitator_name" />
+                            <field name="facilitator_name" />
                             <field name="activity_name" widget="radio" />
                         </group>
                         <group>
-                            <field name="boys" />
-                            <field name="men" />
-                            <field name="girls" />
-                            <field name="women" />
+                            <field name="boys_count" />
+                            <field name="men_count" />
+                            <field name="girls_count" />
+                            <field name="women_count" />
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field name="company_id" />
+                            <field name="company_id" readonly="1" force_save="1" />
                         </group>
                     </group>
                 </sheet>

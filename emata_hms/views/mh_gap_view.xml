@@ -16,10 +16,10 @@
                 <field name="principal_diagnosis" optional="hide" />
                 <field name="file_status" optional="hide" />
                 <field name="case_closure_date" optional="hide" />
-                <field name="pre_gap" optional="hide" />
-                <field name="post_gap" optional="hide" />
-                <field name="reasons_for_closure" optional="hide" />
-                <field name="other_reason_for_closure" optional="hide" />
+                <field name="pre_gaf" optional="hide" />
+                <field name="post_gaf" optional="hide" />
+                <field name="closure_reason" optional="hide" />
+                <field name="other_closure_reason" optional="hide" />
                 <field name="company_id" optional="hide" />
                 <field name="service_provider_id" optional="hide" />
                 <field name="medication_request_ids" widget="many2many_tags" optional="hide" />
@@ -52,14 +52,14 @@
                             <field name="file_status" widget="radio" />
                             <field name="case_closure_date" widget="date"
                                 invisible="file_status != 'closed'" />
-                            <field name="pre_gap" invisible="file_status != 'closed'" />
-                            <field name="post_gap" invisible="file_status != 'closed'" />
-                            <field name="reasons_for_closure" invisible="file_status != 'closed'" />
-                            <field name="other_reason_for_closure"
-                                invisible="file_status != 'closed' or reasons_for_closure != 'other'" />
+                            <field name="pre_gaf" invisible="file_status != 'closed'" />
+                            <field name="post_gaf" invisible="file_status != 'closed'" />
+                            <field name="closure_reason" invisible="file_status != 'closed'" />
+                            <field name="other_closure_reason"
+                                invisible="file_status != 'closed' or closure_reason != 'other'" />
                         </group>
                         <group>
-                            <field name="company_id" />
+                            <field name="company_id" readonly="1" force_save="1" />
                             <field name="service_provider_id" />
                         </group>
                     </group>

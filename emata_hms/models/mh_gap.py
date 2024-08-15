@@ -43,9 +43,9 @@ class EmHmsMHGap(models.Model):
         ('closed', 'Closed')
     ], string='What Is The Status Of The File', required=True, tracking=True)
     case_closure_date = fields.Date('Case Closure Date', required=True, tracking=True)
-    pre_gap = fields.Integer('Pre Gap', required=True, tracking=True)
-    post_gap = fields.Integer('Post Gap', required=True, tracking=True)
-    reasons_for_closure = fields.Selection([
+    pre_gaf = fields.Integer('Pre GAF', required=True, tracking=True)
+    post_gaf = fields.Integer('Post GAF', required=True, tracking=True)
+    closure_reason = fields.Selection([
         ('discharged', 'Discharged, All Goals Met'),
         ('tertiary_referral', 'Referral To Secondary/Tertiary Care'),
         ('medical_referral', 'Medical Referral'),
@@ -55,9 +55,9 @@ class EmHmsMHGap(models.Model):
         ('wish_to_end', 'Wishes To End Follow-up'),
         ('other', 'Other Reason')
     ], string='Reasons For Closure', required=True, tracking=True)
-    other_reason_for_closure = fields.Char('Other Reason For Closure', tracking=True)
+    other_closure_reason = fields.Char('Other Reason For Closure', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
-    service_provider_id=fields.Many2one('hr.employee', 'Service Provicer Name', required=True)
-    medication_request_ids = fields.Many2many('product.template', 'phc_mh_gap_product_medication_rel', 'mh_gap_id', 'product_id', string='Medication Requests', domain="[('is_medication', '=', True)]")
+    service_provider_id = fields.Many2one('hr.employee', 'Service Provicer Name', required=True)
+    medication_request_ids = fields.Many2many('product.template', 'mh_gap_product_medication_rel', 'mh_gap_id', 'product_id', string='Medication Requests', domain="[('is_medication', '=', True)]")
     
     

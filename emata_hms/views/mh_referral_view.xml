@@ -24,16 +24,16 @@
                 <field name="referred_to_email" optional="hide" />
                 <field name="services_required" optional="hide" />
                 <field name="where_to_submit_the_referral" optional="hide" />
-                <field name="explain_that_telephone_number_is_private" optional="hide" />
-                <field name="is_bnf_provided_referral_provider_address_contact" optional="hide" />
-                <field name="is_bnf_provided_referrer_address_contact" optional="hide" />
-                <field name="response_to_the_case" optional="hide" />
+                <field name="phone_privacy" optional="hide" />
+                <field name="did_bnf_receive_referral_contact" optional="hide" />
+                <field name="did_bnf_receive_service_provider_contact" optional="hide" />
+                <field name="case_response" optional="hide" />
                 <field name="service_providing_date" optional="hide" />
-                <field name="service_provision_confirmed_by" optional="hide" />
-                <field name="reason_of_not_confirming_service_provision" optional="hide" />
-                <field name="other_reason_of_not_confirming_service_provision" optional="hide" />
-                <field name="referral_provider_id" optional="hide" />
-                <field name="referral_provider_manager_id" optional="hide" />
+                <field name="service_confirmed_by" optional="hide" />
+                <field name="not_confirmed_service_response" optional="hide" />
+                <field name="other_not_confirmed_service_response" optional="hide" />
+                <field name="referee_id" optional="hide" />
+                <field name="referee_manager_id" optional="hide" />
             </tree>
         </field>
     </record>
@@ -82,32 +82,32 @@
                         <group>
                             <field name="services_required" />
                             <field name="where_to_submit_the_referral" />
-                            <field name="explain_that_telephone_number_is_private" widget="radio" />
+                            <field name="phone_privacy" widget="radio" />
                         </group>
                         <group>
-                            <field name="is_bnf_provided_referral_provider_address_contact"
+                            <field name="did_bnf_receive_referral_contact"
                                 widget="boolean_toggle" />
-                            <field name="is_bnf_provided_referrer_address_contact"
+                            <field name="did_bnf_receive_service_provider_contact"
                                 widget="boolean_toggle" />
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field name="response_to_the_case" />
+                            <field name="case_response" />
                             <field name="service_providing_date" widget="date" />
                         </group>
                         <group>
-                            <field name="service_provision_confirmed_by" widget="radio" />
-                            <field name="reason_of_not_confirming_service_provision"
-                                invisible="service_provision_confirmed_by != 'not_confirmed'" />
-                            <field name="other_reason_of_not_confirming_service_provision"
-                                invisible="reason_of_not_confirming_service_provision != 'other'" />
+                            <field name="service_confirmed_by" widget="radio" />
+                            <field name="not_confirmed_service_response"
+                                invisible="service_confirmed_by != 'not_confirmed'" />
+                            <field name="other_not_confirmed_service_response"
+                                invisible="not_confirmed_service_response != 'other'" />
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field name="referral_provider_id" />
-                            <field name="referral_provider_manager_id" />
+                            <field name="referee_id" />
+                            <field name="referee_manager_id" />
                         </group>
                         <group>
                         </group>

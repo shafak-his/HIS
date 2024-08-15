@@ -15,7 +15,7 @@ class EmHmsMHPMPLUS(models.Model):
         ('higher', 'Higher'),
         ('none', 'None')
     ], string='Educational Status', required=True, tracking=True)
-    main_complaints_present = fields.Selection([
+    main_complaints = fields.Selection([
         ('depression', 'Depression'),
         ('anxiety', 'Anxiety'),
         ('psychological_stress', 'Psychological Stress'),
@@ -25,11 +25,11 @@ class EmHmsMHPMPLUS(models.Model):
         ('pmplus', 'PM+ Service'),
         ('psychological_support', 'Psychological Support Services')
     ], string='Intervention', required=True, tracking=True)
-    type_of_visit = fields.Selection([
+    visit_type = fields.Selection([
         ('np', 'NP'),
         ('fu', 'Follow-up')
     ], string='Type Of Visit', required=True, tracking=True)
-    type_of_referral = fields.Selection([
+    referral_type = fields.Selection([
         ('internal', 'Internal'),
         ('external', 'External'),
         ('none', 'None')
@@ -66,7 +66,7 @@ class EmHmsMHPMPLUS(models.Model):
     quest_centers_initial = fields.Integer('Health Questionnaire For Centers - Initial Test', required=True, tracking=True)
     quest_phq9_final = fields.Integer('PHQ9 Post-Test Final Test', required=True, tracking=True)
     case_closure_date = fields.Date('Case Closure Date', required=True, tracking=True)
-    reasons_for_closure = fields.Selection([
+    closure_reason = fields.Selection([
         ('discharged', 'Discharged, All Goals Met'),
         ('tertiary_referral', 'Referral To Secondary/Tertiary Care'),
         ('medical_referral', 'Medical Referral'),
@@ -76,7 +76,7 @@ class EmHmsMHPMPLUS(models.Model):
         ('wish_to_end', 'Wishes To End Follow-up'),
         ('other', 'Other Reason')
     ], string='Reasons For Closure', required=True, tracking=True)
-    other_reason_for_closure = fields.Char('Other Reason For Closure', tracking=True)
+    other_closure_reason = fields.Char('Other Reason For Closure', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
     
