@@ -5,7 +5,7 @@
         <field name="name">em.hms.rhs.pnc.view.tree</field>
         <field name="model">em.hms.rhs.pnc</field>
         <field name="arch" type="xml">
-            <tree string="RH Service PNC">
+            <tree string="RH Service PNC" create="0" delete="0">
                 <field name="patient_id" />
                 <field name="husband_name" />
                 <field name="birth_date" optional="hide" />

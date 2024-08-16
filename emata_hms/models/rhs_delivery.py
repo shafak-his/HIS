@@ -65,24 +65,10 @@ class EmHmsRHSDelivery(models.Model):
         ('amniotic_hydrocephalus', 'Amniotic Hydrocephalus')
     ], string='Amniotic Fluid', required=True, tracking=True)
     
-    travail_hour = fields.Datetime('Hour', required=True, tracking=True)
-    contraction_duration = fields.Float('Contraction Duration', required=True, tracking=True)
-    interval_between_contractions = fields.Float('Interval Between Contractions', required=True, tracking=True)
-    travail_auscultation = fields.Char('Travail Auscultation', required=True, tracking=True)
-    dilation = fields.Float('Dilation', required=True, tracking=True)
-    erasure = fields.Float('Erasure', required=True, tracking=True)
-    
     birth_datetime = fields.Datetime('Date And Time Of Birth', required=True, tracking=True)
-    medications_birth = fields.Selection([
-        ('oxytocin', 'Oxytocin'),
-        ('Cytotec', 'Cytotec'),
-        ('mitergine', 'Mitergine'),
-        ('catalar', 'Catalar'),
-        ('propofol', 'Propofol'),
-        ('midazolam', 'Midazolam')
-    ], string='Medications Used During Birth', required=True, tracking=True)
+    medications_during_birth_ids = fields.Many2many('product.template', 'rhs_delivery_product_medication_birth_rel', 'delivery_id', 'product_id', string='Medications Used During Birth', domain="[('is_medication_during_birth', '=', True)]", required=True)
     birth_report = fields.Char('Birth Report', tracking=True)
-    newborn_condition = fields.Selection([
+    newborn_general_condition = fields.Selection([
         ('good_vitality', 'Good Vitality'),
         ('transfer_to_care', 'Transfer To Care'),
         ('transfer_to_incubators', 'Transfer To Incubators'),
@@ -95,19 +81,11 @@ class EmHmsRHSDelivery(models.Model):
     newborn_weight = fields.Float('Weight Of The Newborn', required=True, tracking=True)
     is_breastfeeding_first_hour = fields.Boolean('Breastfeeding Within The First Hour', tracking=True)
     
-    post_birth_datetime = fields.Datetime('Time', required=True, tracking=True)
-    post_birth_pressure = fields.Integer('Pressure', required=True, tracking=True)
-    post_birth_pulse = fields.Integer('Pulse', required=True, tracking=True)
-    post_birth_temperature = fields.Float('Temperature', required=True, tracking=True)
-    is_post_birth_safety_ball = fields.Boolean('Safety Ball', tracking=True)
-    is_post_birth_urine_voiding = fields.Boolean('Urine Voiding', tracking=True)
-    post_birth_notes = fields.Char('Notes')
-    
     discharge_datetime = fields.Datetime('Date Of Discharge And Time', required=True, tracking=True)
     discharge_supervising_physician_id = fields.Many2one('hr.employee', string='Supervising Physician', required=True)
     discharge_duty_midwife_id = fields.Many2one('hr.employee', string='Midwife On Duty', required=True)
     patient_condition = fields.Selection([
-        ('to_home', 'To home'),
+        ('to_home', 'To Home'),
         ('another_hospital', 'Another Hospital'),
         ('other', 'Other')
     ], string='Patient''s Condition', required=True, tracking=True)
@@ -121,3 +99,42 @@ class EmHmsRHSDelivery(models.Model):
     patient_companion_name = fields.Char('Patient''s Companion''s Name', tracking=True)
     patient_companion_relationship = fields.Char('Relationship', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
+    
+    travail_ids = fields.One2many('em.hms.rhs.delivery.travail', 'delivery_id', string='Travail Monitoring')
+    travails_count = fields.Integer(compute='_compute_travails_count', string='Travails Count')
+    birth_ids = fields.One2many('em.hms.rhs.delivery.birth', 'delivery_id', string='Post-Birth Monitoring')
+    births_count = fields.Integer(compute='_compute_births_count', string='Post-Birth Reports')
+
+    @api.depends('travail_ids')
+    def _compute_travails_count(self):
+        for record in self:
+            record.travails_count = len(record.travail_ids)
+            
+    @api.depends('birth_ids')
+    def _compute_births_count(self):
+        for record in self:
+            record.births_count = len(record.birth_ids)
+            
+            
+    def action_get_delivery_travails_record(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Travails Monitoring',
+            'view_mode': 'tree',
+            'res_model': 'em.hms.rhs.delivery.travail',
+            'domain': [('delivery_id', '=', self.id)],
+            'context': "{'create': False}"
+        }
+        
+    def action_get_delivery_births_record(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Post-Birth Monitoring',
+            'view_mode': 'tree',
+            'res_model': 'em.hms.rhs.delivery.birth',
+            'domain': [('delivery_id', '=', self.id)],
+            'context': "{'create': False}"
+        }
+

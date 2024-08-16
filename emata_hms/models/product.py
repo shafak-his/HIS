@@ -7,3 +7,4 @@ class ProductTemplate(models.Model):
     is_medication = fields.Boolean('Is Medication')
     is_medical_analysis = fields.Boolean('Is Medical Analysis')
     is_medical_imaging = fields.Boolean('Is Medical Imaging')
+    is_medication_during_birth = fields.Boolean('Is Medication During Birth')
