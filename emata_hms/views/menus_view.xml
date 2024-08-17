@@ -23,6 +23,31 @@
             action="emata_hms.em_hms_icd10_action"
             sequence="5" />
 
+        <menuitem id="menu_em_hms_medical_service_items"
+            name="Medical Service Items"
+            parent="menu_em_hms_admin_root"
+            sequence="20" />
+        <menuitem id="menu_em_hms_product_medication"
+            name="Medications"
+            parent="menu_em_hms_medical_service_items"
+            action="emata_hms.em_product_template_medication_action"
+            sequence="5" />
+        <menuitem id="menu_em_hms_product_birth_medication"
+            name="Birth Medications"
+            parent="menu_em_hms_medical_service_items"
+            action="emata_hms.em_product_template_birth_medication_action"
+            sequence="7" />
+        <menuitem id="menu_em_hms_product_medical_analysis"
+            name="Medical Analysis"
+            parent="menu_em_hms_medical_service_items"
+            action="emata_hms.em_product_template_medical_analysis_action"
+            sequence="10" />
+        <menuitem id="menu_em_hms_product_medical_imaging"
+            name="Medical Imaging"
+            parent="menu_em_hms_medical_service_items"
+            action="emata_hms.em_product_template_medical_imaging_action"
+            sequence="15" />
+
         <menuitem id="menu_em_hms_rhs_helper_lists"
             name="RH Master Data"
             parent="menu_em_hms_admin_root"

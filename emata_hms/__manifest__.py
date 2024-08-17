@@ -44,6 +44,7 @@
         'views/vital_signs_view.xml',
         'views/master_models_view.xml',
         'views/res_partner_view.xml',
+        'views/product_template_view.xml',
 
         'data/sequence_data.xml',
 
