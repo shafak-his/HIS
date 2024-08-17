@@ -8,7 +8,7 @@ class EmHmsPhcClinicVisit(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
     visit_datetime = fields.Datetime('Visit Date/Time', required=True, tracking=True)
-    patient_id = fields.Many2one('res.partner', string='Patient Name', required=True, tracking=True)
+    patient_id = fields.Many2one('res.partner', string='Patient Name', required=True, domain=[('is_patient','=',True)], tracking=True)
     clinic_id = fields.Many2one('em.hms.clinic', string='Clinic Name', required=True, tracking=True)
     is_pregnant = fields.Boolean('Is Pregnant?', tracking=True)
     is_lactating = fields.Boolean('Is Lactating?', tracking=True)

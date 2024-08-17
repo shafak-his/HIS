@@ -8,7 +8,7 @@ class EmHmsMHReferral(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
     referral_date = fields.Date('Referral Date', required=True, tracking=True)
-    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, tracking=True)
+    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)], tracking=True)
     
     referral_path = fields.Selection([
         ('project_internal', 'Internal - Project Services'),

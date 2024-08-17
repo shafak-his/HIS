@@ -9,7 +9,7 @@ class EmHmsVitalSigns(models.Model):
     
     datetime = fields.Datetime('Time', required=True, tracking=True)
     delivery_id = fields.Many2one('em.hms.rhs.delivery', string='Delivery')
-    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True)
+    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     
     pressure = fields.Float('Pressure', required=True, tracking=True)
     pulse = fields.Float('Pulse', required=True, tracking=True)

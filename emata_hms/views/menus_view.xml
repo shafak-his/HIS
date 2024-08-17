@@ -12,11 +12,16 @@
             parent="menu_em_hms_admin_root"
             action="emata_hms.em_hms_clinic_action"
             sequence="1" />
+        <menuitem id="menu_em_hms_location"
+            name="Locations"
+            parent="menu_em_hms_admin_root"
+            action="emata_hms.em_location_action"
+            sequence="2" />
         <menuitem id="menu_em_hms_icd10"
             name="ICD10"
             parent="menu_em_hms_admin_root"
             action="emata_hms.em_hms_icd10_action"
-            sequence="2" />
+            sequence="5" />
 
         <menuitem id="menu_em_hms_rhs_helper_lists"
             name="RH Master Data"
@@ -41,7 +46,7 @@
         <!-- PHC -->
         <menuitem id="menu_em_hms_phc_root"
             name="PHC"
-            web_icon="emata_hms,static/description/icon-phc.png"
+            web_icon="emata_hms,static/description/icon-hms.png"
             sequence="1"
         />
         <menuitem id="menu_em_hms_phc_clinic_visit"
@@ -53,7 +58,7 @@
         <!-- Mental Health -->
         <menuitem id="menu_em_hms_mh_root"
             name="Mental Health"
-            web_icon="emata_hms,static/description/icon-mh.png"
+            web_icon="emata_hms,static/description/icon-hms.png"
             sequence="2"
         />
         <menuitem id="menu_em_hms_mh_referral"
@@ -80,7 +85,7 @@
         <!-- RH Service -->
         <menuitem id="menu_em_hms_rhs_root"
             name="RH Service"
-            web_icon="emata_hms,static/description/icon-rh.png"
+            web_icon="emata_hms,static/description/icon-hms.png"
             sequence="3"
         />
         <menuitem id="menu_em_hms_rhs_anc"
@@ -128,5 +133,18 @@
             parent="menu_em_hms_rhs_reporting_tables"
             action="emata_hms.em_hms_rhs_delivery_post_birth_action"
             sequence="14" />
+
+        <!-- Patients -->
+        <menuitem id="menu_em_hms_patient_root"
+            name="Patients"
+            web_icon="emata_hms,static/description/icon-patients.png"
+            sequence="50"
+        />
+        <menuitem id="menu_em_hms_patient"
+            name="Patients"
+            parent="menu_em_hms_patient_root"
+            action="emata_hms.action_em_res_partner_patient"
+            sequence="1" />
+
     </data>
 </odoo>

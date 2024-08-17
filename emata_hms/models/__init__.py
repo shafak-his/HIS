@@ -14,3 +14,5 @@ from . import rhs_delivery
 from . import rhs_delivery_labor
 from . import rhs_delivery_post_birth
 from . import vital_signs
+from . import res_partner
+from . import master_models

@@ -7,7 +7,7 @@ class EmHmsRHSANC(models.Model):
     _rec_name = 'patient_id'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
-    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True)
+    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     cesarean_sections_count = fields.Integer('Number Of Previous Cesarean Sections', required=True, tracking=True)
     family_medical_history = fields.Char('Family Medical History', tracking=True)
     is_breastfeeding = fields.Boolean('Is Breastfeeding?', required=True, tracking=True)

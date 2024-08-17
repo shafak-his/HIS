@@ -7,7 +7,7 @@ class EmHmsRHSDelivery(models.Model):
     _rec_name = 'patient_id'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
-    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True)
+    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     admission_date = fields.Date('Date Of Admission', required=True, tracking=True)
     admitting_midwife_id = fields.Many2one('hr.employee', string='Name Of Admitting Midwife', required=True)
     admitting_physician_id = fields.Many2one('hr.employee', string='Name Of Admitting Physician', required=True)

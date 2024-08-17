@@ -42,6 +42,10 @@
         'views/rhs_delivery_labor_view.xml',
         'views/rhs_delivery_post_birth_view.xml',
         'views/vital_signs_view.xml',
+        'views/master_models_view.xml',
+        'views/res_partner_view.xml',
+
+        'data/sequence_data.xml',
 
         'views/menus_view.xml',
     ],
