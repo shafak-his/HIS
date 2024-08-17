@@ -11,5 +11,6 @@ from . import rhs_anc_visit
 from . import rhs_pnc
 from . import rhs_pnc_visit
 from . import rhs_delivery
-from . import rhs_delivery_travail
-from . import rhs_delivery_birth
+from . import rhs_delivery_labor
+from . import rhs_delivery_post_birth
+from . import vital_signs

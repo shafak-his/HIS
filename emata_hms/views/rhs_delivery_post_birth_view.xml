@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_rhs_delivery_post_birth_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.delivery.post.birth.view.tree</field>
+        <field name="model">em.hms.rhs.delivery.post.birth</field>
+        <field name="arch" type="xml">
+            <tree string="Post-Birth Monitoring" create="0" delete="0">
+                <field name="delivery_id" />
+                <field name="patient_id" />
+                <field name="datetime" />
+                <field name="pressure" />
+                <field name="pulse" />
+                <field name="temperature" />
+                <field name="is_safety_ball" optional="hide" />
+                <field name="is_urine_voiding" optional="hide" />
+                <field name="notes" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_delivery_post_birth_view_form" model="ir.ui.view">
+        <field name="name">em.hms.rhs.delivery.post.birth.view.form</field>
+        <field name="model">em.hms.rhs.delivery.post.birth</field>
+        <field name="arch" type="xml">
+            <form string="Post-Birth Monitoring">
+                <sheet>
+                    <group>
+                        <group>
+                            <!-- <field name="delivery_id" /> -->
+                            <field name="patient_id" />
+                            <field name="datetime" widget="datetime" />
+                            <field name="pressure" />
+                            <field name="pulse" />
+                            <field name="temperature" />
+                        </group>
+                        <group>
+                            <field name="is_safety_ball" widget="checkbox" />
+                            <field name="is_urine_voiding" widget="checkbox" />
+                            <field name="notes" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_delivery_post_birth_action" model="ir.actions.act_window">
+        <field name="name">Post-Birth Monitoring</field>
+        <field name="res_model">em.hms.rhs.delivery.post.birth</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

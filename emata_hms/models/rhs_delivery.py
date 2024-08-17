@@ -20,11 +20,6 @@ class EmHmsRHSDelivery(models.Model):
     initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True)
     child_name = fields.Char('Name Of Child', required=True, tracking=True)
     
-    pre_birth_pressure = fields.Float('Pressure', required=True, tracking=True)
-    pre_birth_pulse = fields.Float('Pulse', required=True, tracking=True)
-    pre_birth_temperature = fields.Float('Temperature', required=True, tracking=True)
-    pre_birth_awareness = fields.Char('Awareness')
-    
     natural_births_count = fields.Integer('Number Of Natural Births', required=True, tracking=True)
     cesarean_births_count = fields.Integer('Number Of Cesarean Births', required=True, tracking=True)
     miscarriages_count = fields.Integer('Number Of Miscarriages', required=True, tracking=True)
@@ -66,7 +61,7 @@ class EmHmsRHSDelivery(models.Model):
     ], string='Amniotic Fluid', required=True, tracking=True)
     
     birth_datetime = fields.Datetime('Date And Time Of Birth', required=True, tracking=True)
-    medications_during_birth_ids = fields.Many2many('product.template', 'rhs_delivery_product_medication_birth_rel', 'delivery_id', 'product_id', string='Medications Used During Birth', domain="[('is_medication_during_birth', '=', True)]", required=True)
+    birth_medication_ids = fields.Many2many('product.template', 'rhs_delivery_product_birth_medication_rel', 'delivery_id', 'product_id', string='Medications Used During Birth', domain="[('is_birth_medication', '=', True)]", required=True)
     birth_report = fields.Char('Birth Report', tracking=True)
     newborn_general_condition = fields.Selection([
         ('good_vitality', 'Good Vitality'),
@@ -100,40 +95,58 @@ class EmHmsRHSDelivery(models.Model):
     patient_companion_relationship = fields.Char('Relationship', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
-    travail_ids = fields.One2many('em.hms.rhs.delivery.travail', 'delivery_id', string='Travail Monitoring')
-    travails_count = fields.Integer(compute='_compute_travails_count', string='Travails Count')
-    birth_ids = fields.One2many('em.hms.rhs.delivery.birth', 'delivery_id', string='Post-Birth Monitoring')
-    births_count = fields.Integer(compute='_compute_births_count', string='Post-Birth Reports')
+    labor_ids = fields.One2many('em.hms.rhs.delivery.labor', 'delivery_id', string='Labor Monitoring')
+    labors_count = fields.Integer(compute='_compute_labors_count', string='Labors Count')
+    vital_signs_ids = fields.One2many('em.hms.vital.signs', 'delivery_id', string='Vital Signs Monitoring')
+    vital_signs_count = fields.Integer(compute='_compute_vital_signs_count', string='Vital Signs Reports')
+    post_birth_ids = fields.One2many('em.hms.rhs.delivery.post.birth', 'delivery_id', string='Post-Birth Monitoring')
+    post_births_count = fields.Integer(compute='_compute_post_births_count', string='Post-Birth Reports')
 
-    @api.depends('travail_ids')
-    def _compute_travails_count(self):
+    @api.depends('labor_ids')
+    def _compute_labors_count(self):
         for record in self:
-            record.travails_count = len(record.travail_ids)
+            record.labors_count = len(record.labor_ids)
             
-    @api.depends('birth_ids')
-    def _compute_births_count(self):
+    @api.depends('vital_signs_ids')
+    def _compute_vital_signs_count(self):
         for record in self:
-            record.births_count = len(record.birth_ids)
+            record.vital_signs_count = len(record.vital_signs_ids)
+            
+    @api.depends('post_birth_ids')
+    def _compute_post_births_count(self):
+        for record in self:
+            record.post_births_count = len(record.post_birth_ids)
             
             
-    def action_get_delivery_travails_record(self):
+    def action_get_delivery_labors_record(self):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': 'Travails Monitoring',
+            'name': 'Labor Monitoring',
             'view_mode': 'tree',
-            'res_model': 'em.hms.rhs.delivery.travail',
+            'res_model': 'em.hms.rhs.delivery.labor',
             'domain': [('delivery_id', '=', self.id)],
             'context': "{'create': False}"
         }
         
-    def action_get_delivery_births_record(self):
+    def action_get_delivery_vital_signss_record(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Vital Signs Monitoring',
+            'view_mode': 'tree',
+            'res_model': 'em.hms.vital.signs',
+            'domain': [('delivery_id', '=', self.id)],
+            'context': "{'create': False}"
+        }
+        
+    def action_get_delivery_post_births_record(self):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
             'name': 'Post-Birth Monitoring',
             'view_mode': 'tree',
-            'res_model': 'em.hms.rhs.delivery.birth',
+            'res_model': 'em.hms.rhs.delivery.post.birth',
             'domain': [('delivery_id', '=', self.id)],
             'context': "{'create': False}"
         }

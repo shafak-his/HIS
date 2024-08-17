@@ -13,7 +13,16 @@
     'sequence': 1,
     'installable': True,
 
-    'depends': ['base', 'mail', 'product', 'hr'],
+    'depends': [
+        'base',
+        'mail',
+        'product',
+        'hr',
+        'web_responsive',
+        'web_theme_classic',
+        'web_m2x_options',
+        'disable_odoo_online'
+    ],
 
     'data': [
         'security/ir.model.access.csv',
@@ -30,9 +39,10 @@
         'views/rhs_pnc_view.xml',
         'views/rhs_pnc_visit_view.xml',
         'views/rhs_delivery_view.xml',
-        'views/rhs_delivery_travail_view.xml',
-        'views/rhs_delivery_birth_view.xml',
-        
+        'views/rhs_delivery_labor_view.xml',
+        'views/rhs_delivery_post_birth_view.xml',
+        'views/vital_signs_view.xml',
+
         'views/menus_view.xml',
     ],
 }
