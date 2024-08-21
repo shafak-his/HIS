@@ -8,7 +8,7 @@ class EmHmsMHPMPLUS(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
     session_date = fields.Date('Session Date', required=True, tracking=True)
-    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True)
+    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     educational_status = fields.Selection([
         ('primary_school', 'Primary School'),
         ('secondary', 'Secondary'),

@@ -7,7 +7,7 @@ class EmHmsRHSPNC(models.Model):
     _rec_name = 'patient_id'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
-    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True)
+    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     husband_name = fields.Char('Husband\'s Name', required=True, tracking=True)
     
     birth_date = fields.Date('Date Of Birth', required=True, tracking=True)

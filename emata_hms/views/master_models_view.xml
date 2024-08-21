@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_location_view_tree" model="ir.ui.view">
+        <field name="name">em.location.view.tree</field>
+        <field name="model">em.location</field>
+        <field name="arch" type="xml">
+            <tree string="Locations" editable="bottom">
+                <field name="code" />
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_location_action" model="ir.actions.act_window">
+        <field name="name">Locations</field>
+        <field name="res_model">em.location</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

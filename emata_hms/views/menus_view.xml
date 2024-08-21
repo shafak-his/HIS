@@ -4,23 +4,74 @@
         <!-- Administration -->
         <menuitem id="menu_em_hms_admin_root"
             name="Administration"
-            sequence="0"
+            web_icon="emata_hms,static/description/icon-config.png"
+            sequence="99"
         />
         <menuitem id="menu_em_hms_clinic"
-            name="Clinic"
+            name="Clinics"
             parent="menu_em_hms_admin_root"
             action="emata_hms.em_hms_clinic_action"
-            sequence="01" />
+            sequence="1" />
+        <menuitem id="menu_em_hms_location"
+            name="Locations"
+            parent="menu_em_hms_admin_root"
+            action="emata_hms.em_location_action"
+            sequence="2" />
         <menuitem id="menu_em_hms_icd10"
             name="ICD10"
             parent="menu_em_hms_admin_root"
             action="emata_hms.em_hms_icd10_action"
-            sequence="02" />
+            sequence="5" />
+
+        <menuitem id="menu_em_hms_medical_service_items"
+            name="Medical Service Items"
+            parent="menu_em_hms_admin_root"
+            sequence="20" />
+        <menuitem id="menu_em_hms_product_medication"
+            name="Medications"
+            parent="menu_em_hms_medical_service_items"
+            action="emata_hms.em_product_template_medication_action"
+            sequence="5" />
+        <menuitem id="menu_em_hms_product_birth_medication"
+            name="Birth Medications"
+            parent="menu_em_hms_medical_service_items"
+            action="emata_hms.em_product_template_birth_medication_action"
+            sequence="7" />
+        <menuitem id="menu_em_hms_product_medical_analysis"
+            name="Medical Analysis"
+            parent="menu_em_hms_medical_service_items"
+            action="emata_hms.em_product_template_medical_analysis_action"
+            sequence="10" />
+        <menuitem id="menu_em_hms_product_medical_imaging"
+            name="Medical Imaging"
+            parent="menu_em_hms_medical_service_items"
+            action="emata_hms.em_product_template_medical_imaging_action"
+            sequence="15" />
+
+        <menuitem id="menu_em_hms_rhs_helper_lists"
+            name="RH Master Data"
+            parent="menu_em_hms_admin_root"
+            sequence="34" />
+        <menuitem id="menu_em_hms_rhs_pathological_find"
+            name="Pathological Findings"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_pathological_find_action"
+            sequence="1" />
+        <menuitem id="menu_em_hms_rhs_postpartum_comp"
+            name="Postpartum Complications"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_postpartum_comp_action"
+            sequence="2" />
+        <menuitem id="menu_em_hms_rhs_wound"
+            name="Wounds"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_wound_action"
+            sequence="3" />
 
         <!-- PHC -->
         <menuitem id="menu_em_hms_phc_root"
             name="PHC"
-            web_icon="emata_helpdesk,static/description/icon.png"
+            web_icon="emata_hms,static/description/icon-hms.png"
             sequence="1"
         />
         <menuitem id="menu_em_hms_phc_clinic_visit"
@@ -32,6 +83,7 @@
         <!-- Mental Health -->
         <menuitem id="menu_em_hms_mh_root"
             name="Mental Health"
+            web_icon="emata_hms,static/description/icon-hms.png"
             sequence="2"
         />
         <menuitem id="menu_em_hms_mh_referral"
@@ -58,6 +110,7 @@
         <!-- RH Service -->
         <menuitem id="menu_em_hms_rhs_root"
             name="RH Service"
+            web_icon="emata_hms,static/description/icon-hms.png"
             sequence="3"
         />
         <menuitem id="menu_em_hms_rhs_anc"
@@ -75,25 +128,7 @@
             parent="menu_em_hms_rhs_root"
             action="emata_hms.em_hms_rhs_delivery_action"
             sequence="33" />
-        <menuitem id="menu_em_hms_rhs_helper_lists"
-            name="Helper Lists"
-            parent="menu_em_hms_rhs_root"
-            sequence="34" />
-        <menuitem id="menu_em_hms_rhs_pathological_find"
-            name="Pathological Findings"
-            parent="menu_em_hms_rhs_helper_lists"
-            action="emata_hms.em_hms_rhs_pathological_find_action"
-            sequence="1" />
-        <menuitem id="menu_em_hms_rhs_postpartum_comp"
-            name="Postpartum Complications"
-            parent="menu_em_hms_rhs_helper_lists"
-            action="emata_hms.em_hms_rhs_postpartum_comp_action"
-            sequence="2" />
-        <menuitem id="menu_em_hms_rhs_wound"
-            name="Wounds"
-            parent="menu_em_hms_rhs_helper_lists"
-            action="emata_hms.em_hms_rhs_wound_action"
-            sequence="3" />
+        
         <menuitem id="menu_em_hms_rhs_reporting_tables"
             name="Reporting Tables"
             parent="menu_em_hms_rhs_root"
@@ -108,15 +143,33 @@
             parent="menu_em_hms_rhs_reporting_tables"
             action="emata_hms.em_hms_rhs_pnc_visit_action"
             sequence="2" />
-        <menuitem id="menu_em_hms_rhs_delivery_travail"
-            name="Delivery Travails"
+        <menuitem id="menu_em_hms_rhs_vital_signs"
+            name="Vital Signs Monitoring"
             parent="menu_em_hms_rhs_reporting_tables"
-            action="emata_hms.em_hms_rhs_delivery_travail_action"
-            sequence="3" />
-        <menuitem id="menu_em_hms_rhs_delivery_birth"
-            name="Delivery Post-Birth"
+            action="emata_hms.em_hms_vital_signs_action"
+            sequence="10" />
+        <menuitem id="menu_em_hms_rhs_delivery_labor"
+            name="Labor Monitoring"
             parent="menu_em_hms_rhs_reporting_tables"
-            action="emata_hms.em_hms_rhs_delivery_birth_action"
-            sequence="4" />
+            action="emata_hms.em_hms_rhs_delivery_labor_action"
+            sequence="12" />
+        <menuitem id="menu_em_hms_rhs_delivery_post_birth"
+            name="Post-Birth Monitoring"
+            parent="menu_em_hms_rhs_reporting_tables"
+            action="emata_hms.em_hms_rhs_delivery_post_birth_action"
+            sequence="14" />
+
+        <!-- Patients -->
+        <menuitem id="menu_em_hms_patient_root"
+            name="Patients"
+            web_icon="emata_hms,static/description/icon-patients.png"
+            sequence="50"
+        />
+        <menuitem id="menu_em_hms_patient"
+            name="Patients"
+            parent="menu_em_hms_patient_root"
+            action="emata_hms.action_em_res_partner_patient"
+            sequence="1" />
+
     </data>
 </odoo>

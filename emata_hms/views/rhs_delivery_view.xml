@@ -18,10 +18,6 @@
                 <field name="medical_history" optional="hide" />
                 <field name="initial_diagnosis" optional="hide" />
                 <field name="child_name" optional="hide" />
-                <field name="pre_birth_pressure" optional="hide" />
-                <field name="pre_birth_pulse" optional="hide" />
-                <field name="pre_birth_temperature" optional="hide" />
-                <field name="pre_birth_awareness" optional="hide" />
                 <field name="natural_births_count" optional="hide" />
                 <field name="cesarean_births_count" optional="hide" />
                 <field name="miscarriages_count" optional="hide" />
@@ -32,7 +28,7 @@
                 <field name="placenta" optional="hide" />
                 <field name="amniotic_fluid" optional="hide" />
                 <field name="birth_datetime" optional="hide" />
-                <field name="medications_during_birth_ids" widget="many2many_tags" optional="hide" />
+                <field name="birth_medication_ids" widget="many2many_tags" optional="hide" />
                 <field name="birth_report" optional="hide" />
                 <field name="newborn_general_condition" optional="hide" />
                 <field name="newborn_gender" optional="hide" />
@@ -57,11 +53,11 @@
             <form string="Delivery">
                 <header>
                     <div name="button_box" position="inside">
-                        <button class="oe_stat_button" type="object" icon="fa-edit"
-                            name="action_get_delivery_travails_record">
-                            <field string="Travail Monitoring" name="travails_count"
+                        <!-- <button class="oe_stat_button" type="object" icon="fa-edit"
+                            name="action_get_delivery_labors_record">
+                            <field string="Labor Monitoring" name="labors_count"
                                 widget="statinfo" />
-                        </button>
+                        </button> -->
                     </div>
                     <div name="button_box" position="inside">
                         <button class="oe_stat_button" type="object" icon="fa-stethoscope"
@@ -71,42 +67,41 @@
                         </button>
                     </div>
                 </header>
+                <group>
+                    <group>
+                        <field name="patient_id" />
+                        <field name="admission_date" widget="date" />
+                        <field name="admitting_midwife_id" />
+                        <field name="admitting_physician_id" />
+                        <field name="husband_name" />
+                        <field name="guardian_name" />
+                    </group>
+                    <group>
+                        <field name="allergic_history" widget="text" />
+                        <field name="drug_history" widget="text" />
+                        <field name="surgical_history" widget="text" />
+                        <field name="medical_history" widget="text" />
+                        <field name="child_name" />
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="company_id" readonly="1" force_save="1" />
+                    </group>
+                </group>
+
                 <notebook>
-                    <page name="main_page" string="Main">
-                        <group>
-                            <group>
-                                <field name="patient_id" />
-                                <field name="admission_date" widget="date" />
-                                <field name="admitting_midwife_id" />
-                                <field name="admitting_physician_id" />
-                                <field name="husband_name" />
-                                <field name="guardian_name" />
-                            </group>
-                            <group>
-                                <field name="allergic_history" widget="text" />
-                                <field name="drug_history" widget="text" />
-                                <field name="surgical_history" widget="text" />
-                                <field name="medical_history" widget="text" />
-                                <field name="child_name" />
-                            </group>
-                        </group>
-                        <group>
-                            <group>
-                                <field name="company_id" readonly="1" force_save="1" />
-                            </group>
-                        </group>
-                    </page>
-                    <page name="bio_signs_page" string="Biological Signs On Admission">
-                        <group>
-                            <group>
-                                <field name="pre_birth_pressure" />
-                                <field name="pre_birth_pulse" />
-                            </group>
-                            <group>
-                                <field name="pre_birth_temperature" />
-                                <field name="pre_birth_awareness" />
-                            </group>
-                        </group>
+                    <page name="vital_signs_page" string="Vital Signs">
+                        <field name="vital_signs_ids" context="{'default_patient_id': patient_id}">
+                            <tree string="Vital Signs Monitoring">
+                                <field name="datetime" />
+                                <field name="pressure" />
+                                <field name="pulse" />
+                                <field name="temperature" />
+                                <field name="notes" optional="hide" />
+                                <field name="company_id" readonly="1" force_save="1" optional="hide" />
+                            </tree>
+                        </field> 
                     </page>
                     <page name="prev_preg_page" string="Previous Pregnancies">
                         <group>
@@ -133,17 +128,16 @@
                             </group>
                         </group>
                     </page>
-                    <page name="travails_page" string="Travail Monitoring Table">
-                        <field name="travail_ids">
-                            <tree string="Delivery Travails">
-                                <field name="patient_id" />
-                                <field name="travail_hour" />
+                    <page name="labors_page" string="Labor Monitoring Table">
+                        <field name="labor_ids">
+                            <tree string="Labor Monitoring">
+                                <field name="labor_hour" />
                                 <field name="contraction_duration" />
                                 <field name="interval_between_contractions" />
-                                <field name="travail_auscultation" optional="hide" />
+                                <field name="labor_auscultation" optional="hide" />
                                 <field name="dilation" optional="hide" />
                                 <field name="erasure" optional="hide" />
-                                <field name="company_id" optional="hide" />
+                                <field name="company_id" readonly="1" force_save="1" optional="hide" />
                             </tree>
                         </field>
                     </page>
@@ -151,7 +145,7 @@
                         <group>
                             <group>
                                 <field name="birth_datetime" widget="datetime" />
-                                <field name="medications_during_birth_ids" widget="many2many_tags" />
+                                <field name="birth_medication_ids" widget="many2many_tags" />
                                 <field name="birth_report" widget="text" />
                                 <field name="newborn_general_condition" />
                             </group>
@@ -163,17 +157,17 @@
                         </group>
                     </page>
                     <page name="post_birth_page" string="Post-Birth Monitoring Table">
-                        <field name="birth_ids">
+                        <field name="post_birth_ids">
                             <tree string="Post-Birth Monitoring">
                                 <field name="patient_id" />
-                                <field name="post_birth_datetime" />
-                                <field name="post_birth_pressure" />
-                                <field name="post_birth_pulse" />
-                                <field name="post_birth_temperature" />
-                                <field name="is_post_birth_safety_ball" optional="hide" />
-                                <field name="is_post_birth_urine_voiding" optional="hide" />
-                                <field name="post_birth_notes" optional="hide" />
-                                <field name="company_id" optional="hide" />
+                                <field name="datetime" />
+                                <field name="pressure" />
+                                <field name="pulse" />
+                                <field name="temperature" />
+                                <field name="is_safety_ball" optional="hide" />
+                                <field name="is_urine_voiding" optional="hide" />
+                                <field name="notes" optional="hide" />
+                                <field name="company_id" readonly="1" force_save="1" optional="hide" />
                             </tree>
                         </field>
                     </page>

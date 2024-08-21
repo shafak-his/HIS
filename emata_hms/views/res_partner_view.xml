@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_res_partner_patient_view_tree" model="ir.ui.view">
+        <field name="name">em.res.partner.patient.view.tree</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree string="Patients">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="doc_number"/>
+                <field name="birth_date"/>
+                <field name="sex"/>
+                <field name="mobile"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_res_partner_patient_view_form" model="ir.ui.view">
+        <field name="name">em.res.partner.patient.view.form</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form string="Patient">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1" force_save="1" />
+                            <field name="code" readonly="1" force_save="1" />
+                            <field name="registration_date" required="1" />
+                            <field name="first_name" required="1" />
+                            <field name="last_name" required="1" />
+                            <field name="father_name" />
+                            <field name="mother_name" />
+                            <field name="doc_number" />
+                        </group>
+                        <group>
+                            <field name="birth_date" />
+                            <field name="sex" />
+                            <field name="marital_status" />
+                            <field name="displacement_status" />
+                            <field name="is_disability" />
+                            <field name="disability_type" invisible="is_disability == False" />
+                            <field name="mobile" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="full_address" />
+                            <field name="original_location_id" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes" widget="text" />
+                    </group>
+                    <group invisible="1">
+                        <field name="is_patient" />
+                        <field name="is_company" />
+                        <field name="company_type" />
+                        <field name="type" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_em_res_partner_patient">
+        <field name="name">Patients</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_patient','=',True)]</field>
+        <field name="context">{'default_is_patient':True, 'default_is_company': False, 'default_company_type': 'person', 'default_type': 'contact'}</field>
+    </record>
+
+    <record id="action_em_res_partner_patient_view_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">tree</field>
+        <field name="act_window_id" ref="action_em_res_partner_patient"/>
+        <field name="view_id" ref="em_res_partner_patient_view_tree"/>
+    </record>
+
+    <record id="action_em_res_partner_patient_view_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="20"/>
+        <field name="view_mode">form</field>
+        <field name="act_window_id" ref="action_em_res_partner_patient"/>
+        <field name="view_id" ref="em_res_partner_patient_view_form"/>
+    </record>
+</odoo>

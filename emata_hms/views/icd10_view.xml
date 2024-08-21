@@ -24,11 +24,6 @@
                 <header>
                 </header>
                 <sheet>
-                    <div class="badge-pill badge-info float-left"
-                        invisible="is_ncd != False">
-                        <label for="is_ncd" class="oe_inline" />
-                        <field name="is_ncd" readonly="1" force_save="1" />
-                    </div>
                     <group>
                         <group>
                             <field name="code" />
