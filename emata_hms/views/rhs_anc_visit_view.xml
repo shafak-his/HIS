@@ -15,7 +15,7 @@
                 <field name="fetal_hr" optional="hide" />
                 <field name="main_complaint" optional="hide" />
                 <field name="head_diameter" optional="hide" />
-                <field name="thigh_height" optional="hide" />
+                <field name="thigh_length" optional="hide" />
                 <field name="presence" optional="hide" />
                 <field name="fluid" optional="hide" />
                 <field name="deformities" optional="hide" />
@@ -51,7 +51,7 @@
                         <group>
                             <field name="main_complaint" widget="text" />
                             <field name="head_diameter" />
-                            <field name="thigh_height" />
+                            <field name="thigh_length" />
                             <field name="presence" />
                             <field name="fluid" />
                             <field name="deformities" widget="text" />

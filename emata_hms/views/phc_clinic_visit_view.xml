@@ -44,11 +44,12 @@
                         <group>
                             <field name="visit_datetime" />
                             <field name="patient_id" />
-                            <field name="clinic_id" />
-                        </group>
-                        <group>
                             <field name="is_pregnant" widget="checkbox" />
                             <field name="is_lactating" widget="checkbox" />
+                        </group>
+                        <group>
+                            <field name="clinic_id" />
+                            <field name="doctor_id" />
                         </group>
                     </group>
                     <group>
@@ -84,7 +85,6 @@
                         </group>
                     </group>
                     <group>
-                        <group>
                             <field name="medication_request_ids">
                                 <tree create="0" delete="0" editable="bottom">
                                     <field name="name" />
@@ -95,23 +95,19 @@
                                     <field name="name" />
                                 </tree>
                             </field>
-                        </group>
-                        <group>
                             <field name="image_request_ids">
                                 <tree create="0" delete="0" editable="bottom">
                                     <field name="name" />
                                 </tree>
                             </field>
-                        </group>
+                    </group>
+                    <group>
+                        <field name="notes" widget="text" />
                     </group>
                     <group>
                         <group>
-                            <field name="doctor_id" />
                             <field name="company_id" readonly="1" force_save="1" />
                         </group>
-                    </group>
-                    <group>
-                        <field name="notes" />
                     </group>
                 </sheet>
                 <div class="oe_chatter">

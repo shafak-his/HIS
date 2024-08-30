@@ -19,7 +19,6 @@
         'product',
         'hr',
         'web_responsive',
-        'web_theme_classic',
         'web_m2x_options',
         'disable_odoo_online'
     ],

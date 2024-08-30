@@ -16,14 +16,14 @@ class EmHmsRHSANCVisit(models.Model):
     fetal_hr = fields.Float('Fetal Heart Rate (n/d)', required=True, tracking=True)
     main_complaint = fields.Char('Main Complaint During This Visit', tracking=True)
     head_diameter = fields.Float('Measurement Of Head Diameter', required=True, tracking=True)
-    thigh_height = fields.Float('Thigh Height', required=True, tracking=True)
+    thigh_length = fields.Float('Thigh Length', required=True, tracking=True)
     presence = fields.Selection([
         ('vertical', 'Vertical'),
         ('horizontal', 'Horizontal'),
         ('diagonal', 'Diagonal')
     ], string='Presence', required=True, tracking=True)
     fluid = fields.Selection([
-        ('good', 'vertical'),
+        ('good', 'Good'),
         ('fluid_scarcity', 'Liquid Scarcity'),
         ('no_fluid', 'No Fluid'),
         ('amniotic_hydrocephalus', 'Amniotic Hydrocephalus')
