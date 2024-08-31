@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_dial_urology_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.dial.urology.view.tree</field>
+        <field name="model">em.hms.dial.urology</field>
+        <field name="arch" type="xml">
+            <tree string="Urology">
+                <field name="patient_id" />
+                <field name="medical_history" optional="hide" />
+                <field name="stone_location" optional="hide" />
+                <field name="treatment" optional="hide" />
+                <field name="doctor_id" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_dial_urology_view_form" model="ir.ui.view">
+        <field name="name">em.hms.dial.urology.view.form</field>
+        <field name="model">em.hms.dial.urology</field>
+        <field name="arch" type="xml">
+            <form string="Urology">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" />
+                            <field name="visit_datetime" />
+                        </group>
+                        <group>
+                            <field name="weight" />
+                            <field name="medical_history" widget="text" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="stone_location" />
+                            <field name="diagnosis_id" />
+                            <field name="treatment" />
+                        </group>
+                    </group>
+                    <group>
+                            <field name="medication_request_ids">
+                                <tree create="0" delete="0" editable="bottom">
+                                    <field name="name" />
+                                </tree>
+                            </field>
+                            <field name="analysis_request_ids">
+                                <tree create="0" delete="0" editable="bottom">
+                                    <field name="name" />
+                                </tree>
+                            </field>
+                            <field name="image_request_ids">
+                                <tree create="0" delete="0" editable="bottom">
+                                    <field name="name" />
+                                </tree>
+                            </field>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="notes" widget="text"/>
+                            <field name="doctor_id"/>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_dial_urology_action" model="ir.actions.act_window">
+        <field name="name">Urology</field>
+        <field name="res_model">em.hms.dial.urology</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

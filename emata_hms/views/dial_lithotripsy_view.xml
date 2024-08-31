@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_dial_lithotripsy_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.dial.lithotripsy.view.tree</field>
+        <field name="model">em.hms.dial.lithotripsy</field>
+        <field name="arch" type="xml">
+            <tree string="Lithotripsy">
+                <field name="patient_id" />
+                <field name="stone_location" optional="hide" />
+                <field name="session_type" optional="hide" />
+                <field name="number_shots" optional="hide" />
+                <field name="doctor_id" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_dial_lithotripsy_view_form" model="ir.ui.view">
+        <field name="name">em.hms.dial.lithotripsy.view.form</field>
+        <field name="model">em.hms.dial.lithotripsy</field>
+        <field name="arch" type="xml">
+            <form string="Lithotripsy">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" />
+                            <field name="visit_datetime" />
+                            <field name="diagnosis_id" />
+                            <field name="session_type" />
+                        </group>
+                        <group>
+                            <field name="weight" />
+                            <field name="stone_location" />
+                            <field name="number_shots" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="notes" widget="text"/>
+                            <field name="doctor_id"/>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_dial_lithotripsy_action" model="ir.actions.act_window">
+        <field name="name">Lithotripsy</field>
+        <field name="res_model">em.hms.dial.lithotripsy</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

@@ -22,6 +22,11 @@
             parent="menu_em_hms_admin_root"
             action="emata_hms.em_hms_icd10_action"
             sequence="5" />
+        <menuitem id="menu_em_hms_day"
+            name="Week Days"
+            parent="menu_em_hms_admin_root"
+            action="emata_hms.em_hms_day_action"
+            sequence="6" />
 
         <menuitem id="menu_em_hms_medical_service_items"
             name="Medical Service Items"
@@ -70,15 +75,52 @@
 
         <!-- PHC -->
         <menuitem id="menu_em_hms_phc_root"
-            name="PHC"
-            web_icon="emata_hms,static/description/icon-hms.png"
-            sequence="1"
+        name="PHC"
+        web_icon="emata_hms,static/description/icon-hms.png"
+        sequence="1"
         />
         <menuitem id="menu_em_hms_phc_clinic_visit"
-            name="Clinic Visit"
-            parent="menu_em_hms_phc_root"
-            action="emata_hms.em_hms_phc_clinic_visit_action"
-            sequence="11" />
+        name="Clinic Visit"
+        parent="menu_em_hms_phc_root"
+        action="emata_hms.em_hms_phc_clinic_visit_action"
+        sequence="11" />
+
+        <!-- Dialysis -->
+        <menuitem id="menu_em_hms_dial_root"
+                  name="Dialysis"
+                  web_icon="emata_hms,static/description/icon-hms.png"
+                  sequence="4"
+        />
+        <menuitem id="menu_em_hms_dial_nephrology"
+                  name="Nephrology Clinic"
+                  parent="menu_em_hms_dial_root"
+                  action="emata_hms.em_hms_dial_nephrology_action"
+                  sequence="41" />
+        <menuitem id="menu_em_hms_dial_urology"
+                  name="Urology Clinic"
+                  parent="menu_em_hms_dial_root"
+                  action="emata_hms.em_hms_dial_urology_action"
+                  sequence="42" />
+        <menuitem id="menu_em_hms_dial_lithotripsy"
+                  name="Lithotripsy"
+                  parent="menu_em_hms_dial_root"
+                  action="emata_hms.em_hms_dial_lithotripsy_action"
+                  sequence="43" />
+        <menuitem id="menu_em_hms_dial_prescription"
+                  name="Dialysis Prescription"
+                  parent="menu_em_hms_dial_root"
+                  action="emata_hms.em_hms_dial_prescription_action"
+                  sequence="44" />
+        <menuitem id="menu_em_hms_dial_kidney_history"
+                  name="Kidney disease history"
+                  parent="menu_em_hms_dial_root"
+                  action="emata_hms.em_hms_dial_kidney_history_action"
+                  sequence="45" />
+        <menuitem id="menu_em_hms_dial_visit"
+                  name="Dialysis visit"
+                  parent="menu_em_hms_dial_root"
+                  action="emata_hms.em_hms_dial_visit_action"
+                  sequence="46" />
 
         <!-- Mental Health -->
         <menuitem id="menu_em_hms_mh_root"

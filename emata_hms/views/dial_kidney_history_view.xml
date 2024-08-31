@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_dial_kidney_history_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.dial.kidney.history.view.tree</field>
+        <field name="model">em.hms.dial.kidney.history</field>
+        <field name="arch" type="xml">
+            <tree string="Kidney history">
+                <field name="patient_id" />
+                <field name="cause_CKD" optional="hide" />
+                <field name="dialysis_start_date" optional="hide" />
+                <field name="diagnostic_procedures_CKD" optional="hide" />
+                <field name="doctor_id" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_dial_kidney_history_view_form" model="ir.ui.view">
+        <field name="name">em.hms.dial.kidney.history.view.form</field>
+        <field name="model">em.hms.dial.kidney.history</field>
+        <field name="arch" type="xml">
+            <form string="Kidney history">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" />
+                            <field name="cause_CKD" />
+                        </group>
+                        <group>
+                            <field name="dialysis_start_date" />
+                            <field name="previous_treatment_CKD" widget="text" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="diagnostic_procedures_CKD" />
+                            <field name="notes" widget="text"/>
+                            <field name="doctor_id"/>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_dial_kidney_history_action" model="ir.actions.act_window">
+        <field name="name">Kidney history</field>
+        <field name="res_model">em.hms.dial.kidney.history</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>
