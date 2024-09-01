@@ -18,4 +18,5 @@ class EmHmsRHSDeliveryPostBirth(models.Model):
     notes = fields.Char('Notes')
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
+
     

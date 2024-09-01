@@ -61,8 +61,8 @@
                     </div>
                     <div name="button_box" position="inside">
                         <button class="oe_stat_button" type="object" icon="fa-stethoscope"
-                            name="action_get_delivery_births_record">
-                            <field string="Post-Birth Monitoring" name="births_count"
+                            name="action_get_delivery_post_births_record">
+                            <field string="Post-Birth Monitoring" name="post_births_count"
                                 widget="statinfo" />
                         </button>
                     </div>
