@@ -36,7 +36,7 @@
                             <field name="duration" widget="float_time"/>
                         </group>
                         <group>
-                            <field name="filter" />
+                            <field name="dialysis_filter" />
                             <field name="dial_flow_rate" />
                             <field name="blood_flow_rate" />
                             <field name="session_period" />

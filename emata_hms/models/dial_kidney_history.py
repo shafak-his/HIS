@@ -8,7 +8,7 @@ class EmHmsDialKidneyHistory(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
-    cause_CKD = fields.Selection([
+    cause_ckd = fields.Selection([
         ('diabetes', 'Diabetes'),
         ('high_blood_pressure', 'High blood pressure'),
         ('glomerulonephritis', 'Glomerulonephritis'),
@@ -16,9 +16,9 @@ class EmHmsDialKidneyHistory(models.Model):
         ('other_causes', 'Other causes'),
         ('unknown', 'Unknown')
     ], string='Cause of chronic kidney disease', required=True, tracking=True)
-    previous_treatment_CKD = fields.Char('Previous treatment for CKD', required=True, tracking=True)
+    previous_treatment_ckd = fields.Char('Previous treatment for CKD', required=True, tracking=True)
     dialysis_start_date = fields.Date('Dialysis start date', tracking=True)
-    diagnostic_procedures_CKD = fields.Selection([
+    diagnostic_procedures_ckd = fields.Selection([
         ('lab_tests', 'Laboratory Tests'),
         ('radiological', 'Radiological Investigations'),
         ('kidney_biopsy', 'Kidney Biopsy'),

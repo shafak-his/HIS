@@ -1,5 +1,4 @@
 from odoo import _, api, fields, models, exceptions, tools
-from pkg_resources import require
 
 class EmHmsDay(models.Model):
     _name = 'em.hms.day'

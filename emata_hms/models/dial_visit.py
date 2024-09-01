@@ -1,5 +1,15 @@
 from odoo import _, api, fields, models, exceptions, tools
-from pkg_resources import require
+
+BLOOD_TYPES = [
+    ('A+', 'A+'),
+    ('B+', 'B+'),
+    ('O+', 'O+'),
+    ('AB+', 'AB+'),
+    ('A-', 'A-'),
+    ('B-', 'B-'),
+    ('O-', 'O-'),
+    ('AB-', 'AB-')
+]
 
 class EmHmsDialSessionInfo(models.Model):
     _name = 'em.hms.dial.session.info'
@@ -30,26 +40,8 @@ class EmHmsDialTransfusion(models.Model):
     unit_number = fields.Char('Unit number', required=True)
     blood_donation_date = fields.Date('Blood donation date', tracking=True)
     expiry_date = fields.Date('Expiry date', tracking=True)
-    patient_blood_group = fields.Selection([
-        ('A+', 'A+'),
-        ('B+', 'B+'),
-        ('O+', 'O+'),
-        ('AB+', 'AB+'),
-        ('A-', 'A-'),
-        ('B-', 'B-'),
-        ('O-', 'O-'),
-        ('AB-', 'AB-')
-    ], string='Patient blood group', required=True, tracking=True)
-    donor_blood_group = fields.Selection([
-        ('A+', 'A+'),
-        ('B+', 'B+'),
-        ('O+', 'O+'),
-        ('AB+', 'AB+'),
-        ('A-', 'A-'),
-        ('B-', 'B-'),
-        ('O-', 'O-'),
-        ('AB-', 'AB-')
-    ], string='Donor blood group', required=True, tracking=True)
+    patient_blood_group = fields.Selection(BLOOD_TYPES, string='Patient blood group', required=True, tracking=True)
+    donor_blood_group = fields.Selection(BLOOD_TYPES, string='Donor blood group', required=True, tracking=True)
 
 
 
@@ -78,7 +70,7 @@ class EmHmsDialVisit(models.Model):
         ('3rd_shift', 'Third shift')
     ], string='Session period', required=True, tracking=True)
     technician_id = fields.Many2one('hr.employee', string='Technician name', required=True, tracking=True)
-    filter = fields.Selection([
+    dialysis_filter = fields.Selection([
         ('1.2', '1.2'),
         ('1.4', '1.4'),
         ('1.6', '1.6'),

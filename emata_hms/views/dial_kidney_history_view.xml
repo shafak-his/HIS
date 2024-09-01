@@ -7,9 +7,9 @@
         <field name="arch" type="xml">
             <tree string="Kidney history">
                 <field name="patient_id" />
-                <field name="cause_CKD" optional="hide" />
+                <field name="cause_ckd" optional="hide" />
                 <field name="dialysis_start_date" optional="hide" />
-                <field name="diagnostic_procedures_CKD" optional="hide" />
+                <field name="diagnostic_procedures_ckd" optional="hide" />
                 <field name="doctor_id" optional="hide" />
                 <field name="company_id" optional="hide" />
             </tree>
@@ -25,16 +25,16 @@
                     <group>
                         <group>
                             <field name="patient_id" />
-                            <field name="cause_CKD" />
+                            <field name="cause_ckd" />
                         </group>
                         <group>
                             <field name="dialysis_start_date" />
-                            <field name="previous_treatment_CKD" widget="text" />
+                            <field name="previous_treatment_ckd" widget="text" />
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field name="diagnostic_procedures_CKD" />
+                            <field name="diagnostic_procedures_ckd" />
                             <field name="notes" widget="text"/>
                             <field name="doctor_id"/>
                             <field name="company_id" readonly="1" force_save="1" />
