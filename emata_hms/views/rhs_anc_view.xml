@@ -40,12 +40,13 @@
                         <group>
                             <field name="patient_id" />
                             <field name="cesarean_sections_count" />
-                            <field name="family_medical_history" widget="text" />
                             <field name="is_breastfeeding" widget="checkbox" />
+                            <field name="is_smoking" widget="checkbox" />
                         </group>
                         <group>
+                            <field name="family_medical_history" widget="text" />
                             <field name="drug_history" widget="text" />
-                            <field name="is_smoking" widget="checkbox" />
+                            <field name="is_referral" widget="checkbox" />
                         </group>
                     </group>
                     <group>
@@ -54,7 +55,6 @@
                             <field name="allergic_history" widget="text" />
                         </group>
                         <group>
-                            <field name="is_referral" widget="checkbox" />
                             <field name="referral_center_reason" invisible="is_referral != True" widget="text" />
                             <field name="previous_complications" widget="text" />
                         </group>
@@ -83,7 +83,7 @@
                             <field name="fetal_hr" optional="hide" />
                             <field name="main_complaint" optional="hide" />
                             <field name="head_diameter" optional="hide" />
-                            <field name="thigh_height" optional="hide" />
+                            <field name="thigh_length" optional="hide" />
                             <field name="presence" optional="hide" />
                             <field name="fluid" optional="hide" />
                             <field name="deformities" optional="hide" />

@@ -19,7 +19,6 @@
         'product',
         'hr',
         'web_responsive',
-        'web_theme_classic',
         'web_m2x_options',
         'disable_odoo_online'
     ],
@@ -45,6 +44,12 @@
         'views/master_models_view.xml',
         'views/res_partner_view.xml',
         'views/product_template_view.xml',
+        'views/dial_nephrology_view.xml',
+        'views/dial_urology_view.xml',
+        'views/dial_lithotripsy_view.xml',
+        'views/dial_prescription_view.xml',
+        'views/dial_kidney_history_view.xml',
+        'views/dial_visit_view.xml',
 
         'data/sequence_data.xml',
 

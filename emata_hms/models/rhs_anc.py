@@ -16,7 +16,7 @@ class EmHmsRHSANC(models.Model):
     medical_history = fields.Char('Medical History', tracking=True)
     allergic_history = fields.Char('Allergic History', tracking=True)
     is_referral = fields.Boolean('Has There Been A Referral?', required=True, tracking=True)
-    referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason For Referral?', tracking=True)
+    referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason?', tracking=True)
     previous_complications = fields.Char('Previous Pregnancy And Birth Complications', tracking=True)
     
     pregnancies_count = fields.Integer('Number Of Pregnancies', required=True, tracking=True)

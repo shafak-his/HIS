@@ -16,3 +16,9 @@ from . import rhs_delivery_post_birth
 from . import vital_signs
 from . import res_partner
 from . import master_models
+from . import dial_nephrology
+from . import dial_urology
+from . import dial_lithotripsy
+from . import dial_prescription
+from . import dial_kidney_history
+from . import dial_visit
