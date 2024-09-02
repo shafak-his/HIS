@@ -201,6 +201,58 @@
             action="emata_hms.em_hms_rhs_delivery_post_birth_action"
             sequence="14" />
 
+        <!-- Nutrition -->
+        <menuitem id="menu_em_hms_nutrition_root"
+            name="Nutrition"
+            web_icon="emata_hms,static/description/icon-nutrition.png"
+            sequence="4"
+        />
+        <menuitem id="menu_em_hms_rhs_anc"
+            name="Group Session"
+            parent="menu_em_hms_nutrition_root"
+            action="emata_hms.em_hms_nutrition_group_session_action"
+            sequence="41" />
+
+        <menuitem id="menu_em_hms_nutrition_reporting_tables"
+            name="Reporting Tables"
+            parent="menu_em_hms_nutrition_root"
+            sequence="47" />
+        <menuitem id="menu_em_hms_nutrition_group_session_topic"
+            name="Group Session Topics"
+            parent="menu_em_hms_nutrition_reporting_tables"
+            action="emata_hms.em_hms_nutrition_group_session_topic_action"
+            sequence="1" />
+        <menuitem id="menu_em_hms_nutrition_group_session_topic"
+            name="Group Session Topics"
+            parent="menu_em_hms_nutrition_reporting_tables"
+            action="emata_hms.em_hms_nutrition_group_session_topic_action"
+            sequence="2" />
+        <menuitem id="menu_em_hms_nutrition_group_session_topic"
+            name="Group Session Topics"
+            parent="menu_em_hms_nutrition_reporting_tables"
+            action="emata_hms.em_hms_nutrition_group_session_topic_action"
+            sequence="3" />
+        <menuitem id="menu_em_hms_nutrition_group_session_topic"
+            name="Group Session Topics"
+            parent="menu_em_hms_nutrition_reporting_tables"
+            action="emata_hms.em_hms_nutrition_group_session_topic_action"
+            sequence="4" />
+        <menuitem id="menu_em_hms_nutrition_group_session_topic"
+            name="Group Session Topics"
+            parent="menu_em_hms_nutrition_reporting_tables"
+            action="emata_hms.em_hms_nutrition_group_session_topic_action"
+            sequence="5" />
+        <menuitem id="menu_em_hms_nutrition_group_session_topic"
+            name="Group Session Topics"
+            parent="menu_em_hms_nutrition_reporting_tables"
+            action="emata_hms.em_hms_nutrition_group_session_topic_action"
+            sequence="6" />
+        <menuitem id="menu_em_hms_nutrition_group_session_topic"
+            name="Group Session Topics"
+            parent="menu_em_hms_nutrition_reporting_tables"
+            action="emata_hms.em_hms_nutrition_group_session_topic_action"
+            sequence="7" />
+
         <!-- Patients -->
         <menuitem id="menu_em_hms_patient_root"
             name="Patients"

@@ -50,6 +50,7 @@
         'views/dial_prescription_view.xml',
         'views/dial_kidney_history_view.xml',
         'views/dial_visit_view.xml',
+        'views/nutrition_group_session.xml',
 
         'data/sequence_data.xml',
 

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_nutrition_group_session_topic_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.nutrition.group.session.topic.view.tree</field>
+        <field name="model">em.hms.nutrition.group.session.topic</field>
+        <field name="arch" type="xml">
+            <tree string="Group Session Topics" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_action" model="ir.actions.act_window">
+        <field name="name">Group Session Topics</field>
+        <field name="res_model">em.hms.nutrition.group.session.topic</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_iyc_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.nutrition.group.session.topic.iyc.view.tree</field>
+        <field name="model">em.hms.nutrition.group.session.topic.iyc</field>
+        <field name="arch" type="xml">
+            <tree string="Group Session Topics - IYC" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_iyc_action" model="ir.actions.act_window">
+        <field name="name">Group Session Topics - IYC</field>
+        <field name="res_model">em.hms.nutrition.group.session.topic.iyc</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_cholera_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.nutrition.group.session.topic.cholera.view.tree</field>
+        <field name="model">em.hms.nutrition.group.session.topic.cholera</field>
+        <field name="arch" type="xml">
+            <tree string="Group Session Topics - Cholera" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_cholera_action" model="ir.actions.act_window">
+        <field name="name">Group Session Topics - Cholera</field>
+        <field name="res_model">em.hms.nutrition.group.session.topic.cholera</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_corona_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.nutrition.group.session.topic.corona.view.tree</field>
+        <field name="model">em.hms.nutrition.group.session.topic.corona</field>
+        <field name="arch" type="xml">
+            <tree string="Group Session Topics - Corona" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_corona_action" model="ir.actions.act_window">
+        <field name="name">Group Session Topics - Corona</field>
+        <field name="res_model">em.hms.nutrition.group.session.topic.corona</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_wash_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.nutrition.group.session.topic.wash.view.tree</field>
+        <field name="model">em.hms.nutrition.group.session.topic.wash</field>
+        <field name="arch" type="xml">
+            <tree string="Group Session Topics - WASH" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_wash_action" model="ir.actions.act_window">
+        <field name="name">Group Session Topics - WASH</field>
+        <field name="res_model">em.hms.nutrition.group.session.topic.wash</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_chronic_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.nutrition.group.session.topic.chronic.view.tree</field>
+        <field name="model">em.hms.nutrition.group.session.topic.chronic</field>
+        <field name="arch" type="xml">
+            <tree string="Group Session Topics - Chronic Diseases" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_chronic_action" model="ir.actions.act_window">
+        <field name="name">Group Session Topics - Chronic Diseases</field>
+        <field name="res_model">em.hms.nutrition.group.session.topic.chronic</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_infectious_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.nutrition.group.session.topic.infectious.view.tree</field>
+        <field name="model">em.hms.nutrition.group.session.topic.infectious</field>
+        <field name="arch" type="xml">
+            <tree string="Group Session Topics - Infectious Diseases" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_infectious_action" model="ir.actions.act_window">
+        <field name="name">Group Session Topics - Infectious Diseases</field>
+        <field name="res_model">em.hms.nutrition.group.session.topic.infectious</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_rh_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.nutrition.group.session.topic.rh.view.tree</field>
+        <field name="model">em.hms.nutrition.group.session.topic.rh</field>
+        <field name="arch" type="xml">
+            <tree string="Group Session Topics - Reproductive Health" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_rh_action" model="ir.actions.act_window">
+        <field name="name">Group Session Topics - Reproductive Health</field>
+        <field name="res_model">em.hms.nutrition.group.session.topic.rh</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+
+    <!-- Main -->
+    <record id="em_hms_nutrition_group_session_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.nutrition.group.session.view.tree</field>
+        <field name="model">em.hms.nutrition.group.session</field>
+        <field name="arch" type="xml">
+            <tree string="Group Sessions" create="0" delete="0">
+                <field name="name" />
+                <field name="project_id" />
+                <field name="visit_date" />
+                <field name="state_id" optional="hide" />
+                <field name="district_id" optional="hide" />
+                <field name="subdistrict_id" optional="hide" />
+                <field name="location_id" />
+                <field name="camp_name" />
+                <field name="service_place" />
+                <field name="number_pregnants_qt_eq_18" optional="hide" />
+                <field name="number_pregnants_lt_18" optional="hide" />
+                <field name="number_breastfeeding_qt_eq_18" optional="hide" />
+                <field name="number_breastfeeding_lt_18" optional="hide" />
+                <field name="number_female_caregivers_qt_eq_18" optional="hide" />
+                <field name="number_female_caregivers_lt_18" optional="hide" />
+                <field name="number_male_caregivers_qt_eq_18" optional="hide" />
+                <field name="number_male_caregivers_lt_18" optional="hide" />
+                <field name="session_topic_ids" widget="many2many_tags" optional="hide" />
+                <field name="session_topic_iyc_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_iyc_topic" optional="hide" />
+                <field name="session_topic_cholera_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_cholera_topic" optional="hide" />
+                <field name="session_topic_corona_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_corona_topic" optional="hide" />
+                <field name="session_topic_wash_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_wash_topic" optional="hide" />
+                <field name="session_topic_chronic_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_chronic_topic" optional="hide" />
+                <field name="session_topic_infectious_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_infectious_topic" optional="hide" />
+                <field name="session_topic_rh_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_rh_topic" optional="hide" />
+                <field name="number_mothers_educated_muac_qt_eq_18" optional="hide" />
+                <field name="number_mothers_educated_muac_lt_18" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_view_form" model="ir.ui.view">
+        <field name="name">em.hms.nutrition.group.session.view.form</field>
+        <field name="model">em.hms.nutrition.group.session</field>
+        <field name="arch" type="xml">
+            <form string="Group Session">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1" force_save="1" />
+                            <field name="project_id" />
+                            <field name="visit_date" widget="date" />
+                            <field name="service_place" widget="date" />
+                        </group>
+                        <group>
+                            <!-- <field name="state_id" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="district_id" domain="[('state_id', '=', state_id)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="sub_district_id" domain="[('district_id', '=', district_id)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="location_id" options="{'no_create': True, 'no_quick_create': True}" /> -->
+                            <field name="camp_name" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="number_pregnants_qt_eq_18" optional="hide" />
+                            <field name="number_pregnants_lt_18" optional="hide" />
+                            <field name="number_breastfeeding_qt_eq_18" optional="hide" />
+                            <field name="number_breastfeeding_lt_18" optional="hide" />
+                        </group>
+                        <group>
+                            <field name="number_female_caregivers_qt_eq_18" optional="hide" />
+                            <field name="number_female_caregivers_lt_18" optional="hide" />
+                            <field name="number_male_caregivers_qt_eq_18" optional="hide" />
+                            <field name="number_male_caregivers_lt_18" optional="hide" />
+                        </group>
+                    </group>
+                    <group string="Documents">
+                        <field name="session_topic_ids">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+
+                        <field name="session_topic_iyc_ids" invisible="'iyc' not in session_topic_ids" required="'iyc' in session_topic_ids">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_iyc_topic" invisible="'iyc' not in session_topic_ids or 'other' not in session_topic_iyc_ids" required="'iyc' in session_topic_ids and 'other' in session_topic_iyc_ids" />
+
+                        <field name="session_topic_cholera_ids" invisible="'cholera' not in session_topic_ids" required="'cholera' in session_topic_ids">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_cholera_topic" invisible="'cholera' not in session_topic_ids or 'other' not in session_topic_cholera_ids" required="'cholera' in session_topic_ids and 'other' in session_topic_cholera_ids" />
+
+                        <field name="session_topic_corona_ids" invisible="'corona' not in session_topic_ids" required="'corona' in session_topic_ids">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_corona_topic" invisible="'corona' not in session_topic_ids or 'other' not in session_topic_corona_ids" required="'corona' in session_topic_ids and 'other' in session_topic_corona_ids" />
+
+                        <field name="session_topic_wash_ids" invisible="'wash' not in session_topic_ids" required="'wash' in session_topic_ids">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_wash_topic" invisible="'wash' not in session_topic_ids or 'other' not in session_topic_wash_ids" required="'wash' in session_topic_ids and 'other' in session_topic_wash_ids" />
+
+                        <field name="session_topic_chronic_ids" invisible="'chronic' not in session_topic_ids" required="'chronic' in session_topic_ids">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_chronic_topic" invisible="'chronic' not in session_topic_ids or 'other' not in session_topic_chronic_ids" required="'chronic' in session_topic_ids and 'other' in session_topic_chronic_ids" />
+
+                        <field name="session_topic_infectious_ids" invisible="'infectious' not in session_topic_ids" required="'infectious' in session_topic_ids">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_infectious_topic" invisible="'infectious' not in session_topic_ids or 'other' not in session_topic_infectious_ids" required="'infectious' in session_topic_ids and 'other' in session_topic_infectious_ids" />
+
+                        <field name="session_topic_rh_ids" invisible="'rh' not in session_topic_ids" required="'rh' in session_topic_ids">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_rh_topic" invisible="'rh' not in session_topic_ids or 'other' not in session_topic_rh_ids" required="'rh' in session_topic_ids and 'other' in session_topic_rh_ids" />
+                    </group>
+                    <group>
+                        <group>
+                            <field name="company_id" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_action" model="ir.actions.act_window">
+        <field name="name">Group Sessions</field>
+        <field name="res_model">em.hms.nutrition.group.session</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

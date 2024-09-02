@@ -22,3 +22,4 @@ from . import dial_lithotripsy
 from . import dial_prescription
 from . import dial_kidney_history
 from . import dial_visit
+from . import nutrition_group_session
