@@ -1,23 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="em_location_view_tree" model="ir.ui.view">
-        <field name="name">em.location.view.tree</field>
-        <field name="model">em.location</field>
+    <!-- Districts -->
+    <record id="view_em_country_district_tree" model="ir.ui.view">
+        <field name="name">em.country.district.tree</field>
+        <field name="model">em.country.district</field>
+        <field name="priority" eval="8"/>
         <field name="arch" type="xml">
-            <tree string="Locations" editable="bottom">
-                <field name="code" />
-                <field name="name" />
+            <tree string="Districts" editable="bottom">
+                <field name="name"/>
+                <field name="state_id" domain="[('country_id.code','in',['TR', 'SY'])]" options="{'no_create': True, 'no_quick_create': True}" />
             </tree>
         </field>
     </record>
 
-    <record id="em_location_action" model="ir.actions.act_window">
+    <!-- District Actions -->
+    <record model="ir.actions.act_window" id="action_em_country_district">
+        <field name="name">Districts</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">em.country.district</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window.view" id="action_em_country_district_tree">
+        <field name="act_window_id" ref="action_em_country_district"/>
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_em_country_district_tree"/>
+    </record>
+    <!-- END Districts -->
+
+    <!-- Sub-Districts -->
+    <record id="view_em_country_sub_district_tree" model="ir.ui.view">
+        <field name="name">em.country.sub.district.tree</field>
+        <field name="model">em.country.sub.district</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree string="Sub-Districts" editable="bottom">
+                <field name="name"/>
+                <field name="district_id" options="{'no_create': True, 'no_quick_create': True}" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Sub-District Actions -->
+    <record model="ir.actions.act_window" id="action_em_country_sub_district">
+        <field name="name">Sub-Districts</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">em.country.sub.district</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window.view" id="action_em_country_sub_district_tree">
+        <field name="act_window_id" ref="action_em_country_sub_district"/>
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_em_country_sub_district_tree"/>
+    </record>
+    <!-- END Sub-Districts -->
+
+    <!-- Locations -->
+    <record id="view_em_location_tree" model="ir.ui.view">
+        <field name="name">em.location.tree</field>
+        <field name="model">em.location</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree string="Locations" editable="bottom">
+                <field name="code" />
+                <field name="name"/>
+                <field name="sub_district_id" options="{'no_create': True, 'no_quick_create': True}" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Locations Actions -->
+    <record model="ir.actions.act_window" id="action_em_location">
         <field name="name">Locations</field>
+        <field name="type">ir.actions.act_window</field>
         <field name="res_model">em.location</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
-        <field name="context">{}</field>
     </record>
+    <record model="ir.actions.act_window.view" id="action_em_location_tree">
+        <field name="act_window_id" ref="action_em_location"/>
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_em_location_tree"/>
+    </record>
+    <!-- END Locations -->
 
 </odoo>
