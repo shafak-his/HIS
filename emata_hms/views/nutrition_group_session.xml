@@ -219,7 +219,7 @@
                             <field name="name" readonly="1" force_save="1" />
                             <!-- <field name="project_id" /> -->
                             <field name="visit_date" widget="date" />
-                            <field name="service_place" widget="date" />
+                            <field name="service_place" />
                         </group>
                         <group>
                             <field name="state_id" options="{'no_create': True, 'no_quick_create': True}" />
