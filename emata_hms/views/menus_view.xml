@@ -99,21 +99,21 @@
 
         <!-- PHC -->
         <menuitem id="menu_em_hms_phc_root"
-        name="PHC"
-        web_icon="emata_hms,static/description/icon-hms.png"
-        sequence="1"
+            name="PHC"
+            web_icon="emata_hms,static/description/icon-hms.png"
+            sequence="1"
         />
         <menuitem id="menu_em_hms_phc_clinic_visit"
-        name="Clinic Visit"
-        parent="menu_em_hms_phc_root"
-        action="emata_hms.em_hms_phc_clinic_visit_action"
-        sequence="11" />
+            name="Clinic Visit"
+            parent="menu_em_hms_phc_root"
+            action="emata_hms.em_hms_phc_clinic_visit_action"
+            sequence="11" />
 
         <!-- Dialysis -->
         <menuitem id="menu_em_hms_dial_root"
-                  name="Dialysis"
-                  web_icon="emata_hms,static/description/icon-hms.png"
-                  sequence="4"
+            name="Dialysis"
+            web_icon="emata_hms,static/description/icon-hms.png"
+            sequence="4"
         />
         <menuitem id="menu_em_hms_dial_nephrology"
                   name="Nephrology Clinic"
@@ -228,7 +228,7 @@
         <!-- Nutrition -->
         <menuitem id="menu_em_hms_nutrition_root"
             name="Nutrition"
-            web_icon="emata_hms,static/description/icon-nutrition.png"
+            web_icon="emata_hms,static/description/icon-hms.png"
             sequence="4"
         />
         <menuitem id="menu_em_hms_rhs_anc"
