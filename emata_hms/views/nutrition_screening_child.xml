@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Danger Signs On Children -->
+    <record id="em_hms_nutrition_danger_sign_child_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.nutrition.danger.sign.child.view.tree</field>
+        <field name="model">em.hms.nutrition.danger.sign.child</field>
+        <field name="arch" type="xml">
+            <tree string="Danger Signs On Children" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_nutrition_danger_sign_child_action" model="ir.actions.act_window">
+        <field name="name">Danger Signs On Children</field>
+        <field name="res_model">em.hms.nutrition.danger.sign.child</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Main -->
+    <record id="em_hms_nutrition_screening_child_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.nutrition.screening.child.view.tree</field>
+        <field name="model">em.hms.nutrition.screening.child</field>
+        <field name="arch" type="xml">
+            <tree string="Child Screening for Acute Malnutrition">
+                <field name="patient_id" />
+                <field name="project_id" optional="hide" />
+                <field name="visit_date" />
+                <field name="visit_type" />
+                <field name="service_place" />
+                <field name="age_in_months" optional="hide" />
+                <field name="muac_measurement" optional="hide" />
+                <field name="zscore_measurement" optional="hide" />
+                <field name="nature_of_malnutrition" optional="hide" />
+                <field name="is_bilateral_edema" optional="hide" />
+                <field name="is_danger_signs" optional="hide" />
+                <field name="danger_signs_ids" widget="many2many_tags" optional="hide" />
+                <field name="child_condition_at_first_visit" optional="hide" />
+                <field name="is_beneficiary_graduated" optional="hide" />
+                <field name="graduation_outcome" optional="hide" />
+                <field name="nature_of_sam" optional="hide" />
+                <field name="is_violence_or_abuse_signs" optional="hide" />
+                <field name="is_beneficiary_referred" optional="hide" />
+                <field name="referral_place" optional="hide" />
+                <field name="is_supplements_distributed" optional="hide" />
+                <field name="materials_distributed" optional="hide" />
+                <field name="nut_qty" optional="hide" />
+                <field name="sup_qty" optional="hide" />
+                <field name="lns_mq_qty" optional="hide" />
+                <field name="nutri_butter_qty" optional="hide" />
+                <field name="mum_qty" optional="hide" />
+                <field name="protective_qty" optional="hide" />
+                <field name="biscuits_qty" optional="hide" />
+                <field name="vitamins_minerals_qty" optional="hide" />
+                <field name="bp5_qty" optional="hide" />
+                <field name="f100_milk_qty" optional="hide" />
+                <field name="f75_milk_qty" optional="hide" />
+                <field name="first_visit_number" optional="hide" />
+                <field name="is_simple_assessment" optional="hide" />
+                <field name="is_simple_to_comprehensive_assessment" optional="hide" />
+                <field name="reason_for_comprehensive" optional="hide" />
+                <field name="problem_suffering" optional="hide" />
+                <field name="advice_provided" optional="hide" />
+                <field name="is_exclusive_breastfeeding" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_nutrition_screening_child_view_form" model="ir.ui.view">
+        <field name="name">em.hms.nutrition.screening.child.view.form</field>
+        <field name="model">em.hms.nutrition.screening.child</field>
+        <field name="arch" type="xml">
+            <form string="Child Screening for Acute Malnutrition">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" />
+                            <field name="project_id"
+                                options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="visit_date" widget="date" />
+                            <field name="visit_type" />
+                            <field name="service_place" />
+                        </group>
+                        <group>
+                            <field name="age_in_months" readonly="1" force_save="1" />
+                            <field name="muac_measurement" />
+                            <field name="zscore_measurement" />
+                            <field name="nature_of_malnutrition" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="is_bilateral_edema" />
+                            <field name="is_danger_signs" />
+                            <field name="danger_signs_ids" invisible="is_danger_signs == False"
+                                required="is_danger_signs == True">
+                                <tree create="0" delete="0" editable="bottom">
+                                    <field name="name" />
+                                    <field name="name_lang" />
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <field name="child_condition_at_first_visit"
+                                invisible="visit_type != 'follow_up'"
+                                required="visit_type == 'follow_up'" />
+                            <field name="is_beneficiary_graduated"
+                                invisible="visit_type != 'follow_up'"
+                                required="visit_type == 'follow_up'" />
+                            <field name="graduation_outcome"
+                                invisible="visit_type != 'follow_up' or is_beneficiary_graduated == False"
+                                required="visit_type == 'follow_up' and is_beneficiary_graduated == True" />
+
+                            <field name="is_death_or_deaulter" invisible="1" />
+                            <field name="is_sam_case" invisible="1" />
+                        </group>
+                    </group>
+                    <group invisible="is_death_or_deaulter == True">
+                        <group>
+                            <field name="nature_of_sam" invisible="is_sam_case == False"
+                                required="is_sam_case == True" />
+                            <field name="is_violence_or_abuse_signs"
+                                required="is_death_or_deaulter == False" />
+                            <field name="is_beneficiary_referred"
+                                required="is_death_or_deaulter == False" />
+                            <field name="referral_place"
+                                invisible="is_beneficiary_referred == False"
+                                required="is_beneficiary_referred == True" />
+                        </group>
+                    </group>
+                    <group string="Supplments" invisible="is_death_or_deaulter == True">
+                        <group>
+                            <field name="is_supplements_distributed" />
+                            <field name="materials_distributed"
+                                invisible="is_supplements_distributed == False"
+                                required="is_death_or_deaulter == False and is_supplements_distributed == True" />
+                            <field name="nut_qty"
+                                invisible="is_supplements_distributed == False or materials_distributed != 'nut'"
+                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'nut'" />
+                            <field name="sup_qty"
+                                invisible="is_supplements_distributed == False or materials_distributed != 'sup'"
+                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'sup'" />
+                            <field name="lns_mq_qty"
+                                invisible="is_supplements_distributed == False or materials_distributed != 'lns_mq'"
+                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'lns_mq'" />
+                            <field name="nutri_butter_qty"
+                                invisible="is_supplements_distributed == False or materials_distributed != 'nutri_butter'"
+                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'nutri_butter'" />
+                            <field name="mum_qty"
+                                invisible="is_supplements_distributed == False or materials_distributed != 'mum'"
+                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'mum'" />
+                            <field name="protective_qty"
+                                invisible="is_supplements_distributed == False or materials_distributed != 'protective'"
+                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'protective'" />
+                            <field name="biscuits_qty"
+                                invisible="is_supplements_distributed == False or materials_distributed != 'biscuits'"
+                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'biscuits'" />
+                            <field name="vitamins_minerals_qty"
+                                invisible="is_supplements_distributed == False or materials_distributed != 'vitamins_minerals'"
+                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'vitamins_minerals'" />
+                            <field name="bp5_qty"
+                                invisible="is_supplements_distributed == False or materials_distributed != 'bp5'"
+                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'bp5'" />
+                            <field name="f100_milk_qty"
+                                invisible="is_supplements_distributed == False or materials_distributed != 'f100_milk'"
+                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'f100_milk'" />
+                            <field name="f75_milk_qty"
+                                invisible="is_supplements_distributed == False or materials_distributed != 'f75_milk'"
+                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'f75_milk'" />
+                        </group>
+                        <group>
+                            
+                        </group>
+                    </group>
+                    <group invisible="is_death_or_deaulter == True">
+                        <group>
+                            <field name="is_simple_assessment" invisible="age_in_months >= 24"
+                            required="is_death_or_deaulter == False and age_in_months &lt; 24" />
+                            <field name="is_simple_to_comprehensive_assessment" invisible="is_simple_assessment == False"
+                            required="is_death_or_deaulter == False and age_in_months &lt; 24 and is_simple_assessment == True" />
+                            <field name="reason_for_comprehensive" invisible="is_simple_to_comprehensive_assessment == False"
+                            required="is_death_or_deaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" />
+                            <field name="problem_suffering" invisible="is_simple_to_comprehensive_assessment == False"
+                            required="is_death_or_deaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" />
+                            <field name="advice_provided" invisible="is_simple_to_comprehensive_assessment == False"
+                            required="is_death_or_deaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" />
+                        </group>
+                        <group>
+                            <field name="first_visit_number" invisible="is_supplements_distributed == False" required="is_death_or_deaulter == False and is_supplements_distributed == True" />
+                            <field name="is_exclusive_breastfeeding" invisible="age_in_months >= 6"
+                            required="is_death_or_deaulter == False and age_in_months &lt; 6"/>
+                        </group>
+                    </group>
+                    <group invisible="is_death_or_deaulter == True">
+                    </group>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_nutrition_screening_child_action" model="ir.actions.act_window">
+        <field name="name">Child Screening for Acute Malnutrition</field>
+        <field name="res_model">em.hms.nutrition.screening.child</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

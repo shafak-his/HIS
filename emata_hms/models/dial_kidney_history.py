@@ -15,14 +15,14 @@ class EmHmsDialKidneyHistory(models.Model):
         ('cystic_kidney', 'Cystic kidney disease'),
         ('other_causes', 'Other causes'),
         ('unknown', 'Unknown')
-    ], string='Cause of chronic kidney disease', required=True, tracking=True)
-    previous_treatment_ckd = fields.Char('Previous treatment for CKD', required=True, tracking=True)
+    ], string='Cause of chronic kidney disease', tracking=True)
+    previous_treatment_ckd = fields.Char('Previous treatment for CKD', tracking=True)
     dialysis_start_date = fields.Date('Dialysis start date', tracking=True)
     diagnostic_procedures_ckd = fields.Selection([
         ('lab_tests', 'Laboratory Tests'),
         ('radiological', 'Radiological Investigations'),
         ('kidney_biopsy', 'Kidney Biopsy'),
-    ], string='Diagnostic procedures for chronic kidney disease', required=True, tracking=True)
+    ], string='Diagnostic procedures for chronic kidney disease', tracking=True)
     notes = fields.Char('Notes', tracking=True)
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

@@ -23,3 +23,7 @@ from . import dial_prescription
 from . import dial_kidney_history
 from . import dial_visit
 from . import nutrition_group_session
+from . import nutrition_mtmsg
+from . import nutrition_ftfsg
+from . import nutrition_screening_child
+from . import nutrition_screening_woman

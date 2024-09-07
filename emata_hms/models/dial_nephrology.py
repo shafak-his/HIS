@@ -12,7 +12,7 @@ class EmHmsDialNephrology(models.Model):
     medical_history = fields.Char('Medical History', tracking=True)
     pressure = fields.Float('Pressure', tracking=True)
     current_complaint = fields.Char('Current Complaint', tracking=True)
-    diagnosis_id = fields.Many2one('em.hms.icd10', string='Diagnosis', required=True, tracking=True)
+    diagnosis_id = fields.Many2one('em.hms.icd10', string='Diagnosis', tracking=True)
     notes = fields.Char('Notes', tracking=True)
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
     medication_request_ids = fields.Many2many('product.template', 'dial_nephrology_product_medication_rel','clinic_visit_id', 'product_id', string='Medication Requests',domain="[('is_medication', '=', True)]")

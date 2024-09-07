@@ -231,56 +231,66 @@
             web_icon="emata_hms,static/description/icon-hms.png"
             sequence="4"
         />
-        <menuitem id="menu_em_hms_rhs_anc"
-            name="Group Session"
+        <menuitem id="menu_em_hms_group_session"
+            name="Group Sessions"
             parent="menu_em_hms_nutrition_root"
             action="emata_hms.em_hms_nutrition_group_session_action"
             sequence="41" />
+        <menuitem id="menu_em_hms_mtmsg"
+            name="MTMSG"
+            parent="menu_em_hms_nutrition_root"
+            action="emata_hms.em_hms_nutrition_mtmsg_action"
+            sequence="42" />
+        <menuitem id="menu_em_hms_ftfsg"
+            name="FTFSG"
+            parent="menu_em_hms_nutrition_root"
+            action="emata_hms.em_hms_nutrition_ftfsg_action"
+            sequence="43" />
+
+        <menuitem id="menu_em_hms_malnutrition_screening"
+            name="Malnutrition Screening"
+            parent="menu_em_hms_nutrition_root"
+            sequence="44" />
+        <menuitem id="menu_em_hms_screening_child"
+            name="Children"
+            parent="menu_em_hms_malnutrition_screening"
+            action="emata_hms.em_hms_nutrition_screening_child_action"
+            sequence="1" />
+        <menuitem id="menu_em_hms_screening_woman"
+            name="Women"
+            parent="menu_em_hms_malnutrition_screening"
+            action="emata_hms.em_hms_nutrition_screening_woman_action"
+            sequence="2" />
 
         <menuitem id="menu_em_hms_nutrition_reporting_tables"
             name="Reporting Tables"
             parent="menu_em_hms_nutrition_root"
             sequence="47" />
+        <menuitem id="menu_em_hms_nutrition_team"
+            name="Nutrition Teams"
+            parent="menu_em_hms_nutrition_reporting_tables"
+            action="emata_hms.em_hms_nutrition_team_action"
+            sequence="1" />
         <menuitem id="menu_em_hms_nutrition_topic"
-            name="Group Session Topics"
+            name="Session Topics"
             parent="menu_em_hms_nutrition_reporting_tables"
             action="emata_hms.em_hms_nutrition_topic_action"
-            sequence="1" />
-        <menuitem id="menu_em_hms_nutrition_topic_iyc"
-            name="Group Session Topics - IYC"
-            parent="menu_em_hms_nutrition_reporting_tables"
-            action="emata_hms.em_hms_nutrition_topic_iyc_action"
             sequence="2" />
-        <menuitem id="menu_em_hms_nutrition_topic_cholera"
-            name="Group Session Topics - Cholera"
+        <menuitem id="menu_em_hms_nutrition_bnf"
+            name="Beneficiaries"
             parent="menu_em_hms_nutrition_reporting_tables"
-            action="emata_hms.em_hms_nutrition_topic_cholera_action"
+            action="emata_hms.em_hms_nutrition_bnf_action"
             sequence="3" />
-        <menuitem id="menu_em_hms_nutrition_topic_corona"
-            name="Group Session Topics - Corona"
+        <menuitem id="menu_em_hms_nutrition_bnf_visit"
+            name="Visits"
             parent="menu_em_hms_nutrition_reporting_tables"
-            action="emata_hms.em_hms_nutrition_topic_corona_action"
+            action="emata_hms.em_hms_nutrition_bnf_visit_action"
             sequence="4" />
-        <menuitem id="menu_em_hms_nutrition_topic_wash"
-            name="Group Session Topics - WASH"
+        <menuitem id="menu_em_hms_nutrition_danger_sign_child"
+            name="Danger Signs On Children"
             parent="menu_em_hms_nutrition_reporting_tables"
-            action="emata_hms.em_hms_nutrition_topic_wash_action"
+            action="emata_hms.em_hms_nutrition_danger_sign_child_action"
             sequence="5" />
-        <menuitem id="menu_em_hms_nutrition_topic_chronic"
-            name="Group Session Topics - Chronic Diseases"
-            parent="menu_em_hms_nutrition_reporting_tables"
-            action="emata_hms.em_hms_nutrition_topic_chronic_action"
-            sequence="6" />
-        <menuitem id="menu_em_hms_nutrition_topic_infectious"
-            name="Group Session Topics - Infectious Diseases"
-            parent="menu_em_hms_nutrition_reporting_tables"
-            action="emata_hms.em_hms_nutrition_topic_infectious_action"
-            sequence="7" />
-        <menuitem id="menu_em_hms_nutrition_topic_rh"
-            name="Group Session Topics - Reproductive Health"
-            parent="menu_em_hms_nutrition_reporting_tables"
-            action="emata_hms.em_hms_nutrition_topic_rh_action"
-            sequence="8" />
 
         <!-- Patients -->
         <menuitem id="menu_em_hms_patient_root"
@@ -293,6 +303,5 @@
             parent="menu_em_hms_patient_root"
             action="emata_hms.action_em_res_partner_patient"
             sequence="1" />
-
     </data>
 </odoo>

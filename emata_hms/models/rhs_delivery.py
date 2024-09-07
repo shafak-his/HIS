@@ -9,20 +9,20 @@ class EmHmsRHSDelivery(models.Model):
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     admission_date = fields.Date('Date Of Admission', required=True, tracking=True)
-    admitting_midwife_id = fields.Many2one('hr.employee', string='Name Of Admitting Midwife', required=True)
-    admitting_physician_id = fields.Many2one('hr.employee', string='Name Of Admitting Physician', required=True)
-    husband_name = fields.Char('Name Of Husband', required=True, tracking=True)
-    guardian_name = fields.Char('Name Of Patient\'s Guardian', required=True, tracking=True)
+    admitting_midwife_id = fields.Many2one('hr.employee', string='Name Of Admitting Midwife')
+    admitting_physician_id = fields.Many2one('hr.employee', string='Name Of Admitting Physician')
+    husband_name = fields.Char('Name Of Husband', tracking=True)
+    guardian_name = fields.Char('Name Of Patient\'s Guardian', tracking=True)
     allergic_history = fields.Char('Allergic History', tracking=True)
     drug_history = fields.Char('Drug History', tracking=True)
     surgical_history = fields.Char('Surgical History', tracking=True)
     medical_history = fields.Char('Medical History', tracking=True)
     initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True)
-    child_name = fields.Char('Name Of Child', required=True, tracking=True)
+    child_name = fields.Char('Name Of Child', tracking=True)
     
-    natural_births_count = fields.Integer('Number Of Natural Births', required=True, tracking=True)
-    cesarean_births_count = fields.Integer('Number Of Cesarean Births', required=True, tracking=True)
-    miscarriages_count = fields.Integer('Number Of Miscarriages', required=True, tracking=True)
+    natural_births_count = fields.Integer('Number Of Natural Births', tracking=True)
+    cesarean_births_count = fields.Integer('Number Of Cesarean Births', tracking=True)
+    miscarriages_count = fields.Integer('Number Of Miscarriages', tracking=True)
     pregnancy_related_diseases = fields.Selection([
         ('gestational', 'Gestational'),
         ('gestational_diabetes', 'Gestational Diabetes'),
@@ -33,9 +33,9 @@ class EmHmsRHSDelivery(models.Model):
         ('thrombophlebitis', 'Thrombophlebitis'),
         ('other', 'Other Diseases'),
         ('none', 'None')
-    ], string='Pregnancy-Related Diseases In Previous Pregnancies', required=True, tracking=True)
+    ], string='Pregnancy-Related Diseases In Previous Pregnancies', tracking=True)
     
-    gestational_age = fields.Integer('Gestational Age In Weeks', required=True, tracking=True)
+    gestational_age = fields.Integer('Gestational Age In Weeks', tracking=True)
     arrival = fields.Selection([
         ('vertical', 'Vertical'),
         ('completely_crippled', 'Completely Crippled'),
@@ -44,53 +44,53 @@ class EmHmsRHSDelivery(models.Model):
         ('cross', 'Cross'),
         ('frontal', 'Frontal'),
         ('facial', 'Facial')
-    ], string='Arrival', required=True, tracking=True)
-    eco_auscultation = fields.Integer('Eco Auscultation', required=True, tracking=True)
+    ], string='Arrival', tracking=True)
+    eco_auscultation = fields.Integer('Eco Auscultation', tracking=True)
     placenta = fields.Selection([
         ('bottomless', 'Bottomless'),
         ('low', 'Low'),
         ('marginal', 'Marginal'),
         ('central', 'Central'),
         ('front', 'Front')
-    ], string='Placenta', required=True, tracking=True)
+    ], string='Placenta', tracking=True)
     amniotic_fluid = fields.Selection([
         ('good', 'Good'),
         ('fluid_scarcity', 'Liquid Scarcity'),
         ('no_fluid', 'No Fluid'),
         ('amniotic_hydrocephalus', 'Amniotic Hydrocephalus')
-    ], string='Amniotic Fluid', required=True, tracking=True)
+    ], string='Amniotic Fluid', tracking=True)
     
-    birth_datetime = fields.Datetime('Date And Time Of Birth', required=True, tracking=True)
-    birth_medication_ids = fields.Many2many('product.template', 'rhs_delivery_product_birth_medication_rel', 'delivery_id', 'product_id', string='Medications Used During Birth', domain="[('is_birth_medication', '=', True)]", required=True)
+    birth_datetime = fields.Datetime('Date And Time Of Birth', tracking=True)
+    birth_medication_ids = fields.Many2many('product.template', 'rhs_delivery_product_birth_medication_rel', 'delivery_id', 'product_id', string='Medications Used During Birth', domain="[('is_birth_medication', '=', True)]")
     birth_report = fields.Char('Birth Report', tracking=True)
     newborn_general_condition = fields.Selection([
         ('good_vitality', 'Good Vitality'),
         ('transfer_to_care', 'Transfer To Care'),
         ('transfer_to_incubators', 'Transfer To Incubators'),
         ('deceased', 'Deceased')
-    ], string='General Condition Of The Child', required=True, tracking=True)
+    ], string='General Condition Of The Child', tracking=True)
     newborn_gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female')
-    ], string='Gender Of The Newborn', required=True, tracking=True)
-    newborn_weight = fields.Float('Weight Of The Newborn', required=True, tracking=True)
+    ], string='Gender Of The Newborn', tracking=True)
+    newborn_weight = fields.Float('Weight Of The Newborn', tracking=True)
     is_breastfeeding_first_hour = fields.Boolean('Breastfeeding Within The First Hour', tracking=True)
     
-    discharge_datetime = fields.Datetime('Date Of Discharge And Time', required=True, tracking=True)
-    discharge_supervising_physician_id = fields.Many2one('hr.employee', string='Supervising Physician', required=True)
-    discharge_duty_midwife_id = fields.Many2one('hr.employee', string='Midwife On Duty', required=True)
+    discharge_datetime = fields.Datetime('Date Of Discharge And Time', tracking=True)
+    discharge_supervising_physician_id = fields.Many2one('hr.employee', string='Supervising Physician')
+    discharge_duty_midwife_id = fields.Many2one('hr.employee', string='Midwife On Duty')
     patient_condition = fields.Selection([
         ('to_home', 'To Home'),
         ('another_hospital', 'Another Hospital'),
         ('other', 'Other')
-    ], string='Patient''s Condition', required=True, tracking=True)
+    ], string='Patient''s Condition', tracking=True)
     newborn_condition = fields.Selection([
         ('to_home', 'To Home'),
         ('another_hospital', 'Another Hospital'),
         ('transfer_to_care', 'Transfer To Care'),
         ('transfer_to_incubators', 'Transfer To Incubators'),
         ('deceased', 'Deceased')
-    ], string='Newborn''s Condition', required=True, tracking=True)
+    ], string='Newborn''s Condition', tracking=True)
     patient_companion_name = fields.Char('Patient''s Companion''s Name', tracking=True)
     patient_companion_relationship = fields.Char('Relationship', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

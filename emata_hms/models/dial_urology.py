@@ -11,7 +11,7 @@ class EmHmsDialUrology(models.Model):
     visit_datetime = fields.Datetime('Visit Date/Time', required=True, tracking=True)
     weight = fields.Float('Weight', tracking=True)
     medical_history = fields.Char('Medical History', tracking=True)
-    diagnosis_id = fields.Many2one('em.hms.icd10', string='Diagnosis', required=True, tracking=True)
+    diagnosis_id = fields.Many2one('em.hms.icd10', string='Diagnosis', tracking=True)
     stone_location = fields.Selection([
         ('kidney', 'Kidney'),
         ('ureter', 'Ureter'),
@@ -22,7 +22,7 @@ class EmHmsDialUrology(models.Model):
         ('referral_lithotripsy_department', 'Referral to lithotripsy department'),
         ('pharmaceutical', 'Pharmaceutical'),
         ('referral_another_hospital', 'Referral to another hospital')
-    ], string='Treatment', required=True, tracking=True)
+    ], string='Treatment', tracking=True)
 
     notes = fields.Char('Notes', tracking=True)
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)

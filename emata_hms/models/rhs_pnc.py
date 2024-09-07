@@ -8,22 +8,22 @@ class EmHmsRHSPNC(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
-    husband_name = fields.Char('Husband\'s Name', required=True, tracking=True)
+    husband_name = fields.Char('Husband\'s Name', tracking=True)
     
-    birth_date = fields.Date('Date Of Birth', required=True, tracking=True)
+    birth_date = fields.Date('Date Of Birth', tracking=True)
     birth_type = fields.Selection([
         ('natural', 'Natural'),
         ('cesarean', 'Cesarean'),
         ('aided', 'Aided')
-    ], string='Type Of Birth', required=True, tracking=True)
+    ], string='Type Of Birth', tracking=True)
     is_baby_alive = fields.Boolean('Is The Baby Alive?', tracking=True)
-    body_weight = fields.Float('Body Weight', required=True, tracking=True)
+    body_weight = fields.Float('Body Weight', tracking=True)
     is_full_term_pregnancy = fields.Boolean('Is Full Term Pregnancy (<37 weeks)?')
     birth_place = fields.Selection([
         ('home', 'Home'),
         ('medical_care_center', 'Medical Care Center'),
         ('hospital', 'Hospital')
-    ], string='Place Of Birth', required=True, tracking=True)
+    ], string='Place Of Birth', tracking=True)
     previous_complications = fields.Char('Previous Pregnancy And Birth Complications', tracking=True)
     
     visit_ids = fields.One2many('em.hms.rhs.pnc.visit', 'pnc_id', string='Periodic Visits')

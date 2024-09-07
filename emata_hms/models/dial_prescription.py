@@ -16,12 +16,12 @@ class EmHmsDialPrescription(models.Model):
 
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     prescription_datetime = fields.Datetime('Prescription Date/Time', required=True, tracking=True)
-    day_ids = fields.Many2many('em.hms.day', 'dial_prescription_day_rel', 'dial_prescription_id', 'day_id', string='Dialysis days', required=True)
-    duration = fields.Float('Dialysis duration', required=True)
+    day_ids = fields.Many2many('em.hms.day', 'dial_prescription_day_rel', 'dial_prescription_id', 'day_id', string='Dialysis days')
+    duration = fields.Float('Dialysis duration')
     isolation = fields.Selection([
         ('need', 'Need isolation'),
         ('no_need', 'No isolation need')
-    ], string='Isolation status', required=True, tracking=True)
+    ], string='Isolation status', tracking=True)
     notes = fields.Char('Notes', tracking=True)
-    doctor_id = fields.Many2one('hr.employee', string='Doctor', required=True, tracking=True)
+    doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

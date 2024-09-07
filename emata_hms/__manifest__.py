@@ -17,6 +17,7 @@
         'base',
         'mail',
         'product',
+        'project',
         'hr',
         'web_responsive',
         'web_m2x_options',
@@ -51,6 +52,10 @@
         'views/dial_kidney_history_view.xml',
         'views/dial_visit_view.xml',
         'views/nutrition_group_session.xml',
+        'views/nutrition_mtmsg.xml',
+        'views/nutrition_ftfsg.xml',
+        'views/nutrition_screening_child.xml',
+        'views/nutrition_screening_woman.xml',
 
         'data/sequence_data.xml',
 
