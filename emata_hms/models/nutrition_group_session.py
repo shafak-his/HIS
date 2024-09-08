@@ -141,20 +141,20 @@ class EmHmsNutritionGroupSession(models.Model):
     @api.depends('session_topic_ids', 'session_topic_chronic_ids')
     def _compute_is_chronic_topic(self):
         for record in self:
-            record.is_chronic_topic = 'chronic' in record.session_topic_ids.mapped('category') if record.session_topic_ids else False
-            record.is_chronic_topic_other = 'chronic' in record.session_topic_ids.mapped('category') and 'Other' in record.session_topic_chronic_ids.mapped('name') if record.session_topic_ids and record.session_topic_chronic_ids else False
+            record.is_chronic_topic = 'Chronic Diseases' in record.session_topic_ids.mapped('name') if record.session_topic_ids else False
+            record.is_chronic_topic_other = 'Chronic Diseases' in record.session_topic_ids.mapped('name') and 'Other' in record.session_topic_chronic_ids.mapped('name') if record.session_topic_ids and record.session_topic_chronic_ids else False
     
     @api.depends('session_topic_ids', 'session_topic_infectious_ids')
     def _compute_is_infectious_topic(self):
         for record in self:
-            record.is_infectious_topic = 'infectious' in record.session_topic_ids.mapped('category') if record.session_topic_ids else False
-            record.is_infectious_topic_other = 'infectious' in record.session_topic_ids.mapped('category') and 'Other' in record.session_topic_infectious_ids.mapped('name') if record.session_topic_ids and record.session_topic_infectious_ids else False
+            record.is_infectious_topic = 'Infectious Diseases' in record.session_topic_ids.mapped('name') if record.session_topic_ids else False
+            record.is_infectious_topic_other = 'Infectious Diseases' in record.session_topic_ids.mapped('name') and 'Other' in record.session_topic_infectious_ids.mapped('name') if record.session_topic_ids and record.session_topic_infectious_ids else False
             
     @api.depends('session_topic_ids', 'session_topic_rh_ids')
     def _compute_is_rh_topic(self):
         for record in self:
-            record.is_rh_topic = 'rh' in record.session_topic_ids.mapped('category') if record.session_topic_ids else False
-            record.is_rh_topic_other = 'rh' in record.session_topic_ids.mapped('category') and 'Other' in record.session_topic_rh_ids.mapped('name') if record.session_topic_ids and record.session_topic_rh_ids else False
+            record.is_rh_topic = 'Reproductive Health' in record.session_topic_ids.mapped('name') if record.session_topic_ids else False
+            record.is_rh_topic_other = 'Reproductive Health' in record.session_topic_ids.mapped('name') and 'Other' in record.session_topic_rh_ids.mapped('name') if record.session_topic_ids and record.session_topic_rh_ids else False
     
     number_mothers_educated_muac_qt_eq_18 = fields.Integer('Number Of Mothers Who Received Education On Their MUAC Measurement Greater Than Or Equal To 18', required=True, tracking=True)
     number_mothers_educated_muac_lt_18 = fields.Integer('Number Of Mothers Who Received Education On Their MUAC Measurement Under 18', required=True, tracking=True)

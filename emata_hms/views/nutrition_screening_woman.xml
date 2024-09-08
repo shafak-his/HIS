@@ -36,11 +36,13 @@
                 <field name="woman_status" optional="hide" />
                 <field name="infant_age" optional="hide" />
                 <field name="nature_of_malnutrition" optional="hide" />
+                <field name="mother_program" optional="hide" />
+                <field name="is_beneficiary_graduated" optional="hide" />
+                <field name="graduation_outcome" optional="hide" />
                 <field name="is_violence_or_abuse_signs" optional="hide" />
                 <field name="is_danger_signs" optional="hide" />
                 <field name="danger_signs_ids" widget="many2many_tags" optional="hide" />
-                <field name="is_beneficiary_graduated" optional="hide" />
-                <field name="graduation_outcome" optional="hide" />
+                <field name="is_committed_to_examinations" optional="hide" />
                 <field name="is_beneficiary_referred" optional="hide" />
                 <field name="referral_place" optional="hide" />
                 <field name="is_supplements_distributed" optional="hide" />
@@ -58,6 +60,24 @@
                 <field name="materials_distributed2" optional="hide" />
                 <field name="vitamins_minerals_qty2" optional="hide" />
                 <field name="folic_iron_qty2" optional="hide" />
+                <field name="main_session_topic" optional="hide" />
+                <field name="session_topic_breastfeeding_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_breastfeeding_topic" optional="hide" />
+                <field name="session_topic_relactating_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_relactating_topic" optional="hide" />
+                <field name="session_topic_breastfeeding_difficulties_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_breastfeeding_difficulties_topic" optional="hide" />
+                <field name="session_topic_pregnant_breastfeeding_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_pregnant_breastfeeding_topic" optional="hide" />
+                <field name="session_topic_child_illness_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_child_illness_topic" optional="hide" />
+                <field name="session_topic_supplementary_feeding_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_supplementary_feeding_topic" optional="hide" />
+                <field name="session_topic_psychological_support_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_psychological_support_topic" optional="hide" />
+                <field name="session_topic_bms_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_bms_topic" optional="hide" />
+                <field name="conduct_the_individual_session" optional="hide" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -82,21 +102,11 @@
                             <field name="muac_measurement" />
                             <field name="woman_status" />
                             <field name="infant_age" />
-                            <field name="nature_of_malnutrition" readonly="1" force_save="1" />
+                            <field name="nature_of_malnutrition" invisible="woman_status != 'pregnant' and woman_status != 'breastfeeding' and woman_status != 'first_trimester_pregnant'" readonly="1" force_save="1" />
+                            <field name="mother_program" invisible="visit_type != 'follow_up'" required="visit_type == 'follow_up'"/>
                         </group>
                     </group>
                     <group>
-                        <group>
-                            <field name="is_violence_or_abuse_signs" />
-                            <field name="is_danger_signs" />
-                            <field name="danger_signs_ids" invisible="is_danger_signs == False"
-                                required="is_danger_signs == True">
-                                <tree create="0" delete="0" editable="bottom">
-                                    <field name="name" />
-                                    <field name="name_lang" />
-                                </tree>
-                            </field>
-                        </group>
                         <group>
                             <field name="is_beneficiary_graduated"
                                 invisible="visit_type != 'follow_up'"
@@ -104,19 +114,31 @@
                             <field name="graduation_outcome"
                                 invisible="visit_type != 'follow_up' or is_beneficiary_graduated == False"
                                 required="visit_type == 'follow_up' and is_beneficiary_graduated == True" />
-
                             <field name="is_death_or_deaulter" invisible="1" />
+                        </group>
+                        <group invisible="is_death_or_deaulter == True">
+                            <field name="is_violence_or_abuse_signs" required="is_death_or_deaulter == False" />
+                            <field name="is_danger_signs" required="is_death_or_deaulter == False" />
+                            <field name="danger_signs_ids" invisible="is_danger_signs == False"
+                                required="is_death_or_deaulter == False and is_danger_signs == True">
+                                <tree create="0" delete="0" editable="bottom">
+                                    <field name="name" />
+                                    <field name="name_lang" />
+                                </tree>
+                            </field>
                         </group>
                     </group>
                     <group invisible="is_death_or_deaulter == True">
                         <group>
                             <field name="is_violence_or_abuse_signs"
                                 required="is_death_or_deaulter == False" />
+                                <field name="is_committed_to_examinations"
+                                required="is_death_or_deaulter == False" />
                             <field name="is_beneficiary_referred"
                                 required="is_death_or_deaulter == False" />
                             <field name="referral_place"
                                 invisible="is_beneficiary_referred == False"
-                                required="is_beneficiary_referred == True" />
+                                required="is_death_or_deaulter == False and is_beneficiary_referred == True" />
                         </group>
                     </group>
                     <group string="Supplments" invisible="is_death_or_deaulter == True">
@@ -167,30 +189,85 @@
                         </group>
                     </group>
                     <group string="Topics" invisible="is_death_or_deaulter == True">
-                        
-                    </group>
-                    <group invisible="is_death_or_deaulter == True">
-                        <group>
-                            <!-- <field name="is_simple_assessment" invisible="age_in_months >= 24"
-                            required="is_death_or_deaulter == False and age_in_months &lt; 24" />
-                            <field name="is_simple_to_comprehensive_assessment" invisible="is_simple_assessment == False"
-                            required="is_death_or_deaulter == False and age_in_months &lt; 24 and is_simple_assessment == True" />
-                            <field name="reason_for_comprehensive" invisible="is_simple_to_comprehensive_assessment == False"
-                            required="is_death_or_deaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" />
-                            <field name="problem_suffering" invisible="is_simple_to_comprehensive_assessment == False"
-                            required="is_death_or_deaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" />
-                            <field name="advice_provided" invisible="is_simple_to_comprehensive_assessment == False"
-                            required="is_death_or_deaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" /> -->
-                        </group>
-                        <group>
-                            <!-- <field name="first_visit_number" invisible="is_supplements_distributed == False" required="is_death_or_deaulter == False and is_supplements_distributed == True" />
-                            <field name="is_exclusive_breastfeeding" invisible="age_in_months >= 6"
-                            required="is_death_or_deaulter == False and age_in_months &lt; 6"/> -->
-                        </group>
-                    </group>
-                    <group invisible="is_death_or_deaulter == True">
+                        <field name="main_session_topic"/>
+
+                        <field name="session_topic_breastfeeding_ids" invisible="is_breastfeeding_topic != True" required="is_death_or_deaulter == False and is_breastfeeding_topic == True">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_breastfeeding_topic" invisible="is_breastfeeding_topic_other != True" required="is_death_or_deaulter == False and is_breastfeeding_topic_other == True" />
+                    
+                        <field name="session_topic_relactating_ids" invisible="is_relactating_topic != True" required="is_death_or_deaulter == False and is_relactating_topic == True">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_relactating_topic" invisible="is_relactating_topic_other != True" required="is_death_or_deaulter == False and is_relactating_topic_other == True" />
+
+                        <field name="session_topic_breastfeeding_difficulties_ids" invisible="is_breastfeeding_difficulties_topic != True" required="is_death_or_deaulter == False and is_breastfeeding_difficulties_topic == True">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_breastfeeding_difficulties_topic" invisible="is_breastfeeding_difficulties_topic_other != True" required="is_death_or_deaulter == False and is_breastfeeding_difficulties_topic_other == True" />
+
+                        <field name="session_topic_pregnant_breastfeeding_ids" invisible="is_pregnant_breastfeeding_topic != True" required="is_death_or_deaulter == False and is_pregnant_breastfeeding_topic == True">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_pregnant_breastfeeding_topic" invisible="is_pregnant_breastfeeding_topic_other != True" required="is_death_or_deaulter == False and is_pregnant_breastfeeding_topic_other == True" />
+
+                        <field name="session_topic_child_illness_ids" invisible="is_child_illness_topic != True" required="is_death_or_deaulter == False and is_child_illness_topic == True">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_child_illness_topic" invisible="is_child_illness_topic_other != True" required="is_death_or_deaulter == False and is_child_illness_topic_other == True" />
+
+                        <field name="session_topic_supplementary_feeding_ids" invisible="is_supplementary_feeding_topic != True" required="is_death_or_deaulter == False and is_supplementary_feeding_topic == True">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_supplementary_feeding_topic" invisible="is_supplementary_feeding_topic_other != True" required="is_death_or_deaulter == False and is_supplementary_feeding_topic_other == True" />
+
+                        <field name="session_topic_psychological_support_ids" invisible="is_psychological_support_topic != True" required="is_death_or_deaulter == False and is_psychological_support_topic == True">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_psychological_support_topic" invisible="is_psychological_support_topic_other != True" required="is_death_or_deaulter == False and is_psychological_support_topic_other == True" />
+
+                        <field name="session_topic_bms_ids" invisible="is_bms_topic != True" required="is_death_or_deaulter == False and is_bms_topic == True">
+                            <tree create="0" delete="0" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="other_bms_topic" invisible="is_bms_topic_other != True" required="is_death_or_deaulter == False and is_bms_topic_other == True" />
+
+                        <field name="is_breastfeeding_topic" invisible="1" />
+                        <field name="is_breastfeeding_topic_other" invisible="1" />
+                        <field name="is_relactating_topic" invisible="1" />
+                        <field name="is_relactating_topic_other" invisible="1" />
+                        <field name="is_breastfeeding_difficulties_topic" invisible="1" />
+                        <field name="is_breastfeeding_difficulties_topic_other" invisible="1" />
+                        <field name="is_pregnant_breastfeeding_topic" invisible="1" />
+                        <field name="is_pregnant_breastfeeding_topic_other" invisible="1" />
+                        <field name="is_child_illness_topic" invisible="1" />
+                        <field name="is_child_illness_topic_other" invisible="1" />
+                        <field name="is_supplementary_feeding_topic" invisible="1" />
+                        <field name="is_supplementary_feeding_topic_other" invisible="1" />
+                        <field name="is_psychological_support_topic" invisible="1" />
+                        <field name="is_psychological_support_topic_other" invisible="1" />
+                        <field name="is_bms_topic" invisible="1" />
+                        <field name="is_bms_topic_other" invisible="1" />
                     </group>
                     <group>
+                        <group>
+                            <field name="conduct_the_individual_session" invisible="is_death_or_deaulter == True" required="is_death_or_deaulter == False" />
+                        </group>
                         <group>
                             <field name="company_id" readonly="1" force_save="1" />
                         </group>

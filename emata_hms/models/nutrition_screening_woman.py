@@ -66,6 +66,7 @@ class EmHmsNutritionScreeningWoman(models.Model):
         for record in self:
             record.is_death_or_deaulter = record.graduation_outcome == 'death' or record.graduation_outcome == 'defaulter'
               
+    is_committed_to_examinations = fields.Boolean('Is The Mother Committed To Undergoing Periodic Examinations At The Center?', tracking=True)         
     is_violence_or_abuse_signs = fields.Boolean('Are There Any Visible Signs Of Any Violence Or Abuse?', tracking=True)
     is_danger_signs = fields.Boolean('Does The Beneficiary (Pregnant) Have Any Dnger Signs?', tracking=True)
     danger_signs_ids = fields.Many2many('em.hms.nutrition.danger.sign.woman', 'screening_danger_sign_woman_rel', 'screening_woman_id', 'danger_sign_woman_id', string='Danger Signs', tracking=True)
@@ -106,41 +107,103 @@ class EmHmsNutritionScreeningWoman(models.Model):
     
     is_breastfeedingf_session_offered = fields.Boolean('Is An BreastfeedingF Individual Counseling Session Offered?')
     main_session_topic = fields.Selection([
-    ('general', 'General'),
-    ('iyc', 'IYC'),
-    ('cholera', 'Cholera'),
-    ('corona', 'Corona'),
-    ('wash', 'WASH'),
-    ('chronic', 'Chronic Diseases'),
-    ('infectious', 'Infectious Diseases'),
-    ('rh', 'Reproductive Health'),
-    ('breastfeeding', 'Breastfeeding'),
-    ('relactating', 'Relactating'),
-    ('beastfeeding_difficulties', 'Breastfeeding Difficulties'),
-    ('pregnant_breastfeeding', 'Pregnant And Breastfeeding'),
-    ('child_illness', 'Child Illness'),
-    ('supplementary_feeding', 'Supplementary Feeding'),
-    ('psychological_support', 'Psychological Support'),
-    ('bms', 'BMS')
-], string='Main Session Topic', tracking=True)
+        ('breastfeeding', 'Breastfeeding'),
+        ('relactating', 'Relactating'),
+        ('beastfeeding_difficulties', 'Breastfeeding Difficulties'),
+        ('pregnant_breastfeeding', 'Pregnant And Breastfeeding'),
+        ('child_illness', 'Child Illness'),
+        ('supplementary_feeding', 'Supplementary Feeding'),
+        ('psychological_support', 'Psychological Support'),
+        ('bms', 'BMS')
+    ], string='Main Session Topic', tracking=True)
     
-    session_topic_breastfeeding_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_breastfeeding_rel', 'screening_woman_id', 'session_topic_breastfeeding_id', string='Breastfeeding Topics')
+    session_topic_breastfeeding_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_breastfeeding_rel', 'screening_woman_id', 'session_topic_breastfeeding_id', string='Breastfeeding Topics', domain="[('category', '=', 'breastfeeding')]")
     other_breastfeeding_topic = fields.Char('Other Breastfeeding Topic', tracking=True)
-    session_topic_relactating_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_relactating_rel', 'screening_woman_id', 'session_topic_relactating_id', string='Relactating Topics')
+    session_topic_relactating_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_relactating_rel', 'screening_woman_id', 'session_topic_relactating_id', string='Relactating Topics', domain="[('category', '=', 'relactating')]")
     other_relactating_topic = fields.Char('Other Relactating Topic', tracking=True)
-    session_topic_breastfeeding_difficulties_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_breastfeeding_difficulties_rel', 'screening_woman_id', 'session_topic_breastfeeding_difficulties_id', string='Breastfeeding Difficulties Topics')
+    session_topic_breastfeeding_difficulties_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_breastfeeding_difficulties_rel', 'screening_woman_id', 'session_topic_breastfeeding_difficulties_id', string='Breastfeeding Difficulties Topics', domain="[('category', '=', 'breastfeeding_difficulties')]")
     other_breastfeeding_difficulties_topic = fields.Char('Other Breastfeeding Difficulties Topic', tracking=True)
-    session_topic_pregnant_breastfeeding_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_pregnant_breastfeeding_rel', 'screening_woman_id', 'session_topic_pregnant_breastfeeding_id', string='Pregnant And Breastfeeding Topics')
+    session_topic_pregnant_breastfeeding_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_pregnant_breastfeeding_rel', 'screening_woman_id', 'session_topic_pregnant_breastfeeding_id', string='Pregnant And Breastfeeding Topics', domain="[('category', '=', 'pregnant_breastfeeding')]")
     other_pregnant_breastfeeding_topic = fields.Char('Other Pregnant And Breastfeeding Topic', tracking=True)
-    session_topic_supplementary_feeding_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_supplementary_feeding_rel', 'screening_woman_id', 'session_topic_supplementary_feeding_id', string='Supplementary Feeding Topics')
-    other_supplementary_feeding_topic = fields.Char('Other Supplementary Feeding Topic', tracking=True)
-    session_topic_child_illness_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_child_illness_rel', 'screening_woman_id', 'session_topic_child_illness_id', string='Child Illness Topics')
+    session_topic_child_illness_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_child_illness_rel', 'screening_woman_id', 'session_topic_child_illness_id', string='Child Illness Topics', domain="[('category', '=', 'child_illness')]")
     other_child_illness_topic = fields.Char('Other Child Illness Topic', tracking=True)
-    session_topic_psychological_support_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_psychological_support_rel', 'screening_woman_id', 'session_topic_psychological_support_id', string='Psychological Support Consultation Topics')
+    session_topic_supplementary_feeding_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_supplementary_feeding_rel', 'screening_woman_id', 'session_topic_supplementary_feeding_id', string='Supplementary Feeding Topics', domain="[('category', '=', 'supplementary_feeding')]")
+    other_supplementary_feeding_topic = fields.Char('Other Supplementary Feeding Topic', tracking=True)
+    session_topic_psychological_support_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_psychological_support_rel', 'screening_woman_id', 'session_topic_psychological_support_id', string='Psychological Support Consultation Topics', domain="[('category', '=', 'psychological_support')]")
     other_psychological_support_topic = fields.Char('Other Psychological Support Consultation Topic', tracking=True)
-    session_topic_bms_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_bms_rel', 'screening_woman_id', 'session_topic_bms_id', string='BMS Topics')
+    session_topic_bms_ids = fields.Many2many('em.hms.nutrition.topic', 'session_topic_bms_rel', 'screening_woman_id', 'session_topic_bms_id', string='BMS Topics', domain="[('category', '=', 'bms')]")
     other_bms_topic = fields.Char('Other BMS Topic', tracking=True)
     
+    is_breastfeeding_topic = fields.Boolean(compute='_compute_is_breastfeeding_topic', string='Is Breastfeeding Topic')
+    is_breastfeeding_topic_other = fields.Boolean(compute='_compute_is_breastfeeding_topic', string='Other Breastfeeding Topic')
+    is_relactating_topic = fields.Boolean(compute='_compute_is_relactating_topic', string='Is Relactating Topic')
+    is_relactating_topic_other = fields.Boolean(compute='_compute_is_relactating_topic', string='Other Relactating Topic')
+    is_breastfeeding_difficulties_topic = fields.Boolean(compute='_compute_is_breastfeeding_difficulties_topic', string='Is Breastfeeding Difficulties Topic')
+    is_breastfeeding_difficulties_topic_other = fields.Boolean(compute='_compute_is_breastfeeding_difficulties_topic', string='Other Breastfeeding Difficulties Topic')
+    is_pregnant_breastfeeding_topic = fields.Boolean(compute='_compute_is_pregnant_breastfeeding_topic', string='Is Pregnant Breastfeeding Topic')
+    is_pregnant_breastfeeding_topic_other = fields.Boolean(compute='_compute_is_pregnant_breastfeeding_topic', string='Other Pregnant Breastfeeding Topic')
+    is_child_illness_topic = fields.Boolean(compute='_compute_is_child_illness_topic', string='Is Child Illness Topic')
+    is_child_illness_topic_other = fields.Boolean(compute='_compute_is_child_illness_topic', string='Other Child Illness Topic')
+    is_supplementary_feeding_topic = fields.Boolean(compute='_compute_is_supplementary_feeding_topic', string='Is Supplementary Feeding Topic')
+    is_supplementary_feeding_topic_other = fields.Boolean(compute='_compute_is_supplementary_feeding_topic', string='Other Supplementary Feeding Topic')
+    is_psychological_support_topic = fields.Boolean(compute='_compute_is_psychological_support_topic', string='Is Psychological Support Topic')
+    is_psychological_support_topic_other = fields.Boolean(compute='_compute_is_psychological_support_topic', string='Other Psychological Support Topic')
+    is_bms_topic = fields.Boolean(compute='_compute_is_bms_topic', string='Is BMS Topic')
+    is_bms_topic_other = fields.Boolean(compute='_compute_is_bms_topic', string='Other BMS Topic')
+    
+    @api.depends('main_session_topic', 'session_topic_breastfeeding_ids')
+    def _compute_is_breastfeeding_topic(self):
+        for record in self:
+            record.is_breastfeeding_topic = record.main_session_topic == 'breastfeeding'
+            record.is_breastfeeding_topic_other = record.main_session_topic == 'breastfeeding' and 'Other' in record.session_topic_breastfeeding_ids.mapped('name') if record.session_topic_breastfeeding_ids else False
+            
+    @api.depends('main_session_topic', 'session_topic_relactating_ids')
+    def _compute_is_relactating_topic(self):
+        for record in self:
+            record.is_relactating_topic = record.main_session_topic == 'relactating'
+            record.is_relactating_topic_other = record.main_session_topic == 'relactating' and 'Other' in record.session_topic_relactating_ids.mapped('name') if record.session_topic_relactating_ids else False
+            
+    @api.depends('main_session_topic', 'session_topic_breastfeeding_difficulties_ids')
+    def _compute_is_breastfeeding_difficulties_topic(self):
+        for record in self:
+            record.is_breastfeeding_difficulties_topic = record.main_session_topic == 'breastfeeding_difficulties'
+            record.is_breastfeeding_difficulties_topic_other = record.main_session_topic == 'breastfeeding_difficulties' and 'Other' in record.session_topic_breastfeeding_difficulties_ids.mapped('name') if record.session_topic_breastfeeding_difficulties_ids else False
+    
+    @api.depends('main_session_topic', 'session_topic_pregnant_breastfeeding_ids')
+    def _compute_is_pregnant_breastfeeding_topic(self):
+        for record in self:
+            record.is_pregnant_breastfeeding_topic = record.main_session_topic == 'pregnant_breastfeeding'
+            record.is_pregnant_breastfeeding_topic_other = record.main_session_topic == 'pregnant_breastfeeding' and 'Other' in record.session_topic_pregnant_breastfeeding_ids.mapped('name') if record.session_topic_pregnant_breastfeeding_ids else False
+            
+    @api.depends('main_session_topic', 'session_topic_child_illness_ids')
+    def _compute_is_child_illness_topic(self):
+        for record in self:
+            record.is_child_illness_topic = record.main_session_topic == 'child_illness'
+            record.is_child_illness_topic_other = record.main_session_topic == 'child_illness' and 'Other' in record.session_topic_child_illness_ids.mapped('name') if record.session_topic_child_illness_ids else False
+    
+    @api.depends('main_session_topic', 'session_topic_supplementary_feeding_ids')
+    def _compute_is_supplementary_feeding_topic(self):
+        for record in self:
+            record.is_supplementary_feeding_topic = record.main_session_topic == 'supplementary_feeding'
+            record.is_supplementary_feeding_topic_other = record.main_session_topic == 'supplementary_feeding' and 'Other' in record.session_topic_supplementary_feeding_ids.mapped('name') if record.session_topic_supplementary_feeding_ids else False
+            
+    @api.depends('main_session_topic', 'session_topic_psychological_support_ids')
+    def _compute_is_psychological_support_topic(self):
+        for record in self:
+            record.is_psychological_support_topic = record.main_session_topic == 'psychological_support'
+            record.is_psychological_support_topic_other = record.main_session_topic == 'psychological_support' and 'Other' in record.session_topic_psychological_support_ids.mapped('name') if record.session_topic_psychological_support_ids else False
+            
+    @api.depends('main_session_topic', 'session_topic_bms_ids')
+    def _compute_is_bms_topic(self):
+        for record in self:
+            record.is_bms_topic = record.main_session_topic == 'bms'
+            record.is_bms_topic_other = record.main_session_topic == 'bms' and 'Other' in record.session_topic_bms_ids.mapped('name') if record.session_topic_bms_ids else False
+            
+    conduct_the_individual_session = fields.Selection([
+        ('improvement', 'Improvement'),
+        (' no_change', ' No Change'),
+        ('retreat', 'Retreat'),
+    ], string='Conduct The Individual Session', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
     _sql_constraints = [
