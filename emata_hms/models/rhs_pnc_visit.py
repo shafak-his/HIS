@@ -54,7 +54,8 @@ class EmHmsRHSPNCVisit(models.Model):
     postpartum_complication_ids = fields.Many2many('em.hms.rhs.postpartum.comp', 'rhs_pnc_visit_postpartum_comp_rel', 'pnc_visit_id', 'post_comp_id', string='Postpartum Complications')
     wound_ids = fields.Many2many('em.hms.rhs.wound', 'rhs_pnc_visit_wound_rel', 'pnc_visit_id', 'wound_id', string='Existing Wounds')
     
-    medication_request_ids = fields.Many2many('product.template', 'rhs_pnc_visit_product_medication_rel', 'pnc_visit_id', 'product_id', string='Medication Requests', domain="[('is_medication', '=', True)]")
-    analysis_request_ids = fields.Many2many('product.template', 'rhs_pnc_visit_product_analysis_rel', 'pnc_visit_id', 'product_id', string='Analysis Requests', domain="[('is_medical_analysis', '=', True)]")
-    image_request_ids = fields.Many2many('product.template', 'rhs_pnc_visit_product_image_rel', 'pnc_visit_id', 'product_id', string='Image Requests', domain="[('is_medical_imaging', '=', True)]")
+    medication_request_ids = fields.One2many('em.hms.medication.request', 'pnc_visit_id', string='Medication Requests')
+    analysis_request_ids = fields.One2many('em.hms.analysis.request', 'pnc_visit_id', string='Analysis Requests')
+    image_request_ids = fields.One2many('em.hms.image.request', 'pnc_visit_id', string='Image Requests')
+
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

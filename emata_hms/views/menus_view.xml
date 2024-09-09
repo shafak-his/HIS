@@ -100,7 +100,7 @@
         <!-- General -->
         <menuitem id="menu_em_hms_general_root"
             name="General"
-            web_icon="emata_hms,static/description/icon-hms.png"
+            web_icon="emata_hms,static/description/icon-heart.png"
             sequence="1"
         />
         <menuitem id="menu_em_hms_general_clinic_visit"
@@ -267,8 +267,8 @@
             sequence="2" />
 
         <menuitem id="menu_em_hms_nutrition_master_data"
-            name="Master Data"
-            parent="menu_em_hms_nutrition_root"
+            name="Nutrition Master Data"
+            parent="menu_em_hms_admin_root"
             sequence="47" />
         <menuitem id="menu_em_hms_nutrition_team"
             name="Nutrition Teams"
@@ -295,6 +295,38 @@
             parent="menu_em_hms_nutrition_master_data"
             action="emata_hms.em_hms_nutrition_danger_sign_child_action"
             sequence="5" />
+
+        <!-- Pharmacy -->
+        <menuitem id="menu_em_hms_pharmacy_root"
+            name="Pharmacy"
+            web_icon="emata_hms,static/description/icon-pharmacy.png"
+            sequence="40"
+        />
+        <menuitem id="menu_em_hms_medication_request"
+            name="Medication Requests"
+            parent="menu_em_hms_pharmacy_root"
+            action="emata_hms.em_hms_medication_request_action"
+            sequence="10"
+        />
+
+        <!-- Labaratory -->
+        <menuitem id="menu_em_hms_lab_root"
+            name="Labaratory"
+            web_icon="emata_hms,static/description/icon-lab.png"
+            sequence="42"
+        />
+        <menuitem id="menu_em_hms_analysis_request"
+            name="Analysis Requests"
+            parent="menu_em_hms_lab_root"
+            action="emata_hms.em_hms_analysis_request_action"
+            sequence="10"
+        />
+        <menuitem id="menu_em_hms_image_request"
+            name="Image Requests"
+            parent="menu_em_hms_lab_root"
+            action="emata_hms.em_hms_image_request_action"
+            sequence="15"
+        />
 
         <!-- Patients -->
         <menuitem id="menu_em_hms_patient_root"

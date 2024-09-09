@@ -27,6 +27,9 @@
     'data': [
         'security/ir.model.access.csv',
 
+        'views/medication_request_view.xml',
+        'views/analysis_request_view.xml',
+        'views/image_request_view.xml',
         'views/general_clinic_visit_view.xml',
         'views/clinic_view.xml',
         'views/icd10_view.xml',

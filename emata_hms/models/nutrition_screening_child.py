@@ -145,7 +145,7 @@ class EmHmsNutritionScreeningChild(models.Model):
             elif record.muac_measurement < 125:
                 record.malnutrition_nature = 'MAM'
             else:
-                record.malnutrition_nature = 'NORMAL' 
+                record.malnutrition_nature = 'NORMAL'
     
     @api.depends('graduation_outcome')
     def _compute_is_death_or_defaulter(self):
