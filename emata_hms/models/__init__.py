@@ -1,5 +1,5 @@
 from . import product
-from . import phc_clinic_visit
+from . import general_clinic_visit
 from . import clinic
 from . import icd10
 from . import mh_referral

@@ -27,7 +27,7 @@
     'data': [
         'security/ir.model.access.csv',
 
-        'views/phc_clinic_visit_view.xml',
+        'views/general_clinic_visit_view.xml',
         'views/clinic_view.xml',
         'views/icd10_view.xml',
         'views/mh_referral_view.xml',

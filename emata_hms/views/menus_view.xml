@@ -97,16 +97,16 @@
             action="emata_hms.em_hms_rhs_wound_action"
             sequence="3" />
 
-        <!-- PHC -->
-        <menuitem id="menu_em_hms_phc_root"
-            name="PHC"
+        <!-- General -->
+        <menuitem id="menu_em_hms_general_root"
+            name="General"
             web_icon="emata_hms,static/description/icon-hms.png"
             sequence="1"
         />
-        <menuitem id="menu_em_hms_phc_clinic_visit"
+        <menuitem id="menu_em_hms_general_clinic_visit"
             name="Clinic Visit"
-            parent="menu_em_hms_phc_root"
-            action="emata_hms.em_hms_phc_clinic_visit_action"
+            parent="menu_em_hms_general_root"
+            action="emata_hms.em_hms_general_clinic_visit_action"
             sequence="11" />
 
         <!-- Dialysis -->
