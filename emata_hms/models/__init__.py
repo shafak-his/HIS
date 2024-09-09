@@ -1,5 +1,5 @@
 from . import product
-from . import phc_clinic_visit
+from . import general_clinic_visit
 from . import clinic
 from . import icd10
 from . import mh_referral
@@ -23,8 +23,6 @@ from . import dial_prescription
 from . import dial_kidney_history
 from . import dial_visit
 from . import nutrition_group_session
-from . import nutrition_mtmsg
-from . import nutrition_ftfsg
 from . import nutrition_screening_child
 from . import nutrition_screening_woman
 from . import stabilization_center

@@ -8,7 +8,7 @@ class EmHmsRHSANC(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
-    cesarean_sections_count = fields.Integer('Number Of Previous Cesarean Sections', tracking=True)
+    cesarean_sections_count = fields.Integer('# Previous Cesarean Sections', tracking=True)
     family_medical_history = fields.Char('Family Medical History', tracking=True)
     is_breastfeeding = fields.Boolean('Is Breastfeeding?', tracking=True)
     drug_history = fields.Char('Drug History', tracking=True)
@@ -19,11 +19,11 @@ class EmHmsRHSANC(models.Model):
     referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason?', tracking=True)
     previous_complications = fields.Char('Previous Pregnancy And Birth Complications', tracking=True)
     
-    pregnancies_count = fields.Integer('Number Of Pregnancies', tracking=True)
+    pregnancies_count = fields.Integer('# Pregnancies', tracking=True)
     premature_births_count = fields.Integer('Number of Premature Births', tracking=True)
-    miscarriages_count = fields.Integer('Number Of Miscarriages', tracking=True)
+    miscarriages_count = fields.Integer('# Miscarriages', tracking=True)
     live_births = fields.Integer('Live Births', tracking=True)
-    deaths_count = fields.Integer('Number Of Deaths', tracking=True)
+    deaths_count = fields.Integer('# Deaths', tracking=True)
     last_menstrual_date = fields.Date('First Day Of Last Menstrual Period', tracking=True)
     expected_due_date = fields.Date('Expected Due Date', tracking=True)
     nature_of_previous_births = fields.Selection([

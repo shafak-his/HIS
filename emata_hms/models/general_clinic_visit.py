@@ -1,9 +1,9 @@
 from odoo import _, api, fields, models, exceptions, tools
 
 
-class EmHmsPhcClinicVisit(models.Model):
-    _name = 'em.hms.phc.clinic.visit'
-    _description = 'PHC Clinic Visit'
+class EmHmsGeneralClinicVisit(models.Model):
+    _name = 'em.hms.general.clinic.visit'
+    _description = 'General Clinic Visit'
     _rec_name = 'visit_datetime'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
@@ -30,8 +30,8 @@ class EmHmsPhcClinicVisit(models.Model):
     ], string='Type Of Procedure', tracking=True)
     other_procedure_type = fields.Char('Other Type Of Procedure')
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
-    medication_request_ids = fields.Many2many('product.template', 'phc_clinic_visit_product_medication_rel', 'clinic_visit_id', 'product_id', string='Medication Requests', domain="[('is_medication', '=', True)]")
-    analysis_request_ids = fields.Many2many('product.template', 'phc_clinic_visit_product_analysis_rel', 'clinic_visit_id', 'product_id', string='Analysis Requests', domain="[('is_medical_analysis', '=', True)]")
-    image_request_ids = fields.Many2many('product.template', 'phc_clinic_visit_product_image_rel', 'clinic_visit_id', 'product_id', string='Image Requests', domain="[('is_medical_imaging', '=', True)]")
+    medication_request_ids = fields.Many2many('product.template', 'general_clinic_visit_product_medication_rel', 'clinic_visit_id', 'product_id', string='Medication Requests', domain="[('is_medication', '=', True)]")
+    analysis_request_ids = fields.Many2many('product.template', 'general_clinic_visit_product_analysis_rel', 'clinic_visit_id', 'product_id', string='Analysis Requests', domain="[('is_medical_analysis', '=', True)]")
+    image_request_ids = fields.Many2many('product.template', 'general_clinic_visit_product_image_rel', 'clinic_visit_id', 'product_id', string='Image Requests', domain="[('is_medical_imaging', '=', True)]")
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)
     notes = fields.Char('Notes', tracking=True)

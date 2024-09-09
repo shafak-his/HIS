@@ -35,7 +35,7 @@
                 <field name="age_in_months" optional="hide" />
                 <field name="muac_measurement" optional="hide" />
                 <field name="zscore_measurement" optional="hide" />
-                <field name="nature_of_malnutrition" optional="hide" />
+                <field name="malnutrition_nature" optional="hide" />
                 <field name="is_bilateral_edema" optional="hide" />
                 <field name="is_danger_signs" optional="hide" />
                 <field name="danger_signs_ids" widget="many2many_tags" optional="hide" />
@@ -90,7 +90,7 @@
                             <field name="age_in_months" readonly="1" force_save="1" />
                             <field name="muac_measurement" />
                             <field name="zscore_measurement" />
-                            <field name="nature_of_malnutrition" readonly="1" force_save="1" />
+                            <field name="malnutrition_nature" readonly="1" force_save="1" />
                         </group>
                     </group>
                     <group>
@@ -116,87 +116,87 @@
                                 invisible="visit_type != 'follow_up' or is_beneficiary_graduated == False"
                                 required="visit_type == 'follow_up' and is_beneficiary_graduated == True" />
 
-                            <field name="is_death_or_deaulter" invisible="1" />
+                            <field name="is_death_or_defaulter" invisible="1" />
                             <field name="is_sam_case" invisible="1" />
                         </group>
                     </group>
-                    <group invisible="is_death_or_deaulter == True">
+                    <group invisible="is_death_or_defaulter == True">
                         <group>
                             <field name="nature_of_sam" invisible="is_sam_case == False"
                                 required="is_sam_case == True" />
                             <field name="is_violence_or_abuse_signs"
-                                required="is_death_or_deaulter == False" />
+                                required="is_death_or_defaulter == False" />
                             <field name="is_beneficiary_referred"
-                                required="is_death_or_deaulter == False" />
+                                required="is_death_or_defaulter == False" />
                             <field name="referral_place"
                                 invisible="is_beneficiary_referred == False"
                                 required="is_beneficiary_referred == True" />
                         </group>
                     </group>
-                    <group string="Supplments" invisible="is_death_or_deaulter == True">
+                    <group string="Supplments" invisible="is_death_or_defaulter == True">
                         <group>
                             <field name="is_supplements_distributed" />
                             <field name="materials_distributed"
                                 invisible="is_supplements_distributed == False"
-                                required="is_death_or_deaulter == False and is_supplements_distributed == True" />
+                                required="is_death_or_defaulter == False and is_supplements_distributed == True" />
                             <field name="nut_qty"
                                 invisible="is_supplements_distributed == False or materials_distributed != 'nut'"
-                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'nut'" />
+                                required="is_death_or_defaulter == False and is_supplements_distributed == True and materials_distributed == 'nut'" />
                             <field name="sup_qty"
                                 invisible="is_supplements_distributed == False or materials_distributed != 'sup'"
-                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'sup'" />
+                                required="is_death_or_defaulter == False and is_supplements_distributed == True and materials_distributed == 'sup'" />
                             <field name="lns_mq_qty"
                                 invisible="is_supplements_distributed == False or materials_distributed != 'lns_mq'"
-                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'lns_mq'" />
+                                required="is_death_or_defaulter == False and is_supplements_distributed == True and materials_distributed == 'lns_mq'" />
                             <field name="nutri_butter_qty"
                                 invisible="is_supplements_distributed == False or materials_distributed != 'nutri_butter'"
-                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'nutri_butter'" />
+                                required="is_death_or_defaulter == False and is_supplements_distributed == True and materials_distributed == 'nutri_butter'" />
                             <field name="mum_qty"
                                 invisible="is_supplements_distributed == False or materials_distributed != 'mum'"
-                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'mum'" />
+                                required="is_death_or_defaulter == False and is_supplements_distributed == True and materials_distributed == 'mum'" />
                             <field name="protective_qty"
                                 invisible="is_supplements_distributed == False or materials_distributed != 'protective'"
-                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'protective'" />
+                                required="is_death_or_defaulter == False and is_supplements_distributed == True and materials_distributed == 'protective'" />
                             <field name="biscuits_qty"
                                 invisible="is_supplements_distributed == False or materials_distributed != 'biscuits'"
-                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'biscuits'" />
+                                required="is_death_or_defaulter == False and is_supplements_distributed == True and materials_distributed == 'biscuits'" />
                             <field name="vitamins_minerals_qty"
                                 invisible="is_supplements_distributed == False or materials_distributed != 'vitamins_minerals'"
-                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'vitamins_minerals'" />
+                                required="is_death_or_defaulter == False and is_supplements_distributed == True and materials_distributed == 'vitamins_minerals'" />
                             <field name="bp5_qty"
                                 invisible="is_supplements_distributed == False or materials_distributed != 'bp5'"
-                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'bp5'" />
+                                required="is_death_or_defaulter == False and is_supplements_distributed == True and materials_distributed == 'bp5'" />
                             <field name="f100_milk_qty"
                                 invisible="is_supplements_distributed == False or materials_distributed != 'f100_milk'"
-                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'f100_milk'" />
+                                required="is_death_or_defaulter == False and is_supplements_distributed == True and materials_distributed == 'f100_milk'" />
                             <field name="f75_milk_qty"
                                 invisible="is_supplements_distributed == False or materials_distributed != 'f75_milk'"
-                                required="is_death_or_deaulter == False and is_supplements_distributed == True and materials_distributed == 'f75_milk'" />
+                                required="is_death_or_defaulter == False and is_supplements_distributed == True and materials_distributed == 'f75_milk'" />
                         </group>
                         <group>
                             
                         </group>
                     </group>
-                    <group invisible="is_death_or_deaulter == True">
+                    <group invisible="is_death_or_defaulter == True">
                         <group>
                             <field name="is_simple_assessment" invisible="age_in_months >= 24"
-                            required="is_death_or_deaulter == False and age_in_months &lt; 24" />
+                            required="is_death_or_defaulter == False and age_in_months &lt; 24" />
                             <field name="is_simple_to_comprehensive_assessment" invisible="is_simple_assessment == False"
-                            required="is_death_or_deaulter == False and age_in_months &lt; 24 and is_simple_assessment == True" />
+                            required="is_death_or_defaulter == False and age_in_months &lt; 24 and is_simple_assessment == True" />
                             <field name="reason_for_comprehensive" invisible="is_simple_to_comprehensive_assessment == False"
-                            required="is_death_or_deaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" />
+                            required="is_death_or_defaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" />
                             <field name="problem_suffering" invisible="is_simple_to_comprehensive_assessment == False"
-                            required="is_death_or_deaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" />
+                            required="is_death_or_defaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" />
                             <field name="advice_provided" invisible="is_simple_to_comprehensive_assessment == False"
-                            required="is_death_or_deaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" />
+                            required="is_death_or_defaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" />
                         </group>
                         <group>
-                            <field name="first_visit_number" invisible="is_supplements_distributed == False" required="is_death_or_deaulter == False and is_supplements_distributed == True" />
+                            <field name="first_visit_number" invisible="is_supplements_distributed == False" required="is_death_or_defaulter == False and is_supplements_distributed == True" />
                             <field name="is_exclusive_breastfeeding" invisible="age_in_months >= 6"
-                            required="is_death_or_deaulter == False and age_in_months &lt; 6"/>
+                            required="is_death_or_defaulter == False and age_in_months &lt; 6"/>
                         </group>
                     </group>
-                    <group invisible="is_death_or_deaulter == True">
+                    <group invisible="is_death_or_defaulter == True">
                     </group>
                     <group>
                         <group>

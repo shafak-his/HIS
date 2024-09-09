@@ -97,16 +97,16 @@
             action="emata_hms.em_hms_rhs_wound_action"
             sequence="3" />
 
-        <!-- PHC -->
-        <menuitem id="menu_em_hms_phc_root"
-            name="PHC"
+        <!-- General -->
+        <menuitem id="menu_em_hms_general_root"
+            name="General"
             web_icon="emata_hms,static/description/icon-hms.png"
             sequence="1"
         />
-        <menuitem id="menu_em_hms_phc_clinic_visit"
+        <menuitem id="menu_em_hms_general_clinic_visit"
             name="Clinic Visit"
-            parent="menu_em_hms_phc_root"
-            action="emata_hms.em_hms_phc_clinic_visit_action"
+            parent="menu_em_hms_general_root"
+            action="emata_hms.em_hms_general_clinic_visit_action"
             sequence="11" />
 
         <!-- Dialysis -->
@@ -231,20 +231,24 @@
             web_icon="emata_hms,static/description/icon-hms.png"
             sequence="4"
         />
-        <menuitem id="menu_em_hms_group_session"
+        <menuitem id="menu_em_hms_group_session_root"
             name="Group Sessions"
             parent="menu_em_hms_nutrition_root"
+            sequence="41" />
+        <menuitem id="menu_em_hms_group_session"
+            name="Group Sessions"
+            parent="menu_em_hms_group_session_root"
             action="emata_hms.em_hms_nutrition_group_session_action"
             sequence="41" />
         <menuitem id="menu_em_hms_mtmsg"
             name="MTMSG"
-            parent="menu_em_hms_nutrition_root"
-            action="emata_hms.em_hms_nutrition_mtmsg_action"
+            parent="menu_em_hms_group_session_root"
+            action="emata_hms.em_hms_nutrition_mtmsg_session_action"
             sequence="42" />
         <menuitem id="menu_em_hms_ftfsg"
             name="FTFSG"
-            parent="menu_em_hms_nutrition_root"
-            action="emata_hms.em_hms_nutrition_ftfsg_action"
+            parent="menu_em_hms_group_session_root"
+            action="emata_hms.em_hms_nutrition_ftfsg_session_action"
             sequence="43" />
 
         <menuitem id="menu_em_hms_malnutrition_screening"
@@ -262,33 +266,33 @@
             action="emata_hms.em_hms_nutrition_screening_woman_action"
             sequence="2" />
 
-        <menuitem id="menu_em_hms_nutrition_reporting_tables"
-            name="Reporting Tables"
+        <menuitem id="menu_em_hms_nutrition_master_data"
+            name="Master Data"
             parent="menu_em_hms_nutrition_root"
             sequence="47" />
         <menuitem id="menu_em_hms_nutrition_team"
             name="Nutrition Teams"
-            parent="menu_em_hms_nutrition_reporting_tables"
+            parent="menu_em_hms_nutrition_master_data"
             action="emata_hms.em_hms_nutrition_team_action"
             sequence="1" />
         <menuitem id="menu_em_hms_nutrition_topic"
             name="Session Topics"
-            parent="menu_em_hms_nutrition_reporting_tables"
+            parent="menu_em_hms_nutrition_master_data"
             action="emata_hms.em_hms_nutrition_topic_action"
             sequence="2" />
-        <menuitem id="menu_em_hms_nutrition_bnf"
+        <!-- <menuitem id="menu_em_hms_nutrition_bnf"
             name="Beneficiaries"
-            parent="menu_em_hms_nutrition_reporting_tables"
-            action="emata_hms.em_hms_nutrition_bnf_action"
-            sequence="3" />
+            parent="menu_em_hms_nutrition_master_data"
+            action="emata_hms.em_hms_nutrition_group_session_bnf_action"
+            sequence="3" /> -->
         <menuitem id="menu_em_hms_nutrition_bnf_visit"
             name="Visits"
-            parent="menu_em_hms_nutrition_reporting_tables"
+            parent="menu_em_hms_nutrition_master_data"
             action="emata_hms.em_hms_nutrition_bnf_visit_action"
             sequence="4" />
         <menuitem id="menu_em_hms_nutrition_danger_sign_child"
             name="Danger Signs On Children"
-            parent="menu_em_hms_nutrition_reporting_tables"
+            parent="menu_em_hms_nutrition_master_data"
             action="emata_hms.em_hms_nutrition_danger_sign_child_action"
             sequence="5" />
 

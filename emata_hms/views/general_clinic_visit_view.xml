@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="em_hms_phc_clinic_visit_view_tree" model="ir.ui.view">
-        <field name="name">em.hms.phc.clinic.visit.view.tree</field>
-        <field name="model">em.hms.phc.clinic.visit</field>
+    <record id="em_hms_general_clinic_visit_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.general.clinic.visit.view.tree</field>
+        <field name="model">em.hms.general.clinic.visit</field>
         <field name="arch" type="xml">
-            <tree string="PHC Clinic Visit">
+            <tree string="General Clinic Visit">
                 <field name="visit_datetime" />
                 <field name="patient_id" />
                 <field name="clinic_id" />
@@ -34,11 +34,11 @@
         </field>
     </record>
 
-    <record id="em_hms_phc_clinic_visit_view_form" model="ir.ui.view">
-        <field name="name">em.hms.phc.clinic.visit.view.form</field>
-        <field name="model">em.hms.phc.clinic.visit</field>
+    <record id="em_hms_general_clinic_visit_view_form" model="ir.ui.view">
+        <field name="name">em.hms.general.clinic.visit.view.form</field>
+        <field name="model">em.hms.general.clinic.visit</field>
         <field name="arch" type="xml">
-            <form string="PHC Clinic Visit">
+            <form string="General Clinic Visit">
                 <sheet>
                     <group>
                         <group>
@@ -119,9 +119,9 @@
         </field>
     </record>
 
-    <record id="em_hms_phc_clinic_visit_action" model="ir.actions.act_window">
-        <field name="name">PHC Clinic Visits</field>
-        <field name="res_model">em.hms.phc.clinic.visit</field>
+    <record id="em_hms_general_clinic_visit_action" model="ir.actions.act_window">
+        <field name="name">General Clinic Visits</field>
+        <field name="res_model">em.hms.general.clinic.visit</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>

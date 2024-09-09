@@ -9,25 +9,6 @@ class EmHmsNutritionTeam(models.Model):
     code = fields.Char('Team Code', required=True)
     name = fields.Char('Name', required=True)
     name_lang = fields.Char('Arabic Name', required=True)
-    
-TOPIC_CATEGORY_LIST = [
-    ('general', 'General'),
-    ('iyc', 'IYC'),
-    ('cholera', 'Cholera'),
-    ('corona', 'Corona'),
-    ('wash', 'WASH'),
-    ('chronic', 'Chronic Diseases'),
-    ('infectious', 'Infectious Diseases'),
-    ('rh', 'Reproductive Health'),
-    ('breastfeeding', 'Breastfeeding'),
-    ('relactating', 'Relactating'),
-    ('beastfeeding_difficulties', 'Breastfeeding Difficulties'),
-    ('pregnant_breastfeeding', 'Pregnant And Breastfeeding'),
-    ('child_illness', 'Child Illness'),
-    ('supplementary_feeding', 'Supplementary Feeding'),
-    ('psychological_support', 'Psychological Support'),
-    ('bms', 'BMS')
-]
 
 class EmHmsNutritionTopic(models.Model):
     _name = 'em.hms.nutrition.topic'
@@ -36,139 +17,118 @@ class EmHmsNutritionTopic(models.Model):
 
     name = fields.Char('Name', required=True)
     name_lang = fields.Char('Arabic Name', required=True)
-    category = fields.Selection(TOPIC_CATEGORY_LIST, string='Category', required=True)
+    parent_id = fields.Many2one('em.hms.nutrition.topic', string='Parent')
+    child_ids = fields.One2many('em.hms.nutrition.topic', 'parent_id', string='Items')
+
+class EmHmsNutritionBNFVisit(models.Model):
+    _name = 'em.hms.nutrition.bnf.visit'
+    _description = 'Nutrition Beneficiary Visit'
+    _rec_name = 'name'
     
+    name = fields.Char('Visit Code', required=True)
+
 
 class EmHmsNutritionGroupSession(models.Model):
     _name = 'em.hms.nutrition.group.session'
     _description = 'Group Session'
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
-    
-    def _get_session_group_no(self):
-        existing_records = self.search([('name', '!=', '1')])
-        if existing_records:
-            max_value = max(existing_records.mapped('name'), default=0)
-            max_iter = int(str(max_value).replace('NGS-', ''))
-            return_value = f"NGS-{(max_iter+1):03d}"
-            return return_value
-        else:
-            return 'NGS-001'
         
-    name = fields.Char('Group Session NO', required=True, default=_get_session_group_no, tracking=True)
+    session_type = fields.Selection([
+        ('general', 'General'),
+        ('mtmsg', 'MTMSG'),
+        ('ftfsg', 'FTFSG'),
+    ], string='Session Type', required=True)
+    name = fields.Char('Group Session No', tracking=True)
     project_id = fields.Many2one('project.project', string='Project Number', tracking=True)
-    visit_date = fields.Date('Date Of Visit', required=True, tracking=True)
-    _sql_constraints = [
-        ('check_visit_date', 'CHECK (visit_date <= fields.Date.today())',
-         'Visit Date Must Not Be Newer Than Today.'),
-    ]
+    visit_date = fields.Date('Visit Date', required=True, tracking=True)
+    session_presenter_name = fields.Char('Session Presenter Name', tracking=True)
     
+    country_id = fields.Many2one('res.country', string='Country')
     state_id = fields.Many2one('res.country.state', string='Governorate', required=True, tracking=True)
     district_id = fields.Many2one('em.country.district', string='District', required=True, tracking=True)
     sub_district_id = fields.Many2one('em.country.sub.district', string='Sub-District', required=True, tracking=True)
     location_id = fields.Many2one('em.location', string='Village / City', required=True, tracking=True)
     camp_name = fields.Char('Camp Name', required=True, tracking=True)
     
-    team_code_id = fields.Many2one('em.hms.nutrition.team', string='Team Code', required=True, tracking=True)
+    team_id = fields.Many2one('em.hms.nutrition.team', string='Team', required=True, tracking=True)
     service_place = fields.Selection([
         ('fixed', 'Fixed'),
         ('mobile', 'Mobile')
-    ], string='Place Where The Service Is Provided', required=True, tracking=True)
-    number_pregnants_qt_eq_18 = fields.Integer('Number Of Pregnant women Over Or Equal To 18 Years', required=True, tracking=True)
-    number_pregnants_lt_18 = fields.Integer('Number Of Pregnant women Under 18 Years', required=True, tracking=True)
-    number_breastfeeding_qt_eq_18 = fields.Integer('Number Of Breastfeeding women Over Or Equal To 18 Years', required=True, tracking=True)
-    number_breastfeeding_lt_18 = fields.Integer('Number Of Breastfeeding women Under 18 Years', required=True, tracking=True)
-    number_female_caregivers_qt_eq_18 = fields.Integer('Number Of Female Caregivers Over Or Equal To 18 Years', required=True, tracking=True)
-    number_female_caregivers_lt_18 = fields.Integer('Number Of Female Caregivers Under 18 Years', required=True, tracking=True)
-    number_male_caregivers_qt_eq_18 = fields.Integer('Number Of Male Caregivers Over Or Equal To 18 Years', tracking=True)
-    number_male_caregivers_lt_18 = fields.Integer('Number Of Male Caregivers Under 18 Years', tracking=True)
-    
-    session_topic_ids = fields.Many2many('em.hms.nutrition.topic', 'session_group_topic_rel', 'group_session_id', 'session_topic_id', string='Session Topics', required=True, domain="[('category', '=', 'general')]")
-    session_topic_iyc_ids = fields.Many2many('em.hms.nutrition.topic', 'session_group_topic_iyc_rel', 'group_session_id', 'session_topic_iyc_id', string='IYC Topics', domain="[('category', '=', 'iyc')]")
-    other_iyc_topic = fields.Char('Other IYC Topic', tracking=True)
-    session_topic_cholera_ids = fields.Many2many('em.hms.nutrition.topic', 'session_group_topic_cholera_rel', 'group_session_id', 'session_topic_cholera_id', string='Cholera Topics', domain="[('category', '=', 'cholera')]")
-    other_cholera_topic = fields.Char('Other Corona Topic', tracking=True)
-    session_topic_corona_ids = fields.Many2many('em.hms.nutrition.topic', 'session_group_topic_corona_rel', 'group_session_id', 'session_topic_corona_id', string='Corona Topics', domain="[('category', '=', 'corona')]")
-    other_corona_topic = fields.Char('Other Corona Topic', tracking=True)
-    session_topic_wash_ids = fields.Many2many('em.hms.nutrition.topic', 'session_group_topic_wash_rel', 'group_session_id', 'session_topic_wash_id', string='WASH Topics', domain="[('category', '=', 'wash')]")
-    other_wash_topic = fields.Char('Other WASH Topic', tracking=True)
-    session_topic_chronic_ids = fields.Many2many('em.hms.nutrition.topic', 'session_group_topic_chronic_rel', 'group_session_id', 'session_topic_chronic_id', string='Chronic Diseases Topics', domain="[('category', '=', 'chronic_diseases')]")
-    other_chronic_topic = fields.Char('Other Chronic Diseases Topic', tracking=True)
-    session_topic_infectious_ids = fields.Many2many('em.hms.nutrition.topic', 'session_group_topic_infectious_rel', 'group_session_id', 'session_topic_infectious_id', string='Infectious Diseases Topics', domain="[('category', '=', 'infectious_diseases')]")
-    other_infectious_topic = fields.Char('Other Infectious Diseases Topic', tracking=True)
-    session_topic_rh_ids = fields.Many2many('em.hms.nutrition.topic', 'session_group_topic_rh_rel', 'group_session_id', 'session_topic_rh_id', string='Reproductive Health Topics', domain="[('category', '=', 'rh')]")
-    other_rh_topic = fields.Char('Other Reproductive Health Topic', tracking=True)
-    
-    is_iyc_topic = fields.Boolean(compute='_compute_is_iyc_topic', string='Is IYC Topic')
-    is_iyc_topic_other = fields.Boolean(compute='_compute_is_iyc_topic', string='Other IYC Topic')
-    is_cholera_topic = fields.Boolean(compute='_compute_is_cholera_topic', string='Is Cholera Topic')
-    is_cholera_topic_other = fields.Boolean(compute='_compute_is_cholera_topic', string='Other Cholera Topic')
-    is_corona_topic = fields.Boolean(compute='_compute_is_corona_topic', string='Is Corona Topic')
-    is_corona_topic_other = fields.Boolean(compute='_compute_is_corona_topic', string='Other Corona Topic')
-    is_wash_topic = fields.Boolean(compute='_compute_is_wash_topic', string='Is WASH Topic')
-    is_wash_topic_other = fields.Boolean(compute='_compute_is_wash_topic', string='Other WASH Topic')
-    is_chronic_topic = fields.Boolean(compute='_compute_is_chronic_topic', string='Is Chonic Diseases Topic')
-    is_chronic_topic_other = fields.Boolean(compute='_compute_is_chronic_topic', string='Other Chonic Diseases Topic')
-    is_infectious_topic = fields.Boolean(compute='_compute_is_infectious_topic', string='Is Infectious Diseases Topic')
-    is_infectious_topic_other = fields.Boolean(compute='_compute_is_infectious_topic', string='Other Infectious Diseases Topic')
-    is_rh_topic = fields.Boolean(compute='_compute_is_rh_topic', string='Is Reproductive Health Topic')
-    is_rh_topic_other = fields.Boolean(compute='_compute_is_rh_topic', string='Other Reproductive Health Topic')
-    
-    @api.depends('session_topic_ids', 'session_topic_iyc_ids')
-    def _compute_is_iyc_topic(self):
-        for record in self:
-            record.is_iyc_topic = 'IYC' in record.session_topic_ids.mapped('name') if record.session_topic_ids else False
-            record.is_iyc_topic_other = 'IYC' in record.session_topic_ids.mapped('name') and 'Other' in record.session_topic_iyc_ids.mapped('name') if record.session_topic_ids and record.session_topic_iyc_ids else False
-            
-    @api.depends('session_topic_ids', 'session_topic_cholera_ids')
-    def _compute_is_cholera_topic(self):
-        for record in self:
-            record.is_cholera_topic = 'Cholera' in record.session_topic_ids.mapped('name') if record.session_topic_ids else False
-            record.is_cholera_topic_other = 'Cholera' in record.session_topic_ids.mapped('name') and 'Other' in record.session_topic_cholera_ids.mapped('name') if record.session_topic_ids and record.session_topic_cholera_ids else False
-            
-    @api.depends('session_topic_ids', 'session_topic_corona_ids')
-    def _compute_is_corona_topic(self):
-        for record in self:
-            record.is_corona_topic = 'Corona' in record.session_topic_ids.mapped('name') if record.session_topic_ids else False
-            record.is_corona_topic_other = 'Corona' in record.session_topic_ids.mapped('name') and 'Other' in record.session_topic_corona_ids.mapped('name') if record.session_topic_ids and record.session_topic_corona_ids else False
-    
-    @api.depends('session_topic_ids', 'session_topic_wash_ids')
-    def _compute_is_wash_topic(self):
-        for record in self:
-            record.is_wash_topic = 'WASH' in record.session_topic_ids.mapped('name') if record.session_topic_ids else False
-            record.is_wash_topic_other = 'WASH' in record.session_topic_ids.mapped('name') and 'Other' in record.session_topic_wash_ids.mapped('name') if record.session_topic_ids and record.session_topic_wash_ids else False
-            
-    @api.depends('session_topic_ids', 'session_topic_chronic_ids')
-    def _compute_is_chronic_topic(self):
-        for record in self:
-            record.is_chronic_topic = 'Chronic Diseases' in record.session_topic_ids.mapped('name') if record.session_topic_ids else False
-            record.is_chronic_topic_other = 'Chronic Diseases' in record.session_topic_ids.mapped('name') and 'Other' in record.session_topic_chronic_ids.mapped('name') if record.session_topic_ids and record.session_topic_chronic_ids else False
-    
-    @api.depends('session_topic_ids', 'session_topic_infectious_ids')
-    def _compute_is_infectious_topic(self):
-        for record in self:
-            record.is_infectious_topic = 'Infectious Diseases' in record.session_topic_ids.mapped('name') if record.session_topic_ids else False
-            record.is_infectious_topic_other = 'Infectious Diseases' in record.session_topic_ids.mapped('name') and 'Other' in record.session_topic_infectious_ids.mapped('name') if record.session_topic_ids and record.session_topic_infectious_ids else False
-            
-    @api.depends('session_topic_ids', 'session_topic_rh_ids')
-    def _compute_is_rh_topic(self):
-        for record in self:
-            record.is_rh_topic = 'Reproductive Health' in record.session_topic_ids.mapped('name') if record.session_topic_ids else False
-            record.is_rh_topic_other = 'Reproductive Health' in record.session_topic_ids.mapped('name') and 'Other' in record.session_topic_rh_ids.mapped('name') if record.session_topic_ids and record.session_topic_rh_ids else False
-    
-    number_mothers_educated_muac_qt_eq_18 = fields.Integer('Number Of Mothers Who Received Education On Their MUAC Measurement Greater Than Or Equal To 18', required=True, tracking=True)
-    number_mothers_educated_muac_lt_18 = fields.Integer('Number Of Mothers Who Received Education On Their MUAC Measurement Under 18', required=True, tracking=True)
+    ], string='Service Place', required=True, tracking=True)
+    number_pregnants_gte_18 = fields.Integer('# Pregnant Women >= 18 Years', required=True, tracking=True)
+    number_pregnants_lt_18 = fields.Integer('# Pregnant Women < 18 Years', required=True, tracking=True)
+    number_breastfeeding_gte_18 = fields.Integer('# Breastfeeding Women >= 18 Years', required=True, tracking=True)
+    number_breastfeeding_lt_18 = fields.Integer('# Breastfeeding Women < 18 Years', required=True, tracking=True)
+    number_female_caregivers_gte_18 = fields.Integer('# Female Caregivers >= 18 Years', required=True, tracking=True)
+    number_female_caregivers_lt_18 = fields.Integer('# Female Caregivers < 18 Years', required=True, tracking=True)
+    number_male_caregivers_gte_18 = fields.Integer('# Male Caregivers >= 18 Years', tracking=True)
+    number_male_caregivers_lt_18 = fields.Integer('# Male Caregivers < 18 Years', tracking=True)
+
+    topic_ids = fields.One2many('em.hms.nutrition.group.session.topic', 'session_id', string='Topics')
+
+    number_mothers_educated_muac_gte_18 = fields.Integer('# Mothers MUAC Educated >= 18', required=True, tracking=True)
+    number_mothers_educated_muac_lt_18 = fields.Integer('# Mothers MUAC Educated On Their MUAC Measurement < 18', required=True, tracking=True)
+
+    bnf_ids = fields.One2many('em.hms.nutrition.group.session.bnf', 'session_id', string='Beneficiaries')
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
-    
+    _sql_constraints = [
+        (
+            'check_visit_date',
+            'CHECK (visit_date <= fields.Date.today())',
+            'Visit date cannot be in future.'
+        ),
+    ]
+
+    @api.onchange('sub_district_id')
+    def _onchange_sub_district_update_location_domain(self):
+        if self.sub_district_id:
+            return {'domain': {'location_id': [('sub_district_id', '=', self.sub_district_id.id)]}}
+        return {'domain': {'location_id': [(1, '=', 1)]}}
+
     @api.onchange('location_id')
     def _onchange_location_id(self):
         if self.location_id and not self.sub_district_id:
             self.sub_district_id = self.location_id.sub_district_id.id
             self.district_id = self.location_id.sub_district_id.district_id.id
             self.state_id = self.location_id.sub_district_id.district_id.state_id.id
+            self.country_id = self.location_id.sub_district_id.district_id.state_id.country_id.id
     
+    @api.model
+    def create(self, vals):
+        session_type = vals['session_type']
+        if session_type == 'general':
+            sequence_code = 'em.hms.nutrition.group.session.code'
+        elif session_type == 'mtmsg':
+            sequence_code = 'em.hms.nutrition.mtmsg.session.code'
+        elif session_type == 'ftfsg':
+            sequence_code = 'em.hms.nutrition.ftfsg.session.code'
+        else:
+            raise exceptions.ValidationError('Unexpected Error! Contact technical support.')
+
+        vals['name'] = self.sudo().env['ir.sequence'].next_by_code(sequence_code)
+        return super(EmHmsNutritionGroupSession, self).create(vals)
     
+class EmHmsNutritionGroupSessionTopic(models.Model):
+    _name = 'em.hms.nutrition.group.session.topic'
+    _description = 'Nutrition Group Session Topic'
     
+    session_id = fields.Many2one('em.hms.nutrition.group.session', string='Session', ondelete='cascade')
+    topic_id = fields.Many2one('em.hms.nutrition.topic', string='Main Topic', required=True)
+    sub_topic_ids = fields.Many2many('em.hms.nutrition.topic', string='Sub-Topic', required=True)
+    other_sub_topics = fields.Char('Other Sub-Topics')
+
+class EmHmsNutritionGroupSessionBNF(models.Model):
+    _name = 'em.hms.nutrition.group.session.bnf'
+    _description = 'Nutrition Beneficiary'
+    _rec_name = 'name'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     
+    session_id = fields.Many2one('em.hms.nutrition.group.session', string='Session', ondelete='cascade')
+    name = fields.Char('Beneficiary name', required=True, tracking=True)
+    name_lang = fields.Char('Arabic name', required=True, tracking=True)
+    age = fields.Integer('Beneficiary Age', tracking=True)
+    
+    visit_ids = fields.Many2many('em.hms.nutrition.bnf.visit', 'nutrition_bnf_visit_rel', 'bnf_id', 'visit_id', string='Beneficiary Visits')
