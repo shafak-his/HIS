@@ -113,7 +113,7 @@ class EmHmsNutritionScreeningChild(models.Model):
             
     is_beneficiary_referred = fields.Boolean('Based On The Beneficiary''s Condition, Has The Beneficiary Been Referred?', tracking=True)
     referral_place = fields.Char('Place Of Referral Beneficiary', default='شفق', tracking=True)
-    is_supplements_distributed = fields.Boolean('Were Nutritional Supplements Distributed To The Beneficiary?')
+    is_supplements_distributed = fields.Boolean('Were Nutritional Supplements Distributed To The Beneficiary?', tracking=True)
     materials_distributed = fields.Selection([
         ('nut', 'NUT Therapeutic Peanut Butter (Sachet)'),
         ('sup', 'Complementary Peanut Butter SUP (Envelope)'),

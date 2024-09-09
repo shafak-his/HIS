@@ -27,3 +27,4 @@ from . import nutrition_mtmsg
 from . import nutrition_ftfsg
 from . import nutrition_screening_child
 from . import nutrition_screening_woman
+from . import stabilization_center
