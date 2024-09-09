@@ -21,7 +21,9 @@
         'hr',
         'web_responsive',
         'web_m2x_options',
-        'disable_odoo_online'
+        'disable_odoo_online',
+        'sale',
+        'point_of_sale',
     ],
 
     'data': [

@@ -36,6 +36,11 @@
         <field name="model">em.hms.general.clinic.visit</field>
         <field name="arch" type="xml">
             <form string="General Clinic Visit">
+                <header>
+                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
+                </header>
                 <sheet>
                     <group>
                         <group>

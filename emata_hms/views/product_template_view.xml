@@ -16,6 +16,7 @@
                 <field name="uom_po_id" column_invisible="1" />
                 
                 <field name="detailed_type" column_invisible="1" />
+                <field name="available_in_pos" column_invisible="1" />
             </tree>
         </field>
     </record>
@@ -38,6 +39,7 @@
                         <field name="is_birth_medication" invisible="1" />
 
                         <field name="detailed_type" invisible="1" />
+                        <field name="available_in_pos" invisible="1" />
                     </group>
                 </sheet>
             <div class="oe_chatter">
@@ -54,7 +56,7 @@
         <field name="res_model">product.template</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('is_medication', '=', True)]</field>
-        <field name="context">{'default_is_medication': True, 'default_detailed_type': 'consu'}</field>
+        <field name="context">{'default_is_medication': True, 'default_detailed_type': 'product', 'default_available_in_pos': True, 'default_lst_price': 0}</field>
     </record>
 
     <record id="em_product_template_birth_medication_action" model="ir.actions.act_window">
@@ -62,7 +64,7 @@
         <field name="res_model">product.template</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('is_birth_medication', '=', True)]</field>
-        <field name="context">{'default_is_birth_medication': True, 'default_detailed_type': 'consu'}</field>
+        <field name="context">{'default_is_birth_medication': True, 'default_detailed_type': 'product', 'default_available_in_pos': True, 'default_lst_price': 0}</field>
     </record>
 
     <record id="em_product_template_medical_analysis_action" model="ir.actions.act_window">
@@ -70,7 +72,7 @@
         <field name="res_model">product.template</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('is_medical_analysis', '=', True)]</field>
-        <field name="context">{'default_is_medical_analysis': True, 'default_detailed_type': 'service'}</field>
+        <field name="context">{'default_is_medical_analysis': True, 'default_detailed_type': 'service', 'default_lst_price': 0}</field>
     </record>
 
     <record id="em_product_template_medical_imaging_action" model="ir.actions.act_window">
@@ -78,7 +80,7 @@
         <field name="res_model">product.template</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('is_medical_imaging', '=', True)]</field>
-        <field name="context">{'default_is_medical_imaging': True, 'default_detailed_type': 'service'}</field>
+        <field name="context">{'default_is_medical_imaging': True, 'default_detailed_type': 'service', 'default_lst_price': 0}</field>
     </record>
 
 </odoo>
