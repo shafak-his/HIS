@@ -20,9 +20,9 @@ class EmHmsRHSDelivery(models.Model):
     initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True)
     child_name = fields.Char('Name Of Child', tracking=True)
     
-    natural_births_count = fields.Integer('Number Of Natural Births', tracking=True)
-    cesarean_births_count = fields.Integer('Number Of Cesarean Births', tracking=True)
-    miscarriages_count = fields.Integer('Number Of Miscarriages', tracking=True)
+    natural_births_count = fields.Integer('# Natural Births', tracking=True)
+    cesarean_births_count = fields.Integer('# Cesarean Births', tracking=True)
+    miscarriages_count = fields.Integer('# Miscarriages', tracking=True)
     pregnancy_related_diseases = fields.Selection([
         ('gestational', 'Gestational'),
         ('gestational_diabetes', 'Gestational Diabetes'),
