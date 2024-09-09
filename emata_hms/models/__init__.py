@@ -1,4 +1,5 @@
 from . import product
+from . import sale_order
 from . import medication_request
 from . import analysis_request
 from . import image_request
