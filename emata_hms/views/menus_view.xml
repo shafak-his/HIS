@@ -239,22 +239,22 @@
             name="Group Sessions"
             parent="menu_em_hms_group_session_root"
             action="emata_hms.em_hms_nutrition_group_session_action"
-            sequence="41" />
+            sequence="1" />
         <menuitem id="menu_em_hms_mtmsg"
             name="MTMSG"
             parent="menu_em_hms_group_session_root"
             action="emata_hms.em_hms_nutrition_mtmsg_session_action"
-            sequence="42" />
+            sequence="2" />
         <menuitem id="menu_em_hms_ftfsg"
             name="FTFSG"
             parent="menu_em_hms_group_session_root"
             action="emata_hms.em_hms_nutrition_ftfsg_session_action"
-            sequence="43" />
+            sequence="3" />
 
         <menuitem id="menu_em_hms_malnutrition_screening"
             name="Malnutrition Screening"
             parent="menu_em_hms_nutrition_root"
-            sequence="44" />
+            sequence="42" />
         <menuitem id="menu_em_hms_screening_child"
             name="Children"
             parent="menu_em_hms_malnutrition_screening"
@@ -266,6 +266,12 @@
             action="emata_hms.em_hms_nutrition_screening_woman_action"
             sequence="2" />
 
+        <menuitem id="menu_em_hms_nutrition_stabilization_center"
+            name="Stabilization Center"
+            parent="menu_em_hms_nutrition_root"
+            action="emata_hms.em_hms_nutrition_stabilization_center_action"
+            sequence="43" />
+        
         <menuitem id="menu_em_hms_nutrition_master_data"
             name="Nutrition Master Data"
             parent="menu_em_hms_admin_root"

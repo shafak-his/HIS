@@ -57,6 +57,7 @@
         'views/nutrition_group_session.xml',
         'views/nutrition_screening_child.xml',
         'views/nutrition_screening_woman.xml',
+        'views/nutrition_stabilization_center.xml',
 
         'data/sequence_data.xml',
 

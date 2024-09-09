@@ -28,4 +28,4 @@ from . import dial_visit
 from . import nutrition_group_session
 from . import nutrition_screening_child
 from . import nutrition_screening_woman
-from . import stabilization_center
+from . import nutrition_stabilization_center

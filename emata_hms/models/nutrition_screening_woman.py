@@ -115,7 +115,7 @@ class EmHmsNutritionScreeningWoman(models.Model):
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
     _sql_constraints = [
-        ('check_visit_date', 'CHECK (visit_date <= fields.Date.today())', 'Visit date cannot be in future.'),
+        ('check_visit_date', 'CHECK (visit_date <= CURRENT_DATE)', 'Visit date cannot be in future.'),
         ('check_muac_measurement', 'CHECK (muac_measurement >= 190 and muac_measurement <= 400)', 'MUAC Measurement For Women should be between 190 and 400.'),
         ('check_infant_age', 'CHECK (infant_age >= 0 and infant_age <= 24)', 'Infant Age should be between 0 and 24.')
     ]

@@ -77,8 +77,8 @@ class EmHmsNutritionGroupSession(models.Model):
     _sql_constraints = [
         (
             'check_visit_date',
-            'CHECK (visit_date <= fields.Date.today())',
-            'Visit date cannot be in future.'
+            'CHECK (visit_date <= CURRENT_DATE)',
+            'Visit Date Must Not Be Newer Than Today.'
         ),
     ]
 
