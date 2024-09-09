@@ -26,7 +26,9 @@ class EmHmsDialUrology(models.Model):
 
     notes = fields.Char('Notes', tracking=True)
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
-    medication_request_ids = fields.Many2many('product.template', 'dial_urology_product_medication_rel','clinic_visit_id', 'product_id', string='Medication Requests',domain="[('is_medication', '=', True)]")
-    analysis_request_ids = fields.Many2many('product.template', 'dial_urology_product_analysis_rel','clinic_visit_id', 'product_id', string='Analysis Requests',domain="[('is_medical_analysis', '=', True)]")
-    image_request_ids = fields.Many2many('product.template', 'dial_urology_product_image_rel', 'clinic_visit_id','product_id', string='Image Requests',domain="[('is_medical_imaging', '=', True)]")
+
+    medication_request_ids = fields.One2many('em.hms.medication.request', 'dial_urology_id', string='Medication Requests')
+    analysis_request_ids = fields.One2many('em.hms.analysis.request', 'dial_urology_id', string='Analysis Requests')
+    image_request_ids = fields.One2many('em.hms.image.request', 'dial_urology_id', string='Image Requests')
+
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

@@ -7,11 +7,13 @@
         <field name="arch" type="xml">
             <tree string="Medical Service Items" editable="bottom">
                 <field name="name" />
+                <field name="uom_id" invisible="not is_medication" />
 
                 <field name="is_medication" column_invisible="1" />
                 <field name="is_medical_analysis" column_invisible="1" />
                 <field name="is_medical_imaging" column_invisible="1" />
                 <field name="is_birth_medication" column_invisible="1" />
+                <field name="uom_po_id" column_invisible="1" />
                 
                 <field name="detailed_type" column_invisible="1" />
             </tree>

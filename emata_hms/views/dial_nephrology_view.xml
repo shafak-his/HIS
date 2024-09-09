@@ -38,21 +38,9 @@
                         </group>
                     </group>
                     <group>
-                            <field name="medication_request_ids">
-                                <tree create="0" delete="0" editable="bottom">
-                                    <field name="name" />
-                                </tree>
-                            </field>
-                            <field name="analysis_request_ids">
-                                <tree create="0" delete="0" editable="bottom">
-                                    <field name="name" />
-                                </tree>
-                            </field>
-                            <field name="image_request_ids">
-                                <tree create="0" delete="0" editable="bottom">
-                                    <field name="name" />
-                                </tree>
-                            </field>
+                        <field name="medication_request_ids" />
+                        <field name="analysis_request_ids" />
+                        <field name="image_request_ids" />
                     </group>
                     <group>
                         <group>

@@ -1,4 +1,7 @@
 from . import product
+from . import medication_request
+from . import analysis_request
+from . import image_request
 from . import general_clinic_visit
 from . import clinic
 from . import icd10

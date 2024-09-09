@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_medication_request_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.medication.request.view.tree</field>
+        <field name="model">em.hms.medication.request</field>
+        <field name="arch" type="xml">
+            <tree string="Medication Requests" editable="bottom">
+                <field name="product_template_id" />
+                <field name="uom_id" />
+                <field name="qty" />
+                <field name="notes" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_medication_request_view_form" model="ir.ui.view">
+        <field name="name">em.hms.medication.request.view.form</field>
+        <field name="model">em.hms.medication.request</field>
+        <field name="arch" type="xml">
+            <form string="Medication Request">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="product_template_id" />
+                            <field name="uom_id" />
+                            <field name="qty" />
+                            <field name="notes" />
+                        </group> 
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_medication_request_action" model="ir.actions.act_window">
+        <field name="name">Medication Requests</field>
+        <field name="res_model">em.hms.medication.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

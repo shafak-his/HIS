@@ -58,6 +58,4 @@ class EmHmsMHGap(models.Model):
     other_closure_reason = fields.Char('Other Reason For Closure', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     service_provider_id = fields.Many2one('hr.employee', 'Service Provicer Name')
-    medication_request_ids = fields.Many2many('product.template', 'mh_gap_product_medication_rel', 'mh_gap_id', 'product_id', string='Medication Requests', domain="[('is_medication', '=', True)]")
-    
-    
+    medication_request_ids = fields.One2many('em.hms.medication.request', 'mh_gap_id', string='Medication Requests')
