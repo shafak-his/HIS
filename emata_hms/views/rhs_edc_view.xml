@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Clinical Conditions -->
+    <record id="em_hms_rhs_edc_clinical_condition_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.edc.clinical.condition.view.tree</field>
+        <field name="model">em.hms.rhs.edc.clinical.condition</field>
+        <field name="arch" type="xml">
+            <tree string="Clinical Conditions" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_edc_clinical_condition_action" model="ir.actions.act_window">
+        <field name="name">Clinical Conditions</field>
+        <field name="res_model">em.hms.rhs.edc.clinical.condition</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+
+    <!-- Symptoms -->
+    <record id="em_hms_rhs_edc_symptom_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.edc.symptom.view.tree</field>
+        <field name="model">em.hms.rhs.edc.symptom</field>
+        <field name="arch" type="xml">
+            <tree string="Symptoms" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_edc_symptom_action" model="ir.actions.act_window">
+        <field name="name">Symptoms</field>
+        <field name="res_model">em.hms.rhs.edc.symptom</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Signs -->
+    <record id="em_hms_rhs_edc_sign_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.edc.sign.view.tree</field>
+        <field name="model">em.hms.rhs.edc.sign</field>
+        <field name="arch" type="xml">
+            <tree string="Signs" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_edc_sign_action" model="ir.actions.act_window">
+        <field name="name">Signs</field>
+        <field name="res_model">em.hms.rhs.edc.sign</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- ASCUS -->
+    <record id="em_hms_rhs_edc_ascus_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.edc.ascus.view.tree</field>
+        <field name="model">em.hms.rhs.edc.ascus</field>
+        <field name="arch" type="xml">
+            <tree string="ASCUS" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_edc_ascus_action" model="ir.actions.act_window">
+        <field name="name">ASCUS</field>
+        <field name="res_model">em.hms.rhs.edc.ascus</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Management And Follow-Up Plans -->
+    <record id="em_hms_rhs_edc_plan_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.edc.plan.view.tree</field>
+        <field name="model">em.hms.rhs.edc.plan</field>
+        <field name="arch" type="xml">
+            <tree string="Management And Follow-Up Plans" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_edc_plan_action" model="ir.actions.act_window">
+        <field name="name">Management And Follow-Up Plans</field>
+        <field name="res_model">em.hms.rhs.edc.plan</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+
+    <!-- Main -->
+    <record id="em_hms_rhs_edc_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.edc.view.tree</field>
+        <field name="model">em.hms.rhs.edc</field>
+        <field name="arch" type="xml">
+            <tree string="EDCs">
+                <field name="patient_id" />
+                <field name="session_date" />
+                <field name="marital_status" />
+                <field name="number_marriages" optional="hide" />
+                <field name="first_marriage_age" optional="hide" />
+                <field name="first_pregnancy_age" optional="hide" />
+                <field name="number_pregnancies" optional="hide" />
+                <field name="number_births" optional="hide" />
+                <field name="is_disabled" optional="hide" />
+                <field name="clinical_condition_ids" widget="many2many_tags" optional="hide" />
+                <field name="symptom_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_symptom" optional="hide" />
+                <field name="sign_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_sign" optional="hide" />
+                <field name="ascus_ids" widget="many2many_tags" optional="hide" />
+                <field name="contraceptives_duration" optional="hide" />
+                <field name="hormonal_medications" optional="hide" />
+                <field name="last_menstrual_date" optional="hide" />
+                <field name="smear_day" optional="hide" />
+                <field name="is_smear_taken" optional="hide" />
+                <field name="last_smear_date" optional="hide" />
+                <field name="last_smear_result" optional="hide" />
+                <field name="is_microscopic_evaluation_accpted" optional="hide" />
+                <field name="eval_rejection_reason" optional="hide" />
+                <field name="smear_microscopic_evaluation" optional="hide" />
+                <field name="is_asch" optional="hide" />
+                <field name="is_nos" optional="hide" />
+                <field name="limit_result" optional="hide" />
+                <field name="cancer_result" optional="hide" />
+                <field name="plan_ids" widget="many2many_tags" optional="hide" />
+                <field name="number_months_resmear" optional="hide" />
+                <field name="supervisor_name" optional="hide" />
+                <field name="examiner_name" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_edc_view_form" model="ir.ui.view">
+        <field name="name">em.hms.rhs.edc.view.form</field>
+        <field name="model">em.hms.rhs.edc</field>
+        <field name="arch" type="xml">
+            <form string="EDC">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" />
+                            <field name="session_date" widget="date" />
+                            <field name="marital_status" />
+                            <field name="is_disabled" />
+                            <field name="clinical_condition_ids" widget="many2many_tags" />
+                        </group>
+                        <group>
+                            <field name="number_marriages" />
+                            <field name="first_marriage_age" />
+                            <field name="first_pregnancy_age" />
+                            <field name="number_pregnancies" />
+                            <field name="number_births" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="contraceptives_duration" />
+                            <field name="hormonal_medications" />
+                            <field name="last_menstrual_date" widget="date" />
+                            <field name="smear_day" />
+                            <field name="is_smear_taken" />
+                            <field name="last_smear_date" widget="date"
+                                invisible="is_smear_taken == False"
+                                required="is_smear_taken == True" />
+                            <field name="last_smear_result" invisible="is_smear_taken == False"
+                                required="is_smear_taken == True" />
+                        </group>
+                        <group>
+                            <field name="symptom_ids" widget="many2many_tags" />
+                            <field name="other_symptom" invisible="is_other_symptom == False"
+                            required="is_other_symptom == True"/>
+                            <field name="sign_ids" widget="many2many_tags" />
+                            <field name="other_sign" invisible="is_other_sign == False"
+                            required="is_other_sign == True" />
+                        
+                            <field name="is_other_symptom" invisible="1" />
+                            <field name="is_other_sign" invisible="1" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="is_microscopic_evaluation_accpted" />
+                            <field name="eval_rejection_reason"
+                                invisible="is_microscopic_evaluation_accpted == True"
+                                required="is_microscopic_evaluation_accpted == False" />
+                        </group>
+                        <group>
+                            <field name="smear_microscopic_evaluation" />
+                            <field name="ascus_ids" widget="many2many_tags"
+                                invisible="smear_microscopic_evaluation != 'abnormal'"
+                                required="smear_microscopic_evaluation == 'abnormal'" />
+                            <field name="is_asch"
+                                invisible="smear_microscopic_evaluation != 'abnormal'"
+                                required="smear_microscopic_evaluation == 'abnormal'" />
+                            <field name="is_nos"
+                                invisible="smear_microscopic_evaluation != 'abnormal'"
+                                required="smear_microscopic_evaluation == 'abnormal'" />
+                            <field name="limit_result"
+                                invisible="smear_microscopic_evaluation != 'borderline_result'"
+                                required="smear_microscopic_evaluation == 'borderline_result'" />
+                            <field name="cancer_result"
+                                invisible="smear_microscopic_evaluation != 'cancerous'"
+                                required="smear_microscopic_evaluation == 'cancerous'" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="plan_ids" widget="many2many_tags" />
+                            <field name="number_months_resmear" />
+                        </group>
+                        <group>
+                            <field name="supervisor_name" />
+                            <field name="examiner_name" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_edc_action" model="ir.actions.act_window">
+        <field name="name">EDCs</field>
+        <field name="res_model">em.hms.rhs.edc</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

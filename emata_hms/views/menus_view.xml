@@ -96,6 +96,32 @@
             parent="menu_em_hms_rhs_helper_lists"
             action="emata_hms.em_hms_rhs_wound_action"
             sequence="3" />
+        <menuitem id="menu_em_hms_rhs_edc_clinical_condition"
+            name="Clinical Conditions"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_edc_clinical_condition_action"
+            sequence="4" />
+        <menuitem id="menu_em_hms_rhs_edc_symptom"
+            name="Symptoms"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_edc_symptom_action"
+            sequence="5" />
+        <menuitem id="menu_em_hms_edc_sign"
+            name="Signs"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_edc_sign_action"
+            sequence="6" />
+        <menuitem id="menu_em_hms_edc_ascus"
+            name="ASCUS"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_edc_ascus_action"
+            sequence="7" />
+        <menuitem id="menu_em_hms_edc_plan"
+            name="Manegement And Follow-Up Plans"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_edc_plan_action"
+            sequence="8" />
+        
 
         <!-- General -->
         <menuitem id="menu_em_hms_general_root"
@@ -194,6 +220,11 @@
             parent="menu_em_hms_rhs_root"
             action="emata_hms.em_hms_rhs_delivery_action"
             sequence="33" />
+        <menuitem id="menu_em_hms_rhs_edc"
+            name="EDC"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_edc_action"
+            sequence="34" />
         
         <menuitem id="menu_em_hms_rhs_reporting_tables"
             name="Reporting Tables"
@@ -235,17 +266,17 @@
             name="Group Sessions"
             parent="menu_em_hms_nutrition_root"
             sequence="41" />
-        <menuitem id="menu_em_hms_group_session"
+        <menuitem id="menu_em_hms_nutrition_group_session"
             name="Group Sessions"
             parent="menu_em_hms_group_session_root"
             action="emata_hms.em_hms_nutrition_group_session_action"
             sequence="1" />
-        <menuitem id="menu_em_hms_mtmsg"
+        <menuitem id="menu_em_hms_nutrition_mtmsg"
             name="MTMSG"
             parent="menu_em_hms_group_session_root"
             action="emata_hms.em_hms_nutrition_mtmsg_session_action"
             sequence="2" />
-        <menuitem id="menu_em_hms_ftfsg"
+        <menuitem id="menu_em_hms_nutrition_ftfsg"
             name="FTFSG"
             parent="menu_em_hms_group_session_root"
             action="emata_hms.em_hms_nutrition_ftfsg_session_action"
@@ -286,7 +317,7 @@
             parent="menu_em_hms_nutrition_master_data"
             action="emata_hms.em_hms_nutrition_topic_action"
             sequence="2" />
-        <!-- <menuitem id="menu_em_hms_nutrition_bnf"
+        <!-- <menuitem id="menu_em_hms_nutrition_group_session_bnf"
             name="Beneficiaries"
             parent="menu_em_hms_nutrition_master_data"
             action="emata_hms.em_hms_nutrition_group_session_bnf_action"
@@ -301,6 +332,34 @@
             parent="menu_em_hms_nutrition_master_data"
             action="emata_hms.em_hms_nutrition_danger_sign_child_action"
             sequence="5" />
+        <menuitem id="menu_em_hms_chw_master_data"
+            name="CHW Master Data"
+            parent="menu_em_hms_admin_root"
+            sequence="47" />
+        <menuitem id="menu_em_hms_nutrition_team"
+            name="CHW Session Group Beneficiaries"
+            parent="menu_em_hms_chw_master_data"
+            action="emata_hms.em_hms_chw_group_session_bnf_action"
+            sequence="1" />
+            
+        <!-- CHW -->
+        <menuitem id="menu_em_hms_chw_root"
+            name="CHW"
+            web_icon="emata_hms,static/description/icon-hms.png"
+            sequence="5"
+        />
+        <menuitem id="menu_em_hms_chw_group_session"
+            name="Group Sessions"
+            parent="menu_em_hms_chw_root"
+            action="emata_hms.em_hms_chw_group_session_action"
+            sequence="51" />
+        <menuitem id="menu_em_hms_chw_individual_session"
+            name="Individual Sessions"
+            parent="menu_em_hms_chw_root"
+            action="emata_hms.em_hms_chw_individual_session_action"
+            sequence="52" />
+
+
 
         <!-- Pharmacy -->
         <menuitem id="menu_em_hms_pharmacy_root"

@@ -127,8 +127,8 @@ class EmHmsNutritionGroupSessionBNF(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
     session_id = fields.Many2one('em.hms.nutrition.group.session', string='Session', ondelete='cascade')
-    name = fields.Char('Beneficiary name', required=True, tracking=True)
-    name_lang = fields.Char('Arabic name', required=True, tracking=True)
+    name = fields.Char('Beneficiary Name', required=True, tracking=True)
+    name_lang = fields.Char('Arabic Name', required=True, tracking=True)
     age = fields.Integer('Beneficiary Age', tracking=True)
     
     visit_ids = fields.Many2many('em.hms.nutrition.bnf.visit', 'nutrition_bnf_visit_rel', 'bnf_id', 'visit_id', string='Beneficiary Visits')

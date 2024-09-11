@@ -17,6 +17,7 @@ from . import rhs_pnc_visit
 from . import rhs_delivery
 from . import rhs_delivery_labor
 from . import rhs_delivery_post_birth
+from . import rhs_edc
 from . import vital_signs
 from . import res_partner
 from . import master_models
@@ -30,3 +31,5 @@ from . import nutrition_group_session
 from . import nutrition_screening_child
 from . import nutrition_screening_woman
 from . import nutrition_stabilization_center
+from . import chw_group_session
+from . import chw_individual_session
