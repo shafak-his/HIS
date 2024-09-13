@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_gynochological_clinic_visit_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.gynochological.clinic.visit.view.tree</field>
+        <field name="model">em.hms.gynochological.clinic.visit</field>
+        <field name="arch" type="xml">
+            <tree string="Gynochological Clinic Visit">
+                <field name="visit_datetime" />
+                <field name="patient_id" />
+                <field name="clinic_id" />
+                <field name="current_complaint" optional="hide" />
+                <field name="diagnosis_id" optional="hide" />
+                <field name="procedures_followed" optional="hide" />
+                <field name="procedure_type" optional="hide" />
+                <field name="other_procedure_type" optional="hide" />
+                <field name="graduation_to" optional="hide" />
+                <field name="doctor_id" optional="hide" />
+                <field name="notes" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_gynochological_clinic_visit_view_form" model="ir.ui.view">
+        <field name="name">em.hms.gynochological.clinic.visit.view.form</field>
+        <field name="model">em.hms.gynochological.clinic.visit</field>
+        <field name="arch" type="xml">
+            <form string="Gynochological Clinic Visit">
+                <header>
+                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="visit_datetime" />
+                            <field name="patient_id" />
+                        </group>
+                        <group>
+                            <field name="clinic_id" />
+                            <field name="doctor_id" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="current_complaint" widget="text" />
+                        </group>
+                        <group>
+                            <field name="diagnosis_id" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                        <field name="procedures_followed" widget="text" />
+                            <field name="procedure_type" />
+                            <field name="other_procedure_type"
+                                invisible="procedure_type != 'other'" required="procedure_type == 'other'" />
+                            <field name="graduation_to" />
+                        </group>
+                        <group>
+                            <field name="medication_request_ids" />
+                            <field name="analysis_request_ids" />
+                            <field name="image_request_ids" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="notes" widget="text" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_gynochological_clinic_visit_action" model="ir.actions.act_window">
+        <field name="name">Gynochological Clinic Visits</field>
+        <field name="res_model">em.hms.gynochological.clinic.visit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

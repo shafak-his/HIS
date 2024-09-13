@@ -106,21 +106,41 @@
             parent="menu_em_hms_rhs_helper_lists"
             action="emata_hms.em_hms_rhs_edc_symptom_action"
             sequence="5" />
-        <menuitem id="menu_em_hms_edc_sign"
+        <menuitem id="menu_em_hms_rhs_edc_sign"
             name="Signs"
             parent="menu_em_hms_rhs_helper_lists"
             action="emata_hms.em_hms_rhs_edc_sign_action"
             sequence="6" />
-        <menuitem id="menu_em_hms_edc_ascus"
+        <menuitem id="menu_em_hms_rhs_edc_ascus"
             name="ASCUS"
             parent="menu_em_hms_rhs_helper_lists"
             action="emata_hms.em_hms_rhs_edc_ascus_action"
             sequence="7" />
-        <menuitem id="menu_em_hms_edc_plan"
+        <menuitem id="menu_em_hms_rhs_edc_plan"
             name="Manegement And Follow-Up Plans"
             parent="menu_em_hms_rhs_helper_lists"
             action="emata_hms.em_hms_rhs_edc_plan_action"
             sequence="8" />
+        <menuitem id="menu_em_hms_rhs_fp_problem"
+            name="Method-Related Health Problems"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_fp_problem_action"
+            sequence="9" />
+        <menuitem id="menu_em_hms_rhs_fp_pregnancy_check"
+            name="Check For Pregnancy"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_fp_pregnancy_check_action"
+            sequence="10" />
+        <menuitem id="menu_em_hms_rhs_fp_medical_history"
+            name="Medical History And Habits"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_fp_medical_history_action"
+            sequence="11" />
+        <menuitem id="menu_em_hms_rhs_fp_complaint"
+            name="Complaints"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_fp_complaint_action"
+            sequence="12" />
         
 
         <!-- General -->
@@ -225,6 +245,21 @@
             parent="menu_em_hms_rhs_root"
             action="emata_hms.em_hms_rhs_edc_action"
             sequence="34" />
+        <menuitem id="menu_em_hms_rhs_infertility_treatment"
+            name="Infertility Treatment"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_infertility_treatment_action"
+            sequence="35" />
+        <menuitem id="menu_em_hms_gynochological_clinic_visit"
+            name="Gynochological Visit"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_gynochological_clinic_visit_action"
+            sequence="36" />
+        <menuitem id="menu_em_hms_rhs_fp_visit"
+            name="FP"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_fp_action"
+            sequence="37" />
         
         <menuitem id="menu_em_hms_rhs_reporting_tables"
             name="Reporting Tables"
@@ -357,6 +392,11 @@
             name="Individual Sessions"
             parent="menu_em_hms_chw_root"
             action="emata_hms.em_hms_chw_individual_session_action"
+            sequence="52" />
+        <menuitem id="menu_em_hms_chw_rh_awareness"
+            name="RH Awareness"
+            parent="menu_em_hms_chw_root"
+            action="emata_hms.em_hms_chw_rh_awareness_action"
             sequence="52" />
 
 

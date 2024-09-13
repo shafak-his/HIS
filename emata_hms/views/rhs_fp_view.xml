@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Method-Related Health Problems -->
+    <record id="em_hms_rhs_fp_problem_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.fp.problem.view.tree</field>
+        <field name="model">em.hms.rhs.fp.problem</field>
+        <field name="arch" type="xml">
+            <tree string="Method-Related Health Problems" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_fp_problem_action" model="ir.actions.act_window">
+        <field name="name">Method-Related Health Problems</field>
+        <field name="res_model">em.hms.rhs.fp.problem</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Check For Pregnancy -->
+    <record id="em_hms_rhs_fp_pregnancy_check_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.fp.pregnancy.check.view.tree</field>
+        <field name="model">em.hms.rhs.fp.pregnancy.check</field>
+        <field name="arch" type="xml">
+            <tree string="Check For Pregnancy" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_fp_pregnancy_check_action" model="ir.actions.act_window">
+        <field name="name">Check For Pregnancy</field>
+        <field name="res_model">em.hms.rhs.fp.pregnancy.check</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Medical History And Habits -->
+    <record id="em_hms_rhs_fp_medical_history_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.fp.medical.history.view.tree</field>
+        <field name="model">em.hms.rhs.fp.medical.history</field>
+        <field name="arch" type="xml">
+            <tree string="Medical History And Habits" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_fp_medical_history_action" model="ir.actions.act_window">
+        <field name="name">Medical History And Habits</field>
+        <field name="res_model">em.hms.rhs.fp.medical.history</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Complaints -->
+    <record id="em_hms_rhs_fp_complaint_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.fp.complaint.view.tree</field>
+        <field name="model">em.hms.rhs.fp.complaint</field>
+        <field name="arch" type="xml">
+            <tree string="Complaints" editable="bottom">
+                <field name="name" />
+                <field name="name_lang" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_fp_complaint_action" model="ir.actions.act_window">
+        <field name="name">Complaints</field>
+        <field name="res_model">em.hms.rhs.fp.complaint</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Main -->
+    <record id="em_hms_rhs_fp_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.fp.view.tree</field>
+        <field name="model">em.hms.rhs.fp</field>
+        <field name="arch" type="xml">
+            <tree string="FPs">
+                <field name="patient_id" />
+                <field name="husband_name" />
+                <field name="pregnancies_count" optional="hide" />
+                <field name="births" optional="hide" />
+                <field name="miscarriages_count" optional="hide" />
+                <field name="live_births" optional="hide" />
+                <field name="last_birth_date" optional="hide" />
+                <field name="is_last_birth_alive" optional="hide" />
+                <field name="breastfeeding_method" optional="hide" />
+                <field name="last_menstrual_date" optional="hide" />
+                <field name="is_contraceptive_method" optional="hide" />
+                <field name="contraceptive_method" optional="hide" />
+                <field name="is_method_staisfying" optional="hide" />
+                <field name="method_problem_ids" widget="many2many_tags" optional="hide" />
+                <field name="usage_duration" optional="hide" />
+                <field name="is_method_stopped" optional="hide" />
+                <field name="stopping_date" optional="hide" />
+                <field name="stopping_reason" optional="hide" />
+                <field name="pregnancy_check_ids" widget="many2many_tags" optional="hide" />
+                <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="current_complaint_ids" widget="many2many_tags" optional="hide" />
+                <field name="recommendations" optional="hide" />
+                <field name="examiner_id" optional="hide" />
+                <field name="next_visit_date" optional="hide" />
+                <field name="notes" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_fp_view_form" model="ir.ui.view">
+        <field name="name">em.hms.rhs.fp.view.form</field>
+        <field name="model">em.hms.rhs.fp</field>
+        <field name="arch" type="xml">
+            <form string="FP">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" />
+                            <field name="husband_name" />
+                            <field name="pregnancies_count" />
+                            <field name="births" />
+                            <field name="miscarriages_count" />
+                        </group>
+                        <group>
+                            <field name="live_births" />
+                            <field name="last_birth_date" />
+                            <field name="is_last_birth_alive" />
+                            <field name="breastfeeding_method" />
+                            <field name="last_menstrual_date" />
+                        </group>
+                    </group>
+                    <separator string="Contraceptive Method" />
+                    <group>
+                        <group>
+                            <field name="is_contraceptive_method" />
+                            <field name="contraceptive_method"
+                                invisible="is_contraceptive_method == False"
+                                required="is_contraceptive_method == True" />
+                            <field name="is_method_staisfying"
+                                invisible="is_contraceptive_method == False"
+                                required="is_contraceptive_method == True" />
+                            <field name="method_problem_ids" widget="many2many_tags"
+                                invisible="is_contraceptive_method == False"
+                                required="is_contraceptive_method == True" />
+                        </group>
+                        <group>
+                            <field name="usage_duration"
+                                invisible="is_contraceptive_method == False"
+                                required="is_contraceptive_method == True" />
+                            <field name="is_method_stopped"
+                                invisible="is_contraceptive_method == False"
+                                required="is_contraceptive_method == True" />
+                            <field name="stopping_date"
+                                invisible="is_contraceptive_method == False or is_method_stopped == False"
+                                required="is_contraceptive_method == True and is_method_stopped == True" />
+                            <field name="stopping_reason"
+                                invisible="is_contraceptive_method == False or is_method_stopped == False"
+                                required="is_contraceptive_method == True and is_method_stopped == True" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="pregnancy_check_ids" widget="many2many_tags" />
+                            <field name="medical_history_ids" widget="many2many_tags"  />
+                            <field name="current_complaint_ids" widget="many2many_tags" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="recommendations" />
+                            <field name="examiner_id" />
+                            <field name="next_visit_date" />
+                            <field name="notes" widget="text" />
+                        </group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_fp_action" model="ir.actions.act_window">
+        <field name="name">FPs</field>
+        <field name="res_model">em.hms.rhs.fp</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

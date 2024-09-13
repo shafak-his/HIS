@@ -47,6 +47,8 @@
         'views/rhs_delivery_labor_view.xml',
         'views/rhs_delivery_post_birth_view.xml',
         'views/rhs_edc_view.xml',
+        'views/rhs_infertility_treatment_view.xml',
+        'views/rhs_fp_view.xml',
         'views/vital_signs_view.xml',
         'views/master_models_view.xml',
         'views/res_partner_view.xml',
@@ -63,6 +65,8 @@
         'views/nutrition_stabilization_center.xml',
         'views/chw_group_session.xml',
         'views/chw_individual_session.xml',
+        'views/chw_rh_awareness.xml',
+        'views/gynochological_clinic_visit_view.xml',
 
         'data/sequence_data.xml',
 

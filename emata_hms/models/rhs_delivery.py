@@ -3,7 +3,7 @@ from odoo import _, api, fields, models, exceptions, tools
 
 class EmHmsRHSDelivery(models.Model):
     _name = 'em.hms.rhs.delivery'
-    _description = 'RH Service - Normal Delivery'
+    _description = 'Normal Delivery'
     _rec_name = 'patient_id'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     

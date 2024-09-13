@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_rhs_infertility_treatment_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.infertility.treatment.view.tree</field>
+        <field name="model">em.hms.rhs.infertility.treatment</field>
+        <field name="arch" type="xml">
+            <tree string="Infertility Treatments">
+                <field name="patient_id" />
+                <field name="visit_date" />
+                <field name="husband_name" />
+                <field name="miarriages_count" optional="hide" />
+                <field name="pregnancies_count" optional="hide" />
+                <field name="miscarriages_count" optional="hide" />
+                <field name="deaths_count" optional="hide" />
+                <field name="last_marriage_date" optional="hide" />
+                <field name="births" optional="hide" />
+                <field name="alives_count" optional="hide" />
+                <field name="normal_births_count" optional="hide" />
+                <field name="cesarean_births_count" optional="hide" />
+                <field name="medical_history" optional="hide" />
+                <field name="surgical_history" optional="hide" />
+                <field name="is_husband_tested" optional="hide" />
+                <field name="husband_analysis" optional="hide" />
+                <field name="explain_abnormal" optional="hide" />
+                <field name="husband_analysis_date" optional="hide" />
+                <field name="wife_hormonal_tests" optional="hide" />
+                <field name="is_ovulation_natural1" optional="hide" />
+                <field name="ovum_measuring_natural1" optional="hide" />
+                <field name="is_ovulation_natural2" optional="hide" />
+                <field name="ovum_measuring_natural2" optional="hide" />
+                <field name="is_ovulation_natural3" optional="hide" />
+                <field name="ovum_measuring_natural3" optional="hide" />
+                <field name="medication_request_ids" widget="many2many_tags" optional="hide" />
+                <field name="is_ovulation_treatment1" optional="hide" />
+                <field name="ovum_measuring_treatment1" optional="hide" />
+                <field name="is_ovulation_treatment2" optional="hide" />
+                <field name="ovum_measuring_treatment2" optional="hide" />
+                <field name="is_ovulation_treatment3" optional="hide" />
+                <field name="ovum_measuring_treatment3" optional="hide" />
+                <field name="uterus_image" />
+                <field name="is_intrauterine_injected" optional="hide" />
+                <field name="is_laparoscopy" optional="hide" />
+                <field name="laparoscopy_result" optional="hide" />
+                <field name="laparoscopy_attachment" optional="hide" />
+                <field name="is_hysteroscopy" optional="hide" />
+                <field name="hysteroscopy_result" optional="hide" />
+                <field name="hysteroscopy_attachment" optional="hide" />
+                <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_infertility_treatment_view_form" model="ir.ui.view">
+        <field name="name">em.hms.rhs.infertility.treatment.view.form</field>
+        <field name="model">em.hms.rhs.infertility.treatment</field>
+        <field name="arch" type="xml">
+            <form string="Infertility Treatment">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" />
+                            <field name="visit_date" />
+                            <field name="husband_name" />
+                        </group>
+                        <group>
+                            <field name="miarriages_count" />
+                            <field name="pregnancies_count" />
+                            <field name="miscarriages_count" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="deaths_count" />
+                            <field name="last_marriage_date" />
+                            <field name="births" />
+                            <field name="alives_count" />
+                        </group>
+                        <group>
+                            <field name="normal_births_count" />
+                            <field name="cesarean_births_count" />
+                            <field name="medical_history" />
+                            <field name="surgical_history" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="is_husband_tested" />
+                            <field name="husband_analysis" invisible="is_husband_tested == False" required="is_husband_tested == True" />
+                            <field name="explain_abnormal"  invisible="husband_analysis != 'abnormal'" required="husband_analysis == 'abnormal'" />
+                            <field name="husband_analysis_date"  invisible="is_husband_tested == False" required="is_husband_tested == True" />
+                        </group>
+                        <group>
+                            <field name="wife_hormonal_tests" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="is_ovulation_natural1" />
+                            <field name="ovum_measuring_natural1" invisible="is_ovulation_natural1 == False" required="is_ovulation_natural1 == True" />
+                            <field name="is_ovulation_natural2" />
+                            <field name="ovum_measuring_natural2" invisible="is_ovulation_natural2 == False" required="is_ovulation_natural2 == True" />
+                            <field name="is_ovulation_natural3" />
+                            <field name="ovum_measuring_natural3" invisible="is_ovulation_natural3 == False" required="is_ovulation_natural3 == True" />
+                            <field name="medication_request_ids" widget="many2many_tags" />
+                        </group>
+                        <group>
+                            <field name="is_ovulation_treatment1" />
+                            <field name="ovum_measuring_treatment1" invisible="is_ovulation_treatment1 == False" required="is_ovulation_treatment1 == True" />
+                            <field name="is_ovulation_treatment2" />
+                            <field name="ovum_measuring_treatment2" invisible="is_ovulation_treatment2 == False" required="is_ovulation_treatment2 == True" />
+                            <field name="is_ovulation_treatment3" />
+                            <field name="ovum_measuring_treatment3" invisible="is_ovulation_treatment3 == False" required="is_ovulation_treatment3 == True" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="uterus_image" />
+                            <field name="is_intrauterine_injected" />
+                            <field name="is_laparoscopy" />
+                            <field name="laparoscopy_result" invisible="is_laparoscopy == False" required="is_laparoscopy == True" />
+                            <field name="laparoscopy_attachment" invisible="is_laparoscopy == False" required="is_laparoscopy == True" />
+                        </group>
+                        <group>
+                            <field name="is_hysteroscopy" />
+                            <field name="hysteroscopy_result" invisible="is_hysteroscopy == False" required="is_hysteroscopy == True" />
+                            <field name="hysteroscopy_attachment" invisible="is_hysteroscopy == False" required="is_hysteroscopy == True" />
+                            <field name="analysis_request_ids" widget="many2many_tags" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_infertility_treatment_action" model="ir.actions.act_window">
+        <field name="name">Infertility Treatments</field>
+        <field name="res_model">em.hms.rhs.infertility.treatment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>
