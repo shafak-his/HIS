@@ -1,8 +1,8 @@
 from odoo import _, api, fields, models, exceptions, tools
 
 
-class EmHmsCHWRHAwareness(models.Model):
-    _name = 'em.hms.chw.rh.awareness'
+class EmHmsRHAwareness(models.Model):
+    _name = 'em.hms.rh.awareness'
     _description = 'RH Awareness'
     _rec_name = 'patient_id'
     _inherit = ['mail.thread', 'mail.activity.mixin']

@@ -255,11 +255,16 @@
             parent="menu_em_hms_rhs_root"
             action="emata_hms.em_hms_gynochological_clinic_visit_action"
             sequence="36" />
+        <menuitem id="menu_em_hms_rh_awareness"
+            name="Awareness"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rh_awareness_action"
+            sequence="37" />
         <menuitem id="menu_em_hms_rhs_fp_visit"
             name="FP"
             parent="menu_em_hms_rhs_root"
             action="emata_hms.em_hms_rhs_fp_action"
-            sequence="37" />
+            sequence="38" />
         
         <menuitem id="menu_em_hms_rhs_reporting_tables"
             name="Reporting Tables"
@@ -393,12 +398,7 @@
             parent="menu_em_hms_chw_root"
             action="emata_hms.em_hms_chw_individual_session_action"
             sequence="52" />
-        <menuitem id="menu_em_hms_chw_rh_awareness"
-            name="RH Awareness"
-            parent="menu_em_hms_chw_root"
-            action="emata_hms.em_hms_chw_rh_awareness_action"
-            sequence="52" />
-
+        
 
 
         <!-- Pharmacy -->

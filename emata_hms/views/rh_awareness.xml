@@ -3,9 +3,9 @@
 
 
     <!-- Main -->
-    <record id="em_hms_chw_rh_awareness_view_tree" model="ir.ui.view">
-        <field name="name">em.hms.chw.rh.awareness.view.tree</field>
-        <field name="model">em.hms.chw.rh.awareness</field>
+    <record id="em_hms_rh_awareness_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rh.awareness.view.tree</field>
+        <field name="model">em.hms.rh.awareness</field>
         <field name="arch" type="xml">
             <tree string="RH Awareness">
                 <field name="patient_id" />
@@ -21,9 +21,9 @@
         </field>
     </record>
 
-    <record id="em_hms_chw_rh_awareness_view_form" model="ir.ui.view">
-        <field name="name">em.hms.chw.rh.awareness.view.form</field>
-        <field name="model">em.hms.chw.rh.awareness</field>
+    <record id="em_hms_rh_awareness_view_form" model="ir.ui.view">
+        <field name="name">em.hms.rh.awareness.view.form</field>
+        <field name="model">em.hms.rh.awareness</field>
         <field name="arch" type="xml">
             <form string="RH Awareness">
                 <sheet>
@@ -56,9 +56,9 @@
         </field>
     </record>
 
-    <record id="em_hms_chw_rh_awareness_action" model="ir.actions.act_window">
+    <record id="em_hms_rh_awareness_action" model="ir.actions.act_window">
         <field name="name">RH Awareness</field>
-        <field name="res_model">em.hms.chw.rh.awareness</field>
+        <field name="res_model">em.hms.rh.awareness</field>
         <field name="view_mode">tree,form</field>
         <field name="domain"></field>
         <field name="context"></field>
