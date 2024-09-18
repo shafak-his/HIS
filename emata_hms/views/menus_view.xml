@@ -145,7 +145,7 @@
 
         <!-- General -->
         <menuitem id="menu_em_hms_general_root"
-            name="General"
+            name="General Clinic"
             web_icon="emata_hms,static/description/icon-heart.png"
             sequence="1"
         />
