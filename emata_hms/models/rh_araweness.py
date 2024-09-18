@@ -61,7 +61,6 @@ class EmHmsRHAwareness(models.Model):
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
-
     _sql_constraints = [
         (
             'check_session_date',

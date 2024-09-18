@@ -41,7 +41,6 @@ class EmHmsRHSANC(models.Model):
         for record in self:
             record.visits_count = len(record.visit_ids)
             
-            
     def action_get_anc_visits_record(self):
         self.ensure_one()
         return {

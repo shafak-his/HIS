@@ -35,6 +35,14 @@ class EmHmsGynochologicalClinicVisit(models.Model):
         ('draft', 'Draft'),
         ('done', 'Done'),
     ], string='Status', required=True, default='draft')
+    
+    _sql_constraints = [
+        (
+            'check_visit_datetime',
+            'CHECK (visit_datetime <= NOW())',
+            'Visit Date Must Not Be Newer Than Now.'
+        ),
+    ]
 
     def confirm_record(self):
         self.ensure_one()
@@ -71,10 +79,3 @@ class EmHmsGynochologicalClinicVisit(models.Model):
             'state': 'done'
         })
         
-    _sql_constraints = [
-        (
-            'check_visit_datetime',
-            'CHECK (visit_datetime <= NOW())',
-            'Visit Date Must Not Be Newer Than Now.'
-        ),
-    ]
