@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_patient_admission_visit_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.patient.admission.visit.view.tree</field>
+        <field name="model">em.hms.patient.admission.visit</field>
+        <field name="arch" type="xml">
+            <tree string="Doctor Visits">
+                <field name="patient_admission_id" />
+                <field name="visit_datetime" />
+                <field name="patient_id" />
+                <field name="doctor_id" />
+                <field name="ward_nurse_id" />
+                <field name="pulse" optional="hide" />
+                <field name="oxygenation" optional="hide" />
+                <field name="temperature" optional="hide" />
+                <field name="urine" optional="hide" />
+                <field name="stool" optional="hide" />
+                <field name="notes" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_patient_admission_visit_view_form" model="ir.ui.view">
+        <field name="name">em.hms.patient.admission.visit.view.form</field>
+        <field name="model">em.hms.patient.admission.visit</field>
+        <field name="arch" type="xml">
+            <form string="Doctor Visit">
+                <sheet>
+                    <group>
+                        <group>
+                            <!-- <field name="patient_admission_id" /> -->
+                            <field name="patient_id" />
+                            <field name="visit_datetime" />
+                        </group>
+                        <group>
+                            <field name="doctor_id" />
+                            <field name="ward_nurse_id" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="pulse" />
+                            <field name="oxygenation" />
+                        </group>
+                        <group>
+                            <field name="temperature" />
+                            <field name="urine" />
+                            <field name="stool" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes" widget="text" />
+                    </group>
+                    <group>
+                        <group>
+                        </group>
+                        <group>
+                            <field name="company_id" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_patient_admission_visit_action" model="ir.actions.act_window">
+        <field name="name">Doctor Visits</field>
+        <field name="res_model">em.hms.patient.admission.visit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

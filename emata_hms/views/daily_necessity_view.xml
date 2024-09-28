@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_daily_necessity_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.daily.necessity.view.tree</field>
+        <field name="model">em.hms.daily.necessity</field>
+        <field name="arch" type="xml">
+            <tree string="Daily Necessity">
+                <field name="activity_name" />
+                <field name="patient_admission_id" />
+                <field name="hospitalization_id" />
+                <field name="necessity_datetime" />
+                <field name="patient_id" />
+                <field name="ward_nurse_id" />
+                <!-- <field name="medication_request_id" optional="hide" /> -->
+                <field name="medication_id" optional="hide" />
+                <field name="dosage" optional="hide" />
+                <field name="rate" optional="hide" />
+                <field name="dose_taking_way" optional="hide" />
+                <field name="doctor_id" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_daily_necessity_view_form" model="ir.ui.view">
+        <field name="name">em.hms.daily.necessity.view.form</field>
+        <field name="model">em.hms.daily.necessity</field>
+        <field name="arch" type="xml">
+            <form string="Daily Necessity">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="activity_name" readonly="1" />
+                            <field name="patient_admission_id" invisible="activity_name != 'Patient Admission'" readonly="1" />
+                            <field name="hospitalization_id" invisible="activity_name != 'Hospitalization'" readonly="1" />
+                            <field name="necessity_datetime" />
+                            <field name="patient_id" />
+                            <field name="doctor_id" />
+                            <field name="ward_nurse_id" />
+                        </group>
+                        <group>
+                            <!-- <field name="medication_request_id" /> -->
+                            <field name="medication_id" />
+                            <field name="dosage" />
+                            <field name="rate" />
+                            <field name="dose_taking_way" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                        </group>
+                        <group>
+                            <field name="company_id" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_daily_necessity_action" model="ir.actions.act_window">
+        <field name="name">Daily Necessity</field>
+        <field name="res_model">em.hms.daily.necessity</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

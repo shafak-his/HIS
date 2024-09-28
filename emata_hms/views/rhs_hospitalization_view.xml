@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="em_hms_rhs_delivery_view_tree" model="ir.ui.view">
-        <field name="name">em.hms.rhs.delivery.view.tree</field>
-        <field name="model">em.hms.rhs.delivery</field>
+    <record id="em_hms_rhs_hospitalization_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.hospitalization.view.tree</field>
+        <field name="model">em.hms.rhs.hospitalization</field>
         <field name="arch" type="xml">
-            <tree string="Deliveries">
+            <tree string="Hospitalization">
                 <field name="patient_id" />
                 <field name="admission_date" />
                 <field name="admitting_midwife_id" optional="hide" />
@@ -16,8 +16,7 @@
                 <field name="medication_history_ids" widget="many2many_tags" optional="hide" />
                 <field name="surgical_history_ids" widget="many2many_tags" optional="hide" />
                 <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
-                <field name="initial_diagnosis" optional="hide" />
-                <field name="child_name" optional="hide" />
+                <field name="current_diagnosis" optional="hide" />
                 <field name="natural_births_count" optional="hide" />
                 <field name="cesarean_births_count" optional="hide" />
                 <field name="miscarriages_count" optional="hide" />
@@ -27,13 +26,7 @@
                 <field name="eco_auscultation" optional="hide" />
                 <field name="placenta" optional="hide" />
                 <field name="amniotic_fluid" optional="hide" />
-                <field name="birth_datetime" optional="hide" />
-                <field name="birth_medication_ids" widget="many2many_tags" optional="hide" />
-                <field name="birth_report" optional="hide" />
-                <field name="newborn_general_condition" optional="hide" />
-                <field name="newborn_gender" optional="hide" />
-                <field name="newborn_weight" optional="hide" />
-                <field name="is_breastfeeding_first_hour" optional="hide" />
+                <field name="other_findings" optional="hide" />
                 <field name="discharge_datetime" optional="hide" />
                 <field name="discharge_supervising_physician_id" optional="hide" />
                 <field name="discharge_duty_midwife_id" optional="hide" />
@@ -43,28 +36,30 @@
                 <field name="patient_companion_relationship" optional="hide" />
                 <field name="vital_signs_ids" widget="many2many_tags" optional="hide" />
                 <field name="labor_ids" widget="many2many_tags" optional="hide" />
-                <field name="post_birth_ids" widget="many2many_tags" optional="hide" />
+                <field name="monitoring_ids" widget="many2many_tags" optional="hide" />
+                <field name="necessity_ids" widget="many2many_tags" optional="hide" />
+                <field name="commitment_ids" widget="many2many_tags" optional="hide" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
     </record>
 
-    <record id="em_hms_rhs_delivery_view_form" model="ir.ui.view">
-        <field name="name">em.hms.rhs.delivery.view.form</field>
-        <field name="model">em.hms.rhs.delivery</field>
+    <record id="em_hms_rhs_hospitalization_view_form" model="ir.ui.view">
+        <field name="name">em.hms.rhs.hospitalization.view.form</field>
+        <field name="model">em.hms.rhs.hospitalization</field>
         <field name="arch" type="xml">
-            <form string="Delivery">
+            <form string="Hospitalization">
                 <header>
                     <div name="button_box" position="inside">
                         <!-- <button class="oe_stat_button" type="object" icon="fa-edit"
-                            name="action_get_delivery_labors_record">
+                            name="action_get_hospitalization_labors_record">
                             <field string="Labor Monitoring" name="labors_count"
                                 widget="statinfo" />
                         </button> -->
                     </div>
                     <div name="button_box" position="inside">
 <!--                        <button class="oe_stat_button" type="object" icon="fa-stethoscope"-->
-<!--                            name="action_get_delivery_births_record">-->
+<!--                            name="action_get_hospitalization_births_record">-->
 <!--                            <field string="Post-Birth Monitoring" name="births_count"-->
 <!--                                widget="statinfo" />-->
 <!--                        </button>-->
@@ -76,36 +71,38 @@
                         <field name="admission_date" widget="date" />
                         <field name="admitting_midwife_id" />
                         <field name="admitting_physician_id" />
-                        <field name="husband_name" />
-                        <field name="guardian_name" />
                     </group>
                     <group>
-                        <field name="medical_history_ids" context="{'default_patient_id': patient_id}">
-                            <tree create="1" delete="1" editable="bottom">
-                                <field name="name" />
-                                <field name="name_lang" />
-                            </tree>
-                        </field>
-                        <field name="surgical_history_ids" context="{'default_patient_id': patient_id}">
-                            <tree create="1" delete="1" editable="bottom">
-                                <field name="name" />
-                                <field name="name_lang" />
-                            </tree>
-                        </field>
-                        <field name="medication_history_ids" context="{'default_patient_id': patient_id}">
-                            <tree create="1" delete="1" editable="bottom">
-                                <field name="name" />
-                                <field name="name_lang" />
-                            </tree>
-                        </field>
-                        <field name="allergic_history_ids" context="{'default_patient_id': patient_id}">
-                            <tree create="1" delete="1" editable="bottom">
-                                <field name="name" />
-                                <field name="name_lang" />
-                            </tree>
-                        </field>
-                        <field name="child_name" />
+                        <field name="husband_name" />
+                        <field name="guardian_name" />
+                        <field name="current_diagnosis" />
                     </group>
+                </group>
+                <group>
+                    <field name="medical_history_ids" context="{'default_patient_id': patient_id}">
+                        <tree create="1" delete="1" editable="bottom">
+                            <field name="name" />
+                            <field name="name_lang" />
+                        </tree>
+                    </field>
+                    <field name="surgical_history_ids" context="{'default_patient_id': patient_id}">
+                        <tree create="1" delete="1" editable="bottom">
+                            <field name="name" />
+                            <field name="name_lang" />
+                        </tree>
+                    </field>
+                    <field name="medication_history_ids" context="{'default_patient_id': patient_id}">
+                        <tree create="1" delete="1" editable="bottom">
+                            <field name="name" />
+                            <field name="name_lang" />
+                        </tree>
+                    </field>
+                    <field name="allergic_history_ids" context="{'default_patient_id': patient_id}">
+                        <tree create="1" delete="1" editable="bottom">
+                            <field name="name" />
+                            <field name="name_lang" />
+                        </tree>
+                    </field>
                 </group>
                 <group>
                     <group>
@@ -148,6 +145,7 @@
                             <group>
                                 <field name="placenta" />
                                 <field name="amniotic_fluid" />
+                                <field name="other_findings" widget="text" />
                             </group>
                         </group>
                     </page>
@@ -164,31 +162,14 @@
                             </tree>
                         </field>
                     </page>
-                    <page name="birth_report_page" string="Birth Report">
-                        <group>
-                            <group>
-                                <field name="birth_datetime" widget="datetime" />
-                                <field name="birth_medication_ids" widget="many2many_tags" />
-                                <field name="birth_report" widget="text" />
-                                <field name="newborn_general_condition" />
-                            </group>
-                            <group>
-                                <field name="newborn_gender" widget="radio" />
-                                <field name="newborn_weight" />
-                                <field name="is_breastfeeding_first_hour" widget="checkbox" />
-                            </group>
-                        </group>
-                    </page>
-                    <page name="post_birth_page" string="Post-Birth Monitoring Table">
-                        <field name="post_birth_ids">
-                            <tree string="Post-Birth Monitoring">
-                                <field name="patient_id" />
-                                <field name="datetime" />
-                                <field name="pressure" />
-                                <field name="pulse" />
-                                <field name="temperature" />
-                                <field name="is_safety_ball" optional="hide" />
-                                <field name="is_urine_voiding" optional="hide" />
+                    <page name="monitoringss_page" string="Monitoring Table">
+                        <field name="monitoring_ids">
+                            <tree string="Monitoring">
+                                <field name="monitoring_time" />
+                                <field name="pressure" optional="hide" />
+                                <field name="pulse" optional="hide" />
+                                <field name="temperature" optional="hide" />
+                                <field name="is_urinary_output" optional="hide" />
                                 <field name="notes" optional="hide" />
                                 <field name="company_id" readonly="1" force_save="1" optional="hide" />
                             </tree>
@@ -219,9 +200,9 @@
         </field>
     </record>
 
-    <record id="em_hms_rhs_delivery_action" model="ir.actions.act_window">
-        <field name="name">Deliveries</field>
-        <field name="res_model">em.hms.rhs.delivery</field>
+    <record id="em_hms_rhs_hospitalization_action" model="ir.actions.act_window">
+        <field name="name">Hospitalization</field>
+        <field name="res_model">em.hms.rhs.hospitalization</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>

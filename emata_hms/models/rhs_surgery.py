@@ -1,9 +1,9 @@
 from odoo import _, api, fields, models, exceptions, tools
 
 
-class EmHmsRHSDelivery(models.Model):
-    _name = 'em.hms.rhs.delivery'
-    _description = 'Normal Delivery'
+class EmHmsRHSSurgery(models.Model):
+    _name = 'em.hms.rhs.surgery'
+    _description = 'Surgery'
     _rec_name = 'patient_id'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
@@ -13,10 +13,12 @@ class EmHmsRHSDelivery(models.Model):
     admitting_physician_id = fields.Many2one('hr.employee', string='Name Of Admitting Physician')
     husband_name = fields.Char('Name Of Husband', tracking=True)
     guardian_name = fields.Char('Name Of Patient\'s Guardian', tracking=True)
-    medical_history_ids = fields.Many2many('em.hms.medical.history', 'delivery_medical_history_rel', 'delivery_id', 'medical_history_id', string='Medical History')
-    surgical_history_ids = fields.Many2many('em.hms.surgical.history', 'delivery_surgical_history_rel', 'delivery_id', 'surgical_history_id', string='Surgical History')
-    medication_history_ids = fields.Many2many('em.hms.medication.history', 'delivery_medication_history_rel', 'delivery_id', 'medication_history_id', string='Drug History')
-    allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'delivery_allergic_history_rel', 'delivery_id', 'allergic_history_id', string='Allergic History')
+    medical_history_ids = fields.Many2many('em.hms.medical.history', 'surgery_medical_history_rel', 'surgery_id', 'medical_history_id', string='Medical History')
+    surgical_history_ids = fields.Many2many('em.hms.surgical.history', 'surgery_surgical_history_rel', 'surgery_id', 'surgical_history_id', string='Surgical History')
+    medication_history_ids = fields.Many2many('em.hms.medication.history', 'surgery_medication_history_rel', 'surgery_id', 'medication_history_id', string='Drug History')
+    allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'surgery_allergic_history_rel', 'surgery_id', 'allergic_history_id', string='Allergic History')
+    surgery_type_ids = fields.Many2many('em.hms.surgical.procedure', 'surgery_surgical_procedure_rel', 'surgery_id', 'surgical_procedure_id', string='Type Of Surgery', tracking=True)
+    other_surgery_type = fields.Char('Other Surgery Type', tracking=True)
     initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True)
     child_name = fields.Char('Name Of Child', tracking=True)
     
@@ -60,9 +62,10 @@ class EmHmsRHSDelivery(models.Model):
         ('amniotic_hydrocephalus', 'Amniotic Hydrocephalus')
     ], string='Amniotic Fluid', tracking=True)
     
-    birth_datetime = fields.Datetime('Date And Time Of Birth', tracking=True)
-    birth_medication_ids = fields.Many2many('product.template', 'rhs_delivery_product_birth_medication_rel', 'delivery_id', 'product_id', string='Medications Used During Birth', domain="[('is_birth_medication', '=', True)]")
-    birth_report = fields.Char('Birth Report', tracking=True)
+    surgery_datetime = fields.Datetime('Date And Time Of Surgery', tracking=True)
+    surgery_medication_ids = fields.Many2many('product.template', 'rhs_surgery_product_birth_medication_rel', 'surgery_id', 'product_id', string='Medications Used During Surgery', domain="[('is_surgery_medication', '=', True)]")
+    surgery_report = fields.Char('Birth Report', tracking=True)
+    is_cesarean_surgery = fields.Boolean('Is Cesarean Surgery?', tracking=True)
     newborn_general_condition = fields.Selection([
         ('good_vitality', 'Good Vitality'),
         ('transfer_to_care', 'Transfer To Care'),
@@ -95,59 +98,59 @@ class EmHmsRHSDelivery(models.Model):
     patient_companion_relationship = fields.Char('Relationship', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
-    labor_ids = fields.One2many('em.hms.labor', 'delivery_id', string='Labor Monitoring')
-    labors_count = fields.Integer(compute='_compute_labors_count', string='Labors Count')
-    vital_signs_ids = fields.One2many('em.hms.vital.signs', 'delivery_id', string='Vital Signs Monitoring')
+    vital_signs_ids = fields.One2many('em.hms.vital.signs', 'surgery_id', string='Vital Signs Monitoring')
     vital_signs_count = fields.Integer(compute='_compute_vital_signs_count', string='Vital Signs Reports')
-    post_birth_ids = fields.One2many('em.hms.post.surgery', 'delivery_id', string='Post-Birth Monitoring')
-    post_births_count = fields.Integer(compute='_compute_post_births_count', string='Post-Birth Reports')
+    labor_ids = fields.One2many('em.hms.labor', 'surgery_id', string='Labor Monitoring')
+    labors_count = fields.Integer(compute='_compute_labors_count', string='Labors Count')
+    post_surgery_ids = fields.One2many('em.hms.post.surgery', 'surgery_id', string='Post-Surgery Monitoring')
+    post_surgeries_count = fields.Integer(compute='_compute_post_surgeries_count', string='Post-Surgery Reports')
 
-    @api.depends('labor_ids')
-    def _compute_labors_count(self):
-        for record in self:
-            record.labors_count = len(record.labor_ids)
-            
+    
     @api.depends('vital_signs_ids')
     def _compute_vital_signs_count(self):
         for record in self:
             record.vital_signs_count = len(record.vital_signs_ids)
             
-    @api.depends('post_birth_ids')
-    def _compute_post_births_count(self):
+    @api.depends('labor_ids')
+    def _compute_labors_count(self):
         for record in self:
-            record.post_births_count = len(record.post_birth_ids)
+            record.labors_count = len(record.labor_ids)
             
-            
-    def action_get_delivery_labors_record(self):
-        self.ensure_one()
-        return {
-            'type': 'ir.actions.act_window',
-            'name': 'Labor Monitoring',
-            'view_mode': 'tree',
-            'res_model': 'em.hms.labor',
-            'domain': [('delivery_id', '=', self.id)],
-            'context': "{'create': False}"
-        }
+    @api.depends('post_surgery_ids')
+    def _compute_post_surgeries_count(self):
+        for record in self:
+            record.post_surgeries_count = len(record.post_surgery_ids)
+
+    # def action_get_surgery_labors_record(self):
+    #     self.ensure_one()
+    #     return {
+    #         'type': 'ir.actions.act_window',
+    #         'name': 'Labor Monitoring',
+    #         'view_mode': 'tree',
+    #         'res_model': 'em.hms.rhs.surgery.labor',
+    #         'domain': [('surgery_id', '=', self.id)],
+    #         'context': "{'create': False}"
+    #     }
         
-    def action_get_delivery_vital_signs_record(self):
-        self.ensure_one()
-        return {
-            'type': 'ir.actions.act_window',
-            'name': 'Vital Signs Monitoring',
-            'view_mode': 'tree',
-            'res_model': 'em.hms.vital.signs',
-            'domain': [('delivery_id', '=', self.id)],
-            'context': "{'create': False}"
-        }
+    # def action_get_surgery_vital_signs_record(self):
+    #     self.ensure_one()
+    #     return {
+    #         'type': 'ir.actions.act_window',
+    #         'name': 'Vital Signs Monitoring',
+    #         'view_mode': 'tree',
+    #         'res_model': 'em.hms.vital.signs',
+    #         'domain': [('surgery_id', '=', self.id)],
+    #         'context': "{'create': False}"
+    #     }
         
-    def action_get_delivery_post_births_record(self):
-        self.ensure_one()
-        return {
-            'type': 'ir.actions.act_window',
-            'name': 'Post-Birth Monitoring',
-            'view_mode': 'tree',
-            'res_model': 'em.hms.post.surgery',
-            'domain': [('delivery_id', '=', self.id)],
-            'context': "{'create': False}"
-        }
+    # def action_get_surgery_monitorings_record(self):
+    #     self.ensure_one()
+    #     return {
+    #         'type': 'ir.actions.act_window',
+    #         'name': 'Post-Birth Monitoring',
+    #         'view_mode': 'tree',
+    #         'res_model': 'em.hms.rhs.surgery.monitoring',
+    #         'domain': [('surgery_id', '=', self.id)],
+    #         'context': "{'create': False}"
+    #     }
 

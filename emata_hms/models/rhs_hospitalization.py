@@ -1,9 +1,9 @@
 from odoo import _, api, fields, models, exceptions, tools
 
 
-class EmHmsRHSDelivery(models.Model):
-    _name = 'em.hms.rhs.delivery'
-    _description = 'Normal Delivery'
+class EmHmsRHSHospitalization(models.Model):
+    _name = 'em.hms.rhs.hospitalization'
+    _description = 'Hospitalization'
     _rec_name = 'patient_id'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
@@ -13,12 +13,11 @@ class EmHmsRHSDelivery(models.Model):
     admitting_physician_id = fields.Many2one('hr.employee', string='Name Of Admitting Physician')
     husband_name = fields.Char('Name Of Husband', tracking=True)
     guardian_name = fields.Char('Name Of Patient\'s Guardian', tracking=True)
-    medical_history_ids = fields.Many2many('em.hms.medical.history', 'delivery_medical_history_rel', 'delivery_id', 'medical_history_id', string='Medical History')
-    surgical_history_ids = fields.Many2many('em.hms.surgical.history', 'delivery_surgical_history_rel', 'delivery_id', 'surgical_history_id', string='Surgical History')
-    medication_history_ids = fields.Many2many('em.hms.medication.history', 'delivery_medication_history_rel', 'delivery_id', 'medication_history_id', string='Drug History')
-    allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'delivery_allergic_history_rel', 'delivery_id', 'allergic_history_id', string='Allergic History')
-    initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True)
-    child_name = fields.Char('Name Of Child', tracking=True)
+    medical_history_ids = fields.Many2many('em.hms.medical.history', 'hospitalization_medical_history_rel', 'hospitalization_id', 'medical_history_id', string='Medical History')
+    surgical_history_ids = fields.Many2many('em.hms.surgical.history', 'hospitalization_surgical_history_rel', 'hospitalization_id', 'surgical_history_id', string='Surgical History')
+    medication_history_ids = fields.Many2many('em.hms.medication.history', 'hospitalization_medication_history_rel', 'hospitalization_id', 'medication_history_id', string='Drug History')
+    allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'hospitalization_allergic_history_rel', 'hospitalization_id', 'allergic_history_id', string='Allergic History')
+    current_diagnosis = fields.Char('Current Diagnosis', tracking=True)
     
     natural_births_count = fields.Integer('# Natural Births', tracking=True)
     cesarean_births_count = fields.Integer('# Cesarean Births', tracking=True)
@@ -59,22 +58,7 @@ class EmHmsRHSDelivery(models.Model):
         ('no_fluid', 'No Fluid'),
         ('amniotic_hydrocephalus', 'Amniotic Hydrocephalus')
     ], string='Amniotic Fluid', tracking=True)
-    
-    birth_datetime = fields.Datetime('Date And Time Of Birth', tracking=True)
-    birth_medication_ids = fields.Many2many('product.template', 'rhs_delivery_product_birth_medication_rel', 'delivery_id', 'product_id', string='Medications Used During Birth', domain="[('is_birth_medication', '=', True)]")
-    birth_report = fields.Char('Birth Report', tracking=True)
-    newborn_general_condition = fields.Selection([
-        ('good_vitality', 'Good Vitality'),
-        ('transfer_to_care', 'Transfer To Care'),
-        ('transfer_to_incubators', 'Transfer To Incubators'),
-        ('deceased', 'Deceased')
-    ], string='General Condition Of The Child', tracking=True)
-    newborn_gender = fields.Selection([
-        ('male', 'Male'),
-        ('female', 'Female')
-    ], string='Gender Of The Newborn', tracking=True)
-    newborn_weight = fields.Float('Weight Of The Newborn', tracking=True)
-    is_breastfeeding_first_hour = fields.Boolean('Breastfeeding Within The First Hour', tracking=True)
+    other_findings = fields.Char('Other Findings', tracking=True)
     
     discharge_datetime = fields.Datetime('Date Of Discharge And Time', tracking=True)
     discharge_supervising_physician_id = fields.Many2one('hr.employee', string='Supervising Physician')
@@ -95,59 +79,73 @@ class EmHmsRHSDelivery(models.Model):
     patient_companion_relationship = fields.Char('Relationship', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
-    labor_ids = fields.One2many('em.hms.labor', 'delivery_id', string='Labor Monitoring')
-    labors_count = fields.Integer(compute='_compute_labors_count', string='Labors Count')
-    vital_signs_ids = fields.One2many('em.hms.vital.signs', 'delivery_id', string='Vital Signs Monitoring')
+    vital_signs_ids = fields.One2many('em.hms.vital.signs', 'hospitalization_id', string='Vital Signs Monitoring')
     vital_signs_count = fields.Integer(compute='_compute_vital_signs_count', string='Vital Signs Reports')
-    post_birth_ids = fields.One2many('em.hms.post.surgery', 'delivery_id', string='Post-Birth Monitoring')
-    post_births_count = fields.Integer(compute='_compute_post_births_count', string='Post-Birth Reports')
-
-    @api.depends('labor_ids')
-    def _compute_labors_count(self):
-        for record in self:
-            record.labors_count = len(record.labor_ids)
-            
+    labor_ids = fields.One2many('em.hms.labor', 'hospitalization_id', string='Labor Monitoring')
+    labors_count = fields.Integer(compute='_compute_labors_count', string='Labors Count')
+    monitoring_ids = fields.One2many('em.hms.rhs.hospitalization.monitoring', 'hospitalization_id', string='Monitoring')
+    monitorings_count = fields.Integer(compute='_compute_monitorings_count', string='Monitorings Count')
+    necessity_ids = fields.One2many('em.hms.daily.necessity', 'hospitalization_id', string='Daily Necessity')
+    necessities_count = fields.Integer(compute='_compute_necessities_count', string='Daily Necessity Count')
+    commitment_ids = fields.One2many('em.hms.necessity.giving', 'hospitalization_id', string='Necessity Giving')
+    commitments_count = fields.Integer(compute='_compute_commitments_count', string='Necessity Giving Count')
+    
+    
     @api.depends('vital_signs_ids')
     def _compute_vital_signs_count(self):
         for record in self:
             record.vital_signs_count = len(record.vital_signs_ids)
             
-    @api.depends('post_birth_ids')
-    def _compute_post_births_count(self):
+    @api.depends('labor_ids')
+    def _compute_labors_count(self):
         for record in self:
-            record.post_births_count = len(record.post_birth_ids)
+            record.labors_count = len(record.labor_ids)
             
+    @api.depends('monitoring_ids')
+    def _compute_monitorings_count(self):
+        for record in self:
+            record.monitorings_count = len(record.monitoring_ids)
             
-    def action_get_delivery_labors_record(self):
+    @api.depends('necessity_ids')
+    def _compute_necessities_count(self):
+        for record in self:
+            record.necessities_count = len(record.necessity_ids)
+    
+    @api.depends('commitment_ids')
+    def _compute_commitments_count(self):
+        for record in self:
+            record.commitments_count = len(record.commitment_ids)
+            
+    def action_get_hospitalization_labors_record(self):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
             'name': 'Labor Monitoring',
             'view_mode': 'tree',
-            'res_model': 'em.hms.labor',
-            'domain': [('delivery_id', '=', self.id)],
+            'res_model': 'em.hms.rhs.hospitalization.labor',
+            'domain': [('hospitalization_id', '=', self.id)],
             'context': "{'create': False}"
         }
         
-    def action_get_delivery_vital_signs_record(self):
+    def action_get_hospitalization_vital_signs_record(self):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
             'name': 'Vital Signs Monitoring',
             'view_mode': 'tree',
             'res_model': 'em.hms.vital.signs',
-            'domain': [('delivery_id', '=', self.id)],
+            'domain': [('hospitalization_id', '=', self.id)],
             'context': "{'create': False}"
         }
         
-    def action_get_delivery_post_births_record(self):
+    def action_get_hospitalization_monitorings_record(self):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
             'name': 'Post-Birth Monitoring',
             'view_mode': 'tree',
-            'res_model': 'em.hms.post.surgery',
-            'domain': [('delivery_id', '=', self.id)],
+            'res_model': 'em.hms.rhs.hospitalization.monitoring',
+            'domain': [('hospitalization_id', '=', self.id)],
             'context': "{'create': False}"
         }
 

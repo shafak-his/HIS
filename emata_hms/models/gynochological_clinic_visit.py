@@ -40,7 +40,7 @@ class EmHmsGynochologicalClinicVisit(models.Model):
         (
             'check_visit_datetime',
             'CHECK (visit_datetime <= NOW())',
-            'Visit Date Must Not Be Newer Than Now.'
+            'Visit Date/Time Must Not Be Newer Than Now.'
         ),
     ]
 

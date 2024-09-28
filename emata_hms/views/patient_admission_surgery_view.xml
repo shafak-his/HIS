@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <!-- Main -->
+    <record id="em_hms_patient_admission_surgery_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.patient.admission.surgery.view.tree</field>
+        <field name="model">em.hms.patient.admission.surgery</field>
+        <field name="arch" type="xml">
+            <tree string="Surgeries">
+                <field name="patient_admission_id" />
+                <field name="patient_id" />
+                <field name="surgery_date" />
+                <field name="surgery_type" />
+                <field name="surgical_classification" optional="hide" />
+                <field name="surgical_specialty" optional="hide" />
+                <field name="bone_surgical_procedure_id" optional="hide" />
+                <field name="general_surgical_procedure_id" optional="hide" />
+                <field name="anesthesia_type" optional="hide" />
+                <field name="anesthesia_technician_id" optional="hide" />
+                <field name="surgical_report" optional="hide" />
+                <field name="anesthesia_report" optional="hide" />
+                <field name="notes" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_patient_admission_surgery_view_form" model="ir.ui.view">
+        <field name="name">em.hms.patient.admission.surgery.view.form</field>
+        <field name="model">em.hms.patient.admission.surgery</field>
+        <field name="arch" type="xml">
+            <form string="Surgery">
+                <sheet>
+                    <group>
+                        <group>
+                            <!-- <field name="patient_admission_id" /> -->
+                            <field name="patient_id" />
+                            <field name="surgery_date" />
+                            <field name="surgery_type" />
+                        </group>
+                        <group>
+                            <field name="surgical_classification" />
+                            <field name="surgical_specialty" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="bone_surgical_procedure_id" invisible="surgical_specialty != 'bone'" required="surgical_specialty == 'bone'" />
+                            <field name="general_surgical_procedure_id" invisible="surgical_specialty != 'general'" required="surgical_specialty == 'general'" />
+                        </group>
+                        <group>
+                            <field name="anesthesia_type" />
+                            <field name="anesthesia_technician_id" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="surgical_report" widget="text" />
+                        <field name="anesthesia_report" widget="text" />
+                        <field name="notes" widget="text" />
+                    </group>
+                    <group>
+                        <group>
+                        </group>
+                        <group>
+                            <field name="company_id" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_patient_admission_surgery_action" model="ir.actions.act_window">
+        <field name="name">Surgeries</field>
+        <field name="res_model">em.hms.patient.admission.surgery</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>
