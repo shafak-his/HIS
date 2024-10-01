@@ -2,20 +2,36 @@
 <odoo>
 
     <record id="em_hms_vital_signs_view_tree" model="ir.ui.view">
-        <field name="name">em.hms.vital.signs.view.tree</field>
-        <field name="model">em.hms.vital.signs</field>
+        <field name="name">em.hms.vital.sign.view.tree</field>
+        <field name="model">em.hms.vital.sign</field>
         <field name="arch" type="xml">
             <tree string="Vital Signs Monitoring" create="0" delete="0">
                 <field name="activity_name" />
                 <field name="delivery_id" optional="hide" />
                 <field name="hospitalization_id" optional="hide" />
                 <field name="surgery_id" optional="hide" />
+                <field name="incubator_admission_id" optional="hide" />
+                <field name="ward_admission_id" optional="hide" />
+                <field name="pediatric_surgery_id" optional="hide" />
+                <field name="icu_id" optional="hide" />
+                <field name="nicu_id" optional="hide" />
                 <field name="patient_id" />
                 <field name="datetime" />
                 <field name="pressure" optional="hide" />
                 <field name="pulse" optional="hide" />
                 <field name="temperature" optional="hide" />
                 <field name="awareness" optional="hide" />
+                <field name="oxygen" optional="hide" />
+                <field name="stool" optional="hide" />
+                <field name="urine" optional="hide" />
+                <field name="breathing" optional="hide" />
+                <field name="cyan" optional="hide" />
+                <field name="seizures" optional="hide" />
+                <field name="vomiting" optional="hide" />
+                <field name="blood_sugar" optional="hide" />
+                <field name="feeding_type" optional="hide" />
+                <field name="breastfeeding" optional="hide" />
+                <field name="ngt" optional="hide" />
                 <field name="notes" optional="hide" />
                 <field name="company_id" optional="hide" />
             </tree>
@@ -23,8 +39,8 @@
     </record>
 
     <record id="em_hms_vital_signs_view_form" model="ir.ui.view">
-        <field name="name">em.hms.vital.signs.view.form</field>
-        <field name="model">em.hms.vital.signs</field>
+        <field name="name">em.hms.vital.sign.view.form</field>
+        <field name="model">em.hms.vital.sign</field>
         <field name="arch" type="xml">
             <form string="Vital Signs Monitoring">
                 <sheet>
@@ -33,6 +49,12 @@
                             <field name="activity_name" readonly="1" />
                             <field name="delivery_id" invisible="activity_name != 'Delivery'" readonly="1" />
                             <field name="hospitalization_id" invisible="activity_name != 'Hospitalization'" readonly="1" />
+                            <field name="surgery_id" invisible="activity_name != 'RHS Surgery'" readonly="1" />
+                            <field name="incubator_admission_id" invisible="activity_name != 'Incubator Admission'" readonly="1" />
+                            <field name="ward_admission_id" invisible="activity_name != 'Ward Admission'" readonly="1" />
+                            <field name="pediatric_surgery_id" invisible="activity_name != 'Pediatric Surgery'" readonly="1" />
+                            <field name="icu_id" invisible="activity_name != 'ICU'" readonly="1" />
+                            <field name="nicu_id" invisible="activity_name != 'NICU'" readonly="1" />
                             <field name="patient_id" />
                             <field name="datetime" widget="datetime" />
                         </group>
@@ -41,6 +63,38 @@
                             <field name="pulse" />
                             <field name="temperature" />
                             <field name="awareness" />
+                        </group>
+                    </group>
+                    <group invisible="activity_name != 'Ward Admission' and activity_name != 'Pediatric Surgery'">
+                        <group>
+                            <field name="oxygen" />
+                            <field name="stool" />
+                            <field name="urine" />
+                            <field name="cyan" />
+                        </group>
+                        <group>
+                            <field name="breathing" />
+                            <field name="seizures" />
+                            <field name="vomiting" />
+                            <field name="blood_sugar" />
+                        </group>
+                    </group>
+                    <group invisible="activity_name != 'Ward Admission'">
+                        <group>
+                            <field name="feeding_type" />
+                            <field name="breastfeeding" invisible="feeding_type != 'breastfeeding'" required="feeding_type == 'breastfeeding'" />
+                            <field name="ngt" invisible="feeding_type != 'ngt'" required="feeding_type == 'ngt'" />
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <group invisible="activity_name != 'Pediatric Surgery'">
+                        <group>
+                            <field name="explosives" />
+                            <field name="oral_intake" />
+                        </group>
+                        <group>
+                            <field name="hair_reed" />
                         </group>
                     </group>
                     <group>
@@ -63,7 +117,7 @@
 
     <record id="em_hms_vital_signs_action" model="ir.actions.act_window">
         <field name="name">Vital Signs Monitoring</field>
-        <field name="res_model">em.hms.vital.signs</field>
+        <field name="res_model">em.hms.vital.sign</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>

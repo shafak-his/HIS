@@ -12,6 +12,14 @@ class EmHmsAnalysisRequest(models.Model):
     dial_nephrology_id = fields.Many2one('em.hms.dial.nephrology', string='Nephrology Visit')
     infertility_treatment_id = fields.Many2one('em.hms.rhs.infertility.treatment', string='Infertility Treatment')
     patient_admission_id = fields.Many2one('em.hms.patient.admission', string='Patient Admission')
-
+    incubator_admission_id = fields.Many2one('em.hms.pediatric.incubator.admission', string='Incubator Admission')
+    ward_admission_id = fields.Many2one('em.hms.pediatric.ward.admission', string='Ward Admission')
+    pediatric_surgery_id = fields.Many2one('em.hms.pediatric.surgery', string='Pediatric Surgery')
+    pediatric_clinic_id = fields.Many2one('em.hms.pediatric.clinic', string='Pediatric Clinic')
+    pediatric_surgery_clinic_id = fields.Many2one('em.hms.pediatric.surgery.clinic', string='Pediatric Surgery Clinic')
+    phototherapy_id = fields.Many2one('em.hms.pediatric.phototherapy', string='Phototherapy')
+    icu_id = fields.Many2one('em.hms.pediatric.icu', string='ICU')
+    nicu_id = fields.Many2one('em.hms.pediatric.nicu', string='NICU')
+    
     product_template_id = fields.Many2one('product.template', string='Product', domain="[('is_medical_analysis', '=', True)]", required=True)
     notes = fields.Char('Notes')

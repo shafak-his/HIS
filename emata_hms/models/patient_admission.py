@@ -49,7 +49,7 @@ class EmHmsPatientAdmission(models.Model):
     
     surgery_ids = fields.One2many('em.hms.patient.admission.surgery', 'patient_admission_id', string='Surgeries')
     visit_ids = fields.One2many('em.hms.patient.admission.visit', 'patient_admission_id', string='Doctor Visits')
-    necessity_ids = fields.One2many('em.hms.daily.necessity', 'patient_admission_id', string='Daily Necessity')
+    necessity_ids = fields.One2many('em.hms.daily.necessity', 'patient_admission_id', string='Daily Necessities')
     commitment_ids = fields.One2many('em.hms.necessity.giving', 'patient_admission_id', string='Necessity Giving')
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

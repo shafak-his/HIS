@@ -13,11 +13,11 @@ class EmHmsRHSSurgery(models.Model):
     admitting_physician_id = fields.Many2one('hr.employee', string='Name Of Admitting Physician')
     husband_name = fields.Char('Name Of Husband', tracking=True)
     guardian_name = fields.Char('Name Of Patient\'s Guardian', tracking=True)
-    medical_history_ids = fields.Many2many('em.hms.medical.history', 'surgery_medical_history_rel', 'surgery_id', 'medical_history_id', string='Medical History')
-    surgical_history_ids = fields.Many2many('em.hms.surgical.history', 'surgery_surgical_history_rel', 'surgery_id', 'surgical_history_id', string='Surgical History')
-    medication_history_ids = fields.Many2many('em.hms.medication.history', 'surgery_medication_history_rel', 'surgery_id', 'medication_history_id', string='Drug History')
-    allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'surgery_allergic_history_rel', 'surgery_id', 'allergic_history_id', string='Allergic History')
-    surgery_type_ids = fields.Many2many('em.hms.surgical.procedure', 'surgery_surgical_procedure_rel', 'surgery_id', 'surgical_procedure_id', string='Type Of Surgery', tracking=True)
+    medical_history_ids = fields.Many2many('em.hms.medical.history', 'rhs_surgery_medical_history_rel', 'surgery_id', 'medical_history_id', string='Medical History')
+    surgical_history_ids = fields.Many2many('em.hms.surgical.history', 'rhs_surgery_surgical_history_rel', 'surgery_id', 'surgical_history_id', string='Surgical History')
+    medication_history_ids = fields.Many2many('em.hms.medication.history', 'rhs_surgery_medication_history_rel', 'surgery_id', 'medication_history_id', string='Drug History')
+    allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'rhs_surgery_allergic_history_rel', 'surgery_id', 'allergic_history_id', string='Allergic History')
+    surgery_type_ids = fields.Many2many('em.hms.surgical.procedure', 'rhs_surgery_surgical_procedure_rel', 'surgery_id', 'surgical_procedure_id', string='Type Of Surgery', tracking=True)
     other_surgery_type = fields.Char('Other Surgery Type', tracking=True)
     initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True)
     child_name = fields.Char('Name Of Child', tracking=True)
@@ -98,7 +98,7 @@ class EmHmsRHSSurgery(models.Model):
     patient_companion_relationship = fields.Char('Relationship', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
-    vital_signs_ids = fields.One2many('em.hms.vital.signs', 'surgery_id', string='Vital Signs Monitoring')
+    vital_sign_ids = fields.One2many('em.hms.vital.sign', 'surgery_id', string='Vital Signs Monitoring')
     vital_signs_count = fields.Integer(compute='_compute_vital_signs_count', string='Vital Signs Reports')
     labor_ids = fields.One2many('em.hms.labor', 'surgery_id', string='Labor Monitoring')
     labors_count = fields.Integer(compute='_compute_labors_count', string='Labors Count')
@@ -106,10 +106,10 @@ class EmHmsRHSSurgery(models.Model):
     post_surgeries_count = fields.Integer(compute='_compute_post_surgeries_count', string='Post-Surgery Reports')
 
     
-    @api.depends('vital_signs_ids')
+    @api.depends('vital_sign_ids')
     def _compute_vital_signs_count(self):
         for record in self:
-            record.vital_signs_count = len(record.vital_signs_ids)
+            record.vital_signs_count = len(record.vital_sign_ids)
             
     @api.depends('labor_ids')
     def _compute_labors_count(self):
@@ -138,7 +138,7 @@ class EmHmsRHSSurgery(models.Model):
     #         'type': 'ir.actions.act_window',
     #         'name': 'Vital Signs Monitoring',
     #         'view_mode': 'tree',
-    #         'res_model': 'em.hms.vital.signs',
+    #         'res_model': 'em.hms.vital.sign',
     #         'domain': [('surgery_id', '=', self.id)],
     #         'context': "{'create': False}"
     #     }

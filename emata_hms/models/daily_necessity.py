@@ -9,10 +9,17 @@ class EmHmsDailyNecessity(models.Model):
 
     patient_admission_id = fields.Many2one('em.hms.patient.admission', string='Patient Admission')
     hospitalization_id = fields.Many2one('em.hms.rhs.hospitalization', string='Hospitalization')
+    incubator_admission_id = fields.Many2one('em.hms.pediatric.incubator.admission', string='Incubator Admission')
+    ward_admission_id = fields.Many2one('em.hms.pediatric.ward.admission', string='Ward Admission')
+    pediatric_surgery_id = fields.Many2one('em.hms.pediatric.surgery', string='Pediatric Surgery')
+    pediatric_clinic_id = fields.Many2one('em.hms.pediatric.clinic', string='Pediatric Clinic')
+    phototherapy_id = fields.Many2one('em.hms.pediatric.phototherapy', string='Phototherapy')
+    icu_id = fields.Many2one('em.hms.pediatric.icu', string='ICU')
+    nicu_id = fields.Many2one('em.hms.pediatric.nicu', string='NICU')
     activity_name = fields.Char('Activity', tracking=True)
+    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     
     necessity_datetime = fields.Datetime('Necessity Date/Time', required=True, tracking=True)
-    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     doctor_id = fields.Many2one('hr.employee', 'Doctor', related='patient_admission_id.doctor_id')
     ward_nurse_id = fields.Many2one('hr.employee', string='Name Of The Ward Nurse', tracking=True)
     
@@ -52,5 +59,53 @@ class EmHmsDailyNecessity(models.Model):
         if self.hospitalization_id:
             self.patient_id = self.hospitalization_id.patient_id.id
             self.activity_name = 'Hospitalization'
+            
+    @api.onchange('surgery_id')
+    def _onchange_surgery_id(self):
+        if self.surgery_id:
+            self.patient_id = self.surgery_id.patient_id.id
+            self.activity_name = 'Incubator Admission'
+            
+    @api.onchange('incubator_admission_id')
+    def _onchange_incubator_admission_id(self):
+        if self.incubator_admission_id:
+            self.patient_id = self.incubator_admission_id.patient_id.id
+            self.activity_name = 'Incubator Admission'
+            
+    @api.onchange('ward_admission_id')
+    def _onchange_ward_admission_id(self):
+        if self.ward_admission_id:
+            self.patient_id = self.ward_admission_id.patient_id.id
+            self.activity_name = 'Ward Admission'
+            
+    @api.onchange('pediatric_surgery_id')
+    def _onchange_pediatric_surgery_id(self):
+        if self.pediatric_surgery_id:
+            self.patient_id = self.pediatric_surgery_id.patient_id.id
+            self.activity_name = 'Pediatric Surgery'
+            
+    @api.onchange('pediatric_clinic_id')
+    def _onchange_pediatric_clinic_id(self):
+        if self.pediatric_clinic_id:
+            self.patient_id = self.pediatric_clinic_id.patient_id.id
+            self.activity_name = 'Pediatric Clinic'
+            
+    @api.onchange('phototherapy_id')
+    def _onchange_phototherapy_id(self):
+        if self.phototherapy_id:
+            self.patient_id = self.phototherapy_id.patient_id.id
+            self.activity_name = 'Phototherapy'
+            
+    @api.onchange('icu_id')
+    def _onchange_icu_id(self):
+        if self.icu_id:
+            self.patient_id = self.icu_id.patient_id.id
+            self.activity_name = 'ICU'
+            
+    @api.onchange('nicu_id')
+    def _onchange_nicu_id(self):
+        if self.nicu_id:
+            self.patient_id = self.nicu_id.patient_id.id
+            self.activity_name = 'NICU'
 
 

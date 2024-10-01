@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_daily_observation_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.daily.observation.view.tree</field>
+        <field name="model">em.hms.daily.observation</field>
+        <field name="arch" type="xml">
+            <tree string="Daily Observations">
+                <field name="activity_name" />
+                <field name="incubator_admission_id" optional="hide" />
+                <field name="ward_admission_id" optional="hide" />
+                <field name="pediatric_surgery_id" optional="hide" />
+                <field name="icu_id" optional="hide" />
+                <field name="nicu_id" optional="hide" />
+                <field name="responsible_nurse1_id" optional="hide" />
+                <field name="responsible_nurse2_id" optional="hide" />
+                <field name="resident_doctor_id" optional="hide" />
+                <field name="specialist_doctor_id" optional="hide" />
+                <field name="patient_id" />
+                <field name="viewing_datetime" />
+                <field name="testing_evaluation" optional="hide" />
+                <field name="oral_nutrition" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_daily_observation_view_form" model="ir.ui.view">
+        <field name="name">em.hms.daily.observation.view.form</field>
+        <field name="model">em.hms.daily.observation</field>
+        <field name="arch" type="xml">
+            <form string="Daily Observation">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="activity_name" readonly="1" />
+                            <field name="incubator_admission_id" invisible="activity_name != 'Incubator Admission'" readonly="1" />
+                            <field name="ward_admission_id" invisible="activity_name != 'Ward Admission'" readonly="1" />
+                            <field name="pediatric_surgery_id" invisible="activity_name != 'Pediatric Surgery'" readonly="1" />
+                            <field name="icu_id" invisible="activity_name != 'ICU'" readonly="1" />
+                            <field name="nicu_id" invisible="activity_name != 'NICU'" readonly="1" />
+                            <field name="viewing_datetime" />
+                        </group>
+                        <group>
+                            <field name="responsible_nurse1_id" />
+                            <field name="responsible_nurse2_id" />
+                            <field name="resident_doctor_id" />
+                            <field name="specialist_doctor_id" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="testing_evaluation" />
+                            <field name="oral_nutrition" />
+                        </group>
+                        <group>
+                            <field name="company_id" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_daily_observation_action" model="ir.actions.act_window">
+        <field name="name">Daily Observations</field>
+        <field name="res_model">em.hms.daily.observation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

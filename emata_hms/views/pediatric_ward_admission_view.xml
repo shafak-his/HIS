@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="em_hms_patient_admission_view_tree" model="ir.ui.view">
-        <field name="name">em.hms.patient.admission.view.tree</field>
-        <field name="model">em.hms.patient.admission</field>
+    <record id="em_hms_pediatric_ward_admission_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.pediatric.ward.admission.view.tree</field>
+        <field name="model">em.hms.pediatric.ward.admission</field>
         <field name="arch" type="xml">
-            <tree string="Patient Admission">
+            <tree string="Ward Admission">
                 <field name="patient_id" />
-                <field name="visit_date" />
-                <field name="doctor_id" />
-                <field name="ward_nurse_id" optional="hide" />
-                <field name="admission_type" optional="hide" />
-                <field name="blood_group" optional="hide" />
-                <field name="temperature" optional="hide" />
-                <field name="pulse" optional="hide" />
-                <field name="pressure" optional="hide"/>
-                <field name="respiratory_rate" optional="hide" />
-                <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
-                <field name="surgical_history_ids" widget="many2many_tags" optional="hide" />
-                <field name="medication_history_ids" widget="many2many_tags" optional="hide" />
-                <field name="allergic_history_ids" widget="many2many_tags" optional="hide" />
-                <field name="clinic_examination" optional="hide" />
+                <field name="admitting_doctor_id" />
+                <field name="admitting_nurse_id"  optional="hide" />
+                <field name="admission_datetime" />
+                <field name="main_complaint" />
                 <field name="complaint_details" optional="hide" />
                 <field name="diagnosis_id" optional="hide" />
-                <field name="medication_request_ids" widget="many2many_tags" optional="hide" />
+                <field name="pregnancy_childbirth" optional="hide" />
+                <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="surgical_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="family_history" optional="hide" />
+                <field name="nutrition" optional="hide" />
+                <field name="vaccines" optional="hide" />
+                <field name="weight" optional="hide" />
+                <field name="height" optional="hide" />
+                <field name="cranial_circumference" optional="hide" />
+                <field name="graduation_to" optional="hide" />
+                <field name="graduation_date" optional="hide" />
+                <field name="medical_recommendations" optional="hide" />
+                <field name="consultations" optional="hide" />
+                <field name="notes" optional="hide" />
                 <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
                 <field name="image_request_ids" widget="many2many_tags" optional="hide" />
-                <field name="notes" optional="hide" />
-                <field name="surgery_ids" widget="many2many_tags" optional="hide" />
-                <field name="visit_ids" widget="many2many_tags" optional="hide" />
+                <field name="observation_ids" widget="many2many_tags" optional="hide" />
+                <field name="vital_sign_ids" widget="many2many_tags" optional="hide" />
                 <field name="necessity_ids" widget="many2many_tags" optional="hide" />
                 <field name="commitment_ids" widget="many2many_tags" optional="hide" />
                 <field name="company_id" optional="hide" />
@@ -36,32 +38,34 @@
         </field>
     </record>
 
-    <record id="em_hms_patient_admission_view_form" model="ir.ui.view">
-        <field name="name">em.hms.patient.admission.view.form</field>
-        <field name="model">em.hms.patient.admission</field>
+    <record id="em_hms_pediatric_ward_admission_view_form" model="ir.ui.view">
+        <field name="name">em.hms.pediatric.ward.admission.view.form</field>
+        <field name="model">em.hms.pediatric.ward.admission</field>
         <field name="arch" type="xml">
-            <form string="Patient Admission">
+            <form string="Ward Admission">
                 <sheet>
                     <group>
                         <group>
-                            <field name="visit_date" />
+                            <field name="admission_datetime" />
                             <field name="patient_id" />
                         </group>
                         <group>
-                            <field name="doctor_id" />
-                            <field name="ward_nurse_id" />
+                            <field name="admitting_doctor_id" />
+                            <field name="admitting_nurse_id" />
                         </group>
                     </group>
                     <group>
+                        <field name="main_complaint" widget="text" />
+                        <field name="complaint_details" widget="text" />
+                    </group>
+                    <group>
                         <group>
-                            <field name="admission_type" />
-                            <field name="blood_group" />
+                            <field name="diagnosis_id" />
+                            <field name="pregnancy_childbirth" />
                         </group>
                         <group>
-                            <field name="temperature" widget="float" />
-                            <field name="pulse" widget="float" />
-                            <field name="pressure" />
-                            <field name="respiratory_rate" widget="integer" />
+                            <field name="nutrition" />
+                            <field name="vaccines" />
                         </group>
                     </group>
                     <group>
@@ -77,59 +81,66 @@
                                 <field name="name_lang" />
                             </tree>
                         </field>
-                        <field name="medication_history_ids" context="{'default_patient_id': patient_id}">
-                            <tree create="1" delete="1" editable="bottom">
-                                <field name="name" />
-                                <field name="name_lang" />
-                            </tree>
-                        </field>
-                        <field name="allergic_history_ids" context="{'default_patient_id': patient_id}">
-                            <tree create="1" delete="1" editable="bottom">
-                                <field name="name" />
-                                <field name="name_lang" />
-                            </tree>
-                        </field>
                     </group>
                     <group>
                         <group>
-                            <field name="clinic_examination" widget="text" />
-                            <field name="complaint_details" widget="text" />
+                            <field name="family_history" widget="text" />
                         </group>
                         <group>
-                            <field name="diagnosis_id" />
+                            <field name="weight" />
+                            <field name="height" />
+                            <field name="cranial_circumference" />
                         </group>
                     </group>
                     <group>
-                    </group>
-                    <group>
+                        <group>
+                            <field name="graduation_to" />
+                            <field name="graduation_date" />
+                        </group>
                         <group>
                         </group>
                     </group>
                     <group>
-                        <field name="medication_request_ids" widget="many2many_tags" />
+                        <field name="medical_recommendations" />
+                        <field name="consultations" widget="text" />
+                        <field name="notes" widget="text" />
+                    </group>
+                    <group>
                         <field name="analysis_request_ids" widget="many2many_tags" />
                         <field name="image_request_ids" widget="many2many_tags" />
                     </group>
                     <group>
-                        <field name="surgery_ids">
+                        <field name="vital_sign_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
+                                <field name="activity_name" />
+                                <field name="delivery_id" optional="hide" />
+                                <field name="hospitalization_id" optional="hide" />
+                                <field name="surgery_id" optional="hide" />
+                                <field name="ward_admission_id" optional="hide" />
                                 <field name="patient_id" />
-                                <field name="surgery_date" />
-                                <field name="surgery_type" />
-                                <field name="surgical_classification" optional="hide" />
-                                <field name="surgical_specialty" optional="hide" />
-                                <field name="bone_surgical_procedure_id" optional="hide" />
-                                <field name="general_surgical_procedure_id" optional="hide" />
-                                <field name="anesthesia_type" optional="hide" />
-                                <field name="anesthesia_technician_id" optional="hide" />
-                                <field name="surgical_report" optional="hide" />
-                                <field name="anesthesia_report" optional="hide" />
+                                <field name="datetime" />
+                                <field name="pressure" optional="hide" />
+                                <field name="pulse" optional="hide" />
+                                <field name="temperature" optional="hide" />
+                                <field name="awareness" optional="hide" />
                                 <field name="notes" optional="hide" />
                                 <field name="company_id" optional="hide" />
                             </tree>
                         </field>
-                        <field name="visit_ids">
+                        <field name="observation_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
+                                <field name="activity_name" />
+                                <field name="incubator_admission_id" optional="hide" />
+                                <field name="ward_admission_id" optional="hide" />
+                                <field name="responsible_nurse1_id" optional="hide" />
+                                <field name="responsible_nurse2_id" optional="hide" />
+                                <field name="resident_doctor_id" optional="hide" />
+                                <field name="specialist_doctor_id" optional="hide" />
+                                <field name="patient_id" />
+                                <field name="viewing_datetime" />
+                                <field name="testing_evaluation" optional="hide" />
+                                <field name="oral_nutrition" optional="hide" />
+                                <field name="company_id" optional="hide" />
                             </tree>
                         </field>
                         <field name="necessity_ids" context="{'default_patient_id': patient_id}">
@@ -177,9 +188,6 @@
                         </field>
                     </group>
                     <group>
-                        <field name="notes" widget="text" />
-                    </group>
-                    <group>
                         <group>
                             <field name="company_id" readonly="1" force_save="1" />
                         </group>
@@ -194,9 +202,9 @@
         </field>
     </record>
 
-    <record id="em_hms_patient_admission_action" model="ir.actions.act_window">
-        <field name="name">Patient Admission</field>
-        <field name="res_model">em.hms.patient.admission</field>
+    <record id="em_hms_pediatric_ward_admission_action" model="ir.actions.act_window">
+        <field name="name">Ward Admission</field>
+        <field name="res_model">em.hms.pediatric.ward.admission</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>

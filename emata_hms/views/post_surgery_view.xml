@@ -33,7 +33,7 @@
                         <group>
                             <field name="activity_name" readonly="1" />
                             <field name="delivery_id" invisible="activity_name != 'Delivery'" readonly="1" />
-                            <field name="surgery_id" invisible="activity_name != 'Surgery'" readonly="1" />
+                            <field name="surgery_id" invisible="activity_name != 'RHS Surgery'" readonly="1" />
                             <field name="patient_id" />
                             <field name="datetime" widget="datetime" />
                             <field name="pressure" />

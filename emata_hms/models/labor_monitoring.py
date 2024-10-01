@@ -1,7 +1,7 @@
 from odoo import _, api, fields, models, exceptions, tools
 
    
-class EmHmsRHSLabor(models.Model):
+class EmHmsLaborMonitoring(models.Model):
     _name = 'em.hms.labor'
     _description = 'Labor Monitoring'
     _rec_name = 'activity_name'
@@ -10,9 +10,10 @@ class EmHmsRHSLabor(models.Model):
     delivery_id = fields.Many2one('em.hms.rhs.delivery', string='Delivery')
     hospitalization_id = fields.Many2one('em.hms.rhs.hospitalization', string='Hospitalization')
     surgery_id = fields.Many2one('em.hms.rhs.surgery', string='Surgery')
+    incubator_admission_id = fields.Many2one('em.hms.pediatric.incubator.admission', string='Incubator Admission')
+    activity_name = fields.Char('Activity', tracking=True)
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     
-    activity_name = fields.Char('Activity', tracking=True)
     labor_hour = fields.Datetime('Hour', tracking=True)
     contraction_duration = fields.Float('Contraction Duration', tracking=True)
     interval_between_contractions = fields.Float('Interval Between Contractions', tracking=True)
@@ -39,4 +40,10 @@ class EmHmsRHSLabor(models.Model):
         if self.surgery_id:
             self.patient_id = self.surgery_id.patient_id.id
             self.activity_name = 'Surgery'
+            
+    @api.onchange('incubator_admission_id')
+    def _onchange_incubator_admission_id(self):
+        if self.incubator_admission_id:
+            self.patient_id = self.incubator_admission_id.patient_id.id
+            self.activity_name = 'Incubator Admission'
     

@@ -23,7 +23,7 @@ from . import rhs_fp
 from . import rhs_hospitalization
 from . import rhs_hospitalization_monitoring
 from . import rhs_surgery
-from . import vital_signs
+from . import vital_sign
 from . import labor_monitoring
 from . import res_partner
 from . import master_models
@@ -45,8 +45,18 @@ from . import patient_admission_surgery
 from . import patient_admission_visit
 from . import daily_necessity
 from . import necessity_giving
+from . import daily_observation
 from . import medical_history
 from . import surgical_history
 from . import medication_history
 from . import allergic_history
 from . import surgical_procedure
+from . import pediatric_incubator_admission
+from . import pediatric_ward_admission
+from . import pediatric_surgery
+from . import pediatric_clinic
+from . import pediatric_surgery_clinic
+from . import pediatric_phototherapy
+from . import pediatric_icu
+from . import pediatric_nicu
+from . import pediatric_newborn_examination

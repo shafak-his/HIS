@@ -97,7 +97,7 @@ class EmHmsRHSDelivery(models.Model):
     
     labor_ids = fields.One2many('em.hms.labor', 'delivery_id', string='Labor Monitoring')
     labors_count = fields.Integer(compute='_compute_labors_count', string='Labors Count')
-    vital_signs_ids = fields.One2many('em.hms.vital.signs', 'delivery_id', string='Vital Signs Monitoring')
+    vital_sign_ids = fields.One2many('em.hms.vital.sign', 'delivery_id', string='Vital Signs Monitoring')
     vital_signs_count = fields.Integer(compute='_compute_vital_signs_count', string='Vital Signs Reports')
     post_birth_ids = fields.One2many('em.hms.post.surgery', 'delivery_id', string='Post-Birth Monitoring')
     post_births_count = fields.Integer(compute='_compute_post_births_count', string='Post-Birth Reports')
@@ -107,10 +107,10 @@ class EmHmsRHSDelivery(models.Model):
         for record in self:
             record.labors_count = len(record.labor_ids)
             
-    @api.depends('vital_signs_ids')
+    @api.depends('vital_sign_ids')
     def _compute_vital_signs_count(self):
         for record in self:
-            record.vital_signs_count = len(record.vital_signs_ids)
+            record.vital_signs_count = len(record.vital_sign_ids)
             
     @api.depends('post_birth_ids')
     def _compute_post_births_count(self):
@@ -135,7 +135,7 @@ class EmHmsRHSDelivery(models.Model):
             'type': 'ir.actions.act_window',
             'name': 'Vital Signs Monitoring',
             'view_mode': 'tree',
-            'res_model': 'em.hms.vital.signs',
+            'res_model': 'em.hms.vital.sign',
             'domain': [('delivery_id', '=', self.id)],
             'context': "{'create': False}"
         }

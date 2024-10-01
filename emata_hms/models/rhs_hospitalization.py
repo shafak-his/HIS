@@ -79,7 +79,7 @@ class EmHmsRHSHospitalization(models.Model):
     patient_companion_relationship = fields.Char('Relationship', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
-    vital_signs_ids = fields.One2many('em.hms.vital.signs', 'hospitalization_id', string='Vital Signs Monitoring')
+    vital_sign_ids = fields.One2many('em.hms.vital.sign', 'hospitalization_id', string='Vital Signs Monitoring')
     vital_signs_count = fields.Integer(compute='_compute_vital_signs_count', string='Vital Signs Reports')
     labor_ids = fields.One2many('em.hms.labor', 'hospitalization_id', string='Labor Monitoring')
     labors_count = fields.Integer(compute='_compute_labors_count', string='Labors Count')
@@ -91,10 +91,10 @@ class EmHmsRHSHospitalization(models.Model):
     commitments_count = fields.Integer(compute='_compute_commitments_count', string='Necessity Giving Count')
     
     
-    @api.depends('vital_signs_ids')
+    @api.depends('vital_sign_ids')
     def _compute_vital_signs_count(self):
         for record in self:
-            record.vital_signs_count = len(record.vital_signs_ids)
+            record.vital_signs_count = len(record.vital_sign_ids)
             
     @api.depends('labor_ids')
     def _compute_labors_count(self):
@@ -133,7 +133,7 @@ class EmHmsRHSHospitalization(models.Model):
             'type': 'ir.actions.act_window',
             'name': 'Vital Signs Monitoring',
             'view_mode': 'tree',
-            'res_model': 'em.hms.vital.signs',
+            'res_model': 'em.hms.vital.sign',
             'domain': [('hospitalization_id', '=', self.id)],
             'context': "{'create': False}"
         }

@@ -41,7 +41,7 @@
                 <field name="newborn_condition" optional="hide" />
                 <field name="patient_companion_name" optional="hide" />
                 <field name="patient_companion_relationship" optional="hide" />
-                <field name="vital_signs_ids" widget="many2many_tags" optional="hide" />
+                <field name="vital_sign_ids" widget="many2many_tags" optional="hide" />
                 <field name="labor_ids" widget="many2many_tags" optional="hide" />
                 <field name="post_birth_ids" widget="many2many_tags" optional="hide" />
                 <field name="company_id" optional="hide" />
@@ -115,14 +115,21 @@
 
                 <notebook>
                     <page name="vital_signs_page" string="Vital Signs">
-                        <field name="vital_signs_ids" context="{'default_patient_id': patient_id}">
-                            <tree string="Vital Signs Monitoring">
+                        <field name="vital_sign_ids" context="{'default_patient_id': patient_id}">
+                            <tree string="Vital Signs">
+                                <field name="activity_name" />
+                                <field name="delivery_id" optional="hide" />
+                                <field name="hospitalization_id" optional="hide" />
+                                <field name="surgery_id" optional="hide" />
+                                <field name="incubator_admission_id" optional="hide" />
+                                <field name="patient_id" />
                                 <field name="datetime" />
-                                <field name="pressure" />
-                                <field name="pulse" />
-                                <field name="temperature" />
+                                <field name="pressure" optional="hide" />
+                                <field name="pulse" optional="hide" />
+                                <field name="temperature" optional="hide" />
+                                <field name="awareness" optional="hide" />
                                 <field name="notes" optional="hide" />
-                                <field name="company_id" readonly="1" force_save="1" optional="hide" />
+                                <field name="company_id" optional="hide" />
                             </tree>
                         </field> 
                     </page>

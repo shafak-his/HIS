@@ -22,12 +22,12 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name" />
-                            <field name="name_lang" />
+                            <field name="activity_name" readonly="1"/>
+                            <field name="patient_id" />
                         </group>
                         <group>
-                            <field name="activity_name" />
-                            <field name="patient_id" />
+                            <field name="name" />
+                            <field name="name_lang" />
                         </group>
                     </group>
                 </sheet>
@@ -65,12 +65,12 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name" />
-                            <field name="name_lang" />
+                            <field name="activity_name" readonly="1"/>
+                            <field name="patient_id" />
                         </group>
                         <group>
-                            <field name="activity_name" />
-                            <field name="patient_id" />
+                            <field name="name" />
+                            <field name="name_lang" />
                         </group>
                     </group>
                 </sheet>
@@ -108,12 +108,12 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name" />
-                            <field name="name_lang" />
+                            <field name="activity_name" readonly="1"/>
+                            <field name="patient_id" />
                         </group>
                         <group>
-                            <field name="activity_name" />
-                            <field name="patient_id" />
+                            <field name="name" />
+                            <field name="name_lang" />
                         </group>
                     </group>
                 </sheet>
@@ -151,12 +151,12 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name" />
-                            <field name="name_lang" />
+                            <field name="activity_name" readonly="1"/>
+                            <field name="patient_id" />
                         </group>
                         <group>
-                            <field name="activity_name" />
-                            <field name="patient_id" />
+                            <field name="name" />
+                            <field name="name_lang" />
                         </group>
                     </group>
                 </sheet>

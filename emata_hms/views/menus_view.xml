@@ -415,6 +415,15 @@
             parent="menu_em_hms_patient_admission_master_data"
             action="emata_hms.em_hms_necessity_giving_action"
             sequence="4" />
+        <menuitem id="menu_em_hms_pediatric_master_data"
+            name="Pediatric Master Data"
+            parent="menu_em_hms_admin_root"
+            sequence="49" />
+        <menuitem id="menu_em_hms_child_care"
+            name="Child Care"
+            parent="menu_em_hms_pediatric_master_data"
+            action="emata_hms.em_hms_child_care_action"
+            sequence="1" />
         
             
         <!-- CHW -->
@@ -460,6 +469,66 @@
             action="emata_hms.em_hms_patient_admission_visit_action"
             sequence="2" />
         
+        <!-- Pediatric -->
+        <menuitem id="menu_em_hms_pediatric_root"
+            name="Pediatric"
+            web_icon="emata_hms,static/description/icon-hms.png"
+            sequence="7"
+        />
+        <menuitem id="menu_em_hms_pediatric_incubator_admission"
+            name="Incubator Admission"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_incubator_admission_action"
+            sequence="1"
+        />
+        <menuitem id="menu_em_hms_pediatric_ward_admission"
+            name="Ward Admission"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_ward_admission_action"
+            sequence="2"
+        />
+        <menuitem id="menu_em_hms_surgery_admission"
+            name="Surgery"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_surgery_action"
+            sequence="3"
+        />
+        <menuitem id="menu_em_hms_clinic_admission"
+            name="Clinic"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_clinic_action"
+            sequence="4"
+        />
+        <menuitem id="menu_em_hms_surgery_clinic_admission"
+            name="Surgery Clinic"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_surgery_clinic_action"
+            sequence="5"
+        />
+        <menuitem id="menu_em_hms_phototherapy_admission"
+            name="Phototherapy"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_phototherapy_action"
+            sequence="6"
+        />
+        <menuitem id="menu_em_hms_icu_admission"
+            name="ICU"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_icu_action"
+            sequence="7"
+        />
+        <menuitem id="menu_em_hms_nicu_admission"
+            name="NICU"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_nicu_action"
+            sequence="8"
+        />
+        <menuitem id="menu_em_hms_newborn_examination_admission"
+            name="Newborn Examination"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_newborn_examination_action"
+            sequence="9"
+        />
 
         <!-- Pharmacy -->
         <menuitem id="menu_em_hms_pharmacy_root"
