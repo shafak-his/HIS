@@ -37,6 +37,11 @@ class ResPartner(models.Model):
     doc_number = fields.Char('Document Number')
     notes = fields.Char('Notes')
 
+    medical_history_ids = fields.One2many('em.hms.medical.history', 'patient_id', string='Medical History')
+    surgical_history_ids = fields.One2many('em.hms.surgical.history', 'patient_id', string='Surgical History')
+    medication_history_ids = fields.One2many('em.hms.medication.history', 'patient_id', string='Medication History')
+    allergic_history_ids = fields.One2many('em.hms.allergic.history', 'patient_id', string='Allergic History')
+
     @api.onchange('first_name', 'last_name')
     def _onchange_name_parts(self):
         self.name = " ".join(list(filter(None, [self.first_name, self.last_name])))

@@ -58,7 +58,7 @@ class EmHmsRHSInfertilityTreatment(models.Model):
     
     
     _sql_constraints = [
-        ('check_visit_date', 'CHECK (visit_date <= CURRENT_DATE)', 'Visit Date Must Not Be Newer Than Today.'),
+        ('check_visit_date', 'CHECK (visit_date <= CURRENT_DATE)', 'Visit Date Must Not Be in Future.'),
         ('check_last_marriage_date', 'CHECK (last_marriage_date <= CURRENT_DATE)', 'Last Marriage Date Must Not Be Newer Than Today.'),
     ]
      

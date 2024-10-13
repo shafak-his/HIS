@@ -58,7 +58,15 @@ class EmHmsPatientAdmission(models.Model):
         (
             'check_visit_date',
             'CHECK (visit_date <= CURRENT_DATE)',
-            'Visit Date Must Not Be Newer Than Today.'
+            'Visit Date Must Not Be in Future.'
         ),
     ]
+
+    @api.onchange('patient_id')
+    def _onchange_patient_id(self):
+        if self.patient_id:
+            self.medical_history_ids = [(6, 0, [record.id for record in self.patient_id.medical_history_ids])]
+            self.surgical_history_ids = [(6, 0, [record.id for record in self.patient_id.surgical_history_ids])]
+            self.medication_history_ids = [(6, 0, [record.id for record in self.patient_id.medication_history_ids])]
+            self.allergic_history_ids = [(6, 0, [record.id for record in self.patient_id.allergic_history_ids])]
 

@@ -126,7 +126,6 @@
                     <page name="vital_signs_page" string="Vital Signs">
                         <field name="vital_sign_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
-                                <field name="activity_name" />
                                 <field name="delivery_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="surgery_id" optional="hide" />

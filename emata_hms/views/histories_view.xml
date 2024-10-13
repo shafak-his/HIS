@@ -5,10 +5,9 @@
         <field name="name">em.hms.medical.history.view.tree</field>
         <field name="model">em.hms.medical.history</field>
         <field name="arch" type="xml">
-            <tree string="Medical History">
+            <tree string="Medical History" editable="bottom">
                 <field name="name" />
                 <field name="name_lang" />
-                <field name="activity_name" />
                 <field name="patient_id" />
             </tree>
         </field>
@@ -22,10 +21,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="activity_name" readonly="1"/>
-                            <field name="patient_id" />
-                        </group>
-                        <group>
+                            <field name="patient_id" readonly="1" force_save="1" />
                             <field name="name" />
                             <field name="name_lang" />
                         </group>
@@ -48,10 +44,9 @@
         <field name="name">em.hms.medication.history.view.tree</field>
         <field name="model">em.hms.medication.history</field>
         <field name="arch" type="xml">
-            <tree string="Medication History">
+            <tree string="Medication History" editable="bottom">
                 <field name="name" />
                 <field name="name_lang" />
-                <field name="activity_name" />
                 <field name="patient_id" />
             </tree>
         </field>
@@ -65,10 +60,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="activity_name" readonly="1"/>
-                            <field name="patient_id" />
-                        </group>
-                        <group>
+                            <field name="patient_id" readonly="1" force_save="1" />
                             <field name="name" />
                             <field name="name_lang" />
                         </group>
@@ -91,10 +83,9 @@
         <field name="name">em.hms.allergic.history.view.tree</field>
         <field name="model">em.hms.allergic.history</field>
         <field name="arch" type="xml">
-            <tree string="Allergic History">
+            <tree string="Allergic History" editable="bottom">
                 <field name="name" />
                 <field name="name_lang" />
-                <field name="activity_name" />
                 <field name="patient_id" />
             </tree>
         </field>
@@ -108,10 +99,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="activity_name" readonly="1"/>
-                            <field name="patient_id" />
-                        </group>
-                        <group>
+                            <field name="patient_id" readonly="1" force_save="1" />
                             <field name="name" />
                             <field name="name_lang" />
                         </group>
@@ -134,10 +122,9 @@
         <field name="name">em.hms.surgical.history.view.tree</field>
         <field name="model">em.hms.surgical.history</field>
         <field name="arch" type="xml">
-            <tree string="Surgical History">
+            <tree string="Surgical History" editable="bottom">
                 <field name="name" />
                 <field name="name_lang" />
-                <field name="activity_name" />
                 <field name="patient_id" />
             </tree>
         </field>
@@ -151,10 +138,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="activity_name" readonly="1"/>
-                            <field name="patient_id" />
-                        </group>
-                        <group>
+                            <field name="patient_id" readonly="1" force_save="1" />
                             <field name="name" />
                             <field name="name_lang" />
                         </group>

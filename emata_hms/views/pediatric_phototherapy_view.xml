@@ -104,7 +104,6 @@
                     <group>
                         <field name="necessity_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
-                                <field name="activity_name" />
                                 <field name="patient_admission_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="incubator_admission_id" optional="hide" />
@@ -128,7 +127,6 @@
                         </field>
                         <field name="commitment_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
-                                <field name="activity_name" />
                                 <field name="patient_admission_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="incubator_admission_id" optional="hide" />

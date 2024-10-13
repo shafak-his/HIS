@@ -573,5 +573,30 @@
             parent="menu_em_hms_patient_root"
             action="emata_hms.action_em_res_partner_patient"
             sequence="1" />
+        <menuitem id="menu_em_hms_patient_history_root"
+            name="Patient History"
+            parent="menu_em_hms_patient_root"
+            action="emata_hms.action_em_res_partner_patient"
+            sequence="5" />
+        <menuitem id="menu_em_hms_patient_medical_history"
+            name="Medical History"
+            parent="menu_em_hms_patient_history_root"
+            action="emata_hms.em_hms_medical_history_action"
+            sequence="5" />
+        <menuitem id="menu_em_hms_patient_medication_history"
+            name="Medication History"
+            parent="menu_em_hms_patient_history_root"
+            action="emata_hms.em_hms_medication_history_action"
+            sequence="7" />
+        <menuitem id="menu_em_hms_patient_allergic_history"
+            name="Allergic History"
+            parent="menu_em_hms_patient_history_root"
+            action="emata_hms.em_hms_allergic_history_action"
+            sequence="9" />
+        <menuitem id="menu_em_hms_patient_surgical_history"
+            name="Surgical History"
+            parent="menu_em_hms_patient_history_root"
+            action="emata_hms.em_hms_surgical_history_action"
+            sequence="11" />
     </data>
 </odoo>
