@@ -53,12 +53,21 @@ class EmHmsRHSInfertilityTreatment(models.Model):
     hysteroscopy_result = fields.Char('Hysteroscopy Result', tracking=True)
     hysteroscopy_attachment = fields.Binary('Hysteroscopy Attachment', tracking=True)
     analysis_request_ids = fields.One2many('em.hms.analysis.request', 'infertility_treatment_id', string='Request An X-Ray')
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='Status', required=True, default='draft')
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
-    
     
     _sql_constraints = [
         ('check_visit_date', 'CHECK (visit_date <= CURRENT_DATE)', 'Visit Date Must Not Be in Future.'),
         ('check_last_marriage_date', 'CHECK (last_marriage_date <= CURRENT_DATE)', 'Last Marriage Date Must Not Be Newer Than Today.'),
     ]
-     
+    
+    def confirm_record(self):
+        self.ensure_one()
+        self.medication_request_ids.generate_sale_order()
+        self.write({
+            'state': 'done'
+        }) 

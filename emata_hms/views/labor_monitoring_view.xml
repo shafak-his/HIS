@@ -5,7 +5,7 @@
         <field name="name">em.hms.labor.view.tree</field>
         <field name="model">em.hms.labor</field>
         <field name="arch" type="xml">
-            <tree string="Labor Monitoring" create="0" delete="0">
+            <tree string="Labor Monitoring">
                 <field name="delivery_id" optional="hide" />
                 <field name="hospitalization_id" optional="hide" />
                 <field name="surgery_id" optional="hide" />

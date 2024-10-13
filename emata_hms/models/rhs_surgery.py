@@ -105,6 +105,13 @@ class EmHmsRHSSurgery(models.Model):
     post_surgery_ids = fields.One2many('em.hms.post.surgery', 'surgery_id', string='Post-Surgery Monitoring')
     post_surgeries_count = fields.Integer(compute='_compute_post_surgeries_count', string='Post-Surgery Reports')
 
+    @api.onchange('patient_id')
+    def _onchange_patient_id(self):
+        if self.patient_id:
+            self.medical_history_ids = [(6, 0, [record.id for record in self.patient_id.medical_history_ids])]
+            self.surgical_history_ids = [(6, 0, [record.id for record in self.patient_id.surgical_history_ids])]
+            self.medication_history_ids = [(6, 0, [record.id for record in self.patient_id.medication_history_ids])]
+            self.allergic_history_ids = [(6, 0, [record.id for record in self.patient_id.allergic_history_ids])]
     
     @api.depends('vital_sign_ids')
     def _compute_vital_signs_count(self):
@@ -120,37 +127,3 @@ class EmHmsRHSSurgery(models.Model):
     def _compute_post_surgeries_count(self):
         for record in self:
             record.post_surgeries_count = len(record.post_surgery_ids)
-
-    # def action_get_surgery_labors_record(self):
-    #     self.ensure_one()
-    #     return {
-    #         'type': 'ir.actions.act_window',
-    #         'name': 'Labor Monitoring',
-    #         'view_mode': 'tree',
-    #         'res_model': 'em.hms.rhs.surgery.labor',
-    #         'domain': [('surgery_id', '=', self.id)],
-    #         'context': "{'create': False}"
-    #     }
-        
-    # def action_get_surgery_vital_signs_record(self):
-    #     self.ensure_one()
-    #     return {
-    #         'type': 'ir.actions.act_window',
-    #         'name': 'Vital Signs Monitoring',
-    #         'view_mode': 'tree',
-    #         'res_model': 'em.hms.vital.sign',
-    #         'domain': [('surgery_id', '=', self.id)],
-    #         'context': "{'create': False}"
-    #     }
-        
-    # def action_get_surgery_monitorings_record(self):
-    #     self.ensure_one()
-    #     return {
-    #         'type': 'ir.actions.act_window',
-    #         'name': 'Post-Birth Monitoring',
-    #         'view_mode': 'tree',
-    #         'res_model': 'em.hms.rhs.surgery.monitoring',
-    #         'domain': [('surgery_id', '=', self.id)],
-    #         'context': "{'create': False}"
-    #     }
-

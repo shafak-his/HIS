@@ -48,6 +48,11 @@
         <field name="model">em.hms.pediatric.icu</field>
         <field name="arch" type="xml">
             <form string="ICU">
+                <header>
+                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -112,7 +117,7 @@
                         <field name="medical_recommendations" />
                     </group>
                     <group>
-                        <field name="medication_request_ids" />
+                        <field name="medication_request_ids" context="{'default_patient_id': patient_id}" />
                         <field name="analysis_request_ids"/>
                         <field name="image_request_ids" />
                     </group>

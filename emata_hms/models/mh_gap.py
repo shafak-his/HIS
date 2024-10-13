@@ -59,3 +59,14 @@ class EmHmsMHGap(models.Model):
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     service_provider_id = fields.Many2one('hr.employee', 'Service Provicer Name')
     medication_request_ids = fields.One2many('em.hms.medication.request', 'mh_gap_id', string='Medication Requests')
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='Status', required=True, default='draft')
+
+    def confirm_record(self):
+        self.ensure_one()
+        self.medication_request_ids.generate_sale_order()
+        self.write({
+            'state': 'done'
+        })

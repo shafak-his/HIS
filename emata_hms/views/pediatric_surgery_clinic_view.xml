@@ -35,6 +35,11 @@
         <field name="model">em.hms.pediatric.surgery.clinic</field>
         <field name="arch" type="xml">
             <form string="Surgery Clinic">
+                <header>
+                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -96,7 +101,7 @@
                         <field name="notes" widget="text" />
                     </group>
                     <group>
-                        <field name="medication_request_ids" />
+                        <field name="medication_request_ids" context="{'default_patient_id': patient_id}" />
                         <field name="analysis_request_ids" />
                         <field name="image_request_ids" />
                     </group>

@@ -5,7 +5,7 @@
         <field name="name">em.hms.rhs.anc.visit.view.tree</field>
         <field name="model">em.hms.rhs.anc.visit</field>
         <field name="arch" type="xml">
-            <tree string="ANC Visits" create="0" delete="0">
+            <tree string="ANC Visits">
                 <field name="anc_id" />
                 <field name="patient_id" />
                 <field name="visit_date" />

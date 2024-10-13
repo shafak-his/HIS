@@ -104,4 +104,7 @@ class EmHmsRHSFP(models.Model):
         ),
     ]
 
- 
+    @api.onchange('patient_id')
+    def _onchange_patient_id(self):
+        if self.patient_id:
+            self.medical_history_ids = [(6, 0, [record.id for record in self.patient_id.medical_history_ids])]
