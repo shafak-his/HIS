@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <odoo>
-    <data>
+    <data noupdate="1">
         <!-- Administration -->
         <menuitem id="menu_em_hms_admin_root"
             name="Administration"
