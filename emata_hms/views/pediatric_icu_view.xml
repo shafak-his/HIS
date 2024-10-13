@@ -65,7 +65,7 @@
                     <group>
                         <group>
                             <field name="diagnosis_id" />
-                            <field name="medical_history_ids" widget="many2many_tags" />
+                            <field name="medical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}" />
                         </group>
                         <group>
                             <field name="mother_age" />
