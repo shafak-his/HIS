@@ -24,7 +24,7 @@ class EmHmsNecessityGiving(models.Model):
     
     necessity_id = fields.Many2one('em.hms.daily.necessity', string='Daily Necessity',  tracking=True)
     # medication_request_id = fields.Many2one('em.hms.medication.request', string='Medication Name', related='necessity_id.medication_request_id')
-    medication_id = fields.Many2one('product.template', string='Product', related='necessity_id.medication_id')
+    medication_id = fields.Many2one('product.template', string='Medication', related='necessity_id.medication_id')
     dosage = fields.Char('Dosage', related='necessity_id.dosage')
     rate = fields.Char('Rate', related='necessity_id.rate')
     dose_taking_way = fields.Selection([

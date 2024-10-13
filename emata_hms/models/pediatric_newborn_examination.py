@@ -46,7 +46,7 @@ class EmHmsPediatricNewbornExamination(models.Model):
         ('death', 'Death'),
         ('referral', 'Referral To Another Hospital')
     ], string='Graduation To', tracking=True)
-    graduation_date = fields.Date('Graduation Date', required=True, tracking=True)
+    graduation_date = fields.Date('Graduation Date', tracking=True)
     medical_recommendations = fields.Char('Medical Recommendations At Graduation', tracking=True)
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
     nurse_id = fields.Many2one('hr.employee', string='Nurse', tracking=True)

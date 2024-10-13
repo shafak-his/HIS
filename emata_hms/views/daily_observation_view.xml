@@ -54,7 +54,7 @@
                             <field name="oral_nutrition" />
                         </group>
                         <group>
-                            <field name="company_id" />
+                            <field name="company_id"  readonly="1" force_save="1" />
                         </group>
                     </group>
                 </sheet>

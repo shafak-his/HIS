@@ -42,8 +42,6 @@
                 <field name="graduation_to" optional="hide" />
                 <field name="graduation_date" optional="hide" />
                 <field name="medical_recommendations" optional="hide" />
-                <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
-                <field name="image_request_ids" widget="many2many_tags" optional="hide" />
                 <field name="observation_ids" widget="many2many_tags" optional="hide" />
                 <field name="vital_sign_ids" widget="many2many_tags" optional="hide" />
                 <field name="necessity_ids" widget="many2many_tags" optional="hide" />
@@ -130,8 +128,8 @@
                         <field name="medical_recommendations" />
                     </group>
                     <group>
-                        <field name="analysis_request_ids" widget="many2many_tags" />
-                        <field name="image_request_ids" widget="many2many_tags" />
+                        <field name="analysis_request_ids" />
+                        <field name="image_request_ids" />
                     </group>
                     <notebook>
                         <page name="vital_signs_page" string="Vital Signs">
