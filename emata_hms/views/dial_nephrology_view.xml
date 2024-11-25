@@ -20,6 +20,11 @@
         <field name="model">em.hms.dial.nephrology</field>
         <field name="arch" type="xml">
             <form string="Nephrology">
+                <header>
+                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -38,7 +43,7 @@
                         </group>
                     </group>
                     <group>
-                        <field name="medication_request_ids" />
+                        <field name="medication_request_ids" context="{'default_patient_id': patient_id}" />
                         <field name="analysis_request_ids" />
                         <field name="image_request_ids" />
                     </group>

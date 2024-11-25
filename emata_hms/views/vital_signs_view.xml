@@ -6,7 +6,6 @@
         <field name="model">em.hms.vital.sign</field>
         <field name="arch" type="xml">
             <tree string="Vital Signs Monitoring" create="0" delete="0">
-                <field name="activity_name" />
                 <field name="delivery_id" optional="hide" />
                 <field name="hospitalization_id" optional="hide" />
                 <field name="surgery_id" optional="hide" />
@@ -46,15 +45,14 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="activity_name" readonly="1" />
-                            <field name="delivery_id" invisible="activity_name != 'Delivery'" readonly="1" />
-                            <field name="hospitalization_id" invisible="activity_name != 'Hospitalization'" readonly="1" />
-                            <field name="surgery_id" invisible="activity_name != 'RHS Surgery'" readonly="1" />
-                            <field name="incubator_admission_id" invisible="activity_name != 'Incubator Admission'" readonly="1" />
-                            <field name="ward_admission_id" invisible="activity_name != 'Ward Admission'" readonly="1" />
-                            <field name="pediatric_surgery_id" invisible="activity_name != 'Pediatric Surgery'" readonly="1" />
-                            <field name="icu_id" invisible="activity_name != 'ICU'" readonly="1" />
-                            <field name="nicu_id" invisible="activity_name != 'NICU'" readonly="1" />
+                            <field name="delivery_id" invisible="not delivery_id" readonly="1" />
+                            <field name="hospitalization_id" invisible="not hospitalization_id" readonly="1" />
+                            <field name="surgery_id" invisible="not surgery_id" readonly="1" />
+                            <field name="incubator_admission_id" invisible="not incubator_admission_id" readonly="1" />
+                            <field name="ward_admission_id" invisible="not ward_admission_id" readonly="1" />
+                            <field name="pediatric_surgery_id" invisible="not pediatric_surgery_id" readonly="1" />
+                            <field name="icu_id" invisible="not icu_id" readonly="1" />
+                            <field name="nicu_id" invisible="not nicu_id" readonly="1" />
                             <field name="patient_id" />
                             <field name="datetime" widget="datetime" />
                         </group>
@@ -65,7 +63,7 @@
                             <field name="awareness" />
                         </group>
                     </group>
-                    <group invisible="activity_name != 'Ward Admission' and activity_name != 'Pediatric Surgery'">
+                    <group invisible="not ward_admission_id and not pediatric_surgery_id">
                         <group>
                             <field name="oxygen" />
                             <field name="stool" />
@@ -79,7 +77,7 @@
                             <field name="blood_sugar" />
                         </group>
                     </group>
-                    <group invisible="activity_name != 'Ward Admission'">
+                    <group invisible="not ward_admission_id">
                         <group>
                             <field name="feeding_type" />
                             <field name="breastfeeding" invisible="feeding_type != 'breastfeeding'" required="feeding_type == 'breastfeeding'" />
@@ -88,7 +86,7 @@
                         <group>
                         </group>
                     </group>
-                    <group invisible="activity_name != 'Pediatric Surgery'">
+                    <group invisible="not pediatric_surgery_id">
                         <group>
                             <field name="explosives" />
                             <field name="oral_intake" />

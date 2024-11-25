@@ -93,9 +93,9 @@
                         </group>
                     </group>
                     <group>
-                        <field name="medication_request_ids" widget="many2many_tags" />
-                        <field name="analysis_request_ids" widget="many2many_tags" />
-                        <field name="image_request_ids" widget="many2many_tags" />
+                        <field name="medication_request_ids" context="{'default_patient_id': patient_id}" />
+                        <field name="analysis_request_ids" />
+                        <field name="image_request_ids" />
                     </group>
                     <group>
                         <field name="notes" widget="text" />

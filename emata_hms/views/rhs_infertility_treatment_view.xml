@@ -31,7 +31,6 @@
                 <field name="ovum_measuring_natural2" optional="hide" />
                 <field name="is_ovulation_natural3" optional="hide" />
                 <field name="ovum_measuring_natural3" optional="hide" />
-                <field name="medication_request_ids" widget="many2many_tags" optional="hide" />
                 <field name="is_ovulation_treatment1" optional="hide" />
                 <field name="ovum_measuring_treatment1" optional="hide" />
                 <field name="is_ovulation_treatment2" optional="hide" />
@@ -46,7 +45,6 @@
                 <field name="is_hysteroscopy" optional="hide" />
                 <field name="hysteroscopy_result" optional="hide" />
                 <field name="hysteroscopy_attachment" optional="hide" />
-                <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -57,6 +55,11 @@
         <field name="model">em.hms.rhs.infertility.treatment</field>
         <field name="arch" type="xml">
             <form string="Infertility Treatment">
+                <header>
+                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -115,7 +118,7 @@
                             <field name="ovum_measuring_natural2" invisible="is_ovulation_natural2 == False" required="is_ovulation_natural2 == True" />
                             <field name="is_ovulation_natural3" />
                             <field name="ovum_measuring_natural3" invisible="is_ovulation_natural3 == False" required="is_ovulation_natural3 == True" />
-                            <field name="medication_request_ids" widget="many2many_tags" />
+                            <field name="medication_request_ids" context="{'default_patient_id': patient_id}" />
                         </group>
                         <group>
                             <field name="is_ovulation_treatment1" />
@@ -138,7 +141,7 @@
                             <field name="is_hysteroscopy" />
                             <field name="hysteroscopy_result" invisible="is_hysteroscopy == False" required="is_hysteroscopy == True" />
                             <field name="hysteroscopy_attachment" invisible="is_hysteroscopy == False" required="is_hysteroscopy == True" />
-                            <field name="analysis_request_ids" widget="many2many_tags" />
+                            <field name="analysis_request_ids" />
                         </group>
                     </group>
                     <group>

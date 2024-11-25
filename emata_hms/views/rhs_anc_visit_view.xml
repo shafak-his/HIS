@@ -5,7 +5,7 @@
         <field name="name">em.hms.rhs.anc.visit.view.tree</field>
         <field name="model">em.hms.rhs.anc.visit</field>
         <field name="arch" type="xml">
-            <tree string="ANC Visits" create="0" delete="0">
+            <tree string="ANC Visits">
                 <field name="anc_id" />
                 <field name="patient_id" />
                 <field name="visit_date" />
@@ -26,8 +26,7 @@
                 <field name="next_visit_date" optional="hide" />
                 <field name="examiner_name" optional="hide" />
                 <field name="additional_notes" optional="hide" />
-                <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
-                <field name="company_id"  optional="hide" />
+                <field name="company_id"  readonly="1" force_save="1" />
             </tree>
         </field>
     </record>

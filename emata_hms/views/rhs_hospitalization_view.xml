@@ -79,25 +79,25 @@
                     </group>
                 </group>
                 <group>
-                    <field name="medical_history_ids" context="{'default_patient_id': patient_id}">
+                    <field name="medical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
                         <tree create="1" delete="1" editable="bottom">
                             <field name="name" />
                             <field name="name_lang" />
                         </tree>
                     </field>
-                    <field name="surgical_history_ids" context="{'default_patient_id': patient_id}">
+                    <field name="surgical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
                         <tree create="1" delete="1" editable="bottom">
                             <field name="name" />
                             <field name="name_lang" />
                         </tree>
                     </field>
-                    <field name="medication_history_ids" context="{'default_patient_id': patient_id}">
+                    <field name="medication_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
                         <tree create="1" delete="1" editable="bottom">
                             <field name="name" />
                             <field name="name_lang" />
                         </tree>
                     </field>
-                    <field name="allergic_history_ids" context="{'default_patient_id': patient_id}">
+                    <field name="allergic_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
                         <tree create="1" delete="1" editable="bottom">
                             <field name="name" />
                             <field name="name_lang" />
@@ -118,7 +118,6 @@
                     <page name="vital_signs_page" string="Vital Signs">
                         <field name="vital_sign_ids" context="{'default_patient_id': patient_id}">
                             <tree string="Vital Signs">
-                                <field name="activity_name" />
                                 <field name="delivery_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="surgery_id" optional="hide" />
@@ -206,7 +205,6 @@
                     <page name="necessities_page" string="Daily Necessity Table">
                         <field name="necessity_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
-                                <field name="activity_name" />
                                 <field name="patient_admission_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="incubator_admission_id" optional="hide" />
@@ -232,7 +230,6 @@
                     <page name="commitments_page" string="Necessity Giving Table">
                         <field name="commitment_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
-                                <field name="activity_name" />
                                 <field name="patient_admission_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="incubator_admission_id" optional="hide" />

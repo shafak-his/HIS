@@ -70,7 +70,7 @@ class EmHmsPediatricIncubatorAdmission(models.Model):
         ('death', 'Death'),
         ('referral', 'Referral To Another Hospital')
     ], string='Graduation To', tracking=True)
-    graduation_date = fields.Date('Graduation Date', required=True, tracking=True)
+    graduation_date = fields.Date('Graduation Date', tracking=True)
     medical_recommendations = fields.Char('Medical Recommendations At Graduation', tracking=True)
     
     analysis_request_ids = fields.One2many('em.hms.analysis.request', 'incubator_admission_id', string='Analysis Requests')

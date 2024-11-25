@@ -44,7 +44,7 @@ class EmHmsPediatricSurgeryClinic(models.Model):
         ('home', 'Home'),
         ('referral', 'Referral To Another Hospital')
     ], string='Graduation To', tracking=True)
-    graduation_date = fields.Date('Graduation Date', required=True, tracking=True)
+    graduation_date = fields.Date('Graduation Date', tracking=True)
     medical_recommendations = fields.Char('Medical Recommendations At Graduation', tracking=True)
     consultations = fields.Char('Consultations', tracking=True)
     notes = fields.Char('Notes', tracking=True)
@@ -53,6 +53,10 @@ class EmHmsPediatricSurgeryClinic(models.Model):
     medication_request_ids = fields.One2many('em.hms.medication.request', 'pediatric_surgery_clinic_id', string='Medication Requests')
     analysis_request_ids = fields.One2many('em.hms.analysis.request', 'pediatric_surgery_clinic_id', string='Analysis Requests')
     image_request_ids = fields.One2many('em.hms.image.request', 'pediatric_surgery_clinic_id', string='Image Requests')
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='Status', required=True, default='draft')
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
@@ -69,3 +73,17 @@ class EmHmsPediatricSurgeryClinic(models.Model):
         ),
     ]
 
+    @api.onchange('patient_id')
+    def _onchange_patient_id(self):
+        if self.patient_id:
+            self.medical_history_ids = [(6, 0, [record.id for record in self.patient_id.medical_history_ids])]
+            self.surgical_history_ids = [(6, 0, [record.id for record in self.patient_id.surgical_history_ids])]
+            self.medication_history_ids = [(6, 0, [record.id for record in self.patient_id.medication_history_ids])]
+            self.allergic_history_ids = [(6, 0, [record.id for record in self.patient_id.allergic_history_ids])]
+
+    def confirm_record(self):
+        self.ensure_one()
+        self.medication_request_ids.generate_sale_order()
+        self.write({
+            'state': 'done'
+        })

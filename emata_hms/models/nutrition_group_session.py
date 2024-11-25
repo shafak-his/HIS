@@ -78,7 +78,7 @@ class EmHmsNutritionGroupSession(models.Model):
         (
             'check_visit_date',
             'CHECK (visit_date <= CURRENT_DATE)',
-            'Visit Date Must Not Be Newer Than Today.'
+            'Visit Date Must Not Be in Future.'
         ),
     ]
 

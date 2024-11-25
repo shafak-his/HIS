@@ -21,9 +21,6 @@
                 <field name="medical_recommendations" optional="hide" />
                 <field name="consultations" optional="hide" />
                 <field name="notes" optional="hide" />
-                <field name="medication_request_ids" widget="many2many_tags" optional="hide" />
-                <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
-                <field name="image_request_ids" widget="many2many_tags" optional="hide" />
                 <field name="necessity_ids" widget="many2many_tags" optional="hide" />
                 <field name="commitment_ids" widget="many2many_tags" optional="hide" />
                 <field name="company_id" optional="hide" />
@@ -36,6 +33,11 @@
         <field name="model">em.hms.pediatric.clinic</field>
         <field name="arch" type="xml">
             <form string="Clinic">
+                <header>
+                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -53,13 +55,13 @@
                         <field name="complaint_details" widget="text" />
                     </group>
                     <group>
-                        <field name="medical_history_ids" context="{'default_patient_id': patient_id}">
+                        <field name="medical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1" editable="bottom">
                                 <field name="name" />
                                 <field name="name_lang" />
                             </tree>
                         </field>
-                        <field name="allergic_history_ids" context="{'default_patient_id': patient_id}">
+                        <field name="allergic_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1" editable="bottom">
                                 <field name="name" />
                                 <field name="name_lang" />
@@ -81,14 +83,13 @@
                         <field name="notes" widget="text" />
                     </group>
                     <group>
-                        <field name="medication_request_ids" widget="many2many_tags" />
-                        <field name="analysis_request_ids" widget="many2many_tags" />
-                        <field name="image_request_ids" widget="many2many_tags" />
+                        <field name="medication_request_ids" context="{'default_patient_id': patient_id}" />
+                        <field name="analysis_request_ids" />
+                        <field name="image_request_ids" />
                     </group>
                     <group>
                         <field name="necessity_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
-                                <field name="activity_name" />
                                 <field name="patient_admission_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="incubator_admission_id" optional="hide" />
@@ -112,7 +113,6 @@
                         </field>
                         <field name="commitment_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
-                                <field name="activity_name" />
                                 <field name="patient_admission_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="incubator_admission_id" optional="hide" />

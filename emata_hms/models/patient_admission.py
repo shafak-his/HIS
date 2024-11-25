@@ -52,14 +52,32 @@ class EmHmsPatientAdmission(models.Model):
     visit_ids = fields.One2many('em.hms.patient.admission.visit', 'patient_admission_id', string='Doctor Visits')
     necessity_ids = fields.One2many('em.hms.daily.necessity', 'patient_admission_id', string='Daily Necessities')
     commitment_ids = fields.One2many('em.hms.necessity.giving', 'patient_admission_id', string='Necessity Giving')
-    
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='Status', required=True, default='draft')
+ 
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
     _sql_constraints = [
         (
             'check_visit_date',
             'CHECK (visit_date <= CURRENT_DATE)',
-            'Visit Date Must Not Be Newer Than Today.'
+            'Visit Date Must Not Be in Future.'
         ),
     ]
 
+    @api.onchange('patient_id')
+    def _onchange_patient_id(self):
+        if self.patient_id:
+            self.medical_history_ids = [(6, 0, [record.id for record in self.patient_id.medical_history_ids])]
+            self.surgical_history_ids = [(6, 0, [record.id for record in self.patient_id.surgical_history_ids])]
+            self.medication_history_ids = [(6, 0, [record.id for record in self.patient_id.medication_history_ids])]
+            self.allergic_history_ids = [(6, 0, [record.id for record in self.patient_id.allergic_history_ids])]
+
+    def confirm_record(self):
+        self.ensure_one()
+        self.medication_request_ids.generate_sale_order()
+        self.write({
+            'state': 'done'
+        })

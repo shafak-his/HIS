@@ -31,8 +31,6 @@
                 <field name="graduation_date" optional="hide" />
                 <field name="medical_recommendations" optional="hide" />
                 <field name="other_notes" optional="hide" />
-                <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
-                <field name="image_request_ids" widget="many2many_tags" optional="hide" />
                 <field name="necessity_ids" widget="many2many_tags" optional="hide" />
                 <field name="commitment_ids" widget="many2many_tags" optional="hide" />
                 <field name="company_id" optional="hide" />
@@ -100,13 +98,12 @@
                         <field name="other_notes" widget="text" />
                     </group>
                     <group>
-                        <field name="analysis_request_ids" widget="many2many_tags" />
-                        <field name="image_request_ids" widget="many2many_tags" />
+                        <field name="analysis_request_ids" />
+                        <field name="image_request_ids" />
                     </group>
                     <group>
                         <field name="necessity_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
-                                <field name="activity_name" />
                                 <field name="patient_admission_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="incubator_admission_id" optional="hide" />
@@ -130,7 +127,6 @@
                         </field>
                         <field name="commitment_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
-                                <field name="activity_name" />
                                 <field name="patient_admission_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="incubator_admission_id" optional="hide" />

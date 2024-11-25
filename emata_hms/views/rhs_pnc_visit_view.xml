@@ -65,7 +65,7 @@
         <field name="name">em.hms.rhs.pnc.visit.view.tree</field>
         <field name="model">em.hms.rhs.pnc.visit</field>
         <field name="arch" type="xml">
-            <tree string="PNC Visits" create="0" delete="0">
+            <tree string="PNC Visits">
                 <field name="pnc_id" />
                 <field name="patient_id" />
                 <field name="visit_date" />
@@ -93,6 +93,11 @@
         <field name="model">em.hms.rhs.pnc.visit</field>
         <field name="arch" type="xml">
             <form string="PNC Visit">
+                <header>
+                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
+                </header>
                 <sheet>
                     <group>
                         <group>

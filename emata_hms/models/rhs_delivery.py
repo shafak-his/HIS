@@ -101,6 +101,14 @@ class EmHmsRHSDelivery(models.Model):
     vital_signs_count = fields.Integer(compute='_compute_vital_signs_count', string='Vital Signs Reports')
     post_birth_ids = fields.One2many('em.hms.post.surgery', 'delivery_id', string='Post-Birth Monitoring')
     post_births_count = fields.Integer(compute='_compute_post_births_count', string='Post-Birth Reports')
+    
+    @api.onchange('patient_id')
+    def _onchange_patient_id(self):
+        if self.patient_id:
+            self.medical_history_ids = [(6, 0, [record.id for record in self.patient_id.medical_history_ids])]
+            self.surgical_history_ids = [(6, 0, [record.id for record in self.patient_id.surgical_history_ids])]
+            self.medication_history_ids = [(6, 0, [record.id for record in self.patient_id.medication_history_ids])]
+            self.allergic_history_ids = [(6, 0, [record.id for record in self.patient_id.allergic_history_ids])]
 
     @api.depends('labor_ids')
     def _compute_labors_count(self):

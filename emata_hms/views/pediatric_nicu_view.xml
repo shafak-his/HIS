@@ -43,8 +43,6 @@
                 <field name="graduation_to" optional="hide" />
                 <field name="graduation_date" optional="hide" />
                 <field name="medical_recommendations" optional="hide" />
-                <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
-                <field name="image_request_ids" widget="many2many_tags" optional="hide" />
                 <field name="observation_ids" widget="many2many_tags" optional="hide" />
                 <field name="vital_sign_ids" widget="many2many_tags" optional="hide" />
                 <field name="necessity_ids" widget="many2many_tags" optional="hide" />
@@ -132,14 +130,13 @@
                         <field name="medical_recommendations" widget="text" />
                     </group>
                     <group>
-                        <field name="analysis_request_ids" widget="many2many_tags" />
-                        <field name="image_request_ids" widget="many2many_tags" />
+                        <field name="analysis_request_ids" />
+                        <field name="image_request_ids" />
                     </group>
                     <notebook>
                         <page name="vital_signs_page" string="Vital Signs">
                             <field name="vital_sign_ids" context="{'default_patient_id': patient_id}">
                                 <tree create="1" delete="1">
-                                    <field name="activity_name" />
                                     <field name="delivery_id" optional="hide" />
                                     <field name="hospitalization_id" optional="hide" />
                                     <field name="surgery_id" optional="hide" />
@@ -175,7 +172,6 @@
                         <page name="daily_observations_page" string="Daily Observations">
                             <field name="observation_ids" context="{'default_patient_id': patient_id}">
                                 <tree create="1" delete="1">
-                                    <field name="activity_name" />
                                     <field name="nicu_id" optional="hide" />
                                     <field name="ward_admission_id" optional="hide" />
                                     <field name="responsible_nurse1_id" optional="hide" />
@@ -193,7 +189,6 @@
                         <page name="daily_necessities_page" string="Daily Necessities">
                             <field name="necessity_ids" context="{'default_patient_id': patient_id}">
                                 <tree create="1" delete="1">
-                                    <field name="activity_name" />
                                     <field name="patient_admission_id" optional="hide" />
                                     <field name="hospitalization_id" optional="hide" />
                                     <field name="nicu_id" optional="hide" />
@@ -219,7 +214,6 @@
                         <page name="necessities_giving_page" string="Necessities Giving">
                             <field name="commitment_ids" context="{'default_patient_id': patient_id}">
                                 <tree create="1" delete="1">
-                                    <field name="activity_name" />
                                     <field name="patient_admission_id" optional="hide" />
                                     <field name="hospitalization_id" optional="hide" />
                                     <field name="nicu_id" optional="hide" />

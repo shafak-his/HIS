@@ -46,36 +46,7 @@ class EmHmsGynochologicalClinicVisit(models.Model):
 
     def confirm_record(self):
         self.ensure_one()
-
-        order_line_vals = []
-        for line in self.medication_request_ids:
-            vals = {
-                'display_type': False,
-                'product_id': line.product_template_id.product_variant_id.id,
-                'product_template_id': line.product_template_id.id,
-                'name': line.product_template_id.name,
-                'product_uom_qty': line.qty,
-                'product_uom': line.uom_id.id,
-                'price_unit': 0,
-            }
-            order_line_vals.append(vals)
-            if line.notes:
-                vals = {
-                    'display_type': 'line_note',
-                    'name': line.notes
-                }
-                order_line_vals.append(vals)
-
-        sale_order = self.sudo().env['sale.order'].create({
-            'general_visit_id': self.id,
-            'partner_id': self.patient_id.id,
-            'date_order': fields.Date.today(),
-            'order_line': [(0, 0, val) for val in order_line_vals]
-        })
-
-        sale_order.sudo().action_confirm()
-
+        self.medication_request_ids.generate_sale_order()
         self.write({
             'state': 'done'
         })
-        

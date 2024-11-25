@@ -94,6 +94,13 @@ class EmHmsRHSHospitalization(models.Model):
     commitment_ids = fields.One2many('em.hms.necessity.giving', 'hospitalization_id', string='Necessity Giving')
     commitments_count = fields.Integer(compute='_compute_commitments_count', string='Necessity Giving Count')
     
+    @api.onchange('patient_id')
+    def _onchange_patient_id(self):
+        if self.patient_id:
+            self.medical_history_ids = [(6, 0, [record.id for record in self.patient_id.medical_history_ids])]
+            self.surgical_history_ids = [(6, 0, [record.id for record in self.patient_id.surgical_history_ids])]
+            self.medication_history_ids = [(6, 0, [record.id for record in self.patient_id.medication_history_ids])]
+            self.allergic_history_ids = [(6, 0, [record.id for record in self.patient_id.allergic_history_ids])]
     
     @api.depends('vital_sign_ids')
     def _compute_vital_signs_count(self):

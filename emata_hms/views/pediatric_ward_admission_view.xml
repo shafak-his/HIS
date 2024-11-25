@@ -27,8 +27,6 @@
                 <field name="medical_recommendations" optional="hide" />
                 <field name="consultations" optional="hide" />
                 <field name="notes" optional="hide" />
-                <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
-                <field name="image_request_ids" widget="many2many_tags" optional="hide" />
                 <field name="observation_ids" widget="many2many_tags" optional="hide" />
                 <field name="vital_sign_ids" widget="many2many_tags" optional="hide" />
                 <field name="necessity_ids" widget="many2many_tags" optional="hide" />
@@ -69,13 +67,13 @@
                         </group>
                     </group>
                     <group>
-                        <field name="medical_history_ids" context="{'default_patient_id': patient_id}">
+                        <field name="medical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1" editable="bottom">
                                 <field name="name" />
                                 <field name="name_lang" />
                             </tree>
                         </field>
-                        <field name="surgical_history_ids" context="{'default_patient_id': patient_id}">
+                        <field name="surgical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1" editable="bottom">
                                 <field name="name" />
                                 <field name="name_lang" />
@@ -106,13 +104,12 @@
                         <field name="notes" widget="text" />
                     </group>
                     <group>
-                        <field name="analysis_request_ids" widget="many2many_tags" />
-                        <field name="image_request_ids" widget="many2many_tags" />
+                        <field name="analysis_request_ids" />
+                        <field name="image_request_ids" />
                     </group>
                     <group>
                         <field name="vital_sign_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
-                                <field name="activity_name" />
                                 <field name="delivery_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="surgery_id" optional="hide" />
@@ -146,7 +143,6 @@
                         </field>
                         <field name="observation_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
-                                <field name="activity_name" />
                                 <field name="incubator_admission_id" optional="hide" />
                                 <field name="ward_admission_id" optional="hide" />
                                 <field name="responsible_nurse1_id" optional="hide" />
@@ -162,7 +158,6 @@
                         </field>
                         <field name="necessity_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
-                                <field name="activity_name" />
                                 <field name="patient_admission_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="incubator_admission_id" optional="hide" />
@@ -186,7 +181,6 @@
                         </field>
                         <field name="commitment_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
-                                <field name="activity_name" />
                                 <field name="patient_admission_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="incubator_admission_id" optional="hide" />

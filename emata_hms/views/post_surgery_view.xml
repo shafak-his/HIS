@@ -5,8 +5,7 @@
         <field name="name">em.hms.post.surgery.view.tree</field>
         <field name="model">em.hms.post.surgery</field>
         <field name="arch" type="xml">
-            <tree string="Post-Birth Monitoring" create="0" delete="0">
-                <field name="activity_name" />
+            <tree string="Post-Birth Monitoring">
                 <field name="delivery_id" optional="hide"/>
                 <field name="surgery_id" optional="hide" />
                 <field name="patient_id" />
@@ -31,9 +30,8 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="activity_name" readonly="1" />
-                            <field name="delivery_id" invisible="activity_name != 'Delivery'" readonly="1" />
-                            <field name="surgery_id" invisible="activity_name != 'RHS Surgery'" readonly="1" />
+                            <field name="delivery_id" invisible="not delivery_id" readonly="1" />
+                            <field name="surgery_id" invisible="not surgery_id" readonly="1" />
                             <field name="patient_id" />
                             <field name="datetime" widget="datetime" />
                             <field name="pressure" />

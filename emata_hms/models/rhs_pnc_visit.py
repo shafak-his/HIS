@@ -57,5 +57,16 @@ class EmHmsRHSPNCVisit(models.Model):
     medication_request_ids = fields.One2many('em.hms.medication.request', 'pnc_visit_id', string='Medication Requests')
     analysis_request_ids = fields.One2many('em.hms.analysis.request', 'pnc_visit_id', string='Analysis Requests')
     image_request_ids = fields.One2many('em.hms.image.request', 'pnc_visit_id', string='Image Requests')
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='Status', required=True, default='draft')
 
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
+
+    def confirm_record(self):
+        self.ensure_one()
+        self.medication_request_ids.generate_sale_order()
+        self.write({
+            'state': 'done'
+        })

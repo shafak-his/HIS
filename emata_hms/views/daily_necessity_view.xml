@@ -6,7 +6,6 @@
         <field name="model">em.hms.daily.necessity</field>
         <field name="arch" type="xml">
             <tree string="Daily Necessities">
-                <field name="activity_name" />
                 <field name="patient_admission_id" optional="hide" />
                 <field name="hospitalization_id" optional="hide" />
                 <field name="incubator_admission_id" optional="hide" />
@@ -38,16 +37,15 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="activity_name" readonly="1" />
-                            <field name="patient_admission_id" invisible="activity_name != 'Patient Admission'" readonly="1" />
-                            <field name="hospitalization_id" invisible="activity_name != 'Hospitalization'" readonly="1" />
-                            <field name="incubator_admission_id" invisible="activity_name != 'Incubator Admission'" readonly="1" />
-                            <field name="ward_admission_id" invisible="activity_name != 'Ward Admission'" readonly="1" />
-                            <field name="pediatric_surgery_id" invisible="activity_name != 'Pediatric Surgery'" readonly="1" />
-                            <field name="pediatric_clinic_id" invisible="activity_name != 'Pediatric Clinic'" readonly="1" />
-                            <field name="phototherapy_id" invisible="activity_name != 'Phototherapy'" readonly="1" />
-                            <field name="icu_id" invisible="activity_name != 'ICU'" readonly="1" />
-                            <field name="nicu_id" invisible="activity_name != 'NICU'" readonly="1" />
+                            <field name="patient_admission_id" invisible="not patient_admission_id" readonly="1" />
+                            <field name="hospitalization_id" invisible="not hospitalization_id" readonly="1" />
+                            <field name="incubator_admission_id" invisible="not incubator_admission_id" readonly="1" />
+                            <field name="ward_admission_id" invisible="not ward_admission_id" readonly="1" />
+                            <field name="pediatric_surgery_id" invisible="not pediatric_surgery_id" readonly="1" />
+                            <field name="pediatric_clinic_id" invisible="not pediatric_clinic_id" readonly="1" />
+                            <field name="phototherapy_id" invisible="not phototherapy_id" readonly="1" />
+                            <field name="icu_id" invisible="not icu_id" readonly="1" />
+                            <field name="nicu_id" invisible="not nicu_id" readonly="1" />
                             <field name="necessity_datetime" />
                             <field name="patient_id" />
                             <field name="doctor_id" />
@@ -65,7 +63,7 @@
                         <group>
                         </group>
                         <group>
-                            <field name="company_id" />
+                            <field name="company_id" readonly="1" force_save="1" />
                         </group>
                     </group>
                 </sheet>

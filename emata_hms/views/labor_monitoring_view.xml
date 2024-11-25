@@ -5,8 +5,7 @@
         <field name="name">em.hms.labor.view.tree</field>
         <field name="model">em.hms.labor</field>
         <field name="arch" type="xml">
-            <tree string="Labor Monitoring" create="0" delete="0">
-                <field name="activity_name" />
+            <tree string="Labor Monitoring">
                 <field name="delivery_id" optional="hide" />
                 <field name="hospitalization_id" optional="hide" />
                 <field name="surgery_id" optional="hide" />
@@ -30,10 +29,9 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="activity_name" readonly="1" />
-                            <field name="delivery_id" invisible="activity_name != 'Delivery'" readonly="1" />
-                            <field name="hospitalization_id" invisible="activity_name != 'Hospitalization'" readonly="1" />
-                            <field name="surgery_id" invisible="activity_name != 'RHS Surgery'" readonly="1" />
+                            <field name="delivery_id" invisible="not delivery_id" readonly="1" />
+                            <field name="hospitalization_id" invisible="not hospitalization_id" readonly="1" />
+                            <field name="surgery_id" invisible="not surgery_id" readonly="1" />
                             <field name="patient_id" />
                             <field name="labor_hour" widget="datetime" />
                             <field name="contraction_duration" />
