@@ -104,6 +104,7 @@
                                 <field name="name_lang" />
                             </tree>
                         </field>
+                        <field name="initial_diagnosis" widget="text" />
                         <field name="child_name" />
                     </group>
                 </group>
@@ -121,13 +122,30 @@
                                 <field name="delivery_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="surgery_id" optional="hide" />
-                                <field name="incubator_admission_id" optional="hide" />
+                                <field name="icu_id" optional="hide" />
+                                <field name="nicu_id" optional="hide" />
+                                <field name="ward_admission_id" optional="hide" />
+                                <field name="patient_admission_id" optional="hide" />
                                 <field name="patient_id" />
                                 <field name="datetime" />
                                 <field name="pressure" optional="hide" />
                                 <field name="pulse" optional="hide" />
+                                <field name="oxygen" optional="hide" />
                                 <field name="temperature" optional="hide" />
                                 <field name="awareness" optional="hide" />
+                                <field name="stool" optional="hide" />
+                                <field name="urine" optional="hide" />
+                                <field name="breathing" optional="hide" />
+                                <field name="cyan" optional="hide" />
+                                <field name="seizures" optional="hide" />
+                                <field name="vomiting" optional="hide" />
+                                <field name="blood_sugar" optional="hide" />
+                                <field name="feeding_type" optional="hide" />
+                                <field name="breastfeeding" optional="hide" />
+                                <field name="ngt" optional="hide" />
+                                <field name="explosives" optional="hide" />
+                                <field name="oral_intake" optional="hide" />
+                                <field name="hair_reed" optional="hide" />
                                 <field name="notes" optional="hide" />
                                 <field name="company_id" optional="hide" />
                             </tree>

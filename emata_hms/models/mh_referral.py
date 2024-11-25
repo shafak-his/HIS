@@ -67,8 +67,8 @@ class EmHmsMHReferral(models.Model):
         ('allow_rp_call_service_provider', 'Allow Referee To Call Service Provider'),
         ('not_interested', 'Not Interested')
     ], string='Explain To The Beneficiary That The Phone Number Must Be Private And That Calling It Will Not Cause Any Harm To The Beneficiary Or Expose Privacy Or Breach Confidentiality', tracking=True)
-    did_bnf_receive_referral_contact = fields.Boolean('The Beneficiary Has Been Provided With The Address And Contact Numbers Of The Referee?', tracking=True)
-    did_bnf_receive_service_provider_contact = fields.Boolean('The Beneficiary Has Been Provided With The Address And Contact Numbers Of The Service Provider?', tracking=True)
+    is_bnf_receive_referral_contact = fields.Boolean('Has The Beneficiary Been Provided With The Address And Contact Numbers Of The Referee?', tracking=True)
+    is_bnf_receive_sp_contact = fields.Boolean('Has The Beneficiary Been Provided With The Address And Contact Numbers Of The Service Provider?', tracking=True)
     case_response = fields.Char('Response To The Case', tracking=True)
     service_providing_date = fields.Date('Service Providing Date', tracking=True)
     service_confirmed_by = fields.Selection([
@@ -87,6 +87,6 @@ class EmHmsMHReferral(models.Model):
         ('other', 'Other (Please Specify)')
     ], string='Reason Of Not Confirming Service Provision', tracking=True)
     other_not_confirmed_service_response = fields.Char('Other Reason Of Not Confirming Service Provision', tracking=True)
-    referee_id = fields.Many2one('hr.employee', string='Referee')
+    referrer_id = fields.Many2one('hr.employee', string='Referrer')
     referee_manager_id = fields.Many2one('hr.employee', string='Referee Line Manager')
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

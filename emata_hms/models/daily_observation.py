@@ -55,4 +55,6 @@ class EmHmsDailyObservation(models.Model):
             self.patient_id = self.nicu_id.patient_id.id
             self.activity_name = 'NICU'
             
+
+            
     

@@ -20,6 +20,8 @@ class EmHmsAnalysisRequest(models.Model):
     phototherapy_id = fields.Many2one('em.hms.pediatric.phototherapy', string='Phototherapy')
     icu_id = fields.Many2one('em.hms.pediatric.icu', string='ICU')
     nicu_id = fields.Many2one('em.hms.pediatric.nicu', string='NICU')
+    hospitalization_id = fields.Many2one('em.hms.rhs.hospitalization', string='Hospitalization')
+    rhs_surgery_id = fields.Many2one('em.hms.rhs.surgery', string='RHS Surgery')
     
     product_template_id = fields.Many2one('product.template', string='Product', domain="[('is_medical_analysis', '=', True)]", required=True)
     notes = fields.Char('Notes')

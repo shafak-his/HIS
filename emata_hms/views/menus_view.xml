@@ -251,7 +251,7 @@
             action="emata_hms.em_hms_rhs_infertility_treatment_action"
             sequence="35" />
         <menuitem id="menu_em_hms_gynochological_clinic_visit"
-            name="Gynochological Visit"
+            name="Gynochological Clinic Visit"
             parent="menu_em_hms_rhs_root"
             action="emata_hms.em_hms_gynochological_clinic_visit_action"
             sequence="36" />
@@ -511,13 +511,13 @@
             action="emata_hms.em_hms_pediatric_phototherapy_action"
             sequence="6"
         />
-        <menuitem id="menu_em_hms_icu_admission"
+        <menuitem id="menu_em_hms_icu"
             name="ICU"
             parent="menu_em_hms_pediatric_root"
             action="emata_hms.em_hms_pediatric_icu_action"
             sequence="7"
         />
-        <menuitem id="menu_em_hms_nicu_admission"
+        <menuitem id="menu_em_hms_nicu"
             name="NICU"
             parent="menu_em_hms_pediatric_root"
             action="emata_hms.em_hms_pediatric_nicu_action"

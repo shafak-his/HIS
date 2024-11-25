@@ -38,7 +38,6 @@ class EmHmsPediatricICU(models.Model):
         ('artificial', 'Artificial')
     ], string='Nutrition And Breastfeeding', tracking=True)
     mother_blood_group = fields.Selection(BLOOD_TYPES, string='Mother Blood Group', tracking=True)
-    gestational_weeks_count = fields.Integer('Number Of Gestational Weeks', tracking=True)
     child_birth_weight = fields.Float('Birth Weight Of Child', tracking=True)
     child_blood_group = fields.Selection(BLOOD_TYPES, string='Child Blood Group', tracking=True)
     is_child_resuscitation = fields.Boolean('Was Resuscitation Performed For Child?', tracking=True)
@@ -51,7 +50,7 @@ class EmHmsPediatricICU(models.Model):
     technician_doctor_id = fields.Many2one('hr.employee', string='Technician Doctor', tracking=True)
     graduation_to = fields.Selection([
         ('home', 'Home'),
-        ('care', 'Care'),
+        ('wing', 'Wing'),
         ('death', 'Death'),
         ('referral', 'Referral To Another Hospital')
     ], string='Graduation To', tracking=True)

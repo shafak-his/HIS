@@ -42,9 +42,10 @@ class EmHmsPediatricSurgery(models.Model):
     anesthesia_report = fields.Char('Anesthesia Report', tracking=True)
     surgical_procedure_report = fields.Char('Surgical Procedure Report', tracking=True)
     graduation_to = fields.Selection([
-        ('home', 'Home'),
+        ('surgery', 'Surgery'),
+        ('wing', 'Wing'),
         ('care', 'Care'),
-        ('death', 'Death'),
+        ('home', 'Home'),
         ('referral', 'Referral To Another Hospital')
     ], string='Graduation To', tracking=True)
     graduation_date = fields.Date('Graduation Date', required=True, tracking=True)

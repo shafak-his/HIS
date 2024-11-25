@@ -9,6 +9,7 @@ class EmHmsMHPMPLUS(models.Model):
     
     session_date = fields.Date('Session Date', required=True, tracking=True)
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
+    mh_worker_id = fields.Many2one('hr.employee', string='Mental Health Worker Definition', required=True)
     educational_status = fields.Selection([
         ('primary_school', 'Primary School'),
         ('secondary', 'Secondary'),

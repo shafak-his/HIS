@@ -6,8 +6,9 @@
         <field name="model">em.hms.mh.pmplus</field>
         <field name="arch" type="xml">
             <tree string="PM+">
-                <field name="session_date" />
                 <field name="patient_id" />
+                <field name="session_date" />
+                <field name="mh_worker_id" />
                 <field name="educational_status" optional="hide" />
                 <field name="main_complaints" optional="hide" />
                 <field name="intervention" optional="hide" />
@@ -38,19 +39,26 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="session_date" widget="date" />
                             <field name="patient_id" />
+                            <field name="session_date" widget="date" />
+                            <field name="mh_worker_id" />
                             <field name="educational_status" widget="radio" />
-                            <field name="main_complaints" />
+                        </group>
+                        <group>
+                            <field name="main_complaints" widget="text" />
                             <field name="intervention" widget="radio" />
                             <field name="visit_type" widget="radio" />
                         </group>
+                    </group>
+                    <group>
                         <group>
                             <field name="referral_type" widget="radio" />
                             <field name="internal_referral"
                                 invisible="referral_type != 'internal'" required="referral_type == 'internal'" />
                             <field name="other_internal_referral"
                                 invisible="referral_type != 'internal' or internal_referral != 'other'" required="referral_type == 'internal' and internal_referral == 'other'" />
+                        </group>
+                        <group>
                             <field name="external_referral"
                                 invisible="referral_type != 'external'" required="referral_type == 'external'" />
                             <field name="referred_from_entity" invisible="referral_type == 'none'" required="referral_type != 'none'" />
@@ -59,18 +67,24 @@
                     </group>
                     <group>
                         <group>
+                            <field name="risk_level" widget="radio" />
                             <field name="file_status" widget="radio" />
                             <field name="quest_centers_initial" invisible="file_status != 'closed'" />
                             <field name="quest_phq9_final" invisible="file_status != 'closed'" />
+                        </group>
+                        <group>
                             <field name="case_closure_date" widget="date"
                                 invisible="file_status != 'closed'" />
                             <field name="closure_reason" invisible="file_status != 'closed'" />
                             <field name="other_closure_reason"
                                 invisible="file_status != 'closed' or closure_reason != 'other'" />
                         </group>
+                    </group>
+                    <group>
                         <group>
-                            <field name="risk_level" widget="radio" />
                             <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                        <group>
                         </group>
                     </group>
                 </sheet>

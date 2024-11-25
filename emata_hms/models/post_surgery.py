@@ -7,11 +7,11 @@ class EmHmsRHSDeliveryPostBirth(models.Model):
     _rec_name = 'activity_name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
+    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     datetime = fields.Datetime('Time', required=True, tracking=True)
     activity_name = fields.Char('Activity', tracking=True)
     delivery_id = fields.Many2one('em.hms.rhs.delivery', string='Delivery')
     surgery_id = fields.Many2one('em.hms.rhs.surgery', string='Surgery')
-    patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     
     pressure = fields.Integer('Pressure', tracking=True)
     pulse = fields.Integer('Pulse', tracking=True)

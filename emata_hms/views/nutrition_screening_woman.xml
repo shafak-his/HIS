@@ -60,6 +60,8 @@
                 <field name="materials_distributed2" optional="hide" />
                 <field name="vitamins_minerals_qty2" optional="hide" />
                 <field name="folic_iron_qty2" optional="hide" />
+                <field name="is_iycf_session_offered" optional="hide" />
+                <field name="topic_ids" widget="many2many_tags" optional="hide" />
                 <field name="conduct_individual_session" optional="hide" />
                 <field name="company_id" optional="hide" />
             </tree>
@@ -77,9 +79,9 @@
                             <field name="patient_id" />
                             <field name="project_id"
                                 options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="service_place" />
                             <field name="visit_date" widget="date" />
                             <field name="visit_type" />
-                            <field name="service_place" />
                         </group>
                         <group>
                             <field name="muac_measurement" />
@@ -101,14 +103,15 @@
                         </group>
                         <group invisible="is_death_or_defaulter == True">
                             <field name="is_violence_or_abuse_signs" required="is_death_or_defaulter == False" />
-                            <field name="is_danger_signs" required="is_death_or_defaulter == False" />
-                            <field name="danger_signs_ids" invisible="is_danger_signs == False"
-                                required="is_death_or_defaulter == False and is_danger_signs == True">
+                            <field name="is_danger_signs" invisible="is_pbw == False" required="is_pbw == True" />
+                            <field name="danger_signs_ids" invisible="is_pbw == False or is_danger_signs == False"
+                                required="is_pbw == True and is_danger_signs == True">
                                 <tree create="0" delete="0" editable="bottom">
                                     <field name="name" />
                                     <field name="name_lang" />
                                 </tree>
                             </field>
+                            <field name="is_pbw" invisible="1" />
                         </group>
                     </group>
                     <group invisible="is_death_or_defaulter == True">
@@ -171,8 +174,16 @@
                                 required="is_death_or_defaulter == False and is_supplements_distributed2 == True and materials_distributed2 == 'folic_iron'" />
                         </group>
                     </group>
-                    <separator string="Topics" />
-                    <field name="topic_ids" >
+                    <group>
+                        <group>
+                            <field name="visit_number" invisible="is_supplements_distributed == False" required="is_death_or_defaulter == False and is_supplements_distributed == True" />
+                        </group>
+                        <group>
+                            <field name="is_iycf_session_offered" />
+                        </group>
+                    </group>
+                    <separator string="Topics" invisible="is_iycf_session_offered == False" />
+                    <field name="topic_ids" invisible="is_iycf_session_offered == False" >
                         <tree editable="bottom">
                             <field name="topic_id" domain="[('parent_id','=',False)]" />
                             <field name="sub_topic_ids" domain="[('parent_id','=',topic_id)]" widget="many2many_tags" />

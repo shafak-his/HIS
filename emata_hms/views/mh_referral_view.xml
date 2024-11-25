@@ -25,14 +25,14 @@
                 <field name="services_required" optional="hide" />
                 <field name="where_to_submit_the_referral" optional="hide" />
                 <field name="phone_privacy" optional="hide" />
-                <field name="did_bnf_receive_referral_contact" optional="hide" />
-                <field name="did_bnf_receive_service_provider_contact" optional="hide" />
+                <field name="is_bnf_receive_referral_contact" optional="hide" />
+                <field name="is_bnf_receive_sp_contact" optional="hide" />
                 <field name="case_response" optional="hide" />
                 <field name="service_providing_date" optional="hide" />
                 <field name="service_confirmed_by" optional="hide" />
                 <field name="not_confirmed_service_response" optional="hide" />
                 <field name="other_not_confirmed_service_response" optional="hide" />
-                <field name="referee_id" optional="hide" />
+                <field name="referrer_id" optional="hide" />
                 <field name="referee_manager_id" optional="hide" />
                 <field name="company_id" optional="hide" />
             </tree>
@@ -47,8 +47,8 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="referral_date" widget="date" />
                             <field name="patient_id" />
+                            <field name="referral_date" widget="date" />
                         </group>
                         <group>
                             <field name="referral_path" />
@@ -86,9 +86,9 @@
                             <field name="phone_privacy" widget="radio" />
                         </group>
                         <group>
-                            <field name="did_bnf_receive_referral_contact"
+                            <field name="is_bnf_receive_referral_contact"
                                 widget="boolean_toggle" />
-                            <field name="did_bnf_receive_service_provider_contact"
+                            <field name="is_bnf_receive_sp_contact"
                                 widget="boolean_toggle" />
                         </group>
                     </group>
@@ -107,7 +107,7 @@
                     </group>
                     <group>
                         <group>
-                            <field name="referee_id" />
+                            <field name="referrer_id" />
                             <field name="referee_manager_id" />
                         </group>
                         <group>

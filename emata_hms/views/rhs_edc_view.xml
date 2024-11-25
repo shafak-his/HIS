@@ -131,7 +131,7 @@
                 <field name="is_smear_taken" optional="hide" />
                 <field name="last_smear_date" optional="hide" />
                 <field name="last_smear_result" optional="hide" />
-                <field name="is_microscopic_evaluation_accpted" optional="hide" />
+                <field name="is_microscopic_evaluation_accepted" optional="hide" />
                 <field name="eval_rejection_reason" optional="hide" />
                 <field name="smear_microscopic_evaluation" optional="hide" />
                 <field name="is_asch" optional="hide" />
@@ -140,7 +140,7 @@
                 <field name="cancer_result" optional="hide" />
                 <field name="plan_ids" widget="many2many_tags" optional="hide" />
                 <field name="number_months_resmear" optional="hide" />
-                <field name="supervisor_name" optional="hide" />
+                <field name="supervisor_id" optional="hide" />
                 <field name="examiner_name" optional="hide" />
                 <field name="company_id" optional="hide" />
             </tree>
@@ -171,8 +171,8 @@
                     </group>
                     <group>
                         <group>
-                            <field name="contraceptives_duration" />
-                            <field name="hormonal_medications" />
+                            <field name="contraceptives_duration" invisible="is_contraceptives == False" required = "is_contraceptives == True" />
+                            <field name="hormonal_medications" nvisible="is_hormonic_drugs == False" required = "is_hormonic_drugs == True" />
                             <field name="last_menstrual_date" widget="date" />
                             <field name="smear_day" />
                             <field name="is_smear_taken" />
@@ -181,6 +181,9 @@
                                 required="is_smear_taken == True" />
                             <field name="last_smear_result" invisible="is_smear_taken == False"
                                 required="is_smear_taken == True" />
+
+                            <field name="is_contraceptives" invisible="1" />
+                            <field name="is_hormonic_drugs" invisible="1" />
                         </group>
                         <group>
                             <field name="symptom_ids" widget="many2many_tags" />
@@ -196,10 +199,10 @@
                     </group>
                     <group>
                         <group>
-                            <field name="is_microscopic_evaluation_accpted" />
+                            <field name="is_microscopic_evaluation_accepted" />
                             <field name="eval_rejection_reason"
-                                invisible="is_microscopic_evaluation_accpted == True"
-                                required="is_microscopic_evaluation_accpted == False" />
+                                invisible="is_microscopic_evaluation_accepted == True"
+                                required="is_microscopic_evaluation_accepted == False" />
                         </group>
                         <group>
                             <field name="smear_microscopic_evaluation" />
@@ -223,10 +226,11 @@
                     <group>
                         <group>
                             <field name="plan_ids" widget="many2many_tags" />
-                            <field name="number_months_resmear" />
+                            <field name="number_months_resmear" invisible="is_resmearing_plan == False" required = "is_resmearing_plan == True" />
+                            <field name="is_resmearing_plan" invisible="1" />
                         </group>
                         <group>
-                            <field name="supervisor_name" />
+                            <field name="supervisor_id" />
                             <field name="examiner_name" />
                         </group>
                     </group>

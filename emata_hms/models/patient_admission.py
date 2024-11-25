@@ -48,6 +48,7 @@ class EmHmsPatientAdmission(models.Model):
     notes = fields.Char('Notes', tracking=True)
     
     surgery_ids = fields.One2many('em.hms.patient.admission.surgery', 'patient_admission_id', string='Surgeries')
+    vital_sign_ids = fields.One2many('em.hms.vital.sign', 'patient_admission_id', string='Vital Signs')
     visit_ids = fields.One2many('em.hms.patient.admission.visit', 'patient_admission_id', string='Doctor Visits')
     necessity_ids = fields.One2many('em.hms.daily.necessity', 'patient_admission_id', string='Daily Necessities')
     commitment_ids = fields.One2many('em.hms.necessity.giving', 'patient_admission_id', string='Necessity Giving')

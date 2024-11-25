@@ -61,6 +61,15 @@ class EmHmsRHEDC(models.Model):
     is_disabled = fields.Boolean('Is Disabled?', tracking=True)
     
     clinical_condition_ids = fields.Many2many('em.hms.rhs.edc.clinical.condition', 'edc_clinical_condition_rel', 'edc_id', 'edc_clinical_condition_id', string='Clinical Conditions', tracking=True)
+    is_contraceptives = fields.Boolean(compute='_compute_is_contraceptives_hormonic_drugs', string='Is Contraceptives Duration') #To Fahd
+    is_hormonic_drugs = fields.Boolean(compute='_compute_is_contraceptives_hormonic_drugs', string='Is Hormonic Drugs') #To Fahd
+    
+    @api.depends('clinical_condition_ids')
+    def _compute_is_contraceptives_hormonic_drugs(self):
+        for record in self:
+            record.is_contraceptives = 'Contraceptives' in record.clinical_condition_ids.mapped('name')
+            record.is_hormonic_drugs = 'Hormonic Drugs' in record.clinical_condition_ids.mapped('name')
+            
     contraceptives_duration = fields.Char('Duration Of Use Of Hormonal Contraceptives', tracking=True)
     hormonal_medications = fields.Char('Other Hormones (Duration And Type Of Use)', tracking=True)
     last_menstrual_date = fields.Date('Last Menstrual Date', tracking=True)
@@ -85,7 +94,7 @@ class EmHmsRHEDC(models.Model):
             record.is_other_sign = 'Other' in record.sign_ids.mapped('name')
     other_sign = fields.Char('Other Sign', tracking=True)
     ascus_ids = fields.Many2many('em.hms.rhs.edc.ascus', 'edc_ascus_rel', 'edc_id', 'edc_ascus_id', string='Atypical Squamous Cells Of Undetermined Significance', tracking=True)
-    is_microscopic_evaluation_accpted = fields.Boolean('Is Microscopic Evaluation Accepted?', tracking=True)
+    is_microscopic_evaluation_accepted = fields.Boolean('Is Microscopic Evaluation Accepted?', tracking=True)
     eval_rejection_reason = fields.Char('Reason of Rejecting Evaluation', tracking=True)
     smear_microscopic_evaluation = fields.Selection([
         ('normal', 'Normal'),
@@ -107,9 +116,16 @@ class EmHmsRHEDC(models.Model):
         ('adenocarcinoma', 'Adenocarcinoma')
     ], string='Cancer Result', tracking=True)
     plan_ids = fields.Many2many('em.hms.rhs.edc.plan', 'edc_plan_rel', 'edc_id', 'edc_plan_id', string='Management And Follow-Up Plans', tracking=True)
+    is_resmearing_plan = fields.Boolean(compute='_compute_is_resmearing_plan', string='Is Resmearing Plan') #To Fahd
+    
+    @api.depends('plan_ids')
+    def _compute_is_resmearing_plan(self):
+        for record in self:
+            record.is_resmearing_plan = 'Resmearing' in record.plan_ids.mapped('name')
+            
     number_months_resmear = fields.Integer('Resmear After (Month(s))', tracking=True)
     
-    supervisor_name = fields.Char('Supervisor Doctor Name', tracking=True)
+    supervisor_id = fields.Many2one('hr.employee', 'Supervisor Doctor', tracking=True)
     examiner_name = fields.Char('Sample Examiner Name', tracking=True)
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

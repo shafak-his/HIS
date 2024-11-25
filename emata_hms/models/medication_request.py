@@ -16,6 +16,8 @@ class EmHmsMedicationRequest(models.Model):
     pediatric_clinic_id = fields.Many2one('em.hms.pediatric.clinic', string='Pediatric Clinic')
     pediatric_surgery_clinic_id = fields.Many2one('em.hms.pediatric.surgery.clinic', string='Pediatric Surgery Clinic')
     icu_id = fields.Many2one('em.hms.pediatric.icu', string='ICU')
+    hospitalization_id = fields.Many2one('em.hms.rhs.hospitalization', string='Hospitalization')
+    rhs_surgery_id = fields.Many2one('em.hms.rhs.surgery', string='RHS Surgery')
 
     product_template_id = fields.Many2one('product.template', string='Product', domain="[('is_medication', '=', True)]", required=True)
     uom_id = fields.Many2one('uom.uom', string='UoM', required=True)

@@ -34,8 +34,8 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="session_date" />
                             <field name="patient_id" />
+                            <field name="session_date" />
                             <field name="educational_level" widget="radio" />
                             <field name="service_type" widget="radio" />
                         </group>
@@ -58,8 +58,8 @@
                                 invisible="file_status != 'closed' or closure_reason != 'other'" />
                         </group>
                         <group>
-                            <field name="company_id" readonly="1" force_save="1" />
                             <field name="service_provider_id" />
+                            <field name="company_id" readonly="1" force_save="1" />
                         </group>
                     </group>
                     <group>

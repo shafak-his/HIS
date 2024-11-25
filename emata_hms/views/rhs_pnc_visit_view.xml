@@ -80,6 +80,9 @@
                 <field name="patient_complaint" optional="hide" />
                 <field name="echo_findings" optional="hide" />
                 <field name="examiner_name" optional="hide" />
+                <field name="medication_request_ids" widget="many2many_tags" optional="hide" />
+                <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
+                <field name="image_request_ids" widget="many2many_tags" optional="hide" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -118,9 +121,9 @@
                         </group>
                     </group>
                     <group string="Documents">
-                       <field name="medication_request_ids" />
-                        <field name="analysis_request_ids" />
-                        <field name="image_request_ids" />
+                       <field name="medication_request_ids" widget="many2many_tags" />
+                        <field name="analysis_request_ids" widget="many2many_tags" />
+                        <field name="image_request_ids" widget="many2many_tags" />
                     </group>
                     <group>
                         <group>

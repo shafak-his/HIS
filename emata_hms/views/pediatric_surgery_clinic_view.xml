@@ -48,10 +48,10 @@
                         </group>
                         <group>
                             <field name="weight" />
-                            <field name="pressure" />
-                            <field name="pulse" />
-                            <field name="oxygen" />
                             <field name="temperature" />
+                            <field name="pressure" />
+                            <field name="oxygen" />
+                            <field name="pulse" />
                         </group>
                     </group>
                     <group>
@@ -94,7 +94,7 @@
                         </group>
                     </group>
                     <group>
-                        <field name="medical_recommendations" />
+                        <field name="medical_recommendations" widget="text" />
                         <field name="consultations" widget="text" />
                         <field name="notes" widget="text" />
                     </group>

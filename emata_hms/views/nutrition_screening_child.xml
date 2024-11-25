@@ -59,7 +59,7 @@
                 <field name="bp5_qty" optional="hide" />
                 <field name="f100_milk_qty" optional="hide" />
                 <field name="f75_milk_qty" optional="hide" />
-                <field name="first_visit_number" optional="hide" />
+                <field name="visit_number" optional="hide" />
                 <field name="is_simple_assessment" optional="hide" />
                 <field name="is_simple_to_comprehensive_assessment" optional="hide" />
                 <field name="reason_for_comprehensive" optional="hide" />
@@ -179,24 +179,22 @@
                     </group>
                     <group invisible="is_death_or_defaulter == True">
                         <group>
+                            <field name="visit_number" invisible="is_supplements_distributed == False" required="is_death_or_defaulter == False and is_supplements_distributed == True" />
                             <field name="is_simple_assessment" invisible="age_in_months >= 24"
                             required="is_death_or_defaulter == False and age_in_months &lt; 24" />
                             <field name="is_simple_to_comprehensive_assessment" invisible="is_simple_assessment == False"
                             required="is_death_or_defaulter == False and age_in_months &lt; 24 and is_simple_assessment == True" />
                             <field name="reason_for_comprehensive" invisible="is_simple_to_comprehensive_assessment == False"
                             required="is_death_or_defaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" />
+                        </group>
+                        <group>
                             <field name="problem_suffering" invisible="is_simple_to_comprehensive_assessment == False"
                             required="is_death_or_defaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" />
                             <field name="advice_provided" invisible="is_simple_to_comprehensive_assessment == False"
                             required="is_death_or_defaulter == False and age_in_months &lt; 24 and is_simple_assessment == True and is_simple_to_comprehensive_assessment == True" />
-                        </group>
-                        <group>
-                            <field name="first_visit_number" invisible="is_supplements_distributed == False" required="is_death_or_defaulter == False and is_supplements_distributed == True" />
                             <field name="is_exclusive_breastfeeding" invisible="age_in_months >= 6"
                             required="is_death_or_defaulter == False and age_in_months &lt; 6"/>
                         </group>
-                    </group>
-                    <group invisible="is_death_or_defaulter == True">
                     </group>
                     <group>
                         <group>

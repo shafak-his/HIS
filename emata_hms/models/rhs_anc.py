@@ -11,10 +11,7 @@ class EmHmsRHSANC(models.Model):
     cesarean_sections_count = fields.Integer('# Previous Cesarean Sections', tracking=True)
     family_medical_history = fields.Char('Family Medical History', tracking=True)
     is_breastfeeding = fields.Boolean('Is Breastfeeding?', tracking=True)
-    drug_history = fields.Char('Drug History', tracking=True)
     is_smoking = fields.Boolean('Is Smoking?', tracking=True)
-    medical_history = fields.Char('Medical History', tracking=True)
-    allergic_history = fields.Char('Allergic History', tracking=True)
     is_referral = fields.Boolean('Has There Been A Referral?', tracking=True)
     referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason?', tracking=True)
     previous_complications = fields.Char('Previous Pregnancy And Birth Complications', tracking=True)
@@ -31,6 +28,10 @@ class EmHmsRHSANC(models.Model):
         ('cesarean', 'Cesarean'),
         ('aided', 'Aided')
     ], string='Nature Of Previous Births', tracking=True)
+    
+    medical_history_ids = fields.Many2many('em.hms.medical.history', 'rhs_anc_medical_history_rel', 'anc_id', 'medical_history_id', string='Medical History')
+    medication_history_ids = fields.Many2many('em.hms.medication.history', 'rhs_anc_medication_history_rel', 'anc_id', 'medication_history_id', string='Medication History')
+    allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'rhs_anc_allergic_history_rel', 'anc_id', 'allergic_history_id', string='Allergic History')
     
     visit_ids = fields.One2many('em.hms.rhs.anc.visit', 'anc_id', string='Periodic Visits')
     visits_count = fields.Integer(compute='_compute_visits_count', string='Visits Count')

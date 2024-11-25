@@ -19,8 +19,8 @@ class EmHmsRHSInfertilityTreatment(models.Model):
     alives_count = fields.Integer('# Alives', tracking=True)
     normal_births_count = fields.Integer('# Normal Bitrhs', tracking=True)
     cesarean_births_count = fields.Integer('# Cesarean Bitrhs', tracking=True)
-    medical_history = fields.Char('Medical History', tracking=True)
-    surgical_history = fields.Char('Surgical History', tracking=True)
+    medical_history_ids = fields.Many2many('em.hms.medical.history', 'infertility_treatment_medical_history_rel', 'infertility_treatment_id', 'medical_history_id', string='Medical History')
+    surgical_history_ids = fields.Many2many('em.hms.surgical.history', 'infertility_treatment_surgical_history_rel', 'infertility_treatment_id', 'surgical_history_id', string='Surgical History')
     
     is_husband_tested = fields.Boolean('Has The Husband Been Tested?', tracking=True)
     husband_analysis = fields.Selection([

@@ -15,6 +15,7 @@ class EmHmsVitalSign(models.Model):
     pediatric_surgery_id = fields.Many2one('em.hms.pediatric.surgery', string='Pediatric Surgery')
     icu_id = fields.Many2one('em.hms.pediatric.icu', string='ICU')
     nicu_id = fields.Many2one('em.hms.pediatric.nicu', string='NICU')
+    patient_admission_id = fields.Many2one('em.hms.patient.admission', string='Patient Admission')
     activity_name = fields.Char('Activity', tracking=True)
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     
@@ -93,4 +94,14 @@ class EmHmsVitalSign(models.Model):
         if self.nicu_id:
             self.patient_id = self.nicu_id.patient_id.id
             self.activity_name = 'NICU'
+    
+    @api.onchange('patient_admission_id')
+    def _onchange_patient_admission_id(self):
+        if self.patient_admission_id:
+            self.patient_id = self.patient_admission_id.patient_id.id
+            self.activity_name = 'Patient Admission'
+    
+    
+            
+
             

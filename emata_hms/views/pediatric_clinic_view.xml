@@ -76,7 +76,7 @@
                         </group>
                     </group>
                     <group>
-                        <field name="medical_recommendations" />
+                        <field name="medical_recommendations" widget="text" />
                         <field name="consultations" widget="text" />
                         <field name="notes" widget="text" />
                     </group>

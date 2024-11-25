@@ -11,7 +11,7 @@ class EmHmsRHSANCVisit(models.Model):
     patient_id = fields.Many2one('res.partner', 'Patient Name', related='anc_id.patient_id')
     visit_date = fields.Date('Date Of Visit', required=True, tracking=True)
     is_signs = fields.Boolean('Signs (Pallor - Jaundice - Exophthalmos - Edema)', tracking=True)
-    arterial_position = fields.Float('Arterial Pressure In Sitting Position', tracking=True)
+    arterial_pressure = fields.Float('Arterial Pressure In Sitting Position', tracking=True)
     weight = fields.Float('Weight', tracking=True)
     fetal_hr = fields.Float('Fetal Heart Rate (n/d)', tracking=True)
     main_complaint = fields.Char('Main Complaint During This Visit', tracking=True)

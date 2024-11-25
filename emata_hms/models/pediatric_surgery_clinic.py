@@ -38,9 +38,10 @@ class EmHmsPediatricSurgeryClinic(models.Model):
     surgical_history_ids = fields.Many2many('em.hms.surgical.history', 'pediatric_surgery_clinic_surgical_history_rel', 'surgery_clinic_id', 'surgical_history_id', string='Surgical History')
     
     graduation_to = fields.Selection([
-        ('home', 'Home'),
+        ('surgery', 'Surgery'),
+        ('wing', 'Wing'),
         ('care', 'Care'),
-        ('death', 'Death'),
+        ('home', 'Home'),
         ('referral', 'Referral To Another Hospital')
     ], string='Graduation To', tracking=True)
     graduation_date = fields.Date('Graduation Date', required=True, tracking=True)

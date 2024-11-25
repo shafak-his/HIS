@@ -10,7 +10,7 @@
                 <field name="patient_id" />
                 <field name="visit_date" />
                 <field name="is_signs" />
-                <field name="arterial_position" optional="hide" />
+                <field name="arterial_pressure" optional="hide" />
                 <field name="weight" optional="hide" />
                 <field name="fetal_hr" optional="hide" />
                 <field name="main_complaint" optional="hide" />
@@ -27,7 +27,7 @@
                 <field name="examiner_name" optional="hide" />
                 <field name="additional_notes" optional="hide" />
                 <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
-                <field name="company_id" />
+                <field name="company_id"  optional="hide" />
             </tree>
         </field>
     </record>
@@ -44,7 +44,7 @@
                             <field name="patient_id" />
                             <field name="visit_date" widget="date" />
                             <field name="is_signs" widget="checkbox" />
-                            <field name="arterial_position" />
+                            <field name="arterial_pressure" />
                             <field name="weight" />
                             <field name="fetal_hr" />
                         </group>

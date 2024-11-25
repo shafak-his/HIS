@@ -74,7 +74,7 @@ class EmHmsNutritionStabilizationCenter(models.Model):
     f100_milk_qty = fields.Integer('F100 Milk', tracking=True)
     f75_milk_qty = fields.Integer('F75 Milk', tracking=True)
     
-    first_visit_number = fields.Selection([
+    visit_number = fields.Selection([
         ('first', 'First'),
         ('second', 'Second'),
         ('third', 'Third'),

@@ -17,8 +17,8 @@
                 <field name="weight" optional="hide" />
                 <field name="height" optional="hide" />
                 <field name="respiratory_rate" optional="hide" />
-                <field name="medical_history" optional="hide" />
-                <field name="allergic_history" optional="hide" />
+                <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="allergic_history_ids" widget="many2many_tags" optional="hide" />
                 <field name="current_complaint" optional="hide" />
                 <field name="diagnosis_id" />
                 <field name="procedures_followed" optional="hide" />
@@ -67,29 +67,35 @@
                         </group>
                     </group>
                     <group>
-                        <field name="medical_history" widget="text" />
-                        <field name="allergic_history" widget="text" />
-                        <field name="current_complaint" widget="text" />
+                        <field name="medical_history_ids" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1" editable="bottom">
+                                <field name="name" />
+                                <field name="name_lang" />
+                            </tree>
+                        </field>
+                        <field name="allergic_history_ids" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1" editable="bottom">
+                                <field name="name" />
+                                <field name="name_lang" />
+                            </tree>
+                        </field>
                     </group>
                     <group>
                         <group>
+                            <field name="current_complaint" widget="text" />
                             <field name="diagnosis_id" />
                         </group>
-                    </group>
-                    <group>
-                        <field name="procedures_followed" widget="text" />
-                    </group>
-                    <group>
                         <group>
+                            <field name="procedures_followed" widget="text" />
                             <field name="procedure_type" />
                             <field name="other_procedure_type"
                                 invisible="procedure_type != 'other'" />
                         </group>
                     </group>
                     <group>
-                        <field name="medication_request_ids" />
-                        <field name="analysis_request_ids" />
-                        <field name="image_request_ids" />
+                        <field name="medication_request_ids" widget="many2many_tags" />
+                        <field name="analysis_request_ids" widget="many2many_tags" />
+                        <field name="image_request_ids" widget="many2many_tags" />
                     </group>
                     <group>
                         <field name="notes" widget="text" />

@@ -10,10 +10,10 @@
                 <field name="cesarean_sections_count" />
                 <field name="family_medical_history" />
                 <field name="is_breastfeeding" optional="hide" />
-                <field name="drug_history" optional="hide" />
                 <field name="is_smoking" optional="hide" />
-                <field name="medical_history" optional="hide" />
-                <field name="allergic_history" optional="hide" />
+                <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="medication_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="allergic_history_ids" widget="many2many_tags" optional="hide" />
                 <field name="is_referral" optional="hide" />
                 <field name="referral_center_reason" optional="hide" />
                 <field name="previous_complications" optional="hide" />
@@ -40,24 +40,35 @@
                         <group>
                             <field name="patient_id" />
                             <field name="cesarean_sections_count" />
+                            <field name="family_medical_history" widget="text" />
                             <field name="is_breastfeeding" widget="checkbox" />
                             <field name="is_smoking" widget="checkbox" />
                         </group>
                         <group>
-                            <field name="family_medical_history" widget="text" />
-                            <field name="drug_history" widget="text" />
                             <field name="is_referral" widget="checkbox" />
-                        </group>
-                    </group>
-                    <group>
-                        <group>
-                            <field name="medical_history" widget="text" />
-                            <field name="allergic_history" widget="text" />
-                        </group>
-                        <group>
                             <field name="referral_center_reason" invisible="is_referral != True" widget="text" />
                             <field name="previous_complications" widget="text" />
                         </group>
+                    </group>
+                    <group>
+                        <field name="medical_history_ids" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1" editable="bottom">
+                                <field name="name" />
+                                <field name="name_lang" />
+                            </tree>
+                        </field>
+                        <field name="medication_history_ids" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1" editable="bottom">
+                                <field name="name" />
+                                <field name="name_lang" />
+                            </tree>
+                        </field>
+                        <field name="allergic_history_ids" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1" editable="bottom">
+                                <field name="name" />
+                                <field name="name_lang" />
+                            </tree>
+                        </field>
                     </group>
                     <group string="Previous Obstetric History">
                         <group>
@@ -78,7 +89,7 @@
                         <tree create="1" delete="1">
                             <field name="visit_date" />
                             <field name="is_signs" />
-                            <field name="arterial_position" optional="hide" />
+                            <field name="arterial_pressure" optional="hide" />
                             <field name="weight" optional="hide" />
                             <field name="fetal_hr" optional="hide" />
                             <field name="main_complaint" optional="hide" />
@@ -95,6 +106,7 @@
                             <field name="examiner_name" optional="hide" />
                             <field name="additional_notes" optional="hide" />
                             <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
+                            <field name="company_id"  optional="hide" />
                         </tree>
                     </field>
                     <group>

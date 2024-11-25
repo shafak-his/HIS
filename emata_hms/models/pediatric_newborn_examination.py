@@ -43,8 +43,8 @@ class EmHmsPediatricNewbornExamination(models.Model):
     graduation_to = fields.Selection([
         ('home', 'Home'),
         ('care', 'Care'),
-        ('death', 'Death'),
-        ('referral', 'Referral To Another Hospital')
+        ('incubator', 'Incubator'),
+        ('incubator_temporary', 'Temporary Monitoring In Incubator')
     ], string='Graduation To', tracking=True)
     graduation_date = fields.Date('Graduation Date', required=True, tracking=True)
     medical_recommendations = fields.Char('Medical Recommendations At Graduation', tracking=True)

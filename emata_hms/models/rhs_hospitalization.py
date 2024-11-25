@@ -77,6 +77,10 @@ class EmHmsRHSHospitalization(models.Model):
     ], string='Newborn''s Condition', tracking=True)
     patient_companion_name = fields.Char('Patient''s Companion''s Name', tracking=True)
     patient_companion_relationship = fields.Char('Relationship', tracking=True)
+    
+    medication_request_ids = fields.One2many('em.hms.medication.request', 'hospitalization_id', string='Medication Requests')
+    analysis_request_ids = fields.One2many('em.hms.analysis.request', 'hospitalization_id', string='Analysis Requests')
+
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
     vital_sign_ids = fields.One2many('em.hms.vital.sign', 'hospitalization_id', string='Vital Signs Monitoring')

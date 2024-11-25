@@ -18,8 +18,9 @@ class EmHmsGeneralClinicVisit(models.Model):
     weight = fields.Float('Weight (KG)', tracking=True)
     height = fields.Float('Height (CM)', tracking=True)
     respiratory_rate = fields.Float('Respiratory Rate', tracking=True)
-    medical_history = fields.Char('Medical History', tracking=True)
-    allergic_history = fields.Char('Allergic History', tracking=True)
+    medical_history_ids = fields.Many2many('em.hms.medical.history', 'general_clinic_visit_medical_history_rel', 'general_clinic_visit_id', 'medical_history_id', string='Medical History')
+    allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'general_clinic_visit_allergic_history_rel', 'general_clinic_visit_id', 'allergic_history_id', string='Allergic History')
+    
     current_complaint = fields.Char('Current Complaint', tracking=True)
     diagnosis_id = fields.Many2one('em.hms.icd10', string='Diagnosis', tracking=True)
     procedures_followed = fields.Char('Procedures Followed', tracking=True)

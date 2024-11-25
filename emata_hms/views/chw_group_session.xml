@@ -43,6 +43,14 @@
                             <field name="target_group" />
                         </group>
                     </group>
+                    <group>
+                        <group>
+                            <field name="number_bnfs_gte_18" />
+                            <field name="number_bnfs_lt_18" />
+                        </group>
+                        <group>
+                        </group>
+                    </group>
                     <separator string="Beneficiaries" />
                     <group>
                         <field name="bnf_ids">
@@ -65,14 +73,6 @@
                                 <field name="comments" optional="hide" />
                             </tree>
                         </field>
-                    </group>
-                    <group>
-                        <group>
-                            <field name="number_bnfs_gte_18" />
-                            <field name="number_bnfs_lt_18" />
-                        </group>
-                        <group>
-                        </group>
                     </group>
                     <group>
                         <group>

@@ -61,6 +61,7 @@ class EmHmsPediatricIncubatorAdmission(models.Model):
     devices_general_examination = fields.Char('General Examination Of Devices', tracking=True)
     newborn_reflexes_examination = fields.Char('Examination Of Newborn Reflexes', tracking=True)
     differential_diagnosis = fields.Char('Differential Diagnosis', tracking=True)
+    final_diagnosis = fields.Char('Final Diagnosis', tracking=True)
     admitting_doctor_id = fields.Many2one('hr.employee', string='Admitting Doctor', tracking=True)
     admitting_nurse_id = fields.Many2one('hr.employee', string='Admitting Nurse', tracking=True)
     graduation_to = fields.Selection([

@@ -75,7 +75,7 @@
                         <group>
                             <field name="is_neonatal_deaths" />
                             <field name="is_miscarriages" />
-                            <field name="nutrition_breastfeeding" />
+                            <field name="nutrition_breastfeeding" widget="text" />
                         </group>
                         <group>
                             <field name="mother_blood_group" />
@@ -96,7 +96,7 @@
                         <field name="clinical_followup" widget="text" />
                         <field name="final_diagnosis" widget="text" />
                         <field name="pre_graduation_examination" widget="text" />
-                        <field name="medical_recommendations" />
+                        <field name="medical_recommendations" widget="text" />
                         <field name="other_notes" widget="text" />
                     </group>
                     <group>

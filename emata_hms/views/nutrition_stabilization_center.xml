@@ -33,7 +33,7 @@
                 <field name="materials_distributed" optional="hide" />
                 <field name="f100_milk_qty" optional="hide" />
                 <field name="f75_milk_qty" optional="hide" />
-                <field name="first_visit_number" optional="hide" />
+                <field name="visit_number" optional="hide" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -109,7 +109,7 @@
                                 required="is_supplements_distributed == True and materials_distributed == 'f75_milk'" />
                         </group>
                         <group>
-                            <field name="first_visit_number" invisible="is_supplements_distributed == False or materials_distributed != 'f100_milk'"
+                            <field name="visit_number" invisible="is_supplements_distributed == False or materials_distributed != 'f100_milk'"
                             required="is_supplements_distributed == True and materials_distributed == 'f100_milk'" />
                         </group>
                     </group>

@@ -53,6 +53,7 @@
                 <field name="name" />
                 <field name="project_id" optional="hide" />
                 <field name="visit_date" />
+                <field name="session_presenter_name" optional="hide" />
                 <field name="state_id" optional="hide" />
                 <field name="district_id" optional="hide" />
                 <field name="sub_district_id" optional="hide" />
@@ -86,9 +87,10 @@
                             <field name="name" readonly="1" force_save="1" />
                             <field name="project_id" options="{'no_create': True, 'no_quick_create': True}" />
                             <field name="visit_date" widget="date" />
-                            <field name="session_presenter_name" />
+                            <field name="session_presenter_name" invisible="session_type != 'ftfsg'" required="session_type == 'ftfsg'"/>
                             <field name="team_id" />
                             <field name="service_place" />
+                            <field name="session_type" invisible="1" />
                         </group>
                         <group>
                             <field name="country_id" options="{'no_create': True, 'no_quick_create': True}" />

@@ -35,6 +35,7 @@ class EmHmsNutritionScreeningWoman(models.Model):
         ('first_trimester_pregnant', 'Pregnant In The First Trimester'),
         ('young_girl', 'Young Girl')
     ], string='Is The Beneficiary Pregnant, Breastfeeding, Or Otherwise?', required=True, tracking=True)
+    is_pbw = fields.Boolean(compute='_compute_is_pbw', string='Compute Is Pregnant OR Breastfeeding Woman')
     infant_age = fields.Integer('Infant''s Age', tracking=True)
     malnutrition_nature = fields.Char(compute='_compute_malnutrition_nature', string='Nature Of Malnutrition')
     
@@ -52,7 +53,6 @@ class EmHmsNutritionScreeningWoman(models.Model):
         ('referrals', 'Referrals')
     ], string='What Are The Danger Signs?', tracking=True)
     is_death_or_defaulter = fields.Boolean(compute='_compute_is_death_or_defaulter', string='Is Death Or Defaulter')
-    
               
     is_committed_to_examinations = fields.Boolean('Mother Committed To Undergoing Periodic Examinations At The Center?', tracking=True)         
     is_violence_or_abuse_signs = fields.Boolean('Any Visible Signs Of Any Violence Or Abuse?', tracking=True)
@@ -93,7 +93,18 @@ class EmHmsNutritionScreeningWoman(models.Model):
     vitamins_minerals_qty2 = fields.Integer('Quantity Of Vitamins And Minerals For Pregnant Woman (One Pill)', tracking=True)
     folic_iron_qty2 = fields.Integer('Quantity Of Folic Iron Pills', tracking=True)
     
-    is_breastfeedingf_session_offered = fields.Boolean('Is An BreastfeedingF Individual Counseling Session Offered?')
+    visit_number = fields.Selection([
+        ('first', 'First'),
+        ('second', 'Second'),
+        ('third', 'Third'),
+        ('fourth', 'Fourth'),
+        ('fifth', 'Fifth'),
+        ('sixth', 'Sixth'),
+        ('seventh', 'Seventh'),
+        ('eighth', 'Eighth'),
+        ('ninth', 'Ninth')
+    ], string='Specify The Visit Number', tracking=True)
+    is_iycf_session_offered = fields.Boolean('Is An BreastfeedingF IYCF Individual Counseling Session Offered?')
     main_session_topic = fields.Selection([
         ('breastfeeding', 'Breastfeeding'),
         ('relactating', 'Relactating'),
@@ -120,6 +131,12 @@ class EmHmsNutritionScreeningWoman(models.Model):
         ('check_infant_age', 'CHECK (infant_age >= 0 and infant_age <= 24)', 'Infant Age should be between 0 and 24.')
     ]
 
+
+    @api.depends('woman_status')
+    def _compute_is_pbw(self):
+        for record in self:
+            record.is_pbw = record.woman_status == 'pregnant' or record.woman_status == 'breastfeeding'
+            
     @api.depends('graduation_outcome')
     def _compute_is_death_or_defaulter(self):
         for record in self:

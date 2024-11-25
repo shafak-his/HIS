@@ -33,8 +33,8 @@ class EmHmsPediatricClinic(models.Model):
     
     graduation_to = fields.Selection([
         ('home', 'Home'),
-        ('care', 'Care'),
-        ('death', 'Death'),
+        ('acceptance', 'Acceptance'),
+        ('temporary_acceptance', 'Temporary Acceptance'),
         ('referral', 'Referral To Another Hospital')
     ], string='Graduation To', tracking=True)
     graduation_date = fields.Date('Graduation Date', required=True, tracking=True)
