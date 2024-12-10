@@ -73,8 +73,8 @@ class EmHmsPediatricNICU(models.Model):
     graduation_date = fields.Date('Graduation Date', tracking=True)
     medical_recommendations = fields.Char('Medical Recommendations At Graduation', tracking=True)
     
-    analysis_request_ids = fields.One2many('em.hms.analysis.request', 'nicu_id', string='Analysis Requests')
-    image_request_ids = fields.One2many('em.hms.image.request', 'nicu_id', string='Image Requests')
+    analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'nicu_id', string='Analysis Requests')
+    image_request_line_ids = fields.One2many('em.hms.image.request.line', 'nicu_id', string='Image Requests')
     
     observation_ids = fields.One2many('em.hms.daily.observation', 'nicu_id', string='Daily Observations')
     vital_sign_ids = fields.One2many('em.hms.vital.sign', 'nicu_id', string='Vital Signs')

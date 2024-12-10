@@ -8,6 +8,10 @@
             <tree string="Medical Service Items" editable="bottom">
                 <field name="name" />
                 <field name="uom_id" invisible="not is_medication" />
+                <field name="pharmaceutical_form" />
+                <field name="dosage_rate" />
+                <field name="dose_time" />
+                <field name="dose_way" />
 
                 <field name="is_medication" column_invisible="1" />
                 <field name="is_medical_analysis" column_invisible="1" />

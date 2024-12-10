@@ -22,6 +22,19 @@
         <field name="arch" type="xml">
             <form string="Patient">
                 <sheet>
+                    <header>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_get_medication_requests" type="object" class="oe_stat_button" icon="fa-edit">
+                                Medication Requests
+                            </button>
+                            <button name="action_get_analysis_requests" type="object" class="oe_stat_button" icon="fa-edit">
+                                Analysis Requests
+                            </button>
+                            <button name="action_get_image_requests" type="object" class="oe_stat_button" icon="fa-edit">
+                                Image Requests
+                            </button>
+                        </div>
+                    </header>
                     <group>
                         <group>
                             <field name="name" readonly="1" force_save="1" />

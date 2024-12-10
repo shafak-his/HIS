@@ -19,18 +19,106 @@ class EmHmsMedicationRequest(models.Model):
     hospitalization_id = fields.Many2one('em.hms.rhs.hospitalization', string='Hospitalization')
     rhs_surgery_id = fields.Many2one('em.hms.rhs.surgery', string='RHS Surgery')
 
+    doctor_id = fields.Many2one('hr.employee', string='Doctor', compute='_compute_doctor_id', compute_sudo=True)
     patient_id = fields.Many2one('res.partner', string='Patient', required=True)
     product_template_id = fields.Many2one('product.template', string='Product', domain="[('is_medication', '=', True)]", required=True)
     uom_id = fields.Many2one('uom.uom', string='UoM', required=True)
     qty = fields.Float('Quantity', default=1)
     notes = fields.Char('Notes')
 
+    # Details
+    pharmaceutical_form = fields.Selection([
+        ('tab', 'Tab'),
+        ('flacon', 'Flacon'),
+        ('amp', 'Amp'),
+        ('vial', 'Vial'),
+        ('btl', 'Btl'),
+        ('pcs', 'Pcs'),
+        ('tube', 'Tube'),
+        ('supp', 'Supp'),
+        ('bag', 'Bag'),
+        ('spray', 'Spray'),
+        ('sachet', 'Sachet'),
+        ('cap', 'Cap'),
+        ('jar', 'Jar'),
+        ('pen', 'Pen'),
+        ('kit', 'Kit'),
+    ], string='Pharmaceutical Form')
+
+    dosage_rate = fields.Selection([
+        ('1x1', '1x1'),
+        ('1x2', '1x2'),
+        ('1x3', '1x3'),
+        ('1x4', '1x4'),
+        ('2x2', '2x2'),
+        ('prn', 'PRN'),
+    ], string='Dosage Rate')
+
+    dose_time = fields.Selection([
+        ('ac', 'A.C.'),
+        ('bc', 'B.C.'),
+    ], string='Dose Time')
+
+    dose_way = fields.Selection([
+        ('oral', 'Oral'),
+        ('muscular', 'Muscular'),
+        ('intravenous', 'Intravenous'),
+        ('subcutaneous', 'Subcutaneous'),
+        ('topical', 'Topical'),
+        ('anal', 'Anal'),
+        ('vaginal', 'Vaginal'),
+    ], string='Dose Way')
+
     @api.onchange('product_template_id')
     def _onchange_product_template_id(self):
         if self.product_template_id:
             self.uom_id = self.product_template_id.uom_id.id
+            self.pharmaceutical_form = self.product_template_id.pharmaceutical_form
+            self.dosage_rate = self.product_template_id.dosage_rate
+            self.dose_time = self.product_template_id.dose_time
+            self.dose_way = self.product_template_id.dose_way
 
-    def generate_sale_order(self, general_visit_id=False):
+    @api.depends(
+        'general_visit_id',
+        'gynochological_visit_id',
+        'pnc_visit_id',
+        'mh_gap_id',
+        'dial_urology_id',
+        'dial_nephrology_id',
+        'infertility_treatment_id',
+        'patient_admission_id',
+        'pediatric_clinic_id',
+        'pediatric_surgery_clinic_id',
+        'icu_id',
+        'hospitalization_id',
+        'rhs_surgery_id',
+    )
+    def _compute_doctor_id(self):
+        for record in self:
+            for field_name in [
+                'general_visit_id',
+                'gynochological_visit_id',
+                'pnc_visit_id',
+                'mh_gap_id',
+                'dial_urology_id',
+                'dial_nephrology_id',
+                'infertility_treatment_id',
+                'patient_admission_id',
+                'pediatric_clinic_id',
+                'pediatric_surgery_clinic_id',
+                'icu_id',
+                'hospitalization_id',
+                'rhs_surgery_id',
+            ]:
+                field_value = getattr(record, field_name)
+                if field_value:
+                    record.doctor_id = field_value.doctor_id.id
+                    break
+
+    def generate_sale_order(self):
+        if not self:
+            return
+
         patient_id = self[0].patient_id.id
         if any(record.patient_id.id != patient_id for record in self):
             raise exceptions.ValidationError('All requests must belong to the same patient!')
@@ -47,10 +135,22 @@ class EmHmsMedicationRequest(models.Model):
                 'price_unit': 0,
             }
             order_line_vals.append(vals)
-            if line.notes:
+
+            notes_items = []
+            for field_name in [
+                'pharmaceutical_form',
+                'dosage_rate',
+                'dose_time',
+                'dose_way',
+                'notes'
+            ]:
+                field_value = getattr(line, field_name)
+                if field_value:
+                    notes_items.append(field_value)
+            if notes_items:
                 vals = {
                     'display_type': 'line_note',
-                    'name': line.notes
+                    'name': ', '.join(notes_items)
                 }
                 order_line_vals.append(vals)
 

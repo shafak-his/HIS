@@ -99,7 +99,7 @@ class EmHmsRHSSurgery(models.Model):
     birth_certificate = fields.Binary('Birth Certificate')
     
     medication_request_ids = fields.One2many('em.hms.medication.request', 'rhs_surgery_id', string='Medication Requests')
-    analysis_request_ids = fields.One2many('em.hms.analysis.request', 'rhs_surgery_id', string='Analysis Requests')
+    analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'rhs_surgery_id', string='Analysis Requests')
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     

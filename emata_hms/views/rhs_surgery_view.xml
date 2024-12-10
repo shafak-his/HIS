@@ -119,7 +119,7 @@
                 </group>
                 <group>
                     <field name="medication_request_ids" />
-                    <field name="analysis_request_ids" />
+                    <field name="analysis_request_line_ids" />
                 </group>
                 <group>
                     <group>

@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <record id="em_hms_image_request_view_tree" model="ir.ui.view">
         <field name="name">em.hms.image.request.view.tree</field>
         <field name="model">em.hms.image.request</field>
+        <field name="arch" type="xml">
+            <tree string="Image Request">
+                <field name="patient_id" />
+                <field name="create_date" />
+            </tree>
+        </field>
+    </record>
+    <record id="em_hms_image_request_view_form" model="ir.ui.view">
+        <field name="name">em.hms.image.request.view.form</field>
+        <field name="model">em.hms.image.request</field>
+        <field name="arch" type="xml">
+            <form string="Image Request">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" />
+                            <field name="create_date" />
+                            <field name="name" />
+                            <field name="res_id" invisible="1" />
+                            <field name="res_model_id" invisible="1" />
+                        </group>
+                    </group>
+                    <separator string="Lines" />
+                    <field name="line_ids" />
+                    <group>
+                        <group>
+                            <field name="notes" wiget="text" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="em_hms_image_request_action" model="ir.actions.act_window">
+        <field name="name">Image Request</field>
+        <field name="res_model">em.hms.image.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="em_hms_image_request_line_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.image.request.line.view.tree</field>
+        <field name="model">em.hms.image.request.line</field>
         <field name="arch" type="xml">
             <tree string="Image Requests" editable="bottom">
                 <field name="product_template_id" />
@@ -12,9 +60,9 @@
         </field>
     </record>
 
-    <record id="em_hms_image_request_view_form" model="ir.ui.view">
-        <field name="name">em.hms.image.request.view.form</field>
-        <field name="model">em.hms.image.request</field>
+    <record id="em_hms_image_request_line_view_form" model="ir.ui.view">
+        <field name="name">em.hms.image.request.line.view.form</field>
+        <field name="model">em.hms.image.request.line</field>
         <field name="arch" type="xml">
             <form string="Image Request">
                 <sheet>
@@ -34,9 +82,9 @@
         </field>
     </record>
 
-    <record id="em_hms_image_request_action" model="ir.actions.act_window">
+    <record id="em_hms_image_request_line_action" model="ir.actions.act_window">
         <field name="name">Image Requests</field>
-        <field name="res_model">em.hms.image.request</field>
+        <field name="res_model">em.hms.image.request.line</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>

@@ -79,7 +79,7 @@ class EmHmsRHSHospitalization(models.Model):
     patient_companion_relationship = fields.Char('Relationship', tracking=True)
     
     medication_request_ids = fields.One2many('em.hms.medication.request', 'hospitalization_id', string='Medication Requests')
-    analysis_request_ids = fields.One2many('em.hms.analysis.request', 'hospitalization_id', string='Analysis Requests')
+    analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'hospitalization_id', string='Analysis Requests')
 
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     

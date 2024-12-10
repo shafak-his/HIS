@@ -110,8 +110,8 @@
                         <field name="notes" widget="text" />
                     </group>
                     <group>
-                        <field name="analysis_request_ids" />
-                        <field name="image_request_ids" />
+                        <field name="analysis_request_line_ids" />
+                        <field name="image_request_line_ids" />
                     </group>
                     <group>
                         <field name="vital_sign_ids" context="{'default_patient_id': patient_id}">

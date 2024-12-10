@@ -52,8 +52,8 @@ class EmHmsPediatricSurgery(models.Model):
     medical_recommendations = fields.Char('Medical Recommendations At Graduation', tracking=True)
     notes = fields.Char('Notes', tracking=True)
     
-    analysis_request_ids = fields.One2many('em.hms.analysis.request', 'pediatric_surgery_id', string='Analysis Requests')
-    image_request_ids = fields.One2many('em.hms.image.request', 'pediatric_surgery_id', string='Image Requests')
+    analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'pediatric_surgery_id', string='Analysis Requests')
+    image_request_line_ids = fields.One2many('em.hms.image.request.line', 'pediatric_surgery_id', string='Image Requests')
     
     observation_ids = fields.One2many('em.hms.daily.observation', 'pediatric_surgery_id', string='Daily Observations')
     vital_sign_ids = fields.One2many('em.hms.vital.sign', 'pediatric_surgery_id', string='Vital Signs')

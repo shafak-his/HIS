@@ -141,7 +141,7 @@
                             <field name="is_hysteroscopy" />
                             <field name="hysteroscopy_result" invisible="is_hysteroscopy == False" required="is_hysteroscopy == True" />
                             <field name="hysteroscopy_attachment" invisible="is_hysteroscopy == False" required="is_hysteroscopy == True" />
-                            <field name="analysis_request_ids" />
+                            <field name="analysis_request_line_ids" />
                         </group>
                     </group>
                     <group>

@@ -39,5 +39,5 @@ class EmHmsRHSANCVisit(models.Model):
     next_visit_date = fields.Date('Date Of Next Visit', tracking=True)
     examiner_name = fields.Char('Name Of Examiner', tracking=True)
     additional_notes = fields.Char('Additional Notes', tracking=True)
-    analysis_request_ids = fields.Many2many('product.template', 'rhs_anc_visit_product_analysis_rel', 'anc_visit_id', 'product_id', string='Analysis Requests')
+    analysis_request_line_ids = fields.Many2many('product.template', 'rhs_anc_visit_product_analysis_rel', 'anc_visit_id', 'product_id', string='Analysis Requests')
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

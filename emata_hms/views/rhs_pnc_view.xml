@@ -65,8 +65,8 @@
                             <field name="postpartum_complication_ids" widget="many2many_tags" optional="hide" />
                             <field name="wound_ids" widget="many2many_tags" optional="hide" />
                             <field name="medication_request_ids" widget="many2many_tags" optional="hide" />
-                            <field name="analysis_request_ids" widget="many2many_tags" optional="hide" />
-                            <field name="image_request_ids" widget="many2many_tags" optional="hide" />
+                            <field name="analysis_request_line_ids" widget="many2many_tags" optional="hide" />
+                            <field name="image_request_line_ids" widget="many2many_tags" optional="hide" />
                             <field name="company_id" optional="hide" />
                         </tree>
                     </field>

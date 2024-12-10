@@ -52,7 +52,7 @@ class EmHmsRHSInfertilityTreatment(models.Model):
     is_hysteroscopy = fields.Boolean('Hysteroscopy?', tracking=True)
     hysteroscopy_result = fields.Char('Hysteroscopy Result', tracking=True)
     hysteroscopy_attachment = fields.Binary('Hysteroscopy Attachment', tracking=True)
-    analysis_request_ids = fields.One2many('em.hms.analysis.request', 'infertility_treatment_id', string='Request An X-Ray')
+    analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'infertility_treatment_id', string='Request An X-Ray')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
@@ -68,6 +68,8 @@ class EmHmsRHSInfertilityTreatment(models.Model):
     def confirm_record(self):
         self.ensure_one()
         self.medication_request_ids.generate_sale_order()
+        self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+        self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
         self.write({
             'state': 'done'
         }) 

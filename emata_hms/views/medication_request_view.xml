@@ -10,7 +10,26 @@
                 <field name="product_template_id" />
                 <field name="uom_id" />
                 <field name="qty" />
+                <field name="pharmaceutical_form" />
+                <field name="dosage_rate" />
+                <field name="dose_time" />
+                <field name="dose_way" />
+                <field name="doctor_id" />
                 <field name="notes" />
+                
+                <field name="general_visit_id" column_invisible="1" />
+                <field name="gynochological_visit_id" column_invisible="1" />
+                <field name="pnc_visit_id" column_invisible="1" />
+                <field name="mh_gap_id" column_invisible="1" />
+                <field name="dial_urology_id" column_invisible="1" />
+                <field name="dial_nephrology_id" column_invisible="1" />
+                <field name="infertility_treatment_id" column_invisible="1" />
+                <field name="patient_admission_id" column_invisible="1" />
+                <field name="pediatric_clinic_id" column_invisible="1" />
+                <field name="pediatric_surgery_clinic_id" column_invisible="1" />
+                <field name="icu_id" column_invisible="1" />
+                <field name="hospitalization_id" column_invisible="1" />
+                <field name="rhs_surgery_id" column_invisible="1" />
             </tree>
         </field>
     </record>
@@ -27,7 +46,26 @@
                             <field name="product_template_id" />
                             <field name="uom_id" />
                             <field name="qty" />
+                            <field name="pharmaceutical_form" />
+                            <field name="dosage_rate" />
+                            <field name="dose_time" />
+                            <field name="dose_way" />
+                            <field name="doctor_id" />
                             <field name="notes" />
+
+                            <field name="general_visit_id" invisible="1" />
+                            <field name="gynochological_visit_id" invisible="1" />
+                            <field name="pnc_visit_id" invisible="1" />
+                            <field name="mh_gap_id" invisible="1" />
+                            <field name="dial_urology_id" invisible="1" />
+                            <field name="dial_nephrology_id" invisible="1" />
+                            <field name="infertility_treatment_id" invisible="1" />
+                            <field name="patient_admission_id" invisible="1" />
+                            <field name="pediatric_clinic_id" invisible="1" />
+                            <field name="pediatric_surgery_clinic_id" invisible="1" />
+                            <field name="icu_id" invisible="1" />
+                            <field name="hospitalization_id" invisible="1" />
+                            <field name="rhs_surgery_id" invisible="1" />
                         </group> 
                     </group>
                 </sheet>

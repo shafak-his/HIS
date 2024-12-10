@@ -58,8 +58,8 @@ class EmHmsPediatricICU(models.Model):
     medical_recommendations = fields.Char('Medical Recommendations At Graduation', tracking=True)
     
     medication_request_ids = fields.One2many('em.hms.medication.request', 'icu_id', string='Medication Requests')
-    analysis_request_ids = fields.One2many('em.hms.analysis.request', 'icu_id', string='Analysis Requests')
-    image_request_ids = fields.One2many('em.hms.image.request', 'icu_id', string='Image Requests')
+    analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'icu_id', string='Analysis Requests')
+    image_request_line_ids = fields.One2many('em.hms.image.request.line', 'icu_id', string='Image Requests')
     
     observation_ids = fields.One2many('em.hms.daily.observation', 'icu_id', string='Daily Observations')
     vital_sign_ids = fields.One2many('em.hms.vital.sign', 'icu_id', string='Vital Signs')
@@ -94,6 +94,8 @@ class EmHmsPediatricICU(models.Model):
     def confirm_record(self):
         self.ensure_one()
         self.medication_request_ids.generate_sale_order()
+        self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+        self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
         self.write({
             'state': 'done'
         })

@@ -52,8 +52,8 @@ class EmHmsPediatricPhototherapy(models.Model):
     graduation_date = fields.Date('Graduation Date', tracking=True)
     medical_recommendations = fields.Char('Medical Recommendations At Graduation', tracking=True)
     
-    analysis_request_ids = fields.One2many('em.hms.analysis.request', 'phototherapy_id', string='Analysis Requests')
-    image_request_ids = fields.One2many('em.hms.image.request', 'phototherapy_id', string='Image Requests')
+    analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'phototherapy_id', string='Analysis Requests')
+    image_request_line_ids = fields.One2many('em.hms.image.request.line', 'phototherapy_id', string='Image Requests')
     
     necessity_ids = fields.One2many('em.hms.daily.necessity', 'phototherapy_id', string='Daily Necessities')
     commitment_ids = fields.One2many('em.hms.necessity.giving', 'phototherapy_id', string='Necessity Giving')

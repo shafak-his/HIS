@@ -55,8 +55,8 @@ class EmHmsRHSPNCVisit(models.Model):
     wound_ids = fields.Many2many('em.hms.rhs.wound', 'rhs_pnc_visit_wound_rel', 'pnc_visit_id', 'wound_id', string='Existing Wounds')
     
     medication_request_ids = fields.One2many('em.hms.medication.request', 'pnc_visit_id', string='Medication Requests')
-    analysis_request_ids = fields.One2many('em.hms.analysis.request', 'pnc_visit_id', string='Analysis Requests')
-    image_request_ids = fields.One2many('em.hms.image.request', 'pnc_visit_id', string='Image Requests')
+    analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'pnc_visit_id', string='Analysis Requests')
+    image_request_line_ids = fields.One2many('em.hms.image.request.line', 'pnc_visit_id', string='Image Requests')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
@@ -67,6 +67,8 @@ class EmHmsRHSPNCVisit(models.Model):
     def confirm_record(self):
         self.ensure_one()
         self.medication_request_ids.generate_sale_order()
+        self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+        self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
         self.write({
             'state': 'done'
         })

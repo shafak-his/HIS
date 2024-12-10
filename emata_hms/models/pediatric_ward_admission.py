@@ -47,8 +47,8 @@ class EmHmsPediatricWardAdmission(models.Model):
     consultations = fields.Char('Consultations', tracking=True)
     notes = fields.Char('Notes', tracking=True)
     
-    analysis_request_ids = fields.One2many('em.hms.analysis.request', 'ward_admission_id', string='Analysis Requests')
-    image_request_ids = fields.One2many('em.hms.image.request', 'ward_admission_id', string='Image Requests')
+    analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'ward_admission_id', string='Analysis Requests')
+    image_request_line_ids = fields.One2many('em.hms.image.request.line', 'ward_admission_id', string='Image Requests')
     
     observation_ids = fields.One2many('em.hms.daily.observation', 'ward_admission_id', string='Daily Observations')
     vital_sign_ids = fields.One2many('em.hms.vital.sign', 'ward_admission_id', string='Vital Signs')

@@ -46,6 +46,39 @@ class ResPartner(models.Model):
     def _onchange_name_parts(self):
         self.name = " ".join(list(filter(None, [self.first_name, self.last_name])))
 
+    def action_get_medication_requests(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Medication Requests',
+            'view_mode': 'tree,form',
+            'res_model': 'em.hms.medication.request',
+            'domain': [('patient_id', '=', self.id)],
+            'context': {'default_patient_id': self.id}
+        }
+
+    def action_get_analysis_requests(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Analysis Requests',
+            'view_mode': 'tree,form',
+            'res_model': 'em.hms.analysis.request',
+            'domain': [('patient_id', '=', self.id)],
+            'context': {'default_patient_id': self.id}
+        }
+
+    def action_get_image_requests(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Image Requests',
+            'view_mode': 'tree,form',
+            'res_model': 'em.hms.image.request',
+            'domain': [('patient_id', '=', self.id)],
+            'context': {'default_patient_id': self.id}
+        }
+
     @api.model
     def create(self, vals):
         if vals.get('is_patient'):

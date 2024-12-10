@@ -130,8 +130,8 @@
                         <field name="medical_recommendations" widget="text" />
                     </group>
                     <group>
-                        <field name="analysis_request_ids" />
-                        <field name="image_request_ids" />
+                        <field name="analysis_request_line_ids" />
+                        <field name="image_request_line_ids" />
                     </group>
                     <notebook>
                         <page name="vital_signs_page" string="Vital Signs">
