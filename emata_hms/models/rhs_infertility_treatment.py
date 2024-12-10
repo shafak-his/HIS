@@ -36,7 +36,7 @@ class EmHmsRHSInfertilityTreatment(models.Model):
     ovum_measuring_natural2 = fields.Integer('Measuring The Ovum (2nd Month)', tracking=True)
     is_ovulation_natural3 = fields.Boolean('Monitoring Natural Ovulation (3rd Month)', tracking=True)
     ovum_measuring_natural3 = fields.Integer('Measuring The Ovum (3rd Month)', tracking=True)
-    medication_request_ids = fields.One2many('em.hms.medication.request', 'infertility_treatment_id', string='Stimulation Medications')
+    medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'infertility_treatment_id', string='Stimulation Medications')
     is_ovulation_treatment1 = fields.Boolean('Monitoring Ovulation After Treatment (1st Month)', tracking=True)
     ovum_measuring_treatment1 = fields.Integer('Measuring The Ovum (1st Month)', tracking=True)
     is_ovulation_treatment2 = fields.Boolean('Monitoring Ovulation After Treatment (2nd Month)', tracking=True)
@@ -67,7 +67,7 @@ class EmHmsRHSInfertilityTreatment(models.Model):
     
     def confirm_record(self):
         self.ensure_one()
-        self.medication_request_ids.generate_sale_order()
+        self.medication_request_line_ids.generate_sale_order()
         self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
         self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
         self.write({

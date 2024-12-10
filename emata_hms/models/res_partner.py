@@ -52,7 +52,7 @@ class ResPartner(models.Model):
             'type': 'ir.actions.act_window',
             'name': 'Medication Requests',
             'view_mode': 'tree,form',
-            'res_model': 'em.hms.medication.request',
+            'res_model': 'em.hms.medication.request.line',
             'domain': [('patient_id', '=', self.id)],
             'context': {'default_patient_id': self.id}
         }

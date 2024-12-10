@@ -22,7 +22,7 @@ class EmHmsNecessityGiving(models.Model):
     doctor_id = fields.Many2one('hr.employee', 'Doctor', related='patient_admission_id.doctor_id')
     
     necessity_id = fields.Many2one('em.hms.daily.necessity', string='Daily Necessity',  tracking=True)
-    # medication_request_id = fields.Many2one('em.hms.medication.request', string='Medication Name', related='necessity_id.medication_request_id')
+    # medication_request_id = fields.Many2one('em.hms.medication.request.line', string='Medication Name', related='necessity_id.medication_request_id')
     medication_id = fields.Many2one('product.template', string='Medication', related='necessity_id.medication_id')
     dosage = fields.Char('Dosage', related='necessity_id.dosage')
     rate = fields.Char('Rate', related='necessity_id.rate')

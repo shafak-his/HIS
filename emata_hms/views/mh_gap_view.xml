@@ -68,7 +68,7 @@
                         </group>
                     </group>
                     <group>
-                        <field name="medication_request_ids" context="{'default_patient_id': patient_id}" />
+                        <field name="medication_request_line_ids" context="{'default_patient_id': patient_id}" />
                     </group>
                 </sheet>
                 <div class="oe_chatter">

@@ -25,7 +25,7 @@ class EmHmsGynochologicalClinicVisit(models.Model):
         ('Referral', 'referral')
     ], string='Graduation To', tracking=True)
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
-    medication_request_ids = fields.One2many('em.hms.medication.request', 'gynochological_visit_id', string='Medication Requests')
+    medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'gynochological_visit_id', string='Medication Requests')
     analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'gynochological_visit_id', string='Analysis Requests')
     image_request_line_ids = fields.One2many('em.hms.image.request.line', 'gynochological_visit_id', string='Image Requests')
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)
@@ -46,7 +46,7 @@ class EmHmsGynochologicalClinicVisit(models.Model):
 
     def confirm_record(self):
         self.ensure_one()
-        self.medication_request_ids.generate_sale_order()
+        self.medication_request_line_ids.generate_sale_order()
         self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
         self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
         self.write({

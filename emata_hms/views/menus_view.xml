@@ -536,7 +536,7 @@
             web_icon="emata_hms,static/description/icon-pharmacy.png"
             sequence="40"
         />
-        <menuitem id="menu_em_hms_medication_request"
+        <menuitem id="menu_em_hms_medication_request_line"
             name="Medication Requests"
             parent="menu_em_hms_pharmacy_root"
             action="sale.action_quotations_with_onboarding"
@@ -547,10 +547,10 @@
             parent="menu_em_hms_pharmacy_root"
             sequence="90"
         />
-        <menuitem id="menu_em_hms_medication_request_line"
+        <menuitem id="menu_em_hms_medication_request_line_line"
             name="Medication Request Liens"
             parent="menu_em_hms_medication_reporting_lines"
-            action="emata_hms.em_hms_medication_request_action"
+            action="emata_hms.em_hms_medication_request_line_action"
             sequence="10"
         />
 

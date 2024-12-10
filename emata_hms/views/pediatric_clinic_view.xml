@@ -83,7 +83,7 @@
                         <field name="notes" widget="text" />
                     </group>
                     <group>
-                        <field name="medication_request_ids" context="{'default_patient_id': patient_id}" />
+                        <field name="medication_request_line_ids" context="{'default_patient_id': patient_id}" />
                         <field name="analysis_request_line_ids" />
                         <field name="image_request_line_ids" />
                     </group>

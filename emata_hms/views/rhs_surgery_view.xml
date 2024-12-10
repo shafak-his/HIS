@@ -118,7 +118,7 @@
                     <field name="other_surgery_type" />
                 </group>
                 <group>
-                    <field name="medication_request_ids" />
+                    <field name="medication_request_line_ids" />
                     <field name="analysis_request_line_ids" />
                 </group>
                 <group>

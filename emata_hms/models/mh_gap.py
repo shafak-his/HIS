@@ -58,7 +58,7 @@ class EmHmsMHGap(models.Model):
     other_closure_reason = fields.Char('Other Reason For Closure', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     service_provider_id = fields.Many2one('hr.employee', 'Service Provicer Name')
-    medication_request_ids = fields.One2many('em.hms.medication.request', 'mh_gap_id', string='Medication Requests')
+    medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'mh_gap_id', string='Medication Requests')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
@@ -66,7 +66,7 @@ class EmHmsMHGap(models.Model):
 
     def confirm_record(self):
         self.ensure_one()
-        self.medication_request_ids.generate_sale_order()
+        self.medication_request_line_ids.generate_sale_order()
         self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
         self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
         self.write({

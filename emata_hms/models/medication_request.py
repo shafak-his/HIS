@@ -1,7 +1,7 @@
 from odoo import _, api, fields, models, exceptions, tools
 
-class EmHmsMedicationRequest(models.Model):
-    _name = 'em.hms.medication.request'
+class EmHmsMedicationRequestLine(models.Model):
+    _name = 'em.hms.medication.request.line'
     _description = 'Medication Request'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
@@ -95,6 +95,7 @@ class EmHmsMedicationRequest(models.Model):
     )
     def _compute_doctor_id(self):
         for record in self:
+            record_found = False
             for field_name in [
                 'general_visit_id',
                 'gynochological_visit_id',
@@ -113,7 +114,10 @@ class EmHmsMedicationRequest(models.Model):
                 field_value = getattr(record, field_name)
                 if field_value:
                     record.doctor_id = field_value.doctor_id.id
+                    record_found = True
                     break
+            if not record_found:
+                record.doctor_id = False
 
     def generate_sale_order(self):
         if not self:

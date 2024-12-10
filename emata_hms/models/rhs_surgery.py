@@ -98,7 +98,7 @@ class EmHmsRHSSurgery(models.Model):
     patient_companion_relationship = fields.Char('Relationship', tracking=True)
     birth_certificate = fields.Binary('Birth Certificate')
     
-    medication_request_ids = fields.One2many('em.hms.medication.request', 'rhs_surgery_id', string='Medication Requests')
+    medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'rhs_surgery_id', string='Medication Requests')
     analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'rhs_surgery_id', string='Analysis Requests')
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

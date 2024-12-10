@@ -105,7 +105,7 @@
                     </field>
                 </group>
                 <group>
-                    <field name="medication_request_ids" widget="many2many_tags" />
+                    <field name="medication_request_line_ids" widget="many2many_tags" />
                     <field name="analysis_request_line_ids" widget="many2many_tags" />
                 </group>
                 <group>

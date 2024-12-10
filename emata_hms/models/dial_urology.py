@@ -27,7 +27,7 @@ class EmHmsDialUrology(models.Model):
     notes = fields.Char('Notes', tracking=True)
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
 
-    medication_request_ids = fields.One2many('em.hms.medication.request', 'dial_urology_id', string='Medication Requests')
+    medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'dial_urology_id', string='Medication Requests')
     analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'dial_urology_id', string='Analysis Requests')
     image_request_line_ids = fields.One2many('em.hms.image.request.line', 'dial_urology_id', string='Image Requests')
     state = fields.Selection([
@@ -39,7 +39,7 @@ class EmHmsDialUrology(models.Model):
 
     def confirm_record(self):
         self.ensure_one()
-        self.medication_request_ids.generate_sale_order()
+        self.medication_request_line_ids.generate_sale_order()
         self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
         self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
         self.write({
