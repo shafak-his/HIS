@@ -12,8 +12,17 @@ class EmHmsImageRequest(models.Model):
     res_model_id = fields.Many2one('ir.model', 'Related Model')
     res_id = fields.Integer('Record ID')
     notes = fields.Char('Notes')
+    state = fields.Selection([
+        ('draft', 'Pending'),
+        ('done', 'Done'),
+    ], string='Status', required=True, default='draft')
 
     line_ids = fields.One2many('em.hms.image.request.line', 'request_id', string='Lines')
+
+    def complete_order(self):
+        self.write({
+            'state': 'done'
+        })
 
     def generate_order(self, related_record_id, line_ids):
         if not line_ids:

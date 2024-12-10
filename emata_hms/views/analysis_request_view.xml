@@ -16,6 +16,11 @@
         <field name="model">em.hms.analysis.request</field>
         <field name="arch" type="xml">
             <form string="Analysis Request">
+                <header>
+                    <button string="Complete Order" name="complete_order" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
+                </header>
                 <sheet>
                     <group>
                         <group>

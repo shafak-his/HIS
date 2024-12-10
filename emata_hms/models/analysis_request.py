@@ -14,6 +14,15 @@ class EmHmsAnalysisRequest(models.Model):
     notes = fields.Char('Notes')
 
     line_ids = fields.One2many('em.hms.analysis.request.line', 'request_id', string='Lines')
+    state = fields.Selection([
+        ('draft', 'Pending'),
+        ('done', 'Done'),
+    ], string='Status', required=True, default='draft')
+
+    def complete_order(self):
+        self.write({
+            'state': 'done'
+        })
 
     def generate_order(self, related_record_id, line_ids):
         if not line_ids:
