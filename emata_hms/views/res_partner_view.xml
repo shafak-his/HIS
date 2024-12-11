@@ -62,6 +62,20 @@
                             <field name="original_location_id" />
                         </group>
                     </group>
+                    <notebook>
+                        <page name="medical_history" string="Medical History">
+                            <field name="medical_history_ids" />
+                        </page>
+                        <page name="surgical_history" string="Surgical History">
+                            <field name="surgical_history_ids" />
+                        </page>
+                        <page name="medication_history" string="Medication History">
+                            <field name="medication_history_ids" />
+                        </page>
+                        <page name="allergic_history" string="Allergic History">
+                            <field name="allergic_history_ids" />
+                        </page>
+                    </notebook>
                     <group>
                         <field name="notes" widget="text" />
                     </group>

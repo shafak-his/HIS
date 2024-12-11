@@ -87,6 +87,7 @@
         <field name="model">em.hms.rhs.fp</field>
         <field name="arch" type="xml">
             <tree string="FPs">
+                <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="husband_name" />
                 <field name="pregnancies_count" optional="hide" />
@@ -125,6 +126,8 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="allowed_project_ids" invisible="1" />
                             <field name="patient_id" />
                             <field name="husband_name" />
                             <field name="pregnancies_count" />

@@ -29,6 +29,7 @@
     'data': [
         'security/ir.model.access.csv',
 
+        'views/project_view.xml',
         'views/medication_request_view.xml',
         'views/analysis_request_view.xml',
         'views/image_request_view.xml',
@@ -89,6 +90,7 @@
         'views/pediatric_newborn_examination_view.xml',
 
         'data/sequence_data.xml',
+        'data/hms_service_data.xml',
 
         'views/menus_view.xml',
     ],

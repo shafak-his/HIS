@@ -6,6 +6,7 @@
         <field name="model">em.hms.dial.lithotripsy</field>
         <field name="arch" type="xml">
             <tree string="Lithotripsy">
+                <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="stone_location" optional="hide" />
                 <field name="session_type" optional="hide" />
@@ -24,6 +25,8 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="allowed_project_ids" invisible="1" />
                             <field name="patient_id" />
                             <field name="visit_datetime" />
                             <field name="diagnosis_id" />

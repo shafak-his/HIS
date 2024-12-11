@@ -25,6 +25,7 @@
         <field name="model">em.hms.pediatric.newborn.examination</field>
         <field name="arch" type="xml">
             <tree string="Newborn Examination">
+                <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="doctor_id" />
                 <field name="nurse_id"  optional="hide" />
@@ -53,6 +54,8 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="allowed_project_ids" invisible="1" />
                             <field name="examination_datetime" />
                             <field name="patient_id" />
                         </group>

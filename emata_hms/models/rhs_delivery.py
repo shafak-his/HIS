@@ -101,6 +101,20 @@ class EmHmsRHSDelivery(models.Model):
     vital_signs_count = fields.Integer(compute='_compute_vital_signs_count', string='Vital Signs Reports')
     post_birth_ids = fields.One2many('em.hms.post.surgery', 'delivery_id', string='Post-Birth Monitoring')
     post_births_count = fields.Integer(compute='_compute_post_births_count', string='Post-Birth Reports')
+
+    project_id = fields.Many2one('project.project', string='Project', tracking=True)
+    allowed_project_ids = fields.Many2many('project.project', compute='_compute_allowed_project_ids', string='Allowed Projects', compute_sudo=True)
+
+    @api.onchange('allowed_project_ids')
+    def _onchange_allowed_project_ids(self):
+        if self.allowed_project_ids:
+            self.project_id = self.allowed_project_ids[0].id
+
+    @api.depends('company_id')
+    def _compute_allowed_project_ids(self):
+        for record in self:
+            record.allowed_project_ids = self.env['em.project.support.line'].get_project_ids(record.company_id, self._name, False, fields.Date.today()).ids
+    
     
     @api.onchange('patient_id')
     def _onchange_patient_id(self):

@@ -6,6 +6,7 @@
         <field name="model">em.hms.mh.referral</field>
         <field name="arch" type="xml">
             <tree string="Referrals">
+                <field name="project_id" optional="show" />
                 <field name="referral_date" />
                 <field name="patient_id" />
                 <field name="referral_path" />
@@ -47,6 +48,8 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="allowed_project_ids" invisible="1" />
                             <field name="patient_id" />
                             <field name="referral_date" widget="date" />
                         </group>

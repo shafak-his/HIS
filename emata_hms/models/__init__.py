@@ -1,4 +1,5 @@
 from . import product
+from . import project
 from . import sale_order
 from . import medication_request
 from . import analysis_request
@@ -18,7 +19,7 @@ from . import rhs_delivery
 from . import post_surgery
 from . import rhs_edc
 from . import rhs_infertility_treatment
-from . import rh_araweness
+from . import rhs_araweness
 from . import rhs_fp
 from . import rhs_hospitalization
 from . import rhs_hospitalization_monitoring
@@ -39,7 +40,7 @@ from . import nutrition_screening_woman
 from . import nutrition_stabilization_center
 from . import chw_group_session
 from . import chw_individual_session
-from . import gynochological_clinic_visit
+from . import rhs_gynochological_clinic_visit
 from . import patient_admission
 from . import patient_admission_surgery
 from . import patient_admission_visit

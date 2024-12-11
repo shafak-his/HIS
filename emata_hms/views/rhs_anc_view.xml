@@ -6,6 +6,7 @@
         <field name="model">em.hms.rhs.anc</field>
         <field name="arch" type="xml">
             <tree string="ANCs">
+                <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="cesarean_sections_count" />
                 <field name="family_medical_history" />
@@ -38,6 +39,8 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="allowed_project_ids" invisible="1" />
                             <field name="patient_id" />
                             <field name="cesarean_sections_count" />
                             <field name="family_medical_history" widget="text" />

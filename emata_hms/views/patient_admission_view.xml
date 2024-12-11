@@ -6,6 +6,7 @@
         <field name="model">em.hms.patient.admission</field>
         <field name="arch" type="xml">
             <tree string="Patient Admission">
+                <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="visit_date" />
                 <field name="doctor_id" />
@@ -46,6 +47,8 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="allowed_project_ids" invisible="1" />
                             <field name="visit_date" />
                             <field name="patient_id" />
                         </group>

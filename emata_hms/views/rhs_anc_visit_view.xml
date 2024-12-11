@@ -6,6 +6,7 @@
         <field name="model">em.hms.rhs.anc.visit</field>
         <field name="arch" type="xml">
             <tree string="ANC Visits">
+                <field name="project_id" optional="show" />
                 <field name="anc_id" />
                 <field name="patient_id" />
                 <field name="visit_date" />
@@ -40,6 +41,8 @@
                     <group>
                         <group>
                             <!-- <field name="anc_id" /> -->
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="allowed_project_ids" invisible="1" />
                             <field name="patient_id" />
                             <field name="visit_date" widget="date" />
                             <field name="is_signs" widget="checkbox" />

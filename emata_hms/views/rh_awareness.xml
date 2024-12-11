@@ -3,15 +3,15 @@
 
 
     <!-- Main -->
-    <record id="em_hms_rh_awareness_view_tree" model="ir.ui.view">
-        <field name="name">em.hms.rh.awareness.view.tree</field>
-        <field name="model">em.hms.rh.awareness</field>
+    <record id="em_hms_rhs_awareness_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.awareness.view.tree</field>
+        <field name="model">em.hms.rhs.awareness</field>
         <field name="arch" type="xml">
             <tree string="RH Awareness">
                 <field name="patient_id" />
                 <field name="session_date" />
                 <field name="community_health_worker_name" optional="hide" />
-                <field name="project_id" optional="hide" />
+                <field name="project_id" optional="show" />
                 <field name="new_old" optional="hide" />
                 <field name="center" optional="hide" />
                 <field name="session_title" optional="hide" />
@@ -21,9 +21,9 @@
         </field>
     </record>
 
-    <record id="em_hms_rh_awareness_view_form" model="ir.ui.view">
-        <field name="name">em.hms.rh.awareness.view.form</field>
-        <field name="model">em.hms.rh.awareness</field>
+    <record id="em_hms_rhs_awareness_view_form" model="ir.ui.view">
+        <field name="name">em.hms.rhs.awareness.view.form</field>
+        <field name="model">em.hms.rhs.awareness</field>
         <field name="arch" type="xml">
             <form string="RH Awareness">
                 <sheet>
@@ -32,7 +32,8 @@
                             <field name="patient_id" options="{'no_create': True, 'no_quick_create': True}" />
                             <field name="session_date" widget="date" />
                             <field name="community_health_worker_name" />
-                            <field name="project_id" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="allowed_project_ids" invisible="1" />
                             <field name="new_old" />
                         </group>
                         <group>
@@ -56,9 +57,9 @@
         </field>
     </record>
 
-    <record id="em_hms_rh_awareness_action" model="ir.actions.act_window">
+    <record id="em_hms_rhs_awareness_action" model="ir.actions.act_window">
         <field name="name">RH Awareness</field>
-        <field name="res_model">em.hms.rh.awareness</field>
+        <field name="res_model">em.hms.rhs.awareness</field>
         <field name="view_mode">tree,form</field>
         <field name="domain"></field>
         <field name="context"></field>

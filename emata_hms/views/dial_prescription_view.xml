@@ -6,6 +6,7 @@
         <field name="model">em.hms.dial.prescription</field>
         <field name="arch" type="xml">
             <tree string="Dialysis prescription">
+                <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="prescription_datetime" optional="hide" />
                 <field name="duration" optional="hide" widget="float_time" />
@@ -25,6 +26,8 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="allowed_project_ids" invisible="1" />
                             <field name="patient_id" />
                             <field name="day_ids" widget="many2many_tags" />
                             <field name="isolation" />

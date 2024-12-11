@@ -10,3 +10,8 @@ class EmHmsClinic(models.Model):
     name = fields.Char('Clinic Name', required=True)
     name_lang = fields.Char('Clinic Arabic Name', required=True)
     
+class EmHmsService(models.Model):
+    _name = 'em.hms.service'
+    _description = 'HMS Service'
+    
+    name = fields.Char('Name', required=True)

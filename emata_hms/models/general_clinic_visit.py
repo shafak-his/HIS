@@ -41,6 +41,21 @@ class EmHmsGeneralClinicVisit(models.Model):
         ('draft', 'Draft'),
         ('done', 'Done'),
     ], string='Status', required=True, default='draft')
+    project_id = fields.Many2one('project.project', string='Project', tracking=True)
+    allowed_project_ids = fields.Many2many('project.project', compute='_compute_allowed_project_ids', string='Allowed Projects', compute_sudo=True)
+
+    @api.onchange('allowed_project_ids')
+    def _onchange_allowed_project_ids(self):
+        if self.allowed_project_ids:
+            self.project_id = self.allowed_project_ids[0].id
+        else:
+            self.project_id = False
+
+    @api.depends('company_id', 'clinic_id')
+    def _compute_allowed_project_ids(self):
+        for record in self:
+            record.allowed_project_ids = self.env['em.project.support.line'].get_project_ids(record.company_id, self._name, self.clinic_id, fields.Date.today()).ids
+
 
     def confirm_record(self):
         self.ensure_one()
