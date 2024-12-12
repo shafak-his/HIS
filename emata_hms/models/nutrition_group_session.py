@@ -32,7 +32,7 @@ class EmHmsNutritionGroupSession(models.Model):
     _name = 'em.hms.nutrition.group.session'
     _description = 'Group Session'
     _rec_name = 'name'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'em.base.common.form']
         
     session_type = fields.Selection([
         ('general', 'General'),
@@ -40,7 +40,6 @@ class EmHmsNutritionGroupSession(models.Model):
         ('ftfsg', 'FTFSG'),
     ], string='Session Type', required=True)
     name = fields.Char('Group Session No', tracking=True)
-    project_id = fields.Many2one('project.project', string='Project', tracking=True)
     visit_date = fields.Date('Visit Date', required=True, tracking=True)
     session_presenter_name = fields.Char('Session Presenter Name', tracking=True)
     
@@ -74,8 +73,6 @@ class EmHmsNutritionGroupSession(models.Model):
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
 
-    allowed_project_ids = fields.Many2many('project.project', compute='_compute_allowed_project_ids', string='Allowed Projects', compute_sudo=True)
-    
     _sql_constraints = [
         (
             'check_visit_date',
@@ -83,16 +80,6 @@ class EmHmsNutritionGroupSession(models.Model):
             'Visit Date Must Not Be in Future.'
         ),
     ]
-
-    @api.onchange('allowed_project_ids')
-    def _onchange_allowed_project_ids(self):
-        if self.allowed_project_ids:
-            self.project_id = self.allowed_project_ids[0].id
-
-    @api.depends('company_id')
-    def _compute_allowed_project_ids(self):
-        for record in self:
-            record.allowed_project_ids = self.env['em.project.support.line'].get_project_ids(record.company_id, self._name, False, fields.Date.today()).ids
     
     @api.onchange('sub_district_id')
     def _onchange_sub_district_update_location_domain(self):

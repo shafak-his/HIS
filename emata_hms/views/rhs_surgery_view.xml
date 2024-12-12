@@ -70,6 +70,7 @@
                 <group>
                     <group>
                         <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="bnf_status" readonly="1" />
                         <field name="allowed_project_ids" invisible="1" />
                         <field name="patient_id" />
                         <field name="admission_date" widget="date" />

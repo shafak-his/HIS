@@ -12,7 +12,6 @@
                 <field name="session_date" />
                 <field name="community_health_worker_name" optional="hide" />
                 <field name="project_id" optional="show" />
-                <field name="new_old" optional="hide" />
                 <field name="center" optional="hide" />
                 <field name="session_title" optional="hide" />
                 <field name="comments" optional="hide" />
@@ -33,8 +32,8 @@
                             <field name="session_date" widget="date" />
                             <field name="community_health_worker_name" />
                             <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="bnf_status" readonly="1" />
                             <field name="allowed_project_ids" invisible="1" />
-                            <field name="new_old" />
                         </group>
                         <group>
                             <field name="center" />

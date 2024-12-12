@@ -5,7 +5,7 @@ class EmHmsRHSPNC(models.Model):
     _name = 'em.hms.rhs.pnc'
     _description = 'PNC'
     _rec_name = 'patient_id'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'em.common.form']
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     husband_name = fields.Char('Husband\'s Name', tracking=True)
@@ -30,25 +30,11 @@ class EmHmsRHSPNC(models.Model):
     visits_count = fields.Integer(compute='_compute_visits_count', string='Visits Count')
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
-    project_id = fields.Many2one('project.project', string='Project', tracking=True)
-    allowed_project_ids = fields.Many2many('project.project', compute='_compute_allowed_project_ids', string='Allowed Projects', compute_sudo=True)
-
-    @api.onchange('allowed_project_ids')
-    def _onchange_allowed_project_ids(self):
-        if self.allowed_project_ids:
-            self.project_id = self.allowed_project_ids[0].id
-
-    @api.depends('company_id')
-    def _compute_allowed_project_ids(self):
-        for record in self:
-            record.allowed_project_ids = self.env['em.project.support.line'].get_project_ids(record.company_id, self._name, False, fields.Date.today()).ids
-    
 
     @api.depends('visit_ids')
     def _compute_visits_count(self):
         for record in self:
             record.visits_count=len(record.visit_ids)
-            
             
     def action_get_pnc_visits_record(self):
         self.ensure_one()

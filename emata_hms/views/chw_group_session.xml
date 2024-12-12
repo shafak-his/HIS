@@ -59,7 +59,7 @@
                                 <field name="name" />
                                 <field name="name_lang" />
                                 <field name="gender" />
-                                <field name="new_old" optional="hide" />
+                                <field name="bnf_status" optional="hide" />
                                 <field name="birth_date" optional="hide" />
                                 <field name="displacement_status" optional="hide" />
                                 <field name="is_special_needs" optional="hide" />
@@ -109,7 +109,7 @@
                 <field name="name" />
                 <field name="name_lang" />
                 <field name="gender" />
-                <field name="new_old" optional="hide" />
+                <field name="bnf_status" optional="hide" />
                 <field name="birth_date" optional="hide" />
                 <field name="displacement_status" optional="hide" />
                 <field name="is_special_needs" optional="hide" />
@@ -137,7 +137,7 @@
                             <field name="name" />
                             <field name="name_lang" />
                             <field name="gender" />
-                            <field name="new_old" />
+                            <field name="bnf_status" />
                             <field name="birth_date" widget="date" />
                         </group>
                         <group>

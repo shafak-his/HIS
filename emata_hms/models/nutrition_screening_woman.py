@@ -13,10 +13,9 @@ class EmHmsNutritionScreeningWoman(models.Model):
     _name = 'em.hms.nutrition.screening.woman'
     _description = 'Woman Screening for Acute Malnutrition'
     _rec_name = 'patient_id'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'em.common.form']
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
-    project_id = fields.Many2one('project.project', string='Project', tracking=True)
     service_place = fields.Selection([
         ('fixed', 'Fixed'),
         ('mobile', 'Mobile')
@@ -124,24 +123,12 @@ class EmHmsNutritionScreeningWoman(models.Model):
         ('retreat', 'Retreat'),
     ], string='Conduct The Individual Session', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
-    
-    allowed_project_ids = fields.Many2many('project.project', compute='_compute_allowed_project_ids', string='Allowed Projects', compute_sudo=True)
 
     _sql_constraints = [
         ('check_visit_date', 'CHECK (visit_date <= CURRENT_DATE)', 'Visit date cannot be in future.'),
         ('check_muac_measurement', 'CHECK (muac_measurement >= 190 and muac_measurement <= 400)', 'MUAC Measurement For Women should be between 190 and 400.'),
         ('check_infant_age', 'CHECK (infant_age >= 0 and infant_age <= 24)', 'Infant Age should be between 0 and 24.')
     ]
-
-    @api.onchange('allowed_project_ids')
-    def _onchange_allowed_project_ids(self):
-        if self.allowed_project_ids:
-            self.project_id = self.allowed_project_ids[0].id
-
-    @api.depends('company_id')
-    def _compute_allowed_project_ids(self):
-        for record in self:
-            record.allowed_project_ids = self.env['em.project.support.line'].get_project_ids(record.company_id, self._name, False, fields.Date.today()).ids
 
     @api.depends('woman_status')
     def _compute_is_pbw(self):

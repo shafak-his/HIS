@@ -1,5 +1,6 @@
 from . import product
 from . import project
+from . import em_common_form
 from . import sale_order
 from . import medication_request
 from . import analysis_request

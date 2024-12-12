@@ -5,10 +5,9 @@ class EmHmsCHWGroupSession(models.Model):
     _name = 'em.hms.chw.group.session'
     _description = 'Group Session'
     _rec_name = 'name'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'em.base.common.form']
         
     name = fields.Char('Group Session No', tracking=True)
-    project_id = fields.Many2one('project.project', string='Project', tracking=True)
     service_place = fields.Selection([
         ('fixed', 'Fixed'),
         ('mobile', 'Mobile')
@@ -59,8 +58,6 @@ class EmHmsCHWGroupSession(models.Model):
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
 
-    allowed_project_ids = fields.Many2many('project.project', compute='_compute_allowed_project_ids', string='Allowed Projects', compute_sudo=True)
-    
     _sql_constraints = [
         (
             'check_session_date',
@@ -68,16 +65,6 @@ class EmHmsCHWGroupSession(models.Model):
             'Session Date Must Not Be Newer Than Today.'
         ),
     ]
-
-    @api.onchange('allowed_project_ids')
-    def _onchange_allowed_project_ids(self):
-        if self.allowed_project_ids:
-            self.project_id = self.allowed_project_ids[0].id
-
-    @api.depends('company_id')
-    def _compute_allowed_project_ids(self):
-        for record in self:
-            record.allowed_project_ids = self.env['em.project.support.line'].get_project_ids(record.company_id, self._name, False, fields.Date.today()).ids
     
 class EmHmsCHWGroupSessionBNF(models.Model):
     _name = 'em.hms.chw.group.session.bnf'
@@ -92,10 +79,10 @@ class EmHmsCHWGroupSessionBNF(models.Model):
         ('male', 'Male'),
         ('female', 'Female')
     ], string='Gender', required=True, tracking=True)
-    new_old = fields.Selection([
+    bnf_status = fields.Selection([
         ('new', 'New'),
         ('old', 'Old')
-    ], string='New Or Old', required=True, tracking=True)
+    ], string='BNF Status', required=True, tracking=True)
     birth_date = fields.Date('Date Of Birth', required=True, tracking=True)
     displacement_status = fields.Selection([
         ('host', 'Host'),

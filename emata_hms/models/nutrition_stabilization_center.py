@@ -6,10 +6,9 @@ class EmHmsNutritionStabilizationCenter(models.Model):
     _name = 'em.hms.nutrition.stabilization.center'
     _description = 'Stabilization Center'
     _rec_name = 'patient_id'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'em.common.form']
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
-    project_id = fields.Many2one('project.project', string='Project Number', tracking=True)
     service_place = fields.Selection([
         ('fixed', 'Fixed'),
         ('mobile', 'Mobile')
@@ -66,23 +65,11 @@ class EmHmsNutritionStabilizationCenter(models.Model):
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     show_question_accepted_transitional = fields.Boolean(compute='_compute_show_question_accepted_transitional', string='Show Question Accepted Transitional')
     
-    allowed_project_ids = fields.Many2many('project.project', compute='_compute_allowed_project_ids', string='Allowed Projects', compute_sudo=True)
-    
     _sql_constraints = [
         ('check_visit_date', 'CHECK (visit_date <= CURRENT_DATE)',
          'Visit Date Must Not Be in Future.'), ('check_muac_measurement', 'CHECK (muac_measurement >= 70 and muac_measurement <= 200)',
          'MUAC Measurement For Children should be between 70 and 200.')
     ]
-
-    @api.onchange('allowed_project_ids')
-    def _onchange_allowed_project_ids(self):
-        if self.allowed_project_ids:
-            self.project_id = self.allowed_project_ids[0].id
-
-    @api.depends('company_id')
-    def _compute_allowed_project_ids(self):
-        for record in self:
-            record.allowed_project_ids = self.env['em.project.support.line'].get_project_ids(record.company_id, self._name, False, fields.Date.today()).ids
     
     @api.depends('is_bilateral_edema', 'is_zscore_lt_minus3', 'age_in_months', 'zscore_measurement', 'is_danger_signs')
     def _compute_nature_of_malnutrition(self):

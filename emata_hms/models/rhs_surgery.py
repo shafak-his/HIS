@@ -5,7 +5,7 @@ class EmHmsRHSSurgery(models.Model):
     _name = 'em.hms.rhs.surgery'
     _description = 'Surgery'
     _rec_name = 'patient_id'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'em.common.form']
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     admission_date = fields.Date('Date Of Admission', required=True, tracking=True)
@@ -109,19 +109,6 @@ class EmHmsRHSSurgery(models.Model):
     labors_count = fields.Integer(compute='_compute_labors_count', string='Labors Count')
     post_surgery_ids = fields.One2many('em.hms.post.surgery', 'surgery_id', string='Post-Surgery Monitoring')
     post_surgeries_count = fields.Integer(compute='_compute_post_surgeries_count', string='Post-Surgery Reports')
-    project_id = fields.Many2one('project.project', string='Project', tracking=True)
-    allowed_project_ids = fields.Many2many('project.project', compute='_compute_allowed_project_ids', string='Allowed Projects', compute_sudo=True)
-
-    @api.onchange('allowed_project_ids')
-    def _onchange_allowed_project_ids(self):
-        if self.allowed_project_ids:
-            self.project_id = self.allowed_project_ids[0].id
-
-    @api.depends('company_id')
-    def _compute_allowed_project_ids(self):
-        for record in self:
-            record.allowed_project_ids = self.env['em.project.support.line'].get_project_ids(record.company_id, self._name, False, fields.Date.today()).ids
-    
 
     @api.onchange('patient_id')
     def _onchange_patient_id(self):
