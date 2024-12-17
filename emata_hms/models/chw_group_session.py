@@ -107,6 +107,7 @@ class EmHmsCHWGroupSessionBNF(models.Model):
         ('pregnant_malnutrition', 'Malnutrition Of A Pregnant Woman'),
         ('chronic_diseases', 'The Target Of The Session Suffers From A Chronic Disease')
     ], string='Comments', tracking=True)
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)    
     
     _sql_constraints = [
         (

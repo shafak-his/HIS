@@ -19,6 +19,8 @@ class EmHmsAnalysisRequest(models.Model):
         ('done', 'Done'),
     ], string='Status', required=True, default='draft')
 
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)
+
     def complete_order(self):
         self.write({
             'state': 'done'
@@ -64,3 +66,6 @@ class EmHmsAnalysisRequestLine(models.Model):
     
     product_template_id = fields.Many2one('product.template', string='Product', domain="[('is_medical_analysis', '=', True)]", required=True)
     notes = fields.Char('Notes')
+    
+
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)

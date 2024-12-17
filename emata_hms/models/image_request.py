@@ -18,6 +18,7 @@ class EmHmsImageRequest(models.Model):
     ], string='Status', required=True, default='draft')
 
     line_ids = fields.One2many('em.hms.image.request.line', 'request_id', string='Lines')
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)
 
     def complete_order(self):
         self.write({
@@ -61,3 +62,4 @@ class EmHmsImageRequestLine(models.Model):
 
     product_template_id = fields.Many2one('product.template', string='Product', domain="[('is_medical_imaging', '=', True)]", required=True)
     notes = fields.Char('Notes')
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)

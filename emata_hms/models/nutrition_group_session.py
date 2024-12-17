@@ -118,6 +118,7 @@ class EmHmsNutritionGroupSessionTopic(models.Model):
     topic_id = fields.Many2one('em.hms.nutrition.topic', string='Main Topic', required=True)
     sub_topic_ids = fields.Many2many('em.hms.nutrition.topic', string='Sub-Topic', required=True)
     other_sub_topics = fields.Char('Other Sub-Topics')
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)
 
 class EmHmsNutritionGroupSessionBNF(models.Model):
     _name = 'em.hms.nutrition.group.session.bnf'
@@ -131,3 +132,4 @@ class EmHmsNutritionGroupSessionBNF(models.Model):
     age = fields.Integer('Beneficiary Age', tracking=True)
     
     visit_ids = fields.Many2many('em.hms.nutrition.bnf.visit', 'nutrition_bnf_visit_rel', 'bnf_id', 'visit_id', string='Beneficiary Visits')
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)

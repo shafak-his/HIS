@@ -29,7 +29,7 @@ class EmHmsDialSessionInfo(models.Model):
     temp = fields.Float('Temperature')
     ap = fields.Float('AP')
     tmp = fields.Float('TMP')
-
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)
 
 class EmHmsDialTransfusion(models.Model):
     _name = 'em.hms.dial.transfusion'
@@ -42,8 +42,7 @@ class EmHmsDialTransfusion(models.Model):
     expiry_date = fields.Date('Expiry date', tracking=True)
     patient_blood_group = fields.Selection(BLOOD_TYPES, string='Patient blood group', required=True, tracking=True)
     donor_blood_group = fields.Selection(BLOOD_TYPES, string='Donor blood group', required=True, tracking=True)
-
-
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)
 
 class EmHmsDialVisit(models.Model):
     _name = 'em.hms.dial.visit'

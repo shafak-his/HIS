@@ -25,6 +25,7 @@ class EmHmsMedicationRequestLine(models.Model):
     uom_id = fields.Many2one('uom.uom', string='UoM', required=True)
     qty = fields.Float('Quantity', default=1)
     notes = fields.Char('Notes')
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)
 
     # Details
     pharmaceutical_form = fields.Selection([

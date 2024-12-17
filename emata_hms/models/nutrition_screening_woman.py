@@ -156,5 +156,5 @@ class EmHmsNutritionGroupSessionTopic(models.Model):
     topic_id = fields.Many2one('em.hms.nutrition.topic', string='Main Topic', required=True)
     sub_topic_ids = fields.Many2many('em.hms.nutrition.topic', 'em_nutrition_screening_women_topic_rel', 'topic_id', 'sub_topic_id', string='Sub-Topic', required=True)
     other_sub_topics = fields.Char('Other Sub-Topics')
-    
+    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)    
     

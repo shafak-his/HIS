@@ -8,4 +8,3 @@ class EmHmsMedicalHistory(models.Model):
     name = fields.Char('Name', required=True)
     name_lang = fields.Char('Arabic Name')
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
-    

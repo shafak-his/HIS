@@ -27,6 +27,7 @@
     ],
 
     'data': [
+        'security/global_security_rules.xml',
         'security/ir.model.access.csv',
 
         'views/project_view.xml',
