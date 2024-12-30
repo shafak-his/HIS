@@ -7,11 +7,11 @@
         <field name="arch" type="xml">
             <tree string="Medical Service Items" editable="bottom">
                 <field name="name" />
-                <field name="uom_id" invisible="not is_medication" />
-                <field name="pharmaceutical_form" />
-                <field name="dosage_rate" />
-                <field name="dose_time" />
-                <field name="dose_way" />
+                <field name="uom_id" invisible="not is_medication" column_invisible="not context.get('default_is_medication', False)" />
+                <field name="pharmaceutical_form" column_invisible="not context.get('default_is_medication', False)" />
+                <field name="dosage_rate" column_invisible="not context.get('default_is_medication', False)"  />
+                <field name="dose_time" column_invisible="not context.get('default_is_medication', False)"  />
+                <field name="dose_way" column_invisible="not context.get('default_is_medication', False)"  />
 
                 <field name="is_medication" column_invisible="1" />
                 <field name="is_medical_analysis" column_invisible="1" />

@@ -60,6 +60,7 @@
         <field name="arch" type="xml">
             <tree string="Image Requests" editable="bottom">
                 <field name="product_template_id" />
+                <field name="result" />
                 <field name="notes" />
             </tree>
         </field>
@@ -74,6 +75,7 @@
                     <group>
                         <group>
                             <field name="product_template_id" />
+                            <field name="result" />
                             <field name="notes" />
                         </group> 
                     </group>

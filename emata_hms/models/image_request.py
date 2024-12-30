@@ -60,6 +60,8 @@ class EmHmsImageRequestLine(models.Model):
     icu_id = fields.Many2one('em.hms.pediatric.icu', string='ICU')
     nicu_id = fields.Many2one('em.hms.pediatric.nicu', string='NICU')
 
+    result = fields.Char('Result')
+
     product_template_id = fields.Many2one('product.template', string='Product', domain="[('is_medical_imaging', '=', True)]", required=True)
     notes = fields.Char('Notes')
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)

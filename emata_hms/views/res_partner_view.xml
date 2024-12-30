@@ -33,6 +33,167 @@
                             <button name="action_get_image_requests" type="object" class="oe_stat_button" icon="fa-edit">
                                 Image Requests
                             </button>
+
+                            <!-- Services -->
+                            <button name="action_get_em_hms_chw_individual_session" type="object" class="oe_stat_button" icon="fa-edit" invisible="chw_individual_session_count==0">
+                                CHW Individual Session
+                            </button>
+
+                            <button name="action_get_em_hms_dial_kidney_history" type="object" class="oe_stat_button" icon="fa-edit" invisible="dial_kidney_history_count==0">
+                                Dial Kidney History
+                            </button>
+
+                            <button name="action_get_em_hms_dial_lithotripsy" type="object" class="oe_stat_button" icon="fa-edit" invisible="dial_lithotripsy_count==0">
+                                Dial Lithotripsy
+                            </button>
+
+                            <button name="action_get_em_hms_dial_nephrology" type="object" class="oe_stat_button" icon="fa-edit" invisible="dial_nephrology_count==0">
+                                Dial Nephrology
+                            </button>
+
+                            <button name="action_get_em_hms_dial_prescription" type="object" class="oe_stat_button" icon="fa-edit" invisible="dial_prescription_count==0">
+                                Dial Prescription
+                            </button>
+
+                            <button name="action_get_em_hms_dial_urology" type="object" class="oe_stat_button" icon="fa-edit" invisible="dial_urology_count==0">
+                                Dial Urology
+                            </button>
+
+                            <button name="action_get_em_hms_dial_visit" type="object" class="oe_stat_button" icon="fa-edit" invisible="dial_visit_count==0">
+                                Dial Visit
+                            </button>
+
+                            <button name="action_get_em_hms_mh_gap" type="object" class="oe_stat_button" icon="fa-edit" invisible="mh_gap_count==0">
+                                MH Gap
+                            </button>
+
+                            <button name="action_get_em_hms_mh_pmplus" type="object" class="oe_stat_button" icon="fa-edit" invisible="mh_pmplus_count==0">
+                                MH PMPlus
+                            </button>
+
+                            <button name="action_get_em_hms_mh_referral" type="object" class="oe_stat_button" icon="fa-edit" invisible="mh_referral_count==0">
+                                MH Referral
+                            </button>
+
+                            <button name="action_get_em_hms_necessity_giving" type="object" class="oe_stat_button" icon="fa-edit" invisible="necessity_giving_count==0">
+                                Necessity Giving
+                            </button>
+
+                            <button name="action_get_em_hms_nutrition_screening_child" type="object" class="oe_stat_button" icon="fa-edit" invisible="nutrition_screening_child_count==0">
+                                Nutrition Screening Child
+                            </button>
+
+                            <button name="action_get_em_hms_nutrition_screening_woman" type="object" class="oe_stat_button" icon="fa-edit" invisible="nutrition_screening_woman_count==0">
+                                Nutrition Screening Woman
+                            </button>
+
+                            <button name="action_get_em_hms_nutrition_stabilization_center" type="object" class="oe_stat_button" icon="fa-edit" invisible="nutrition_stabilization_center_count==0">
+                                Nutrition Stabilization Center
+                            </button>
+
+                            <button name="action_get_em_hms_patient_admission_surgery" type="object" class="oe_stat_button" icon="fa-edit" invisible="patient_admission_surgery_count==0">
+                                Patient Admission Surgery
+                            </button>
+
+                            <button name="action_get_em_hms_patient_admission_visit" type="object" class="oe_stat_button" icon="fa-edit" invisible="patient_admission_visit_count==0">
+                                Patient Admission Visit
+                            </button>
+
+                            <button name="action_get_em_hms_patient_admission" type="object" class="oe_stat_button" icon="fa-edit" invisible="patient_admission_count==0">
+                                Patient Admission
+                            </button>
+
+                            <button name="action_get_em_hms_pediatric_clinic" type="object" class="oe_stat_button" icon="fa-edit" invisible="pediatric_clinic_count==0">
+                                Pediatric Clinic
+                            </button>
+
+                            <button name="action_get_em_hms_pediatric_icu" type="object" class="oe_stat_button" icon="fa-edit" invisible="pediatric_icu_count==0">
+                                Pediatric ICU
+                            </button>
+
+                            <button name="action_get_em_hms_pediatric_incubator_admission" type="object" class="oe_stat_button" icon="fa-edit" invisible="pediatric_incubator_admission_count==0">
+                                Pediatric Incubator Admission
+                            </button>
+
+                            <button name="action_get_em_hms_pediatric_newborn_examination" type="object" class="oe_stat_button" icon="fa-edit" invisible="pediatric_newborn_examination_count==0">
+                                Pediatric Newborn Examination
+                            </button>
+
+                            <button name="action_get_em_hms_pediatric_nicu" type="object" class="oe_stat_button" icon="fa-edit" invisible="pediatric_nicu_count==0">
+                                Pediatric NICU
+                            </button>
+
+                            <button name="action_get_em_hms_pediatric_phototherapy" type="object" class="oe_stat_button" icon="fa-edit" invisible="pediatric_phototherapy_count==0">
+                                Pediatric Phototherapy
+                            </button>
+
+                            <button name="action_get_em_hms_pediatric_surgery_clinic" type="object" class="oe_stat_button" icon="fa-edit" invisible="pediatric_surgery_clinic_count==0">
+                                Pediatric Surgery Clinic
+                            </button>
+
+                            <button name="action_get_em_hms_pediatric_surgery" type="object" class="oe_stat_button" icon="fa-edit" invisible="pediatric_surgery_count==0">
+                                Pediatric Surgery
+                            </button>
+
+                            <button name="action_get_em_hms_pediatric_ward_admission" type="object" class="oe_stat_button" icon="fa-edit" invisible="pediatric_ward_admission_count==0">
+                                Pediatric Ward Admission
+                            </button>
+
+                            <button name="action_get_em_hms_rhs_gynochological_clinic_visit" type="object" class="oe_stat_button" icon="fa-edit" invisible="rhs_gynochological_clinic_visit_count==0">
+                                RHS Gynochological Clinic Visit
+                            </button>
+
+                            <button name="action_get_em_hms_rhs_awareness" type="object" class="oe_stat_button" icon="fa-edit" invisible="rhs_awareness_count==0">
+                                RHS Awareness
+                            </button>
+
+                            <button name="action_get_em_hms_rhs_anc_visit" type="object" class="oe_stat_button" icon="fa-edit" invisible="rhs_anc_visit_count==0">
+                                RHS ANC Visit
+                            </button>
+
+                            <button name="action_get_em_hms_rhs_anc" type="object" class="oe_stat_button" icon="fa-edit" invisible="rhs_anc_count==0">
+                                RHS ANC
+                            </button>
+
+                            <button name="action_get_em_hms_rhs_delivery" type="object" class="oe_stat_button" icon="fa-edit" invisible="rhs_delivery_count==0">
+                                RHS Delivery
+                            </button>
+
+                            <button name="action_get_em_hms_rhs_edc" type="object" class="oe_stat_button" icon="fa-edit" invisible="rhs_edc_count==0">
+                                RHS EDC
+                            </button>
+
+                            <button name="action_get_em_hms_rhs_fp" type="object" class="oe_stat_button" icon="fa-edit" invisible="rhs_fp_count==0">
+                                RHS FP
+                            </button>
+
+                            <button name="action_get_em_hms_rhs_hospitalization_monitoring" type="object" class="oe_stat_button" icon="fa-edit" invisible="rhs_hospitalization_monitoring_count==0">
+                                RHS Hospitalization Monitoring
+                            </button>
+
+                            <button name="action_get_em_hms_rhs_hospitalization" type="object" class="oe_stat_button" icon="fa-edit" invisible="rhs_hospitalization_count==0">
+                                RHS Hospitalization
+                            </button>
+
+                            <button name="action_get_em_hms_rhs_infertility_treatment" type="object" class="oe_stat_button" icon="fa-edit" invisible="rhs_infertility_treatment_count==0">
+                                RHS Infertility Treatment
+                            </button>
+
+                            <button name="action_get_em_hms_rhs_pnc_visit" type="object" class="oe_stat_button" icon="fa-edit" invisible="rhs_pnc_visit_count==0">
+                                RHS PNC Visit
+                            </button>
+
+                            <button name="action_get_em_hms_rhs_pnc" type="object" class="oe_stat_button" icon="fa-edit" invisible="rhs_pnc_count==0">
+                                RHS PNC
+                            </button>
+
+                            <button name="action_get_em_hms_rhs_surgery" type="object" class="oe_stat_button" icon="fa-edit" invisible="rhs_surgery_count==0">
+                                RHS Surgery
+                            </button>
+
+                            <button name="action_get_em_hms_general_clinic_visit" type="object" class="oe_stat_button" icon="fa-edit" invisible="general_clinic_visit_count==0">
+                                General Clinic Visit
+                            </button>
                         </div>
                     </header>
                     <group>
@@ -84,6 +245,127 @@
                         <field name="is_company" />
                         <field name="company_type" />
                         <field name="type" />
+                    </group>
+                    <group invisible="1">
+                        <field name="chw_individual_session_ids" />
+                        <field name="chw_individual_session_count" />
+
+                        <field name="dial_kidney_history_ids" />
+                        <field name="dial_kidney_history_count" />
+
+                        <field name="dial_lithotripsy_ids" />
+                        <field name="dial_lithotripsy_count" />
+
+                        <field name="dial_nephrology_ids" />
+                        <field name="dial_nephrology_count" />
+
+                        <field name="dial_prescription_ids" />
+                        <field name="dial_prescription_count" />
+
+                        <field name="dial_urology_ids" />
+                        <field name="dial_urology_count" />
+
+                        <field name="dial_visit_ids" />
+                        <field name="dial_visit_count" />
+
+                        <field name="mh_gap_ids" />
+                        <field name="mh_gap_count" />
+
+                        <field name="mh_pmplus_ids" />
+                        <field name="mh_pmplus_count" />
+
+                        <field name="mh_referral_ids" />
+                        <field name="mh_referral_count" />
+
+                        <field name="necessity_giving_ids" />
+                        <field name="necessity_giving_count" />
+
+                        <field name="nutrition_screening_child_ids" />
+                        <field name="nutrition_screening_child_count" />
+
+                        <field name="nutrition_screening_woman_ids" />
+                        <field name="nutrition_screening_woman_count" />
+
+                        <field name="nutrition_stabilization_center_ids" />
+                        <field name="nutrition_stabilization_center_count" />
+
+                        <field name="patient_admission_surgery_ids" />
+                        <field name="patient_admission_surgery_count" />
+
+                        <field name="patient_admission_visit_ids" />
+                        <field name="patient_admission_visit_count" />
+
+                        <field name="patient_admission_ids" />
+                        <field name="patient_admission_count" />
+
+                        <field name="pediatric_clinic_ids" />
+                        <field name="pediatric_clinic_count" />
+
+                        <field name="pediatric_icu_ids" />
+                        <field name="pediatric_icu_count" />
+
+                        <field name="pediatric_incubator_admission_ids" />
+                        <field name="pediatric_incubator_admission_count" />
+
+                        <field name="pediatric_newborn_examination_ids" />
+                        <field name="pediatric_newborn_examination_count" />
+
+                        <field name="pediatric_nicu_ids" />
+                        <field name="pediatric_nicu_count" />
+
+                        <field name="pediatric_phototherapy_ids" />
+                        <field name="pediatric_phototherapy_count" />
+
+                        <field name="pediatric_surgery_clinic_ids" />
+                        <field name="pediatric_surgery_clinic_count" />
+
+                        <field name="pediatric_surgery_ids" />
+                        <field name="pediatric_surgery_count" />
+
+                        <field name="pediatric_ward_admission_ids" />
+                        <field name="pediatric_ward_admission_count" />
+
+                        <field name="rhs_gynochological_clinic_visit_ids" />
+                        <field name="rhs_gynochological_clinic_visit_count" />
+
+                        <field name="rhs_awareness_ids" />
+                        <field name="rhs_awareness_count" />
+
+                        <field name="rhs_anc_visit_ids" />
+                        <field name="rhs_anc_visit_count" />
+
+                        <field name="rhs_anc_ids" />
+                        <field name="rhs_anc_count" />
+
+                        <field name="rhs_delivery_ids" />
+                        <field name="rhs_delivery_count" />
+
+                        <field name="rhs_edc_ids" />
+                        <field name="rhs_edc_count" />
+
+                        <field name="rhs_fp_ids" />
+                        <field name="rhs_fp_count" />
+
+                        <field name="rhs_hospitalization_monitoring_ids" />
+                        <field name="rhs_hospitalization_monitoring_count" />
+
+                        <field name="rhs_hospitalization_ids" />
+                        <field name="rhs_hospitalization_count" />
+
+                        <field name="rhs_infertility_treatment_ids" />
+                        <field name="rhs_infertility_treatment_count" />
+
+                        <field name="rhs_pnc_visit_ids" />
+                        <field name="rhs_pnc_visit_count" />
+
+                        <field name="rhs_pnc_ids" />
+                        <field name="rhs_pnc_count" />
+
+                        <field name="rhs_surgery_ids" />
+                        <field name="rhs_surgery_count" />
+
+                        <field name="general_clinic_visit_ids" />
+                        <field name="general_clinic_visit_count" />
                     </group>
                 </sheet>
                 <div class="oe_chatter">
