@@ -571,13 +571,7 @@
             action="emata_hms.em_hms_analysis_request_action"
             sequence="10"
         />
-        <menuitem id="menu_em_hms_image_request"
-            name="Image Requests"
-            parent="menu_em_hms_lab_root"
-            action="emata_hms.em_hms_image_request_action"
-            sequence="15"
-        />
-        <menuitem id="menu_em_hms_reporting_lines"
+        <menuitem id="menu_em_hms_lab_reporting_lines"
             name="Reporting Lines"
             parent="menu_em_hms_lab_root"
             sequence="90"
@@ -588,9 +582,27 @@
             action="emata_hms.em_hms_analysis_request_line_action"
             sequence="10"
         />
+
+        <!-- Imaging -->
+        <menuitem id="menu_em_hms_imaging_root"
+            name="Imaging"
+            web_icon="emata_hms,static/description/icon-imaging.png"
+            sequence="43"
+        />
+        <menuitem id="menu_em_hms_image_request"
+            name="Image Requests"
+            parent="menu_em_hms_imaging_root"
+            action="emata_hms.em_hms_image_request_action"
+            sequence="15"
+        />
+        <menuitem id="menu_em_hms_imaging_reporting_lines"
+            name="Reporting Lines"
+            parent="menu_em_hms_imaging_root"
+            sequence="90"
+        />
         <menuitem id="menu_em_hms_image_request_line"
             name="Image Request Lines"
-            parent="menu_em_hms_reporting_lines"
+            parent="menu_em_hms_imaging_reporting_lines"
             action="emata_hms.em_hms_image_request_line_action"
             sequence="15"
         />
