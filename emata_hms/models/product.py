@@ -1,5 +1,5 @@
 from odoo import _, api, fields, models, exceptions, tools
-
+from odoo.osv import expression
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
@@ -52,3 +52,15 @@ class ProductTemplate(models.Model):
         ('anal', 'Anal'),
         ('vaginal', 'Vaginal'),
     ], string='Dose Way')
+
+    @api.model
+    def _name_search(self, name, domain=None, operator='ilike', limit=100, order=None):
+        if name and operator in ('=', 'ilike', '=ilike', 'like', '=like'):
+            domain = domain or []
+            name_domain = ['|',
+                ('name', operator, name),
+                ('default_code', operator, name),
+            ]
+            partner_ids = self._search(expression.AND([name_domain, domain]), limit=limit, order=order)
+            return partner_ids
+        return super(ProductTemplate, self)._name_search(name=name, domain=domain, operator=operator, limit=limit, order=order)

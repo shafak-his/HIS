@@ -1,4 +1,5 @@
 from odoo import _, api, fields, models, exceptions, tools
+from odoo.osv import expression
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
@@ -167,6 +168,20 @@ class ResPartner(models.Model):
     @api.onchange('first_name', 'last_name')
     def _onchange_name_parts(self):
         self.name = " ".join(list(filter(None, [self.first_name, self.last_name])))
+
+    @api.model
+    def _name_search(self, name, domain=None, operator='ilike', limit=100, order=None):
+        if name and operator in ('=', 'ilike', '=ilike', 'like', '=like'):
+            domain = domain or []
+            name_domain = ['|','|','|',
+                ('name', operator, name),
+                ('code', operator, name),
+                ('email', operator, name),
+                ('mobile', operator, name),
+            ]
+            partner_ids = self._search(expression.AND([name_domain, domain]), limit=limit, order=order)
+            return partner_ids
+        return super(ResPartner, self)._name_search(name=name, domain=domain, operator=operator, limit=limit, order=order)
 
     def action_get_medication_requests(self):
         self.ensure_one()

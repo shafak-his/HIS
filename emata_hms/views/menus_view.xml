@@ -553,7 +553,7 @@
             sequence="90"
         />
         <menuitem id="menu_em_hms_medication_request_line_line"
-            name="Medication Request Liens"
+            name="Medication Request Lines"
             parent="menu_em_hms_medication_reporting_lines"
             action="emata_hms.em_hms_medication_request_line_action"
             sequence="10"
