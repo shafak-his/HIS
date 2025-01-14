@@ -31,6 +31,19 @@
         </field>
     </record>
 
+    <record id="em_hms_medical_history_search" model="ir.ui.view">
+        <field name="name">em.hms.medical.history.view.search</field>
+        <field name="model">em.hms.medical.history</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="em_hms_medical_history_action" model="ir.actions.act_window">
         <field name="name">Medical History</field>
         <field name="res_model">em.hms.medical.history</field>
@@ -67,6 +80,19 @@
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="em_hms_medication_history_search" model="ir.ui.view">
+        <field name="name">em.hms.medication.history.view.search</field>
+        <field name="model">em.hms.medication.history</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
         </field>
     </record>
 
@@ -109,6 +135,19 @@
         </field>
     </record>
 
+    <record id="em_hms_allergic_history_search" model="ir.ui.view">
+        <field name="name">em.hms.allergic.history.view.search</field>
+        <field name="model">em.hms.allergic.history</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="em_hms_allergic_history_action" model="ir.actions.act_window">
         <field name="name">Allergic History</field>
         <field name="res_model">em.hms.allergic.history</field>
@@ -145,6 +184,19 @@
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="em_hms_surgical_history_search" model="ir.ui.view">
+        <field name="name">em.hms.surgical.history.view.search</field>
+        <field name="model">em.hms.surgical.history</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
         </field>
     </record>
 

@@ -65,6 +65,19 @@
         </field>
     </record>
 
+    <record id="em_hms_daily_observation_search" model="ir.ui.view">
+        <field name="name">em.hms.daily.observation.view.search</field>
+        <field name="model">em.hms.daily.observation</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="em_hms_daily_observation_action" model="ir.actions.act_window">
         <field name="name">Daily Observations</field>
         <field name="res_model">em.hms.daily.observation</field>

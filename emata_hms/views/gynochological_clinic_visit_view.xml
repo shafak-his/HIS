@@ -89,6 +89,21 @@
         </field>
     </record>
 
+    <record id="em_hms_rhs_gynochological_clinic_visit_search" model="ir.ui.view">
+        <field name="name">em.hms.rhs.gynochological.clinic.visit.view.search</field>
+        <field name="model">em.hms.rhs.gynochological.clinic.visit</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <field name="doctor_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                    <filter string="Doctor" name="doctor_id" context="{'group_by': 'doctor_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="em_hms_rhs_gynochological_clinic_visit_action" model="ir.actions.act_window">
         <field name="name">Gynochological Clinic Visits</field>
         <field name="res_model">em.hms.rhs.gynochological.clinic.visit</field>

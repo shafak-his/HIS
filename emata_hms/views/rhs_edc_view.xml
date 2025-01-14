@@ -253,6 +253,19 @@
         </field>
     </record>
 
+    <record id="em_hms_rhs_edc_search" model="ir.ui.view">
+        <field name="name">em.hms.rhs.edc.view.search</field>
+        <field name="model">em.hms.rhs.edc</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="em_hms_rhs_edc_action" model="ir.actions.act_window">
         <field name="name">EDCs</field>
         <field name="res_model">em.hms.rhs.edc</field>

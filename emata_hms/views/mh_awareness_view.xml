@@ -55,6 +55,19 @@
         </field>
     </record>
 
+    <record id="em_hms_mh_awareness_search" model="ir.ui.view">
+        <field name="name">em.hms.mh.awareness.view.search</field>
+        <field name="model">em.hms.mh.awareness</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="activity_name" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Activity Name" name="activity_name" context="{'group_by': 'activity_name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="em_hms_mh_awareness_action" model="ir.actions.act_window">
         <field name="name">Group Awareness Sessions</field>
         <field name="res_model">em.hms.mh.awareness</field>

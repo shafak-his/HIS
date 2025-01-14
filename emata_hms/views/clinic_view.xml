@@ -38,6 +38,19 @@
         </field>
     </record>
 
+    <record id="em_hms_clinic_search" model="ir.ui.view">
+        <field name="name">em.hms.clinic.view.search</field>
+        <field name="model">em.hms.clinic</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="name" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="name" context="{'group_by': 'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="em_hms_clinic_action" model="ir.actions.act_window">
         <field name="name">Clinics</field>
         <field name="res_model">em.hms.clinic</field>

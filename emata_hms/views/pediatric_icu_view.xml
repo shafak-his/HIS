@@ -237,6 +237,21 @@
         </field>
     </record>
 
+    <record id="em_hms_pediatric_icu_search" model="ir.ui.view">
+        <field name="name">em.hms.pediatric.icu.view.search</field>
+        <field name="model">em.hms.pediatric.icu</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <field name="technician_doctor_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                    <filter string="Technician Doctor" name="technician_doctor_id" context="{'group_by': 'technician_doctor_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="em_hms_pediatric_icu_action" model="ir.actions.act_window">
         <field name="name">ICU</field>
         <field name="res_model">em.hms.pediatric.icu</field>

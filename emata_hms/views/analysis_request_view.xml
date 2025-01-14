@@ -11,6 +11,7 @@
             </tree>
         </field>
     </record>
+
     <record id="em_hms_analysis_request_view_form" model="ir.ui.view">
         <field name="name">em.hms.analysis.request.view.form</field>
         <field name="model">em.hms.analysis.request</field>
@@ -47,6 +48,20 @@
             </form>
         </field>
     </record>
+
+    <record id="em_hms_analysis_request_search" model="ir.ui.view">
+        <field name="name">em.hms.analysis.request.view.search</field>
+        <field name="model">em.hms.analysis.request</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="em_hms_analysis_request_action" model="ir.actions.act_window">
         <field name="name">Analysis Request</field>
         <field name="res_model">em.hms.analysis.request</field>

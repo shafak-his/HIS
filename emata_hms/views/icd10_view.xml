@@ -46,6 +46,19 @@
         </field>
     </record>
 
+     <record id="em_hms_icd10_search" model="ir.ui.view">
+        <field name="name">em.hms.icd10.view.search</field>
+        <field name="model">em.hms.icd10</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="name" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="name" context="{'group_by': 'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="em_hms_icd10_action" model="ir.actions.act_window">
         <field name="name">ICD10</field>
         <field name="res_model">em.hms.icd10</field>
