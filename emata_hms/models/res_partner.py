@@ -173,11 +173,12 @@ class ResPartner(models.Model):
     def _name_search(self, name, domain=None, operator='ilike', limit=100, order=None):
         if name and operator in ('=', 'ilike', '=ilike', 'like', '=like'):
             domain = domain or []
-            name_domain = ['|','|','|',
+            name_domain = ['|','|','|','|',
                 ('name', operator, name),
                 ('code', operator, name),
                 ('email', operator, name),
                 ('mobile', operator, name),
+                ('doc_number', operator, name),
             ]
             partner_ids = self._search(expression.AND([name_domain, domain]), limit=limit, order=order)
             return partner_ids

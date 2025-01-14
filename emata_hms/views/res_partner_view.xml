@@ -377,11 +377,26 @@
         </field>
     </record>
 
+    <record id="em_res_partner_patient_view_search" model="ir.ui.view">
+        <field name="name">em.res.partner.patient.view.search</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="code" icon="fa fa-filter"/>
+                <field name="name" icon="fa fa-filter"/>
+                <field name="doc_number" icon="fa fa-filter"/>
+                <field name="mobile" icon="fa fa-filter"/>
+                <field name="email" icon="fa fa-filter"/>
+            </search>
+        </field>
+    </record>
+
     <record model="ir.actions.act_window" id="action_em_res_partner_patient">
         <field name="name">Patients</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">res.partner</field>
         <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="em_res_partner_patient_view_search"/>
         <field name="domain">[('is_patient','=',True)]</field>
         <field name="context">{'default_is_patient':True, 'default_is_company': False, 'default_company_type': 'person', 'default_type': 'contact'}</field>
     </record>
