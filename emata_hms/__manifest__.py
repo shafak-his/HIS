@@ -71,7 +71,7 @@
         'views/nutrition_stabilization_center.xml',
         'views/chw_group_session.xml',
         'views/chw_individual_session.xml',
-        'views/gynochological_clinic_visit_view.xml',
+        'views/rhs_gynochological_clinic_visit_view.xml',
         'views/patient_admission_view.xml',
         'views/patient_admission_surgery_view.xml',
         'views/patient_admission_visit_view.xml',
@@ -89,6 +89,7 @@
         'views/pediatric_icu_view.xml',
         'views/pediatric_nicu_view.xml',
         'views/pediatric_newborn_examination_view.xml',
+        'views/referral_view.xml',
 
         'data/sequence_data.xml',
         'data/hms_service_data.xml',

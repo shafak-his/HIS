@@ -611,7 +611,7 @@
         <menuitem id="menu_em_hms_patient_root"
             name="Patients"
             web_icon="emata_hms,static/description/icon-patients.png"
-            sequence="50"
+            sequence="44"
         />
         <menuitem id="menu_em_hms_patient"
             name="Patients"
@@ -643,5 +643,17 @@
             parent="menu_em_hms_patient_history_root"
             action="emata_hms.em_hms_surgical_history_action"
             sequence="11" />
+
+        <!-- Referral -->
+        <menuitem id="menu_em_hms_referral_root"
+            name="Referral"
+            web_icon="emata_hms,static/description/icon-hms.png"
+            sequence="52"
+        />
+        <menuitem id="menu_em_hms_referral"
+            name="Referral"
+            parent="menu_em_hms_referral_root"
+            action="emata_hms.em_hms_referral_action"
+            sequence="1" />
     </data>
 </odoo>

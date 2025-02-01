@@ -57,6 +57,7 @@ class EmHmsImageRequestLine(models.Model):
     pediatric_clinic_id = fields.Many2one('em.hms.pediatric.clinic', string='Pediatric Clinic')
     pediatric_surgery_clinic_id = fields.Many2one('em.hms.pediatric.surgery.clinic', string='Pediatric Surgery Clinic')
     phototherapy_id = fields.Many2one('em.hms.pediatric.phototherapy', string='Phototherapy')
+    infertility_treatment_id = fields.Many2one('em.hms.rhs.infertility.treatment', string='Infertility Treatment')
     icu_id = fields.Many2one('em.hms.pediatric.icu', string='ICU')
     nicu_id = fields.Many2one('em.hms.pediatric.nicu', string='NICU')
 

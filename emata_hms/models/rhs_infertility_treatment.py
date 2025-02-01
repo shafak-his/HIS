@@ -52,7 +52,7 @@ class EmHmsRHSInfertilityTreatment(models.Model):
     is_hysteroscopy = fields.Boolean('Hysteroscopy?', tracking=True)
     hysteroscopy_result = fields.Char('Hysteroscopy Result', tracking=True)
     hysteroscopy_attachment = fields.Binary('Hysteroscopy Attachment', tracking=True)
-    analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'infertility_treatment_id', string='Request An X-Ray')
+    image_request_line_ids = fields.One2many('em.hms.image.request.line', 'infertility_treatment_id', string='Request An X-Ray')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),

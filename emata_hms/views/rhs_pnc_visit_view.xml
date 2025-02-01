@@ -131,6 +131,12 @@
                     </group>
                     <group string="Documents">
                        <field name="medication_request_line_ids" widget="many2many_tags" />
+                       <!-- <field name="medication_request_line_ids" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1" editable="bottom">
+                                <field name="name" />
+                                <field name="name_lang" />
+                            </tree>
+                        </field> -->
                         <field name="analysis_request_line_ids" widget="many2many_tags" />
                         <field name="image_request_line_ids" widget="many2many_tags" />
                     </group>

@@ -87,7 +87,6 @@
                 <field name="doctor_id" icon="fa fa-filter"/>
                 <group expand="0" string="Group By">
                     <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
-                    <filter string="Doctor" name="doctor_id" context="{'group_by': 'doctor_id'}"/>
                 </group>
             </search>
         </field>

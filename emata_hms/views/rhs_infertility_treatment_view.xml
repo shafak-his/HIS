@@ -46,6 +46,7 @@
                 <field name="is_hysteroscopy" optional="hide" />
                 <field name="hysteroscopy_result" optional="hide" />
                 <field name="hysteroscopy_attachment" optional="hide" />
+                <field name="image_request_line_ids" widget="many2many_tags" optional="hide" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -90,20 +91,6 @@
                         </group>
                     </group>
                     <group>
-                        <field name="medical_history_ids" context="{'default_patient_id': patient_id}">
-                            <tree create="1" delete="1" editable="bottom">
-                                <field name="name" />
-                                <field name="name_lang" />
-                            </tree>
-                        </field>
-                        <field name="surgical_history_ids" context="{'default_patient_id': patient_id}">
-                            <tree create="1" delete="1" editable="bottom">
-                                <field name="name" />
-                                <field name="name_lang" />
-                            </tree>
-                        </field>
-                    </group>
-                    <group>
                         <group>
                             <field name="is_husband_tested" />
                             <field name="husband_analysis" invisible="is_husband_tested == False" required="is_husband_tested == True" />
@@ -122,7 +109,6 @@
                             <field name="ovum_measuring_natural2" invisible="is_ovulation_natural2 == False" required="is_ovulation_natural2 == True" />
                             <field name="is_ovulation_natural3" />
                             <field name="ovum_measuring_natural3" invisible="is_ovulation_natural3 == False" required="is_ovulation_natural3 == True" />
-                            <field name="medication_request_line_ids" context="{'default_patient_id': patient_id}" />
                         </group>
                         <group>
                             <field name="is_ovulation_treatment1" />
@@ -145,9 +131,32 @@
                             <field name="is_hysteroscopy" />
                             <field name="hysteroscopy_result" invisible="is_hysteroscopy == False" required="is_hysteroscopy == True" />
                             <field name="hysteroscopy_attachment" invisible="is_hysteroscopy == False" required="is_hysteroscopy == True" />
-                            <field name="analysis_request_line_ids" />
                         </group>
                     </group>
+                    <notebook>
+                        <page name="medical_history_page" string="Medical History">
+                            <field name="medical_history_ids" context="{'default_patient_id': patient_id}">
+                                <tree create="1" delete="1" editable="bottom">
+                                    <field name="name" />
+                                    <field name="name_lang" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="surgical_history_page" string="Surgical History">
+                            <field name="surgical_history_ids" context="{'default_patient_id': patient_id}">
+                                <tree create="1" delete="1" editable="bottom">
+                                    <field name="name" />
+                                    <field name="name_lang" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="x_rays_page" string="X-Rays">
+                            <field name="image_request_line_ids" />
+                        </page>
+                        <page name="medication_requests_page" string="Medication Requests">
+                            <field name="medication_request_line_ids" context="{'default_patient_id': patient_id}" />
+                        </page>
+                    </notebook>
                     <group>
                         <group>
                             <field name="company_id" readonly="1" force_save="1" />
