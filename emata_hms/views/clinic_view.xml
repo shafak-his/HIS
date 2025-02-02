@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <tree string="Clinics" editable="bottom">
                 <field name="name" />
-                <field name="name_lang" />
+                <field name="company_ids" widget="many2many_tags" />
             </tree>
         </field>
     </record>
@@ -23,7 +23,7 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="name_lang" />
+                            <field name="company_ids" widget="many2many_tags" />
                         </group>
                         <group>
                         </group>

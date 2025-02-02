@@ -9,6 +9,7 @@
                 <field name="project_id" optional="show" />
                 <field name="session_date" />
                 <field name="patient_id" />
+                <field name="doctor_id" />
                 <field name="educational_level" optional="hide" />
                 <field name="service_type" />
                 <field name="is_mh_assessment" optional="hide" />
@@ -44,6 +45,7 @@
                             <field name="bnf_status" readonly="1" />
                             <field name="allowed_project_ids" invisible="1" />
                             <field name="patient_id" />
+                            <field name="doctor_id" />
                             <field name="session_date" />
                             <field name="educational_level" widget="radio" />
                             <field name="service_type" widget="radio" />

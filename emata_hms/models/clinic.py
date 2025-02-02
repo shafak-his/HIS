@@ -7,8 +7,8 @@ class EmHmsClinic(models.Model):
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
-    name = fields.Char('Clinic Name', required=True)
-    name_lang = fields.Char('Clinic Arabic Name', required=True)
+    name = fields.Char('Clinic Name', required=True, translate=True)
+    company_ids = fields.Many2many('res.company', string='Centers', required=True, default=lambda self: self.env.company.ids)
     
 class EmHmsService(models.Model):
     _name = 'em.hms.service'

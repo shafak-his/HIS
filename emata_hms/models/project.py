@@ -85,20 +85,32 @@ class EmProjectSupportLine(models.Model):
             'em.hms.chw.group.session.bnf': 'emata_hms.em_hms_service_chw',
             'em.hms.chw.group.session': 'emata_hms.em_hms_service_chw',
         }
+    
+    @api.model
+    def get_common_models(self):
+        return [
+            'em.hms.referral'
+        ]
 
     @api.model
     def get_project_ids(self, company_id, model_name, clinic_id, operation_date):
         if not company_id:
             return self.env['project.project']
 
-        service_ref = self.get_model_to_service_dict().get(model_name)
-        if not service_ref:
-            raise exceptions.ValidationError('Unsupported model! Contact technical support.')
+        domain = [('start_date', '<=', operation_date), ('end_date', '>=', operation_date),('company_ids', 'in', company_id.id)]
 
-        service_id = self.env.ref(service_ref)
-        domain = [('start_date', '<=', operation_date), ('end_date', '>=', operation_date),('company_ids', 'in', company_id.id),('service_ids', 'in', service_id.id)]
+        common_models = self.get_common_models()
+        if model_name not in common_models:
+            service_ref = self.get_model_to_service_dict().get(model_name)
+            if not service_ref:
+                raise exceptions.ValidationError('Unsupported model! Contact technical support.')
+
+            service_id = self.env.ref(service_ref)
+            domain += [('service_ids', 'in', service_id.id)]
+
         if clinic_id:
             domain += ['|',('clinic_ids', 'in', clinic_id.id),('clinic_ids', '=', False)]
+
         records = self.search(domain)
         if not records:
             return self.env['project.project']

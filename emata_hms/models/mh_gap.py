@@ -9,6 +9,7 @@ class EmHmsMHGap(models.Model):
     
     session_date = fields.Date('Session Date', required=True, tracking=True)
     patient_id = fields.Many2one('res.partner', 'Patient Name', domain=[('is_patient','=',True)])
+    doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
     educational_level = fields.Selection([
         ('primary_school', 'Primary School'),
         ('secondary', 'Secondary'),

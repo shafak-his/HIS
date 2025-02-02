@@ -13,7 +13,7 @@ class EmHmsMHReferral(models.Model):
         ('cold', 'Cold'),
         ('emergency', 'Emergency')
     ], string='Type Of Referral', tracking=True)
-    referrer_organizer_id = fields.Many2one('hr.employee', string='Facility That Organized The Referral')
+    company_id = fields.Many2one('res.company', 'Facility That Organized The Referral', default = lambda self: self.env.company)
     referred_to_entity = fields.Char('Facility To Which The Patient Was Referred', tracking=True)
     previous_cases = fields.Char('Previous Cases / Clinical Examination / Investigations', tracking=True)
     treatment_provided = fields.Char('Treatment Provided', tracking=True)
@@ -84,4 +84,3 @@ class EmHmsMHReferral(models.Model):
     contact_person_id = fields.Many2one('hr.employee', string='Name Of Contact Person')
     referee_manager_id = fields.Many2one('hr.employee', string='Referee Line Manager')
     patient_companion_name = fields.Char('Name Of Patient''s Companion', tracking=True)
-    company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

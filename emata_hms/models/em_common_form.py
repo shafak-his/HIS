@@ -34,12 +34,17 @@ class EmCommonForm(models.AbstractModel):
         if 'patient_id' not in self._fields:
             return
 
-        model_to_service_dict = self.env['em.project.support.line'].get_model_to_service_dict()
-        service_name = model_to_service_dict.get(self._name)
-        if not service_name:
-            raise exceptions.ValidationError('Unsupported form to determine the BNF status! Contact the technical support.')
-        
-        same_service_models = [k for k, v in model_to_service_dict.items() if v == service_name]
+        common_models = self.env['em.project.support.line'].get_common_models()
+        if self._name not in common_models:
+            model_to_service_dict = self.env['em.project.support.line'].get_model_to_service_dict()
+            service_name = model_to_service_dict.get(self._name)
+            if not service_name:
+                raise exceptions.ValidationError('Unsupported form to determine the BNF status! Contact the technical support.')
+            
+            same_service_models = [k for k, v in model_to_service_dict.items() if v == service_name]
+        else:
+            same_service_models = [self._name]
+
         for model_name in same_service_models:
             if 'patient_id' not in self.env[model_name]._fields:
                 continue

@@ -8,6 +8,7 @@ class EmHmsRHSSurgery(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin', 'em.common.form']
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
+    doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
     admission_date = fields.Date('Date Of Admission', required=True, tracking=True)
     admitting_midwife_id = fields.Many2one('hr.employee', string='Name Of Admitting Midwife')
     admitting_physician_id = fields.Many2one('hr.employee', string='Name Of Admitting Physician')

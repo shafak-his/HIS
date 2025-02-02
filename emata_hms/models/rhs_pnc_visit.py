@@ -36,6 +36,7 @@ class EmHmsRHSPNCVisit(models.Model):
     
     pnc_id = fields.Many2one('em.hms.rhs.pnc', string='PNC', required=True)
     patient_id = fields.Many2one('res.partner', 'Patient Name', related='pnc_id.patient_id')
+    doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
     visit_date = fields.Date('Date Of Visit', required=True, tracking=True)
     arterial_pressure = fields.Float('Arterial Pressure', tracking=True)
     temperature = fields.Float('Temperature', tracking=True)

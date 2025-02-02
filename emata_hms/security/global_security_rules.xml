@@ -356,5 +356,17 @@
         <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
     </record>
 
+    <record id="em_hms_referral_comp_rule" model="ir.rule">
+        <field name="name" >referral multi-company</field>
+        <field name="model_id" ref="model_em_hms_referral"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_clinic_comp_rule" model="ir.rule">
+        <field name="name" >clinic multi-company</field>
+        <field name="model_id" ref="model_em_hms_clinic"/>
+        <field name="domain_force"> ['|', ('company_ids', 'in', company_ids), ('company_ids', '=', False)]</field>
+    </record>
+
 </data>
 </odoo>

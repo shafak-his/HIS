@@ -10,7 +10,7 @@
                 <field name="patient_id" />
                 <field name="referral_datetime" />
                 <field name="type_of_referral" />
-                <field name="referrer_organizer_id" />
+                <field name="company_id" />
                 <field name="referred_to_entity" optional="hide" />
                 <field name="previous_cases" optional="hide" />
                 <field name="treatment_provided" optional="hide" />
@@ -33,7 +33,6 @@
                 <field name="referring_physician_id" optional="hide" />
                 <field name="referee_manager_id" optional="hide" />
                 <field name="patient_companion_name" optional="hide" />
-                <field name="company_id" optional="hide" />
             </tree>
         </field>
     </record>
@@ -54,7 +53,7 @@
                             <field name="type_of_referral" />
                         </group>
                         <group>
-                            <field name="referrer_organizer_id" />
+                            <field name="company_id" readonly="1" force_save="1" />
                             <field name="referred_to_entity" />
                         </group>
                     </group>
@@ -94,13 +93,6 @@
                             <field name="contact_person_id" />
                             <field name="referee_manager_id" />
                             <field name="patient_companion_name" />
-                        </group>
-                    </group>
-                    <group>
-                        <group>
-                            <field name="company_id" readonly="1" force_save="1" />
-                        </group>
-                        <group>
                         </group>
                     </group>
                 </sheet>

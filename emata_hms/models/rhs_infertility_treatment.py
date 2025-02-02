@@ -8,6 +8,7 @@ class EmHmsRHSInfertilityTreatment(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin', 'em.common.form']
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
+    doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
     visit_date = fields.Datetime('Date Of Visit', required=True, tracking=True)
     husband_name = fields.Char('Husband\'s Name', tracking=True)
     miarriages_count = fields.Integer('# Marriages', tracking=True)
@@ -52,6 +53,7 @@ class EmHmsRHSInfertilityTreatment(models.Model):
     is_hysteroscopy = fields.Boolean('Hysteroscopy?', tracking=True)
     hysteroscopy_result = fields.Char('Hysteroscopy Result', tracking=True)
     hysteroscopy_attachment = fields.Binary('Hysteroscopy Attachment', tracking=True)
+    analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'infertility_treatment_id', string='Analysis Request')
     image_request_line_ids = fields.One2many('em.hms.image.request.line', 'infertility_treatment_id', string='Request An X-Ray')
     state = fields.Selection([
         ('draft', 'Draft'),

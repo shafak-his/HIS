@@ -29,14 +29,14 @@
         <field name="arch" type="xml">
             <form string="ANC">
                 <header>
+                </header>
+                <sheet>
                     <div name="button_box" position="inside">
                         <button class="oe_stat_button" type="object" icon="fa-user-md"
                             name="action_get_anc_visits_record">
                             <field string="Periodeic Visits" name="visits_count" widget="statinfo" />
                         </button>
                     </div>
-                </header>
-                <sheet>
                     <group>
                         <group>
                             <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />

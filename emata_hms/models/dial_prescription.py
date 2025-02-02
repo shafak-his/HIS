@@ -5,7 +5,7 @@ class EmHmsDay(models.Model):
     _description = 'Week days'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
 
 
 class EmHmsDialPrescription(models.Model):

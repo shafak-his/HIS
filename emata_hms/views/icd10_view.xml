@@ -8,7 +8,6 @@
             <tree string="ICD10" editable="bottom">
                 <field name="code" />
                 <field name="name" />
-                <field name="name_lang" />
                 <field name="is_ncd" />
                 <field name="is_traumatic" />
                 <field name="is_diabetes" />
@@ -28,7 +27,6 @@
                         <group>
                             <field name="code" />
                             <field name="name" />
-                            <field name="name_lang" />
                         </group>
                         <group>
                             <field name="is_ncd" widget="boolean_toggle" />

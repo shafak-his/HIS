@@ -8,6 +8,7 @@
             <tree string="Surgeries">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
+                <field name="doctor_id" />
                 <field name="admission_date" />
                 <field name="admitting_midwife_id" optional="hide" />
                 <field name="admitting_physician_id" optional="hide" />
@@ -73,6 +74,7 @@
                             <field name="bnf_status" readonly="1" />
                         <field name="allowed_project_ids" invisible="1" />
                         <field name="patient_id" />
+                        <field name="doctor_id" />
                         <field name="admission_date" widget="date" />
                         <field name="admitting_midwife_id" />
                         <field name="admitting_physician_id" />

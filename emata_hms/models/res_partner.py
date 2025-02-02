@@ -169,6 +169,14 @@ class ResPartner(models.Model):
     def _onchange_name_parts(self):
         self.name = " ".join(list(filter(None, [self.first_name, self.last_name])))
 
+    @api.depends('complete_name', 'email', 'vat', 'state_id', 'country_id', 'commercial_company_name')
+    @api.depends_context('show_address', 'partner_show_db_id', 'address_inline', 'show_email', 'show_vat', 'lang')
+    def _compute_display_name(self):
+        super(ResPartner, self)._compute_display_name()
+        for partner in self:
+            name = f"{partner.code} - {partner.name}"
+            partner.display_name = name
+
     @api.model
     def _name_search(self, name, domain=None, operator='ilike', limit=100, order=None):
         if name and operator in ('=', 'ilike', '=ilike', 'like', '=like'):
