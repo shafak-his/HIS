@@ -65,6 +65,8 @@ class EmHmsAnalysisRequestLine(models.Model):
     rhs_surgery_id = fields.Many2one('em.hms.rhs.surgery', string='RHS Surgery')
 
     result = fields.Char('Result')
+    attach_file = fields.Binary('Attachment')
+    attach_file_name = fields.Char('Attachment Name')
     
     product_template_id = fields.Many2one('product.template', string='Product', domain="[('is_medical_analysis', '=', True)]", required=True)
     notes = fields.Char('Notes')

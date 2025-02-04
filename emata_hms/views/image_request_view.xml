@@ -76,6 +76,8 @@
             <tree string="Image Requests" editable="bottom">
                 <field name="product_template_id" />
                 <field name="result" />
+                <field name="attach_file" filename="attach_file_name" />
+                <field name="attach_file_name" invisible="1" />
                 <field name="notes" />
             </tree>
         </field>
@@ -91,6 +93,8 @@
                         <group>
                             <field name="product_template_id" />
                             <field name="result" />
+                            <field name="attach_file" filename="attach_file_name" />
+                            <field name="attach_file_name" invisible="1" />
                             <field name="notes" />
                         </group> 
                     </group>
