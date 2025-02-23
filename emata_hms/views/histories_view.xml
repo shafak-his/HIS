@@ -7,7 +7,6 @@
         <field name="arch" type="xml">
             <tree string="Medical History" editable="bottom">
                 <field name="name" />
-                <field name="name_lang" />
                 <field name="patient_id" />
             </tree>
         </field>
@@ -23,7 +22,6 @@
                         <group>
                             <field name="patient_id" readonly="1" force_save="1" />
                             <field name="name" />
-                            <field name="name_lang" />
                         </group>
                     </group>
                 </sheet>
@@ -59,7 +57,6 @@
         <field name="arch" type="xml">
             <tree string="Medication History" editable="bottom">
                 <field name="name" />
-                <field name="name_lang" />
                 <field name="patient_id" />
             </tree>
         </field>
@@ -75,7 +72,6 @@
                         <group>
                             <field name="patient_id" readonly="1" force_save="1" />
                             <field name="name" />
-                            <field name="name_lang" />
                         </group>
                     </group>
                 </sheet>
@@ -111,7 +107,6 @@
         <field name="arch" type="xml">
             <tree string="Allergic History" editable="bottom">
                 <field name="name" />
-                <field name="name_lang" />
                 <field name="patient_id" />
             </tree>
         </field>
@@ -127,7 +122,6 @@
                         <group>
                             <field name="patient_id" readonly="1" force_save="1" />
                             <field name="name" />
-                            <field name="name_lang" />
                         </group>
                     </group>
                 </sheet>
@@ -163,7 +157,6 @@
         <field name="arch" type="xml">
             <tree string="Surgical History" editable="bottom">
                 <field name="name" />
-                <field name="name_lang" />
                 <field name="patient_id" />
             </tree>
         </field>
@@ -179,7 +172,6 @@
                         <group>
                             <field name="patient_id" readonly="1" force_save="1" />
                             <field name="name" />
-                            <field name="name_lang" />
                         </group>
                     </group>
                 </sheet>

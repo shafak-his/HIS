@@ -70,7 +70,6 @@
                                 required="age_in_months >= 6 and is_danger_signs == True">
                                 <tree create="0" delete="0" editable="bottom">
                                     <field name="name" />
-                                    <field name="name_lang" />
                                 </tree>
                             </field>
                             <field name="nature_of_malnutrition" readonly="1" force_save="1" />

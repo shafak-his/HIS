@@ -7,7 +7,6 @@
         <field name="arch" type="xml">
             <tree string="Surgical Procedures" editable="bottom">
                 <field name="name" />
-                <field name="name_lang" />
                 <field name="subcategory_id" />
                 <field name="category" />
             </tree>
@@ -28,7 +27,6 @@
         <field name="arch" type="xml">
             <tree string="Surgical Sub-Categories" editable="bottom">
                 <field name="name" />
-                <field name="name_lang" />
                 <field name="category" />
             </tree>
         </field>

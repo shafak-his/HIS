@@ -140,7 +140,6 @@
                             <field name="medical_history_ids" context="{'default_patient_id': patient_id}">
                                 <tree create="1" delete="1" editable="bottom">
                                     <field name="name" />
-                                    <field name="name_lang" />
                                 </tree>
                             </field>
                         </page>
@@ -148,7 +147,6 @@
                             <field name="surgical_history_ids" context="{'default_patient_id': patient_id}">
                                 <tree create="1" delete="1" editable="bottom">
                                     <field name="name" />
-                                    <field name="name_lang" />
                                 </tree>
                             </field>
                         </page>

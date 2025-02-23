@@ -7,16 +7,14 @@ class EmHmsNutritionTeam(models.Model):
     _rec_name = 'code'
 
     code = fields.Char('Team Code', required=True)
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
 
 class EmHmsNutritionTopic(models.Model):
     _name = 'em.hms.nutrition.topic'
     _description = 'Group Session Topic'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
     parent_id = fields.Many2one('em.hms.nutrition.topic', string='Parent')
     child_ids = fields.One2many('em.hms.nutrition.topic', 'parent_id', string='Items')
 
@@ -43,8 +41,7 @@ class EmHmsNutritionGroupSession(models.Model):
     visit_date = fields.Date('Visit Date', required=True, tracking=True)
     session_presenter_name = fields.Char('Session Presenter Name', tracking=True)
     
-    country_id = fields.Many2one('res.country', string='Country')
-    state_id = fields.Many2one('res.country.state', string='Governorate', required=True, tracking=True)
+    state_id = fields.Many2one('res.country.state', string='Governorate', domain="[('country_id.code','in',['SY'])]", required=True, tracking=True)
     district_id = fields.Many2one('em.country.district', string='District', required=True, tracking=True)
     sub_district_id = fields.Many2one('em.country.sub.district', string='Sub-District', required=True, tracking=True)
     location_id = fields.Many2one('em.location', string='Village / City', required=True, tracking=True)
@@ -93,7 +90,6 @@ class EmHmsNutritionGroupSession(models.Model):
             self.sub_district_id = self.location_id.sub_district_id.id
             self.district_id = self.location_id.sub_district_id.district_id.id
             self.state_id = self.location_id.sub_district_id.district_id.state_id.id
-            self.country_id = self.location_id.sub_district_id.district_id.state_id.country_id.id
     
     @api.model
     def create(self, vals):

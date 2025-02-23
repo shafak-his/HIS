@@ -17,9 +17,7 @@ class EmHmsChildCare(models.Model):
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char('Name', required=True, tracking=True)
-    name_lang = fields.Char('Arabic Name', tracking=True)
-
+    name = fields.Char('Name', required=True, tracking=True, translate=True)
 
 class EmHmsPediatricNewbornExamination(models.Model):
     _name = 'em.hms.pediatric.newborn.examination'

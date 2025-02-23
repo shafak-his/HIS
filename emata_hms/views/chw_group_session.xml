@@ -63,7 +63,6 @@
                                 <field name="birth_date" optional="hide" />
                                 <field name="displacement_status" optional="hide" />
                                 <field name="is_special_needs" optional="hide" />
-                                <field name="country_id" optional="hide" />
                                 <field name="state_id" optional="hide" />
                                 <field name="district_id" optional="hide" />
                                 <field name="sub_district_id" optional="hide" />
@@ -113,7 +112,6 @@
                 <field name="birth_date" optional="hide" />
                 <field name="displacement_status" optional="hide" />
                 <field name="is_special_needs" optional="hide" />
-                <field name="country_id" optional="hide" />
                 <field name="state_id" optional="hide" />
                 <field name="district_id" optional="hide" />
                 <field name="sub_district_id" optional="hide" />
@@ -149,8 +147,7 @@
                     </group>
                     <group>
                         <group>
-                            <field name="country_id" options="{'no_create': True, 'no_quick_create': True}" />
-                            <field name="state_id" domain="[('country_id', '=', country_id)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="state_id" options="{'no_create': True, 'no_quick_create': True}" />
                             <field name="district_id" domain="[('state_id', '=', state_id)]" options="{'no_create': True, 'no_quick_create': True}" />
                             <field name="sub_district_id" domain="[('district_id', '=', district_id)]" options="{'no_create': True, 'no_quick_create': True}" />
                             <field name="location_id" options="{'no_create': True, 'no_quick_create': True}" />

@@ -21,8 +21,7 @@ class EmHmsSurgicalSubCategory(models.Model):
     _description = 'Surgical Sub-Category'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
     category = fields.Selection(SURGICAL_CATEGORIES, string='Category', required=True)
     
 
@@ -32,7 +31,6 @@ class EmHmsSurgicalProcedure(models.Model):
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
     subcategory_id = fields.Many2one('em.hms.surgical.subcategory', string='Sub-Category', required=True)
     category = fields.Selection(SURGICAL_CATEGORIES, string='Category', related='subcategory_id.category')

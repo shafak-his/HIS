@@ -22,10 +22,10 @@
             parent="menu_em_hms_admin_root"
             action="emata_hms.em_hms_project_action"
             sequence="5" />
-        <menuitem id="menu_country_emata"
+        <!-- <menuitem id="menu_country_emata"
             action="base.action_country"
             parent="menu_em_hms_location_root"
-            sequence="50"/>
+            sequence="50"/> -->
         <menuitem id="menu_country_state_emata"
             name="Governorates"
             action="base.action_country_state"

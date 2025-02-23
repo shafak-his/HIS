@@ -6,8 +6,7 @@ class EmHmsRHSPathologicalFind(models.Model):
     _description = 'Pathological Finding'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
     
     
 class EmHmsRHSPostpartumComp(models.Model):
@@ -15,8 +14,7 @@ class EmHmsRHSPostpartumComp(models.Model):
     _description = 'Postpartum Complication'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
 
 
 class EmHmsRHSWound(models.Model):
@@ -24,8 +22,7 @@ class EmHmsRHSWound(models.Model):
     _description = 'Wounds'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
     
     
 class EmHmsRHSPNCVisit(models.Model):

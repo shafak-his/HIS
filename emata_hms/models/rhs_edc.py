@@ -6,40 +6,35 @@ class EmHmsRHSEDCClinicalCondition(models.Model):
     _description = 'Clinical Condition'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
     
 class EmHmsRHSEDCSymptom(models.Model):
     _name = 'em.hms.rhs.edc.symptom'
     _description = 'Symptoms'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
     
 class EmHmsRHSEDCSign(models.Model):
     _name = 'em.hms.rhs.edc.sign'
     _description = 'Signs'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
     
 class EmHmsRHSEDCASCUS(models.Model):
     _name = 'em.hms.rhs.edc.ascus'
     _description = 'ASCUS'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
 
 class EmHmsRHSEDCPlan(models.Model):
     _name = 'em.hms.rhs.edc.plan'
     _description = 'Management And Follow-Up Plan'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
     
 class EmHmsRHEDC(models.Model):
     _name = 'em.hms.rhs.edc'

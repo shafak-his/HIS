@@ -8,7 +8,6 @@
         <field name="arch" type="xml">
             <tree string="Danger Signs On Children" editable="bottom">
                 <field name="name" />
-                <field name="name_lang" />
             </tree>
         </field>
     </record>
@@ -102,7 +101,6 @@
                                 required="is_danger_signs == True">
                                 <tree create="0" delete="0" editable="bottom">
                                     <field name="name" />
-                                    <field name="name_lang" />
                                 </tree>
                             </field>
                         </group>

@@ -90,25 +90,21 @@
                     <field name="medical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
                         <tree create="1" delete="1" editable="bottom">
                             <field name="name" />
-                            <field name="name_lang" />
                         </tree>
                     </field>
                     <field name="surgical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
                         <tree create="1" delete="1" editable="bottom">
                             <field name="name" />
-                            <field name="name_lang" />
                         </tree>
                     </field>
                     <field name="medication_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
                         <tree create="1" delete="1" editable="bottom">
                             <field name="name" />
-                            <field name="name_lang" />
                         </tree>
                     </field>
                     <field name="allergic_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
                         <tree create="1" delete="1" editable="bottom">
                             <field name="name" />
-                            <field name="name_lang" />
                         </tree>
                     </field>
                 </group>
@@ -116,7 +112,6 @@
                     <field name="surgery_type_ids" >
                         <tree create="1" delete="1" editable="bottom">
                             <field name="name" />
-                            <field name="name_lang" />
                             <field name="subcategory_id" />
                             <field name="category" />
                         </tree>

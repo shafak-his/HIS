@@ -7,7 +7,6 @@
         <field name="arch" type="xml">
             <tree string="Pathological Findings" editable="bottom">
                 <field name="name" />
-                <field name="name_lang" />
             </tree>
         </field>
     </record>
@@ -27,7 +26,6 @@
         <field name="arch" type="xml">
             <tree string="Postpartum Complications" editable="bottom">
                 <field name="name" />
-                <field name="name_lang" />
             </tree>
         </field>
     </record>
@@ -47,7 +45,6 @@
         <field name="arch" type="xml">
             <tree string="Wounds" editable="bottom">
                 <field name="name" />
-                <field name="name_lang" />
             </tree>
         </field>
     </record>

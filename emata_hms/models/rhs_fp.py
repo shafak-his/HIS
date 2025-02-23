@@ -6,33 +6,28 @@ class EmHmsRHSFPProblem(models.Model):
     _description = 'Method-Related Health Problem'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
 
 class EmHmsRHSFPPregnancyCheck(models.Model):
     _name = 'em.hms.rhs.fp.pregnancy.check'
     _description = 'Check For Pregnancy'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
     
 class EmHmsRHSFPMedicalHistory(models.Model):
     _name = 'em.hms.rhs.fp.medical.history'
     _description = 'Medical History And Habit'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
-    
+    name = fields.Char('Name', required=True, translate=True)
+
 class EmHmsRHSFPComplaint(models.Model):
     _name = 'em.hms.rhs.fp.complaint'
     _description = 'Complaint'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
-    
+    name = fields.Char('Name', required=True, translate=True)
     
 class EmHmsRHSFP(models.Model):
     _name = 'em.hms.rhs.fp'

@@ -174,7 +174,9 @@ class ResPartner(models.Model):
     def _compute_display_name(self):
         super(ResPartner, self)._compute_display_name()
         for partner in self:
-            name = f"{partner.code} - {partner.name}"
+            name = partner.name
+            if partner.code:
+                name = f"{partner.code} - {partner.name}"
             partner.display_name = name
 
     @api.model

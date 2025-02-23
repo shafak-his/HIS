@@ -7,7 +7,6 @@
         <field name="arch" type="xml">
             <tree string="Child Care" editable="bottom">
                 <field name="name" />
-                <field name="name_lang" />
             </tree>
         </field>
     </record>

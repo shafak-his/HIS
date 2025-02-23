@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
             <tree string="Districts" editable="bottom">
                 <field name="name"/>
-                <field name="state_id" domain="[('country_id.code','in',['TR', 'SY'])]" options="{'no_create': True, 'no_quick_create': True}" />
+                <field name="state_id" domain="[('country_id.code','in',['SY'])]" options="{'no_create': True, 'no_quick_create': True}" />
             </tree>
         </field>
     </record>

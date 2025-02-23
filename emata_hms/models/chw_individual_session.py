@@ -11,8 +11,7 @@ class EmHmsCHWIndividualSession(models.Model):
     session_date = fields.Date('Session Date', required=True, tracking=True)
     community_health_worker_name  = fields.Char('Name Of Community Health Worker', required=True, tracking=True)
     
-    country_id = fields.Many2one('res.country', string='Country')
-    state_id = fields.Many2one('res.country.state', string='Governorate', required=True, tracking=True)
+    state_id = fields.Many2one('res.country.state', string='Governorate', domain="[('country_id.code','in',['SY'])]", required=True, tracking=True)
     district_id = fields.Many2one('em.country.district', string='District', required=True, tracking=True)
     sub_district_id = fields.Many2one('em.country.sub.district', string='Sub-District', required=True, tracking=True)
     location_id = fields.Many2one('em.location', string='Village / City', required=True, tracking=True)
@@ -87,6 +86,3 @@ class EmHmsCHWIndividualSession(models.Model):
             self.sub_district_id = self.location_id.sub_district_id.id
             self.district_id = self.location_id.sub_district_id.district_id.id
             self.state_id = self.location_id.sub_district_id.district_id.state_id.id
-            self.country_id = self.location_id.sub_district_id.district_id.state_id.country_id.id
-            
-    

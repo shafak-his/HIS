@@ -5,9 +5,7 @@ class EmHmsNutritionDangerSignWoman(models.Model):
     _description = 'Danger Signs On Woman'
     _rec_name = 'name'
 
-    name = fields.Char('Name', required=True)
-    name_lang = fields.Char('Arabic Name', required=True)
-    
+    name = fields.Char('Name', required=True, translate=True)
 
 class EmHmsNutritionScreeningWoman(models.Model):
     _name = 'em.hms.nutrition.screening.woman'
