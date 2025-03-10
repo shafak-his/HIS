@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="em_product_template_form_view_inherit" model="ir.ui.view">
+      <field name="name">em.product.template.form.view.inherit</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='invoice_policy']" position="after">
+          <field name="is_medication" />
+          <field name="is_medical_analysis" />
+          <field name="is_medical_imaging" />
+          <field name="is_birth_medication" />
+          <field name="is_surgery_medication" />
+        </xpath>
+      </field>
+    </record>
 
     <record id="em_product_template_view_tree" model="ir.ui.view">
         <field name="name">em.product.template.view.tree</field>
