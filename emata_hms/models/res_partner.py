@@ -165,9 +165,9 @@ class ResPartner(models.Model):
     general_clinic_visit_count = fields.Integer(compute='_compute_general_clinic_visit_count', compute_sudo=True)
 
 
-    @api.onchange('first_name', 'last_name')
+    @api.onchange('first_name','father_name', 'last_name')
     def _onchange_name_parts(self):
-        self.name = " ".join(list(filter(None, [self.first_name, self.last_name])))
+        self.name = " ".join(list(filter(None, [self.first_name, self.father_name, self.last_name])))
 
     @api.depends('complete_name', 'email', 'vat', 'state_id', 'country_id', 'commercial_company_name')
     @api.depends_context('show_address', 'partner_show_db_id', 'address_inline', 'show_email', 'show_vat', 'lang')
