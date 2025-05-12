@@ -28,7 +28,7 @@ class ResPartner(models.Model):
 
     full_address = fields.Char('Full Address')
     original_location_id = fields.Many2one('em.location', string='Original Address')
-    original_location =fields.Char('Original Address')
+    
     marital_status = fields.Selection([
         ('single', 'Single'),
         ('married', 'Married'),
