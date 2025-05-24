@@ -10,7 +10,7 @@
                 <field name="anc_id" />
                 <field name="patient_id" />
                 <field name="visit_date" />
-                <field name="is_signs" />
+              
                 <field name="arterial_pressure" optional="hide" />
                 <field name="weight" optional="hide" />
                 <field name="fetal_hr" optional="hide" />
