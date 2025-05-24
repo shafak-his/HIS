@@ -10,6 +10,7 @@
                 <field name="name"/>
                 <field name="doc_number"/>
                 <field name="birth_date"/>
+                <field name="registration_date"/>
                 <field name="sex"/>
                 <field name="mobile"/>
             </tree>
@@ -203,18 +204,18 @@
                             <field name="registration_date" required="1" />
                             <field name="first_name" required="1" />
                             <field name="last_name" required="1" />
-                            <field name="father_name" />
+                            <field name="father_name" required="1"/>
                             <field name="mother_name" />
-                            <field name="doc_number" />
+                            <field name="doc_number" required="1"/>
                         </group>
                         <group>
-                            <field name="birth_date" />
-                            <field name="sex" />
-                            <field name="marital_status" />
-                            <field name="displacement_status" />
+                            <field name="birth_date" required="1"/>
+                            <field name="sex" required="1"/>
+                            <field name="marital_status" required="1"/>
+                            <field name="displacement_status" required="1"/>
                             <field name="is_disability" />
-                            <field name="disability_type" invisible="is_disability == False" />
-                            <field name="mobile" />
+                            <field name="disability_type" invisible="is_disability == False" required="1" />
+                            <field name="mobile" required="1"/>
                         </group>
                     </group>
                     <group>

@@ -52,6 +52,9 @@
                             <field name="is_referral" widget="checkbox" />
                             <field name="referral_center_reason" invisible="is_referral != True" widget="text" />
                             <field name="previous_complications" widget="text" />
+                            <field name="last_menstrual_date" widget="date" />
+                            <field name="expected_due_date" widget="date" />
+                        
                         </group>
                     </group>
                     <group>
@@ -70,26 +73,44 @@
                                 <field name="name" />
                             </tree>
                         </field>
+                      <field name="surgical_history_ids" context="{'default_patient_id': patient_id}">
+                        <tree create="1" delete="1" editable="bottom">
+                          <field name="name" />
+                        </tree>
+                      </field>
+                      <field name="previous_obstetric_history_ids" context="{'default_patient_id': patient_id} " mode="tree,form">
+
+                        <form>
+                          <group>
+                          <field name="patient_id" />
+                          <field name="previou_pregnancies_count" />
+                          <field name="type_of_previous_births" />
+                          <field name="nature_of_previous_birth" />
+                          <field name="is_deformities" />
+                          <field name="additional_notes" />
+                          </group>
+                        </form>
+                        <tree>
+                          
+                            <field name="previou_pregnancies_count" />
+                            <field name="type_of_previous_births" />
+                            <field name="nature_of_previous_birth" />
+                            <field name="is_deformities" />
+                            <field name="additional_notes" optional="hide" />
+                         
+                        </tree>
+                      </field>
                     </group>
-                    <group string="Previous Obstetric History">
-                        <group>
-                            <field name="pregnancies_count" />
-                            <field name="premature_births_count" />
-                            <field name="miscarriages_count" />
-                            <field name="live_births" />
-                            <field name="deaths_count" />
-                        </group>
-                        <group>
-                            <field name="last_menstrual_date" widget="date" />
-                            <field name="expected_due_date" widget="date" />
-                            <field name="nature_of_previous_births" widget="radio" />
-                        </group>
-                    </group>
+
+                 
+                 
+                      
+                   
                     <separator string="Periodic Visits" />
                     <field name="visit_ids">
                         <tree create="1" delete="1">
                             <field name="visit_date" />
-                            <field name="is_signs" />
+                            
                             <field name="arterial_pressure" optional="hide" />
                             <field name="weight" optional="hide" />
                             <field name="fetal_hr" optional="hide" />
@@ -145,5 +166,5 @@
         <field name="domain">[]</field>
         <field name="context">{}</field>
     </record>
-
+ 
 </odoo>

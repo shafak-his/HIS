@@ -121,7 +121,7 @@
             parent="menu_em_hms_rhs_helper_lists"
             action="emata_hms.em_hms_rhs_edc_ascus_action"
             sequence="7" />
-        <menuitem id="menu_em_hms_rhs_edc_plan"
+              <menuitem id="menu_em_hms_rhs_edc_plan"
             name="Manegement And Follow-Up Plans"
             parent="menu_em_hms_rhs_helper_lists"
             action="emata_hms.em_hms_rhs_edc_plan_action"
@@ -146,8 +146,18 @@
             parent="menu_em_hms_rhs_helper_lists"
             action="emata_hms.em_hms_rhs_fp_complaint_action"
             sequence="12" />
+       <menuitem id="menu_em_hms_rhs_medical_sign"
+           name="Midecal Sign"
+           parent="menu_em_hms_rhs_helper_lists"
+           action="emata_hms.em_hms_medical_signs_action"
+           sequence="13" />
+      <menuitem id="menu_em_hms_rhs_fp_contraceptive_method"
+          name="Contraceptive Method"
+          parent="menu_em_hms_rhs_helper_lists"
+          action="emata_hms.em_hms_contraceptive_method_action"
+          sequence="14" />
+     
         
-
         <!-- General -->
         <menuitem id="menu_em_hms_general_root"
             name="General Clinic"

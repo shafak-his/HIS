@@ -95,7 +95,7 @@
                 <field name="breastfeeding_method" optional="hide" />
                 <field name="last_menstrual_date" optional="hide" />
                 <field name="is_contraceptive_method" optional="hide" />
-                <field name="contraceptive_method" optional="hide" />
+                <field name="contraceptive_method_ids" widget="many2many_tags" optional="hide"  />
                 <field name="is_method_staisfying" optional="hide" />
                 <field name="method_problem_ids" widget="many2many_tags" optional="hide" />
                 <field name="usage_duration" optional="hide" />
@@ -143,9 +143,10 @@
                     <group>
                         <group>
                             <field name="is_contraceptive_method" />
-                            <field name="contraceptive_method"
+                            <field name="contraceptive_method_ids"
                                 invisible="is_contraceptive_method == False"
-                                required="is_contraceptive_method == True" />
+                                required="is_contraceptive_method == True"
+                                widget="many2many_tags"/>
                             <field name="is_method_staisfying"
                                 invisible="is_contraceptive_method == False"
                                 required="is_contraceptive_method == True" />

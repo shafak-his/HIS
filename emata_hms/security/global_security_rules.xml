@@ -73,6 +73,12 @@
         <field name="model_id" ref="model_em_hms_rhs_anc_visit"/>
         <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
     </record>
+  
+   <record id="em_hms_rhs_previous_obstetric_history_comp_rule" model="ir.rule">
+        <field name="name" >previous obstetric history multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_anc_previous_obstetric"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
 
     <record id="em_hms_rhs_delivery_comp_rule" model="ir.rule">
         <field name="name" >rhs delivery multi-company</field>

@@ -49,6 +49,7 @@ class EmHmsAnalysisRequestLine(models.Model):
     general_visit_id = fields.Many2one('em.hms.general.clinic.visit', string='General Visit')
     gynochological_visit_id = fields.Many2one('em.hms.rhs.gynochological.clinic.visit', string='Gynochological Visit')
     pnc_visit_id = fields.Many2one('em.hms.rhs.pnc.visit', string='PNC Visit')
+    anc_visit_id = fields.Many2one('em.hms.rhs.anc.visit', string='ANC Visit')
     dial_urology_id = fields.Many2one('em.hms.dial.urology', string='Urology Visit')
     dial_nephrology_id = fields.Many2one('em.hms.dial.nephrology', string='Nephrology Visit')
     infertility_treatment_id = fields.Many2one('em.hms.rhs.infertility.treatment', string='Infertility Treatment')

@@ -9,7 +9,7 @@ class EmHmsRHSInfertilityTreatment(models.Model):
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
-    visit_date = fields.Datetime('Date Of Visit', required=True, tracking=True)
+    visit_date = fields.Date('Date Of Visit', required=True, tracking=True)
     husband_name = fields.Char('Husband\'s Name', tracking=True)
     miarriages_count = fields.Integer('# Marriages', tracking=True)
     pregnancies_count = fields.Integer('# Pregnancies', tracking=True)
@@ -66,7 +66,7 @@ class EmHmsRHSInfertilityTreatment(models.Model):
         ('check_visit_date', 'CHECK (visit_date <= CURRENT_DATE)', 'Visit Date Must Not Be in Future.'),
         ('check_last_marriage_date', 'CHECK (last_marriage_date <= CURRENT_DATE)', 'Last Marriage Date Must Not Be Newer Than Today.'),
     ]
-    
+  
     def confirm_record(self):
         self.ensure_one()
         self.medication_request_line_ids.generate_sale_order()

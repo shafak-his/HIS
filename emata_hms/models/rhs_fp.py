@@ -28,6 +28,13 @@ class EmHmsRHSFPComplaint(models.Model):
     _rec_name = 'name'
 
     name = fields.Char('Name', required=True, translate=True)
+
+class EmHmsRHSFPContraceptiveMethod(models.Model):
+    _name = 'em.hms.rhs.fp.contraceptive.method'
+    _description = 'Contraceptive Method'
+    _rec_name = 'name'
+
+    name = fields.Char('Name', required=True, translate=True)
     
 class EmHmsRHSFP(models.Model):
     _name = 'em.hms.rhs.fp'
@@ -50,14 +57,7 @@ class EmHmsRHSFP(models.Model):
     ], string='Breastfeeding Method', tracking=True)
     last_menstrual_date = fields.Date('First Day Of Last Menstrual Period', tracking=True)
     is_contraceptive_method = fields.Boolean('Any Previous Contraceptive Method', tracking=True)
-    contraceptive_method = fields.Selection([
-        ('coc', 'COC'),
-        ('poc', 'POC'),
-        ('iud', 'IUD'),
-        ('injections', 'valInjectionsue'),
-        ('condoms', 'Condoms'),
-        ('implants', 'Implants')
-    ], string='Contraceptive Method', tracking=True)
+    contraceptive_method_ids = fields.Many2many('em.hms.rhs.fp.contraceptive.method', 'fp_contraceptive_method_rel', 'fp_id', 'contraceptive_method_id', string='Contraceptive Method', tracking=True)
     is_method_staisfying = fields.Boolean('Satisfaction With Method', tracking=True)
     method_problem_ids = fields.Many2many('em.hms.rhs.fp.problem', 'fp_problem_rel', 'fp_id', 'problem_id', string='Method-Related Health Problems', tracking=True)
     usage_duration=fields.Char('Duration Of Use', tracking=True)

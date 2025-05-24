@@ -2,6 +2,7 @@ from . import product
 from . import project
 from . import em_common_form
 from . import sale_order
+from . import medical_sign
 from . import medication_request
 from . import analysis_request
 from . import image_request
@@ -14,6 +15,7 @@ from . import mh_awareness
 from . import mh_pmplus
 from . import rhs_anc
 from . import rhs_anc_visit
+from . import rhs_anc_previous_obstetrich_history
 from . import rhs_pnc
 from . import rhs_pnc_visit
 from . import rhs_delivery

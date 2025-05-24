@@ -50,14 +50,57 @@
             </tree>
         </field>
     </record>
-
-    <record id="em_hms_rhs_edc_sign_action" model="ir.actions.act_window">
+  
+  <record id="em_hms_rhs_edc_sign_action" model="ir.actions.act_window">
         <field name="name">Signs</field>
         <field name="res_model">em.hms.rhs.edc.sign</field>
         <field name="view_mode">tree</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
     </record>
+
+  <!-- medical Signs -->
+  <record id="em_hms_rhs_midecal_sign_view_tree" model="ir.ui.view">
+    <field name="name">em.hms.rhs.medical.sign.view.tree</field>
+    <field name="model">em.hms.medical.sign</field>
+    <field name="arch" type="xml">
+      <tree string="Medical Signs" editable="bottom">
+        <field name="name" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="emata_hms.em_hms_medical_signs_action" model="ir.actions.act_window">
+    <field name="name">medical Signs</field>
+    <field name="res_model">em.hms.medical.sign</field>
+    <field name="view_mode">tree</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+  </record>
+
+  <!-- Contraceptive Method -->
+  <record id="em_hms_fp_contraceptive_method_view_tree" model="ir.ui.view">
+    <field name="name">em.hms.fp.contraceptive.method.view.tree</field>
+    <field name="model">em.hms.rhs.fp.contraceptive.method</field>
+    <field name="arch" type="xml">
+      <tree string="Contraceptive Method" editable="bottom">
+        <field name="name" />
+      </tree>
+    </field>
+  </record>
+ 
+  <record id="emata_hms.em_hms_contraceptive_method_action" model="ir.actions.act_window">
+    <field name="name">Contraceptive Method</field>
+    <field name="res_model">em.hms.rhs.fp.contraceptive.method</field>
+    <field name="view_mode">tree</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+  </record>
+  
+  
+  
+  
+  
 
     <!-- ASCUS -->
     <record id="em_hms_rhs_edc_ascus_view_tree" model="ir.ui.view">
