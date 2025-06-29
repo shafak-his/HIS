@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="em_patient_code_seq" model="ir.sequence">
+            <field name="name">Patient Code Sequence</field>
+            <field name="code">em.patient.code</field>
+            <field name="prefix">SFK-</field>
+            <field eval="4" name="padding"/>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="False" name="company_id"/>
+        </record>
+
+        <record id="em_hms_nutrition_group_session_code_seq" model="ir.sequence">
+            <field name="name">Nutrition Group Session Code Sequence</field>
+            <field name="code">em.hms.nutrition.group.session.code</field>
+            <field name="prefix">NGS-</field>
+            <field eval="3" name="padding"/>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="False" name="company_id"/>
+        </record>
+
+        <record id="em_hms_nutrition_mtmsg_session_code_seq" model="ir.sequence">
+            <field name="name">Nutrition MTMSG Session Code Sequence</field>
+            <field name="code">em.hms.nutrition.mtmsg.session.code</field>
+            <field name="prefix">MTMs-</field>
+            <field eval="3" name="padding"/>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="False" name="company_id"/>
+        </record>
+
+        <record id="em_hms_nutrition_ftfsg_session_code_seq" model="ir.sequence">
+            <field name="name">Nutrition FTFSG Session Code Sequence</field>
+            <field name="code">em.hms.nutrition.ftfsg.session.code</field>
+            <field name="prefix">FTFs-</field>
+            <field eval="3" name="padding"/>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="False" name="company_id"/>
+        </record>
+
+    </data>
+</odoo>

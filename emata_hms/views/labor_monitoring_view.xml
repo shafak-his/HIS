@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_labor_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.labor.view.tree</field>
+        <field name="model">em.hms.labor</field>
+        <field name="arch" type="xml">
+            <tree string="Labor Monitoring">
+                <field name="delivery_id" optional="hide" />
+                <field name="hospitalization_id" optional="hide" />
+                <field name="surgery_id" optional="hide" />
+                <field name="patient_id" />
+                <field name="labor_hour" />
+                <field name="contraction_duration" />
+                <field name="interval_between_contractions" />
+                <field name="labor_auscultation" optional="hide" />
+                <field name="dilation" optional="hide" />
+                <field name="erasure" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_labor_view_form" model="ir.ui.view">
+        <field name="name">em.hms.labor.view.form</field>
+        <field name="model">em.hms.labor</field>
+        <field name="arch" type="xml">
+            <form string="Labor Monitoring">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="delivery_id" invisible="not delivery_id" readonly="1" />
+                            <field name="hospitalization_id" invisible="not hospitalization_id" readonly="1" />
+                            <field name="surgery_id" invisible="not surgery_id" readonly="1" />
+                            <field name="patient_id" />
+                            <field name="labor_hour" widget="datetime" />
+                            <field name="contraction_duration" />
+                            <field name="interval_between_contractions" />
+                        </group>
+                        <group>
+                            <field name="labor_auscultation" />
+                            <field name="dilation" />
+                            <field name="erasure" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_labor_search" model="ir.ui.view">
+        <field name="name">em.hms.labor.view.search</field>
+        <field name="model">em.hms.labor</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_labor_action" model="ir.actions.act_window">
+        <field name="name">Labor Monitoring</field>
+        <field name="res_model">em.hms.labor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_rhs_anc_visit_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.anc.visit.view.tree</field>
+        <field name="model">em.hms.rhs.anc.visit</field>
+        <field name="arch" type="xml">
+            <tree string="ANC Visits">
+                <field name="project_id" optional="show" />
+                <field name="anc_id" />
+                <field name="patient_id" />
+                <field name="visit_date" />
+              
+                <field name="arterial_pressure" optional="hide" />
+                <field name="weight" optional="hide" />
+                <field name="fetal_hr" optional="hide" />
+                <field name="main_complaint" optional="hide" />
+                <field name="head_diameter" optional="hide" />
+                <field name="thigh_length" optional="hide" />
+                <field name="presence" optional="hide" />
+                <field name="fluid" optional="hide" />
+                <field name="deformities" optional="hide" />
+                <field name="genital_age_in_weeks" optional="hide" />
+                <field name="vaginal_examination" optional="hide" />
+                <field name="treatment" optional="hide" />
+                <field name="is_tetanus_vaccined" optional="hide" />
+                <field name="next_visit_date" optional="hide" />
+                <field name="examiner_name" optional="hide" />
+                <field name="additional_notes" optional="hide" />
+                <field name="company_id"  readonly="1" force_save="1" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_anc_visit_view_form" model="ir.ui.view">
+        <field name="name">em.hms.rhs.anc.visit.view.form</field>
+        <field name="model">em.hms.rhs.anc.visit</field>
+        <field name="arch" type="xml">
+            <form string="ANC Visit">
+                <sheet>
+                    <group>
+                        <group>
+                            <!-- <field name="anc_id" /> -->
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="bnf_status" readonly="1" />
+                            <field name="allowed_project_ids" invisible="1" />
+                            <field name="patient_id" />
+                            <field name="visit_date" widget="date" />
+                            <field name="medical_signs_ids" widget="many2many_tags" />
+                            <field name="arterial_pressure" />
+                            <field name="weight" />
+                            <field name="fetal_hr" />
+                        </group>
+                        <group>
+                            <field name="main_complaint" widget="text" />
+                            <field name="head_diameter" />
+                            <field name="thigh_length" />
+                            <field name="presence" />
+                            <field name="fluid" />
+                            <field name="deformities" widget="text" />
+                            <field name="child_blood_group"  />
+                            <field name="child_gender" />
+                            <field name="gestational_age_according_to_crl" />
+                            <field name="gestational_age_according_to_gs" />
+                          
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="vaginal_examination" widget="radio" />
+                            <field name="if_done_explain" widget="text" invisible="vaginal_examination != 'done'"/>
+                            <field name="placenta" />
+                            <field name="treatment" widget="text" />
+                            <field name="is_tetanus_vaccined" />
+                           
+                        </group>
+                        <group>
+                            <field name="next_visit_date" widget="date" />
+                            <field name="examiner_name" />
+                            <field name="additional_notes" widget="text" />
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                      <group string="Documents">
+                        <field name="medication_request_line_ids" />
+                        <field name="analysis_request_line_ids" />
+                        <field name="image_request_line_ids" />
+                      </group>
+                   
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_anc_visit_search" model="ir.ui.view">
+        <field name="name">em.hms.rhs.anc.visit.view.search</field>
+        <field name="model">em.hms.rhs.anc.visit</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="em_hms_rhs_anc_visit_action" model="ir.actions.act_window">
+        <field name="name">ANC Visits</field>
+        <field name="res_model">em.hms.rhs.anc.visit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

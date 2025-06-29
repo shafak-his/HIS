@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_rhs_surgery_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.surgery.view.tree</field>
+        <field name="model">em.hms.rhs.surgery</field>
+        <field name="arch" type="xml">
+            <tree string="Surgeries">
+                <field name="project_id" optional="show" />
+                <field name="patient_id" />
+                <field name="doctor_id" />
+                <field name="admission_date" />
+                <field name="admitting_midwife_id" optional="hide" />
+                <field name="admitting_physician_id" optional="hide" />
+                <field name="husband_name" />
+                <field name="guardian_name" optional="hide" />
+                <field name="allergic_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="medication_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="surgical_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="surgery_type_ids" widget="many2many_tags" optional="hide" />
+                <field name="other_surgery_type" optional="hide" />
+                <field name="initial_diagnosis" optional="hide" />
+                <field name="child_name" optional="hide" />
+                <field name="natural_births_count" optional="hide" />
+                <field name="cesarean_births_count" optional="hide" />
+                <field name="miscarriages_count" optional="hide" />
+                <field name="pregnancy_related_diseases" optional="hide" />
+                <field name="gestational_age" optional="hide" />
+                <field name="arrival" optional="hide" />
+                <field name="eco_auscultation" optional="hide" />
+                <field name="placenta" optional="hide" />
+                <field name="amniotic_fluid" optional="hide" />
+                <field name="discharge_datetime" optional="hide" />
+                <field name="discharge_supervising_physician_id" optional="hide" />
+                <field name="discharge_duty_midwife_id" optional="hide" />
+                <field name="patient_condition" optional="hide" />
+                <field name="newborn_condition" optional="hide" />
+                <field name="patient_companion_name" optional="hide" />
+                <field name="patient_companion_relationship" optional="hide" />
+                <field name="birth_certificate" optional="hide" />
+                <field name="vital_sign_ids" widget="many2many_tags" optional="hide" />
+                <field name="labor_ids" widget="many2many_tags" optional="hide" />
+                <field name="post_surgery_ids" widget="many2many_tags" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_surgery_view_form" model="ir.ui.view">
+        <field name="name">em.hms.rhs.surgery.view.form</field>
+        <field name="model">em.hms.rhs.surgery</field>
+        <field name="arch" type="xml">
+            <form string="Surgery">
+                <header>
+                    <div name="button_box" position="inside">
+                        <!-- <button class="oe_stat_button" type="object" icon="fa-edit"
+                            name="action_get_surgery_labors_record">
+                            <field string="Labor Monitoring" name="labors_count"
+                                widget="statinfo" />
+                        </button> -->
+                    </div>
+                    <div name="button_box" position="inside">
+<!--                        <button class="oe_stat_button" type="object" icon="fa-stethoscope"-->
+<!--                            name="action_get_surgery_births_record">-->
+<!--                            <field string="Post-Birth Monitoring" name="births_count"-->
+<!--                                widget="statinfo" />-->
+<!--                        </button>-->
+                    </div>
+                </header>
+                <group>
+                    <group>
+                        <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="bnf_status" readonly="1" />
+                        <field name="allowed_project_ids" invisible="1" />
+                        <field name="patient_id" />
+                        <field name="doctor_id" />
+                        <field name="admission_date" widget="date" />
+                        <field name="admitting_midwife_id" />
+                        <field name="admitting_physician_id" />
+                    </group>
+                    <group>
+                        <field name="husband_name" />
+                        <field name="guardian_name" />
+                        <field name="initial_diagnosis" />
+                        <field name="child_name" />
+                    </group>
+                </group>
+                <group>
+                    <field name="medical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                        <tree create="1" delete="1" editable="bottom">
+                            <field name="name" />
+                        </tree>
+                    </field>
+                    <field name="surgical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                        <tree create="1" delete="1" editable="bottom">
+                            <field name="name" />
+                        </tree>
+                    </field>
+                    <field name="medication_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                        <tree create="1" delete="1" editable="bottom">
+                            <field name="name" />
+                        </tree>
+                    </field>
+                    <field name="allergic_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                        <tree create="1" delete="1" editable="bottom">
+                            <field name="name" />
+                        </tree>
+                    </field>
+                </group>
+                <group>
+                    <field name="surgery_type_ids" >
+                        <tree create="1" delete="1" editable="bottom">
+                            <field name="name" />
+                            <field name="subcategory_id" />
+                            <field name="category" />
+                        </tree>
+                    </field>
+                    <field name="other_surgery_type" />
+                </group>
+                <group>
+                    <field name="medication_request_line_ids" />
+                    <field name="analysis_request_line_ids" />
+                </group>
+                <group>
+                    <group>
+                        <field name="company_id" readonly="1" force_save="1" />
+                    </group>
+                </group>
+
+                <notebook>
+                    <page name="vital_signs_page" string="Vital Signs">
+                        <field name="vital_sign_ids" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1">
+                                <field name="delivery_id" optional="hide" />
+                                <field name="hospitalization_id" optional="hide" />
+                                <field name="surgery_id" optional="hide" />
+                                <field name="icu_id" optional="hide" />
+                                <field name="nicu_id" optional="hide" />
+                                <field name="ward_admission_id" optional="hide" />
+                                <field name="patient_admission_id" optional="hide" />
+                                <field name="patient_id" />
+                                <field name="datetime" />
+                                <field name="pressure" optional="hide" />
+                                <field name="pulse" optional="hide" />
+                                <field name="oxygen" optional="hide" />
+                                <field name="temperature" optional="hide" />
+                                <field name="awareness" optional="hide" />
+                                <field name="stool" optional="hide" />
+                                <field name="urine" optional="hide" />
+                                <field name="breathing" optional="hide" />
+                                <field name="cyan" optional="hide" />
+                                <field name="seizures" optional="hide" />
+                                <field name="vomiting" optional="hide" />
+                                <field name="blood_sugar" optional="hide" />
+                                <field name="feeding_type" optional="hide" />
+                                <field name="breastfeeding" optional="hide" />
+                                <field name="ngt" optional="hide" />
+                                <field name="explosives" optional="hide" />
+                                <field name="oral_intake" optional="hide" />
+                                <field name="hair_reed" optional="hide" />
+                                <field name="notes" optional="hide" />
+                                <field name="company_id" optional="hide" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="prev_preg_page" string="Previous Pregnancies">
+                        <group>
+                            <group>
+                                <field name="natural_births_count" />
+                                <field name="cesarean_births_count" />
+                            </group>
+                            <group>
+                                <field name="miscarriages_count" />
+                                <field name="pregnancy_related_diseases" />
+                            </group>
+                        </group>
+                    </page>
+                    <page name="eco_page" string="Eco When Admitting">
+                        <group>
+                            <group>
+                                <field name="gestational_age" />
+                                <field name="arrival" />
+                                <field name="eco_auscultation" />
+                            </group>
+                            <group>
+                                <field name="placenta" />
+                                <field name="amniotic_fluid" />
+                            </group>
+                        </group>
+                    </page>
+                    <page name="labors_page" string="Labor Monitoring Table">
+                        <field name="labor_ids">
+                            <tree string="Labor Monitoring">
+                                <field name="labor_hour" />
+                                <field name="contraction_duration" />
+                                <field name="interval_between_contractions" />
+                                <field name="labor_auscultation" optional="hide" />
+                                <field name="dilation" optional="hide" />
+                                <field name="erasure" optional="hide" />
+                                <field name="company_id" readonly="1" force_save="1" optional="hide" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="surgery_report_page" string="Surgery Report">
+                        <group>
+                            <group>
+                                <field name="surgery_datetime" widget="datetime" />
+                                <field name="surgery_medication_ids" widget="many2many_tags" />
+                                <field name="surgery_report" widget="text" />
+                                <field name="is_cesarean_surgery" />
+                            </group>
+                            <group>
+                                <field name="newborn_general_condition" invisible="is_cesarean_surgery == False" required = "is_cesarean_surgery == True" />
+                                <field name="newborn_gender" widget="radio" invisible="is_cesarean_surgery == False" required = "is_cesarean_surgery == True" />
+                                <field name="newborn_weight" invisible="is_cesarean_surgery == False" required = "is_cesarean_surgery == True" />
+                                <field name="is_breastfeeding_first_hour" widget="checkbox" invisible="is_cesarean_surgery == False" required = "is_cesarean_surgery == True" />
+                            </group>
+                        </group>
+                    </page>
+                    <page name="post_surgery_page" string="Post-Surgery Monitoring Table">
+                        <field name="post_surgery_ids" context="{'default_patient_id': patient_id}">
+                            <tree string="Post-Surgery Monitoring">
+                                <field name="patient_id" />
+                                <field name="datetime" />
+                                <field name="pressure" />
+                                <field name="pulse" />
+                                <field name="temperature" />
+                                <field name="is_safety_ball" optional="hide" />
+                                <field name="is_urine_voiding" optional="hide" />
+                                <field name="drainage_result" optional="hide" />
+                                <field name="notes" optional="hide" />
+                                <field name="company_id" readonly="1" force_save="1" optional="hide" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="discharge_card_page" string="Discharge Card">
+                        <group>
+                            <group>
+                                <field name="discharge_datetime" widget="datetime" />
+                                <field name="discharge_supervising_physician_id" />
+                                <field name="discharge_duty_midwife_id" />
+                            </group>
+                            <group>
+                                <field name="patient_condition" />
+                                <field name="newborn_condition" />
+                                <field name="patient_companion_name" />
+                                <field name="patient_companion_relationship" />
+                            </group>
+                            <group>
+                                <field name="birth_certificate" />
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_surgery_search" model="ir.ui.view">
+        <field name="name">em.hms.rhs.surgery.view.search</field>
+        <field name="model">em.hms.rhs.surgery</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_surgery_action" model="ir.actions.act_window">
+        <field name="name">Surgeries</field>
+        <field name="res_model">em.hms.rhs.surgery</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

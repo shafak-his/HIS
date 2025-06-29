@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_rhs_hospitalization_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.rhs.hospitalization.view.tree</field>
+        <field name="model">em.hms.rhs.hospitalization</field>
+        <field name="arch" type="xml">
+            <tree string="Hospitalization">
+                <field name="project_id" optional="show" />
+                <field name="patient_id" />
+                <field name="admission_date" />
+                <field name="admitting_midwife_id" optional="hide" />
+                <field name="admitting_physician_id" optional="hide" />
+                <field name="husband_name" />
+                <field name="guardian_name" optional="hide" />
+                <field name="allergic_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="medication_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="surgical_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="current_diagnosis" optional="hide" />
+                <field name="natural_births_count" optional="hide" />
+                <field name="cesarean_births_count" optional="hide" />
+                <field name="miscarriages_count" optional="hide" />
+                <field name="pregnancy_related_diseases" optional="hide" />
+                <field name="gestational_age" optional="hide" />
+                <field name="arrival" optional="hide" />
+                <field name="eco_auscultation" optional="hide" />
+                <field name="placenta" optional="hide" />
+                <field name="amniotic_fluid" optional="hide" />
+                <field name="other_findings" optional="hide" />
+                <field name="discharge_datetime" optional="hide" />
+                <field name="discharge_supervising_physician_id" optional="hide" />
+                <field name="discharge_duty_midwife_id" optional="hide" />
+                <field name="patient_condition" optional="hide" />
+                <field name="newborn_condition" optional="hide" />
+                <field name="patient_companion_name" optional="hide" />
+                <field name="patient_companion_relationship" optional="hide" />
+                <field name="vital_sign_ids" widget="many2many_tags" optional="hide" />
+                <field name="labor_ids" widget="many2many_tags" optional="hide" />
+                <field name="monitoring_ids" widget="many2many_tags" optional="hide" />
+                <field name="necessity_ids" widget="many2many_tags" optional="hide" />
+                <field name="commitment_ids" widget="many2many_tags" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_hospitalization_view_form" model="ir.ui.view">
+        <field name="name">em.hms.rhs.hospitalization.view.form</field>
+        <field name="model">em.hms.rhs.hospitalization</field>
+        <field name="arch" type="xml">
+            <form string="Hospitalization">
+                <header>
+                    <div name="button_box" position="inside">
+                        <!-- <button class="oe_stat_button" type="object" icon="fa-edit"
+                            name="action_get_hospitalization_labors_record">
+                            <field string="Labor Monitoring" name="labors_count"
+                                widget="statinfo" />
+                        </button> -->
+                    </div>
+                    <div name="button_box" position="inside">
+<!--                        <button class="oe_stat_button" type="object" icon="fa-stethoscope"-->
+<!--                            name="action_get_hospitalization_births_record">-->
+<!--                            <field string="Post-Birth Monitoring" name="births_count"-->
+<!--                                widget="statinfo" />-->
+<!--                        </button>-->
+                    </div>
+                </header>
+                <group>
+                    <group>
+                        <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="bnf_status" readonly="1" />
+                        <field name="allowed_project_ids" invisible="1" />
+                        <field name="patient_id" />
+                        <field name="admission_date" widget="date" />
+                        <field name="admitting_midwife_id" />
+                        <field name="admitting_physician_id" />
+                    </group>
+                    <group>
+                        <field name="husband_name" />
+                        <field name="guardian_name" />
+                        <field name="current_diagnosis" />
+                    </group>
+                </group>
+                <group>
+                    <field name="medical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                        <tree create="1" delete="1" editable="bottom">
+                            <field name="name" />
+                        </tree>
+                    </field>
+                    <field name="surgical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                        <tree create="1" delete="1" editable="bottom">
+                            <field name="name" />
+                        </tree>
+                    </field>
+                    <field name="medication_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                        <tree create="1" delete="1" editable="bottom">
+                            <field name="name" />
+                        </tree>
+                    </field>
+                    <field name="allergic_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                        <tree create="1" delete="1" editable="bottom">
+                            <field name="name" />
+                        </tree>
+                    </field>
+                </group>
+                <group>
+                    <field name="medication_request_line_ids" widget="many2many_tags" />
+                    <field name="analysis_request_line_ids" widget="many2many_tags" />
+                </group>
+                <group>
+                    <group>
+                        <field name="company_id" readonly="1" force_save="1" />
+                    </group>
+                </group>
+
+                <notebook>
+                    <page name="vital_signs_page" string="Vital Signs">
+                        <field name="vital_sign_ids" context="{'default_patient_id': patient_id}">
+                            <tree string="Vital Signs">
+                                <field name="delivery_id" optional="hide" />
+                                <field name="hospitalization_id" optional="hide" />
+                                <field name="surgery_id" optional="hide" />
+                                <field name="icu_id" optional="hide" />
+                                <field name="nicu_id" optional="hide" />
+                                <field name="ward_admission_id" optional="hide" />
+                                <field name="patient_admission_id" optional="hide" />
+                                <field name="patient_id" />
+                                <field name="datetime" />
+                                <field name="pressure" optional="hide" />
+                                <field name="pulse" optional="hide" />
+                                <field name="oxygen" optional="hide" />
+                                <field name="temperature" optional="hide" />
+                                <field name="awareness" optional="hide" />
+                                <field name="stool" optional="hide" />
+                                <field name="urine" optional="hide" />
+                                <field name="breathing" optional="hide" />
+                                <field name="cyan" optional="hide" />
+                                <field name="seizures" optional="hide" />
+                                <field name="vomiting" optional="hide" />
+                                <field name="blood_sugar" optional="hide" />
+                                <field name="feeding_type" optional="hide" />
+                                <field name="breastfeeding" optional="hide" />
+                                <field name="ngt" optional="hide" />
+                                <field name="explosives" optional="hide" />
+                                <field name="oral_intake" optional="hide" />
+                                <field name="hair_reed" optional="hide" />
+                                <field name="notes" optional="hide" />
+                                <field name="company_id" optional="hide" />
+                            </tree>
+                        </field> 
+                    </page>
+                    <page name="prev_preg_page" string="Previous Pregnancies">
+                        <group>
+                            <group>
+                                <field name="natural_births_count" />
+                                <field name="cesarean_births_count" />
+                            </group>
+                            <group>
+                                <field name="miscarriages_count" />
+                                <field name="pregnancy_related_diseases" />
+                            </group>
+                        </group>
+                    </page>
+                    <page name="eco_page" string="Eco When Admitting">
+                        <group>
+                            <group>
+                                <field name="gestational_age" />
+                                <field name="arrival" />
+                                <field name="eco_auscultation" />
+                            </group>
+                            <group>
+                                <field name="placenta" />
+                                <field name="amniotic_fluid" />
+                                <field name="other_findings" widget="text" />
+                            </group>
+                        </group>
+                    </page>
+                    <page name="labors_page" string="Labor Monitoring Table">
+                        <field name="labor_ids">
+                            <tree string="Labor Monitoring">
+                                <field name="labor_hour" />
+                                <field name="contraction_duration" />
+                                <field name="interval_between_contractions" />
+                                <field name="labor_auscultation" optional="hide" />
+                                <field name="dilation" optional="hide" />
+                                <field name="erasure" optional="hide" />
+                                <field name="company_id" readonly="1" force_save="1" optional="hide" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="monitorings_page" string="Monitoring Table">
+                        <field name="monitoring_ids">
+                            <tree string="Monitoring">
+                                <field name="monitoring_time" />
+                                <field name="pressure" optional="hide" />
+                                <field name="pulse" optional="hide" />
+                                <field name="temperature" optional="hide" />
+                                <field name="is_urinary_output" optional="hide" />
+                                <field name="notes" optional="hide" />
+                                <field name="company_id" readonly="1" force_save="1" optional="hide" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="necessities_page" string="Daily Necessity Table">
+                        <field name="necessity_ids" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1">
+                                <field name="patient_admission_id" optional="hide" />
+                                <field name="hospitalization_id" optional="hide" />
+                                <field name="incubator_admission_id" optional="hide" />
+                                <field name="ward_admission_id" optional="hide" />
+                                <field name="pediatric_surgery_id" optional="hide" />
+                                <field name="pediatric_clinic_id" optional="hide" />
+                                <field name="phototherapy_id" optional="hide" />
+                                <field name="icu_id" optional="hide" />
+                                <field name="nicu_id" optional="hide" />
+                                <field name="necessity_datetime" optional="hide" />
+                                <field name="patient_id" />
+                                <field name="ward_nurse_id" />
+                                <!-- <field name="medication_request_id" optional="hide" /> -->
+                                <field name="medication_id" optional="hide" />
+                                <field name="dosage" optional="hide" />
+                                <field name="rate" optional="hide" />
+                                <field name="dose_taking_way" optional="hide" />
+                                <field name="doctor_id" />
+                                <field name="company_id" optional="hide" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="commitments_page" string="Necessity Giving Table">
+                        <field name="commitment_ids" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1">
+                                <field name="patient_admission_id" optional="hide" />
+                                <field name="hospitalization_id" optional="hide" />
+                                <field name="incubator_admission_id" optional="hide" />
+                                <field name="ward_admission_id" optional="hide" />
+                                <field name="pediatric_surgery_id" optional="hide" />
+                                <field name="pediatric_clinic_id" optional="hide" />
+                                <field name="phototherapy_id" optional="hide" />
+                                <field name="icu_id" optional="hide" />
+                                <field name="nicu_id" optional="hide" />
+                                <field name="patient_id" />
+                                <field name="doctor_id" />
+                                <field name="necessity_id" optional="hide" />
+                                <field name="notes" optional="hide" />
+                                <field name="company_id" optional="hide" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="discharge_card_page" string="Discharge Card">
+                        <group>
+                            <group>
+                                <field name="discharge_datetime" widget="datetime" />
+                                <field name="discharge_supervising_physician_id" />
+                                <field name="discharge_duty_midwife_id" />
+                            </group>
+                            <group>
+                                <field name="patient_condition" />
+                                <field name="newborn_condition" />
+                                <field name="patient_companion_name" />
+                                <field name="patient_companion_relationship" />
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_hospitalization_search" model="ir.ui.view">
+        <field name="name">em.hms.rhs.hospitalization.view.search</field>
+        <field name="model">em.hms.rhs.hospitalization</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_rhs_hospitalization_action" model="ir.actions.act_window">
+        <field name="name">Hospitalization</field>
+        <field name="res_model">em.hms.rhs.hospitalization</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

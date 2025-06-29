@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_mh_pmplus_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.mh.pmplus.view.tree</field>
+        <field name="model">em.hms.mh.pmplus</field>
+        <field name="arch" type="xml">
+            <tree string="PM+">
+                <field name="project_id" optional="show" />
+                <field name="patient_id" />
+                <field name="session_date" />
+                <field name="mh_worker_id" />
+                <field name="educational_status" optional="hide" />
+                <field name="main_complaints" optional="hide" />
+                <field name="intervention" optional="hide" />
+                <field name="visit_type" optional="hide" />
+                <field name="referral_type" optional="hide" />
+                <field name="internal_referral" optional="hide" />
+                <field name="other_internal_referral" optional="hide" />
+                <field name="external_referral" optional="hide" />
+                <field name="referred_from_entity" optional="hide" />
+                <field name="referred_to_entity" optional="hide" />
+                <field name="risk_level" optional="hide" />
+                <field name="file_status" optional="hide" />
+                <field name="quest_centers_initial" optional="hide" />
+                <field name="quest_phq9_final" optional="hide" />
+                <field name="case_closure_date" optional="hide" />
+                <field name="closure_reason" optional="hide" />
+                <field name="other_closure_reason" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_mh_pmplus_view_form" model="ir.ui.view">
+        <field name="name">em.hms.mh.pmplus.view.form</field>
+        <field name="model">em.hms.mh.pmplus</field>
+        <field name="arch" type="xml">
+            <form string="PM+">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="bnf_status" readonly="1" />
+                            <field name="allowed_project_ids" invisible="1" />
+                            <field name="patient_id" />
+                            <field name="session_date" widget="date" />
+                            <field name="mh_worker_id" />
+                            <field name="educational_status" widget="radio" />
+                        </group>
+                        <group>
+                            <field name="main_complaints" widget="text" />
+                            <field name="intervention" widget="radio" />
+                            <field name="visit_type" widget="radio" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="referral_type" widget="radio" />
+                            <field name="internal_referral"
+                                invisible="referral_type != 'internal'" required="referral_type == 'internal'" />
+                            <field name="other_internal_referral"
+                                invisible="referral_type != 'internal' or internal_referral != 'other'" required="referral_type == 'internal' and internal_referral == 'other'" />
+                        </group>
+                        <group>
+                            <field name="external_referral"
+                                invisible="referral_type != 'external'" required="referral_type == 'external'" />
+                            <field name="referred_from_entity" invisible="referral_type == 'none'" required="referral_type != 'none'" />
+                            <field name="referred_to_entity" invisible="referral_type == 'none'" required="referral_type != 'none'" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="risk_level" widget="radio" />
+                            <field name="file_status" widget="radio" />
+                            <field name="quest_centers_initial" invisible="file_status != 'closed'" />
+                            <field name="quest_phq9_final" invisible="file_status != 'closed'" />
+                        </group>
+                        <group>
+                            <field name="case_closure_date" widget="date"
+                                invisible="file_status != 'closed'" />
+                            <field name="closure_reason" invisible="file_status != 'closed'" />
+                            <field name="other_closure_reason"
+                                invisible="file_status != 'closed' or closure_reason != 'other'" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_mh_pmplus_search" model="ir.ui.view">
+        <field name="name">em.hms.mh.pmplus.view.search</field>
+        <field name="model">em.hms.mh.pmplus</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_mh_pmplus_action" model="ir.actions.act_window">
+        <field name="name">PM+</field>
+        <field name="res_model">em.hms.mh.pmplus</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

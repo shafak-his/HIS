@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_medical_history_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.medical.history.view.tree</field>
+        <field name="model">em.hms.medical.history</field>
+        <field name="arch" type="xml">
+            <tree string="Medical History" editable="bottom">
+                <field name="name" />
+                <field name="patient_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_medical_history_view_form" model="ir.ui.view">
+        <field name="name">em.hms.medical.history.view.form</field>
+        <field name="model">em.hms.medical.history</field>
+        <field name="arch" type="xml">
+            <form string="Medical History">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" readonly="1" force_save="1" />
+                            <field name="name" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_medical_history_search" model="ir.ui.view">
+        <field name="name">em.hms.medical.history.view.search</field>
+        <field name="model">em.hms.medical.history</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_medical_history_action" model="ir.actions.act_window">
+        <field name="name">Medical History</field>
+        <field name="res_model">em.hms.medical.history</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    
+    <record id="em_hms_medication_history_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.medication.history.view.tree</field>
+        <field name="model">em.hms.medication.history</field>
+        <field name="arch" type="xml">
+            <tree string="Medication History" editable="bottom">
+                <field name="name" />
+                <field name="patient_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_medication_history_view_form" model="ir.ui.view">
+        <field name="name">em.hms.medication.history.view.form</field>
+        <field name="model">em.hms.medication.history</field>
+        <field name="arch" type="xml">
+            <form string="Medication History">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" readonly="1" force_save="1" />
+                            <field name="name" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_medication_history_search" model="ir.ui.view">
+        <field name="name">em.hms.medication.history.view.search</field>
+        <field name="model">em.hms.medication.history</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_medication_history_action" model="ir.actions.act_window">
+        <field name="name">Medication History</field>
+        <field name="res_model">em.hms.medication.history</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    
+    <record id="em_hms_allergic_history_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.allergic.history.view.tree</field>
+        <field name="model">em.hms.allergic.history</field>
+        <field name="arch" type="xml">
+            <tree string="Allergic History" editable="bottom">
+                <field name="name" />
+                <field name="patient_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_allergic_history_view_form" model="ir.ui.view">
+        <field name="name">em.hms.allergic.history.view.form</field>
+        <field name="model">em.hms.allergic.history</field>
+        <field name="arch" type="xml">
+            <form string="Allergic History">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" readonly="1" force_save="1" />
+                            <field name="name" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_allergic_history_search" model="ir.ui.view">
+        <field name="name">em.hms.allergic.history.view.search</field>
+        <field name="model">em.hms.allergic.history</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_allergic_history_action" model="ir.actions.act_window">
+        <field name="name">Allergic History</field>
+        <field name="res_model">em.hms.allergic.history</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    
+    <record id="em_hms_surgical_history_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.surgical.history.view.tree</field>
+        <field name="model">em.hms.surgical.history</field>
+        <field name="arch" type="xml">
+            <tree string="Surgical History" editable="bottom">
+                <field name="name" />
+                <field name="patient_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_surgical_history_view_form" model="ir.ui.view">
+        <field name="name">em.hms.surgical.history.view.form</field>
+        <field name="model">em.hms.surgical.history</field>
+        <field name="arch" type="xml">
+            <form string="Surgical History">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" readonly="1" force_save="1" />
+                            <field name="name" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_surgical_history_search" model="ir.ui.view">
+        <field name="name">em.hms.surgical.history.view.search</field>
+        <field name="model">em.hms.surgical.history</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_surgical_history_action" model="ir.actions.act_window">
+        <field name="name">Surgical History</field>
+        <field name="res_model">em.hms.surgical.history</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

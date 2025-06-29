@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="em_hms_clinic_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.clinic.view.tree</field>
+        <field name="model">em.hms.clinic</field>
+        <field name="arch" type="xml">
+            <tree string="Clinics" editable="bottom">
+                <field name="name" />
+                <field name="company_ids" widget="many2many_tags" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_clinic_view_form" model="ir.ui.view">
+        <field name="name">em.hms.clinic.view.form</field>
+        <field name="model">em.hms.clinic</field>
+        <field name="arch" type="xml">
+            <form string="Clinic">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="company_ids" widget="many2many_tags" />
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_clinic_search" model="ir.ui.view">
+        <field name="name">em.hms.clinic.view.search</field>
+        <field name="model">em.hms.clinic</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="name" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="name" context="{'group_by': 'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_clinic_action" model="ir.actions.act_window">
+        <field name="name">Clinics</field>
+        <field name="res_model">em.hms.clinic</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+</odoo>

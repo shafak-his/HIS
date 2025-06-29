@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_dial_visit_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.dial.visit.view.tree</field>
+        <field name="model">em.hms.dial.visit</field>
+        <field name="arch" type="xml">
+            <tree string="Dialysis visit">
+                <field name="project_id" optional="show" />
+                <field name="patient_id" />
+                <field name="patient_condition" optional="hide" />
+                <field name="duration" optional="hide" widget="float_time" />
+                <field name="leaving_datetime" optional="hide" />
+                <field name="session_datetime" optional="hide" />
+                <field name="doctor_id" optional="hide" />
+                <field name="technician_id" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_dial_visit_view_form" model="ir.ui.view">
+        <field name="name">em.hms.dial.visit.view.form</field>
+        <field name="model">em.hms.dial.visit</field>
+        <field name="arch" type="xml">
+            <form string="Dialysis visit">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="bnf_status" readonly="1" />
+                            <field name="allowed_project_ids" invisible="1" />
+                            <field name="patient_id" />
+                            <field name="session_datetime" />
+                            <field name="patient_condition" />
+                        </group>
+                        <group>
+                            <field name="acceptance_date" />
+                            <field name="leaving_datetime" />
+                            <field name="duration" widget="float_time"/>
+                        </group>
+                        <group>
+                            <field name="dialysis_filter" />
+                            <field name="dial_flow_rate" />
+                            <field name="blood_flow_rate" />
+                            <field name="session_period" />
+                            <field name="fluid_concentration" />
+                            <field name="dial_volume" />
+                        </group>
+                        <group>
+                            <field name="erythropoietin_dose" />
+                            <field name="heparin_dose" />
+                            <field name="other_medications" widget="text"/>
+                            <field name="dry_weight" />
+                            <field name="weight_after_session" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="session_info_ids">
+                            <tree create="1" delete="1" editable="bottom">
+                                <field name="hour"  />
+                                <field name="vp" />
+                                <field name="time" />
+                                <field name="bp" />
+                                <field name="pulse" />
+                                <field name="temp" />
+                                <field name="ap" />
+                                <field name="tmp" />
+                            </tree>
+                        </field>
+                        <field name="transfusion_ids">
+                             <tree create="1" delete="1" editable="bottom">
+                                    <field name="unit_number" />
+                                    <field name="blood_donation_date" />
+                                    <field name="expiry_date" />
+                                    <field name="patient_blood_group" />
+                                    <field name="donor_blood_group" />
+                             </tree>
+                            </field>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="doctor_notes" widget="text"/>
+                            <field name="technician_notes" widget="text"/>
+                            <field name="doctor_id"/>
+                            <field name="technician_id"/>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_dial_visit_search" model="ir.ui.view">
+        <field name="name">em.hms.dial.visit.view.search</field>
+        <field name="model">em.hms.dial.visit</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <field name="doctor_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                    <filter string="Doctor" name="doctor_id" context="{'group_by': 'doctor_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_dial_visit_action" model="ir.actions.act_window">
+        <field name="name">Dialysis visit</field>
+        <field name="res_model">em.hms.dial.visit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+
+</odoo>

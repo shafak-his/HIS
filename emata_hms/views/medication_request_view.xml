@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_medication_request_line_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.medication.request.line.view.tree</field>
+        <field name="model">em.hms.medication.request.line</field>
+        <field name="arch" type="xml">
+            <tree string="Medication Requests" editable="bottom">
+                <field name="patient_id" readonly="1" force_save="1" />
+                <field name="product_template_id" />
+                <field name="uom_id" />
+                <field name="qty" />
+                <field name="pharmaceutical_form" />
+                <field name="dosage_rate" />
+                <field name="dose_time" />
+                <field name="dose_way" />
+                <field name="doctor_id" />
+                <field name="notes" />
+                
+                <field name="general_visit_id" column_invisible="1" />
+                <field name="gynochological_visit_id" column_invisible="1" />
+                <field name="pnc_visit_id" column_invisible="1" />
+                <field name="mh_gap_id" column_invisible="1" />
+                <field name="dial_urology_id" column_invisible="1" />
+                <field name="dial_nephrology_id" column_invisible="1" />
+                <field name="infertility_treatment_id" column_invisible="1" />
+                <field name="patient_admission_id" column_invisible="1" />
+                <field name="pediatric_clinic_id" column_invisible="1" />
+                <field name="pediatric_surgery_clinic_id" column_invisible="1" />
+                <field name="icu_id" column_invisible="1" />
+                <field name="hospitalization_id" column_invisible="1" />
+                <field name="rhs_surgery_id" column_invisible="1" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_medication_request_line_view_form" model="ir.ui.view">
+        <field name="name">em.hms.medication.request.line.view.form</field>
+        <field name="model">em.hms.medication.request.line</field>
+        <field name="arch" type="xml">
+            <form string="Medication Request">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" />
+                            <field name="product_template_id" />
+                            <field name="uom_id" />
+                            <field name="qty" />
+                            <field name="pharmaceutical_form" />
+                            <field name="dosage_rate" />
+                            <field name="dose_time" />
+                            <field name="dose_way" />
+                            <field name="doctor_id" />
+                            <field name="notes" />
+
+                            <field name="general_visit_id" invisible="1" />
+                            <field name="gynochological_visit_id" invisible="1" />
+                            <field name="pnc_visit_id" invisible="1" />
+                            <field name="mh_gap_id" invisible="1" />
+                            <field name="dial_urology_id" invisible="1" />
+                            <field name="dial_nephrology_id" invisible="1" />
+                            <field name="infertility_treatment_id" invisible="1" />
+                            <field name="patient_admission_id" invisible="1" />
+                            <field name="pediatric_clinic_id" invisible="1" />
+                            <field name="pediatric_surgery_clinic_id" invisible="1" />
+                            <field name="icu_id" invisible="1" />
+                            <field name="hospitalization_id" invisible="1" />
+                            <field name="rhs_surgery_id" invisible="1" />
+                        </group> 
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_medication_line_request_search" model="ir.ui.view">
+        <field name="name">em.hms.medication.request.line.view.search</field>
+        <field name="model">em.hms.medication.request.line</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <field name="doctor_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_medication_request_line_action" model="ir.actions.act_window">
+        <field name="name">Medication Requests</field>
+        <field name="res_model">em.hms.medication.request.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

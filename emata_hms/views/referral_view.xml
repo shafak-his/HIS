@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_referral_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.referral.view.tree</field>
+        <field name="model">em.hms.referral</field>
+        <field name="arch" type="xml">
+            <tree string="Referrals">
+                <field name="project_id" optional="show" />
+                <field name="patient_id" />
+                <field name="referral_datetime" />
+                <field name="type_of_referral" />
+                <field name="company_id" />
+                <field name="referred_to_entity" optional="hide" />
+                <field name="previous_cases" optional="hide" />
+                <field name="treatment_provided" optional="hide" />
+                <field name="reason_for_referral" optional="hide" />
+                <field name="diagnosis_id" optional="hide" />
+                <field name="services_required" optional="hide" />
+                <field name="diagnostic_support_type" optional="hide" />
+                <field name="radiology_type_required" optional="hide" />
+                <field name="treatment_type_required" optional="hide" />
+                <field name="facility_acceptance" optional="hide" />
+                <field name="equipment_type_required" optional="hide" />
+                <field name="treatment_details" optional="hide" />
+                <field name="speciality_required" optional="hide" />
+                <field name="referral_coordination_datetime" optional="hide" />
+                <field name="referring_id" optional="hide" />
+                <field name="coordinating_contact_name" optional="hide" />
+                <field name="transportation_information" optional="hide" />
+                <field name="referring_physician_id" optional="hide" />
+                <field name="contact_person_id" optional="hide" />
+                <field name="referring_physician_id" optional="hide" />
+                <field name="referee_manager_id" optional="hide" />
+                <field name="patient_companion_name" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_referral_view_form" model="ir.ui.view">
+        <field name="name">em.hms.referral.view.form</field>
+        <field name="model">em.hms.referral</field>
+        <field name="arch" type="xml">
+            <form string="Referral">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="bnf_status" readonly="1" />
+                            <field name="allowed_project_ids" invisible="1" />
+                            <field name="patient_id" />
+                            <field name="referral_datetime" />
+                            <field name="type_of_referral" />
+                        </group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                            <field name="referred_to_entity" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="previous_cases" widget="text" />
+                            <field name="treatment_provided" widget="text" />
+                        </group>
+                        <group>
+                            <field name="reason_for_referral" />
+                            <field name="diagnosis_id" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="services_required" />
+                            <field name="diagnostic_support_type" invisible="services_required != 'diagnostic_support'" required="services_required == 'diagnostic_support'" />
+                            <field name="radiology_type_required" invisible="services_required != 'diagnostic_support' or diagnostic_support_type != 'rays'" required="services_required == 'diagnostic_support' and diagnostic_support_type == 'rays'" />
+                            <field name="treatment_type_required" invisible="services_required != 'treatment'" required="services_required == 'treatment'" />
+                        </group>
+                        <group>
+                            <field name="facility_acceptance" invisible="services_required != 'treatment' or treatment_type_required != 'acceptance_facility'" required="services_required == 'treatment' and treatment_type_required == 'acceptance_facility'" />
+                            <field name="equipment_type_required" invisible="services_required != 'treatment' or treatment_type_required != 'devices'" required="services_required == 'treatment' and treatment_type_required == 'devices'" />
+                            <field name="treatment_details" widget="text" />
+                            <field name="speciality_required" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="referral_coordination_datetime" />
+                            <field name="referring_id" />
+                            <field name="coordinating_contact_name" />
+                            <field name="transportation_information" />
+                        </group>
+                        <group>
+                            <field name="referring_physician_id" />
+                            <field name="contact_person_id" />
+                            <field name="referee_manager_id" />
+                            <field name="patient_companion_name" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_referral_search" model="ir.ui.view">
+        <field name="name">em.hms.referral.view.search</field>
+        <field name="model">em.hms.referral</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_referral_action" model="ir.actions.act_window">
+        <field name="name">Referrals</field>
+        <field name="res_model">em.hms.referral</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

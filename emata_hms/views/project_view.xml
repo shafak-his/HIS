@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_project_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.project.view.tree</field>
+        <field name="model">project.project</field>
+        <field name="arch" type="xml">
+            <tree decoration-muted="active == False" string="Projects" multi_edit="1" sample="1" default_order="is_favorite desc, sequence, name, id" js_class="project_project_list">
+                <field name="sequence" column_invisible="True"/>
+                <field name="name" />
+                <field name="message_needaction" column_invisible="True"/>
+                <field name="active" column_invisible="True"/>
+                <field name="is_favorite" string="Favorite" nolabel="1" widget="boolean_favorite" optional="hide"/>
+                <field name="display_name" string="Name" class="fw-bold" column_invisible="True" />
+                <field name="partner_id" optional="show" string="Customer" column_invisible="True" />
+                <field name="company_id" optional="show" groups="base.group_multi_company" options="{'no_create': True, 'no_open': True}"/>
+                <field name="company_id" column_invisible="True"/>
+                <field name="date_start" string="Planned Date" widget="daterange" options="{'end_date_field': 'date', 'always_range': '1'}" optional="hide"/>
+                <field name="date" column_invisible="True"/>
+                <field name="user_id" optional="show" string="Project Manager" widget="many2one_avatar_user" options="{'no_open':True, 'no_create': True, 'no_create_edit': True}" column_invisible="True"/>
+                <field name="last_update_color" column_invisible="True"/>
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" optional="hide"/>
+                <field name="last_update_status" string="Status" nolabel="1" optional="show" widget="project_state_selection" column_invisible="True"/>
+                <field name="stage_id" options="{'no_open': True}" domain="[('company_id', 'in', (company_id, False))]" optional="show" column_invisible="True"/>
+                <button string="View Tasks" name="action_view_tasks" type="object" column_invisible="True"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_project_view_form" model="ir.ui.view">
+        <field name="name">em.hms.project.view.form</field>
+        <field name="model">project.project</field>
+        <field name="arch" type="xml">
+            <form string="Project">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                        </group> 
+                    </group>
+                    <field name="support_line_ids">
+                        <tree editable="bottom">
+                            <field name="company_ids" widget="many2many_tags" />
+                            <field name="service_ids" widget="many2many_tags" required="1" />
+                            <field name="clinic_ids" widget="many2many_tags" />
+                            <field name="start_date" />
+                            <field name="end_date" />
+                        </tree>
+                    </field>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_project_action" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="res_model">project.project</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

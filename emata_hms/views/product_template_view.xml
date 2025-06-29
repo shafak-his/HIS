@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="em_product_template_form_view_inherit" model="ir.ui.view">
+      <field name="name">em.product.template.form.view.inherit</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='invoice_policy']" position="after">
+          <field name="is_medication" />
+          <field name="is_medical_analysis" />
+          <field name="is_medical_imaging" />
+          <field name="is_birth_medication" />
+          <field name="is_surgery_medication" />
+        </xpath>
+      </field>
+    </record>
+
+    <record id="em_product_template_view_tree" model="ir.ui.view">
+        <field name="name">em.product.template.view.tree</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <tree string="Medical Service Items" editable="bottom">
+                <field name="default_code" />
+                <field name="name" />
+                <field name="uom_id" invisible="not is_medication" column_invisible="not context.get('default_is_medication', False)" />
+                <field name="pharmaceutical_form" column_invisible="not context.get('default_is_medication', False)" />
+                <field name="dosage_rate" column_invisible="not context.get('default_is_medication', False)"  />
+                <field name="dose_time" column_invisible="not context.get('default_is_medication', False)"  />
+                <field name="dose_way" column_invisible="not context.get('default_is_medication', False)"  />
+
+                <field name="is_medication" column_invisible="1" />
+                <field name="is_medical_analysis" column_invisible="1" />
+                <field name="is_medical_imaging" column_invisible="1" />
+                <field name="is_birth_medication" column_invisible="1" />
+                <field name="uom_po_id" column_invisible="1" />
+                
+                <field name="detailed_type" column_invisible="1" />
+                <field name="available_in_pos" column_invisible="1" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_product_template_view_form" model="ir.ui.view">
+        <field name="name">em.product.template.view.form</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <form string="Medical Service Item">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="default_code" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="is_medication" invisible="1" />
+                        <field name="is_medical_analysis" invisible="1" />
+                        <field name="is_medical_imaging" invisible="1" />
+                        <field name="is_birth_medication" invisible="1" />
+
+                        <field name="detailed_type" invisible="1" />
+                        <field name="available_in_pos" invisible="1" />
+                    </group>
+                </sheet>
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="activity_ids" widget="mail_activity"/>
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_product_template_medication_action" model="ir.actions.act_window">
+        <field name="name">Medications</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_medication', '=', True)]</field>
+        <field name="context">{'default_is_medication': True, 'default_detailed_type': 'product', 'default_available_in_pos': True, 'default_lst_price': 0}</field>
+    </record>
+
+    <record id="em_product_template_birth_medication_action" model="ir.actions.act_window">
+        <field name="name">Birth Medications</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_birth_medication', '=', True)]</field>
+        <field name="context">{'default_is_birth_medication': True, 'default_detailed_type': 'product', 'default_available_in_pos': True, 'default_lst_price': 0}</field>
+    </record>
+
+    <record id="em_product_template_medical_analysis_action" model="ir.actions.act_window">
+        <field name="name">Medical Analysis</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_medical_analysis', '=', True)]</field>
+        <field name="context">{'default_is_medical_analysis': True, 'default_detailed_type': 'service', 'default_lst_price': 0}</field>
+    </record>
+
+    <record id="em_product_template_medical_imaging_action" model="ir.actions.act_window">
+        <field name="name">Medical Imaging</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_medical_imaging', '=', True)]</field>
+        <field name="context">{'default_is_medical_imaging': True, 'default_detailed_type': 'service', 'default_lst_price': 0}</field>
+    </record>
+
+</odoo>
