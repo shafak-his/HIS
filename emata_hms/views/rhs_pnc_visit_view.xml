@@ -129,7 +129,7 @@
                         </group>
                     </group>
                     <group string="Documents">
-                        <field name="medication_request_line_ids" />
+                        <field name="medication_request_line_ids" context="{'default_patient_id': patient_id}"/>
                         <field name="analysis_request_line_ids" />
                         <field name="image_request_line_ids" />
                     </group>

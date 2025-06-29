@@ -71,16 +71,26 @@
                         </group>
                     </group>
                     <group>
-                        <field name="medical_history_ids" context="{'default_patient_id': patient_id}">
+                        <field name="medical_history_ids" context="{'default_patient_id': patient_id}" widget="many2many_tags">
                             <tree create="1" delete="1" editable="bottom">
                                 <field name="name" />
                             </tree>
                         </field>
-                        <field name="allergic_history_ids" context="{'default_patient_id': patient_id}">
+                        <field name="allergic_history_ids" context="{'default_patient_id': patient_id} " widget="many2many_tags">
                             <tree create="1" delete="1" editable="bottom">
                                 <field name="name" />
                             </tree>
                         </field>
+                      <field name="medication_history_ids" context="{'default_patient_id': patient_id} " widget="many2many_tags">
+                        <tree create="1" delete="1" editable="bottom">
+                          <field name="name" />
+                        </tree>
+                      </field>
+                      <field name="surgical_history_ids" context="{'default_patient_id': patient_id} " widget="many2many_tags">
+                        <tree create="1" delete="1" editable="bottom">
+                          <field name="name" />
+                        </tree>
+                      </field>
                     </group>
                     <group>
                         <group>

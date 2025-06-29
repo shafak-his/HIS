@@ -18,9 +18,10 @@ class EmHmsGeneralClinicVisit(models.Model):
     weight = fields.Float('Weight (KG)', tracking=True)
     height = fields.Float('Height (CM)', tracking=True)
     respiratory_rate = fields.Float('Respiratory Rate', tracking=True)
-    medical_history_ids = fields.Many2many('em.hms.medical.history', 'general_clinic_visit_medical_history_rel', 'general_clinic_visit_id', 'medical_history_id', string='Medical History')
-    allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'general_clinic_visit_allergic_history_rel', 'general_clinic_visit_id', 'allergic_history_id', string='Allergic History')
-    
+    medical_history_ids = fields.Many2many('em.hms.medical.history', 'general_clinic_visit_medical_history_rel', 'general_clinic_visit_id', 'medical_history_id', string='Medical History' ,compute= '_compute_medical_history')
+    allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'general_clinic_visit_allergic_history_rel', 'general_clinic_visit_id', 'allergic_history_id', string='Allergic History' ,compute= '_compute_allergic_history')
+    medication_history_ids = fields.Many2many('em.hms.medication.history', 'rhs_anc_medication_history_rel', 'anc_id', 'medication_history_id', string='Medication History',compute= '_compute_medication_history')
+    surgical_history_ids = fields.Many2many('em.hms.surgical.history', 'rhs_anc_surgical_history_rel', 'anc_id', 'surgical_history_id', string='Surgical History',compute= '_compute_surgical_history')
     current_complaint = fields.Char('Current Complaint', tracking=True)
     diagnosis_id = fields.Many2one('em.hms.icd10', string='Diagnosis', tracking=True)
     procedures_followed = fields.Char('Procedures Followed', tracking=True)
@@ -55,3 +56,41 @@ class EmHmsGeneralClinicVisit(models.Model):
         self.write({
             'state': 'done'
         })
+
+
+    @api.depends('patient_id')
+    def _compute_medical_history(self):
+        for rec in self:
+           if rec.patient_id:
+               
+               rec.medical_history_ids = rec.patient_id.medical_history_ids
+           else:
+              
+               rec.medical_history_ids = [(5, 0, 0)]
+    @api.depends('patient_id')
+    def _compute_allergic_history(self):
+        for rec in self:
+           if rec.patient_id:
+               
+               rec.allergic_history_ids = rec.patient_id.allergic_history_ids
+           else:
+              
+               rec.allergic_history_ids = [(5, 0, 0)]
+    @api.depends('patient_id')
+    def _compute_medication_history(self):
+        for rec in self:
+           if rec.patient_id:
+               
+               rec.medication_history_ids = rec.patient_id.medication_history_ids
+           else:
+              
+               rec.medication_history_ids = [(5, 0, 0)]
+    @api.depends('patient_id')
+    def _compute_surgical_history(self):
+        for rec in self:
+           if rec.patient_id:
+               
+               rec.surgical_history_ids = rec.patient_id.surgical_history_ids
+           else:
+              
+               rec.surgical_history_ids = [(5, 0, 0)]

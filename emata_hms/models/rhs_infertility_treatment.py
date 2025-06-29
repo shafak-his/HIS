@@ -29,7 +29,7 @@ class EmHmsRHSInfertilityTreatment(models.Model):
         ('abnormal', 'Abnormal')
     ], string='Husband''s Analysis', tracking=True)
     explain_abnormal = fields.Char('If Abnormal, Explain', tracking=True)
-    husband_analysis_date = fields.Date('Last Marriage Date', tracking=True)
+    husband_analysis_date = fields.Date('Husband Analysis Date', tracking=True)
     wife_hormonal_tests = fields.Char('Hormonal Tests Performed On The Wife', tracking=True)
     is_ovulation_natural1 = fields.Boolean('Monitoring Natural Ovulation (1st Month)', tracking=True)
     ovum_measuring_natural1 = fields.Integer('Measuring The Ovum (1st Month)', tracking=True)

@@ -113,7 +113,7 @@
                             
                             <field name="arterial_pressure" optional="hide" />
                             <field name="weight" optional="hide" />
-                            <field name="fetal_hr" optional="hide" />
+                            <field name="pulse_rate" optional="hide" />
                             <field name="main_complaint" optional="hide" />
                             <field name="head_diameter" optional="hide" />
                             <field name="thigh_length" optional="hide" />

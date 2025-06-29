@@ -226,7 +226,8 @@
                     </group>
                     <notebook>
                         <page name="medical_history" string="Medical History">
-                            <field name="medical_history_ids" />
+                            <field name="medical_history_ids" widget="many2many_tags"  />
+                          
                         </page>
                         <page name="surgical_history" string="Surgical History">
                             <field name="surgical_history_ids" />
