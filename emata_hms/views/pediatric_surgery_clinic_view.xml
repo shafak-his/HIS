@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_pediatric_surgery_clinic_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.pediatric.surgery.clinic.view.tree</field>
+        <field name="model">em.hms.pediatric.surgery.clinic</field>
+        <field name="arch" type="xml">
+            <tree string="Surgery Clinics">
+                <field name="project_id" optional="show" />
+                <field name="patient_id" />
+                <field name="doctor_id" />
+                <field name="admission_datetime" />
+                <field name="weight" optional="hide" />
+                <field name="pressure" optional="hide" />
+                <field name="pulse" optional="hide" />
+                <field name="oxygen" optional="hide" />
+                <field name="temperature" optional="hide" />
+                <field name="case_type" optional="hide" />
+                <field name="main_complaint" />
+                <field name="complaint_details" optional="hide" />
+                <field name="diagnosis_id" optional="hide" />
+                <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="allergic_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="graduation_to" optional="hide" />
+                <field name="graduation_date" optional="hide" />
+                <field name="medical_recommendations" optional="hide" />
+                <field name="consultations" optional="hide" />
+                <field name="notes" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_pediatric_surgery_clinic_view_form" model="ir.ui.view">
+        <field name="name">em.hms.pediatric.surgery.clinic.view.form</field>
+        <field name="model">em.hms.pediatric.surgery.clinic</field>
+        <field name="arch" type="xml">
+            <form string="Surgery Clinic">
+                <header>
+                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="bnf_status" readonly="1" />
+                            <field name="allowed_project_ids" invisible="1" />
+                            <field name="admission_datetime" />
+                            <field name="patient_id" />
+                            <field name="doctor_id" />
+                            <field name="case_type" />
+                        </group>
+                        <group>
+                            <field name="weight" />
+                            <field name="temperature" />
+                            <field name="pressure" />
+                            <field name="oxygen" />
+                            <field name="pulse" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="main_complaint" widget="text" />
+                        <field name="complaint_details" widget="text" />
+                    </group>
+                    <group>
+                        <field name="medical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="allergic_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="surgical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="medication_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="diagnosis_id" />
+                        </group>
+                        <group>
+                            <field name="graduation_to" />
+                            <field name="graduation_date" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="medical_recommendations" widget="text" />
+                        <field name="consultations" widget="text" />
+                        <field name="notes" widget="text" />
+                    </group>
+                    <group>
+                        <field name="medication_request_line_ids" context="{'default_patient_id': patient_id}" />
+                        <field name="analysis_request_line_ids" />
+                        <field name="image_request_line_ids" />
+                    </group>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_pediatric_surgery_clinic_search" model="ir.ui.view">
+        <field name="name">em.hms.pediatric.surgery.clinic.view.search</field>
+        <field name="model">em.hms.pediatric.surgery.clinic</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <field name="doctor_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                    <filter string="Doctor" name="doctor_id" context="{'group_by': 'doctor_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_pediatric_surgery_clinic_action" model="ir.actions.act_window">
+        <field name="name">Surgery Clinics</field>
+        <field name="res_model">em.hms.pediatric.surgery.clinic</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

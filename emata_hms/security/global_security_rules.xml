@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="0">
+
+    <record id="em_hms_medication_request_line_comp_rule" model="ir.rule">
+        <field name="name" >medication request line multi-company</field>
+        <field name="model_id" ref="model_em_hms_medication_request_line"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_analysis_request_comp_rule" model="ir.rule">
+        <field name="name" >analysis request multi-company</field>
+        <field name="model_id" ref="model_em_hms_analysis_request"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_analysis_request_line_comp_rule" model="ir.rule">
+        <field name="name" >analysis request line multi-company</field>
+        <field name="model_id" ref="model_em_hms_analysis_request_line"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_image_request_comp_rule" model="ir.rule">
+        <field name="name" >image request multi-company</field>
+        <field name="model_id" ref="model_em_hms_image_request"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_image_request_line_comp_rule" model="ir.rule">
+        <field name="name" >image request line multi-company</field>
+        <field name="model_id" ref="model_em_hms_image_request_line"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_general_clinic_visit_comp_rule" model="ir.rule">
+        <field name="name" >general clinic visit multi-company</field>
+        <field name="model_id" ref="model_em_hms_general_clinic_visit"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_mh_referral_comp_rule" model="ir.rule">
+        <field name="name" >mh referral multi-company</field>
+        <field name="model_id" ref="model_em_hms_mh_referral"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_mh_gap_comp_rule" model="ir.rule">
+        <field name="name" >mh gap multi-company</field>
+        <field name="model_id" ref="model_em_hms_mh_gap"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_mh_awareness_comp_rule" model="ir.rule">
+        <field name="name" >mh awareness multi-company</field>
+        <field name="model_id" ref="model_em_hms_mh_awareness"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_mh_pmplus_comp_rule" model="ir.rule">
+        <field name="name" >mh pmplus multi-company</field>
+        <field name="model_id" ref="model_em_hms_mh_pmplus"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_rhs_anc_comp_rule" model="ir.rule">
+        <field name="name" >rhs anc multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_anc"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_rhs_anc_visit_comp_rule" model="ir.rule">
+        <field name="name" >rhs anc visit multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_anc_visit"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+  
+   <record id="em_hms_rhs_previous_obstetric_history_comp_rule" model="ir.rule">
+        <field name="name" >previous obstetric history multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_anc_previous_obstetric"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_rhs_delivery_comp_rule" model="ir.rule">
+        <field name="name" >rhs delivery multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_delivery"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_vital_sign_comp_rule" model="ir.rule">
+        <field name="name" >vital sign multi-company</field>
+        <field name="model_id" ref="model_em_hms_vital_sign"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_labor_comp_rule" model="ir.rule">
+        <field name="name" >labor multi-company</field>
+        <field name="model_id" ref="model_em_hms_labor"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_daily_observation_comp_rule" model="ir.rule">
+        <field name="name" >daily observation multi-company</field>
+        <field name="model_id" ref="model_em_hms_daily_observation"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_post_surgery_comp_rule" model="ir.rule">
+        <field name="name" >post surgery multi-company</field>
+        <field name="model_id" ref="model_em_hms_post_surgery"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_rhs_pnc_comp_rule" model="ir.rule">
+        <field name="name" >rhs pnc multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_pnc"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_rhs_pnc_visit_comp_rule" model="ir.rule">
+        <field name="name" >rhs pnc visit multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_pnc_visit"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_rhs_edc_comp_rule" model="ir.rule">
+        <field name="name" >rhs edc multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_edc"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_rhs_infertility_treatment_comp_rule" model="ir.rule">
+        <field name="name" >rhs infertility treatment multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_infertility_treatment"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_rhs_awareness_comp_rule" model="ir.rule">
+        <field name="name" >rhs awareness multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_awareness"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_rhs_fp_comp_rule" model="ir.rule">
+        <field name="name" >rhs fp multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_fp"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_rhs_hospitalization_comp_rule" model="ir.rule">
+        <field name="name" >rhs hospitalization multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_hospitalization"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_rhs_hospitalization_monitoring_comp_rule" model="ir.rule">
+        <field name="name" >rhs hospitalization monitoring multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_hospitalization_monitoring"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_rhs_surgery_comp_rule" model="ir.rule">
+        <field name="name" >rhs surgery multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_surgery"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_dial_nephrology_comp_rule" model="ir.rule">
+        <field name="name" >dial nephrology multi-company</field>
+        <field name="model_id" ref="model_em_hms_dial_nephrology"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_dial_urology_comp_rule" model="ir.rule">
+        <field name="name" >dial urology multi-company</field>
+        <field name="model_id" ref="model_em_hms_dial_urology"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_dial_lithotripsy_comp_rule" model="ir.rule">
+        <field name="name" >dial lithotripsy multi-company</field>
+        <field name="model_id" ref="model_em_hms_dial_lithotripsy"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_dial_prescription_comp_rule" model="ir.rule">
+        <field name="name" >dial prescription multi-company</field>
+        <field name="model_id" ref="model_em_hms_dial_prescription"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_dial_kidney_history_comp_rule" model="ir.rule">
+        <field name="name" >dial kidney history multi-company</field>
+        <field name="model_id" ref="model_em_hms_dial_kidney_history"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_dial_session_info_comp_rule" model="ir.rule">
+        <field name="name" >dial session info multi-company</field>
+        <field name="model_id" ref="model_em_hms_dial_session_info"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_dial_transfusion_comp_rule" model="ir.rule">
+        <field name="name" >dial transfusion multi-company</field>
+        <field name="model_id" ref="model_em_hms_dial_transfusion"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_dial_visit_comp_rule" model="ir.rule">
+        <field name="name" >dial visit multi-company</field>
+        <field name="model_id" ref="model_em_hms_dial_visit"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_comp_rule" model="ir.rule">
+        <field name="name" >nutrition group session multi-company</field>
+        <field name="model_id" ref="model_em_hms_nutrition_group_session"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_topic_comp_rule" model="ir.rule">
+        <field name="name" >nutrition group session topic multi-company</field>
+        <field name="model_id" ref="model_em_hms_nutrition_group_session_topic"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_nutrition_group_session_bnf_comp_rule" model="ir.rule">
+        <field name="name" >nutrition group session bnf multi-company</field>
+        <field name="model_id" ref="model_em_hms_nutrition_group_session_bnf"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_nutrition_screening_child_comp_rule" model="ir.rule">
+        <field name="name" >nutrition screening child multi-company</field>
+        <field name="model_id" ref="model_em_hms_nutrition_screening_child"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_nutrition_screening_woman_comp_rule" model="ir.rule">
+        <field name="name" >nutrition screening woman multi-company</field>
+        <field name="model_id" ref="model_em_hms_nutrition_screening_woman"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_nutrition_screening_woman_topic_comp_rule" model="ir.rule">
+        <field name="name" >nutrition screening woman topic multi-company</field>
+        <field name="model_id" ref="model_em_hms_nutrition_screening_woman_topic"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_nutrition_stabilization_center_comp_rule" model="ir.rule">
+        <field name="name" >nutrition stabilization center multi-company</field>
+        <field name="model_id" ref="model_em_hms_nutrition_stabilization_center"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_chw_group_session_comp_rule" model="ir.rule">
+        <field name="name" >chw group session multi-company</field>
+        <field name="model_id" ref="model_em_hms_chw_group_session"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_chw_group_session_bnf_comp_rule" model="ir.rule">
+        <field name="name" >chw group session bnf multi-company</field>
+        <field name="model_id" ref="model_em_hms_chw_group_session_bnf"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_chw_individual_session_comp_rule" model="ir.rule">
+        <field name="name" >chw individual session multi-company</field>
+        <field name="model_id" ref="model_em_hms_chw_individual_session"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_rhs_gynochological_clinic_visit_comp_rule" model="ir.rule">
+        <field name="name" >rhs gynochological clinic visit multi-company</field>
+        <field name="model_id" ref="model_em_hms_rhs_gynochological_clinic_visit"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_patient_admission_comp_rule" model="ir.rule">
+        <field name="name" >patient admission multi-company</field>
+        <field name="model_id" ref="model_em_hms_patient_admission"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_patient_admission_surgery_comp_rule" model="ir.rule">
+        <field name="name" >patient admission surgery multi-company</field>
+        <field name="model_id" ref="model_em_hms_patient_admission_surgery"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_patient_admission_visit_comp_rule" model="ir.rule">
+        <field name="name" >patient admission visit multi-company</field>
+        <field name="model_id" ref="model_em_hms_patient_admission_visit"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_daily_necessity_comp_rule" model="ir.rule">
+        <field name="name" >daily necessity multi-company</field>
+        <field name="model_id" ref="model_em_hms_daily_necessity"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_necessity_giving_comp_rule" model="ir.rule">
+        <field name="name" >necessity giving multi-company</field>
+        <field name="model_id" ref="model_em_hms_necessity_giving"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_pediatric_incubator_admission_comp_rule" model="ir.rule">
+        <field name="name" >pediatric incubator admission multi-company</field>
+        <field name="model_id" ref="model_em_hms_pediatric_incubator_admission"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_pediatric_ward_admission_comp_rule" model="ir.rule">
+        <field name="name" >pediatric ward admission multi-company</field>
+        <field name="model_id" ref="model_em_hms_pediatric_ward_admission"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_pediatric_surgery_comp_rule" model="ir.rule">
+        <field name="name" >pediatric surgery multi-company</field>
+        <field name="model_id" ref="model_em_hms_pediatric_surgery"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_pediatric_clinic_comp_rule" model="ir.rule">
+        <field name="name" >pediatric clinic multi-company</field>
+        <field name="model_id" ref="model_em_hms_pediatric_clinic"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_pediatric_surgery_clinic_comp_rule" model="ir.rule">
+        <field name="name" >pediatric surgery clinic multi-company</field>
+        <field name="model_id" ref="model_em_hms_pediatric_surgery_clinic"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_pediatric_phototherapy_comp_rule" model="ir.rule">
+        <field name="name" >pediatric phototherapy multi-company</field>
+        <field name="model_id" ref="model_em_hms_pediatric_phototherapy"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_pediatric_icu_comp_rule" model="ir.rule">
+        <field name="name" >pediatric icu multi-company</field>
+        <field name="model_id" ref="model_em_hms_pediatric_icu"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_pediatric_nicu_comp_rule" model="ir.rule">
+        <field name="name" >pediatric nicu multi-company</field>
+        <field name="model_id" ref="model_em_hms_pediatric_nicu"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_pediatric_newborn_examination_comp_rule" model="ir.rule">
+        <field name="name" >pediatric newborn examination multi-company</field>
+        <field name="model_id" ref="model_em_hms_pediatric_newborn_examination"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_referral_comp_rule" model="ir.rule">
+        <field name="name" >referral multi-company</field>
+        <field name="model_id" ref="model_em_hms_referral"/>
+        <field name="domain_force"> ['|', ('company_id', 'parent_of', company_ids), ('company_id', '=', False)]</field>
+    </record>
+
+    <record id="em_hms_clinic_comp_rule" model="ir.rule">
+        <field name="name" >clinic multi-company</field>
+        <field name="model_id" ref="model_em_hms_clinic"/>
+        <field name="domain_force"> ['|', ('company_ids', 'in', company_ids), ('company_ids', '=', False)]</field>
+    </record>
+
+</data>
+</odoo>

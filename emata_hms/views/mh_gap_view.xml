@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_mh_gap_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.mh.gap.view.tree</field>
+        <field name="model">em.hms.mh.gap</field>
+        <field name="arch" type="xml">
+            <tree string="Gaps">
+                <field name="project_id" optional="show" />
+                <field name="session_date" />
+                <field name="patient_id" />
+                <field name="doctor_id" />
+                <field name="educational_level" optional="hide" />
+                <field name="service_type" />
+                <field name="is_mh_assessment" optional="hide" />
+                <field name="is_pss_service" optional="hide" />
+                <field name="severity_score" optional="hide" />
+                <field name="principal_diagnosis" optional="hide" />
+                <field name="file_status" optional="hide" />
+                <field name="case_closure_date" optional="hide" />
+                <field name="pre_gaf" optional="hide" />
+                <field name="post_gaf" optional="hide" />
+                <field name="closure_reason" optional="hide" />
+                <field name="other_closure_reason" optional="hide" />
+                <field name="company_id" optional="hide" />
+                <field name="service_provider_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_mh_gap_view_form" model="ir.ui.view">
+        <field name="name">em.hms.mh.gap.view.form</field>
+        <field name="model">em.hms.mh.gap</field>
+        <field name="arch" type="xml">
+            <form string="Gap">
+                <header>
+                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="bnf_status" readonly="1" />
+                            <field name="allowed_project_ids" invisible="1" />
+                            <field name="patient_id" />
+                            <field name="doctor_id" />
+                            <field name="session_date" />
+                            <field name="educational_level" widget="radio" />
+                            <field name="service_type" widget="radio" />
+                        </group>
+                        <group>
+                            <field name="is_mh_assessment" widget="boolean_toggle" />
+                            <field name="is_pss_service" widget="boolean_toggle" />
+                            <field name="severity_score" widget="radio" />
+                            <field name="principal_diagnosis" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="file_status" widget="radio" />
+                            <field name="case_closure_date" widget="date"
+                                invisible="file_status != 'closed'" />
+                            <field name="pre_gaf" invisible="file_status != 'closed'" />
+                            <field name="post_gaf" invisible="file_status != 'closed'" />
+                            <field name="closure_reason" invisible="file_status != 'closed'" />
+                            <field name="other_closure_reason"
+                                invisible="file_status != 'closed' or closure_reason != 'other'" />
+                        </group>
+                        <group>
+                            <field name="service_provider_id" />
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="medication_request_line_ids" context="{'default_patient_id': patient_id}" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_mh_gap_search" model="ir.ui.view">
+        <field name="name">em.hms.mh.gap.view.search</field>
+        <field name="model">em.hms.mh.gap</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_mh_gap_action" model="ir.actions.act_window">
+        <field name="name">Gaps</field>
+        <field name="res_model">em.hms.mh.gap</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

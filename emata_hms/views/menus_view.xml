@@ -1,0 +1,669 @@
+<?xml version="1.0"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Administration -->
+        <menuitem id="menu_em_hms_admin_root"
+            name="Administration"
+            web_icon="emata_hms,static/description/icon-config.png"
+            sequence="99"
+        />
+        <menuitem id="menu_em_hms_clinic"
+            name="Clinics"
+            parent="menu_em_hms_admin_root"
+            action="emata_hms.em_hms_clinic_action"
+            sequence="1" />
+
+        <menuitem id="menu_em_hms_location_root"
+            name="Locations"
+            parent="menu_em_hms_admin_root"
+            sequence="2" />
+        <menuitem id="menu_em_hms_project"
+            name="Projects"
+            parent="menu_em_hms_admin_root"
+            action="emata_hms.em_hms_project_action"
+            sequence="5" />
+        <!-- <menuitem id="menu_country_emata"
+            action="base.action_country"
+            parent="menu_em_hms_location_root"
+            sequence="50"/> -->
+        <menuitem id="menu_country_state_emata"
+            name="Governorates"
+            action="base.action_country_state"
+            parent="menu_em_hms_location_root"
+            sequence="52"/>
+        <menuitem id="menu_country_district_emata"
+            action="emata_hms.action_em_country_district"
+            parent="menu_em_hms_location_root"
+            sequence="53"/>
+        <menuitem id="menu_country_sub_district_emata"
+            action="emata_hms.action_em_country_sub_district"
+            parent="menu_em_hms_location_root"
+            sequence="54"/>
+        <menuitem id="menu_em_hms_location"
+            name="Locations"
+            parent="menu_em_hms_location_root"
+            action="emata_hms.action_em_location"
+            sequence="55" />
+
+
+        <menuitem id="menu_em_hms_icd10"
+            name="ICD10"
+            parent="menu_em_hms_admin_root"
+            action="emata_hms.em_hms_icd10_action"
+            sequence="5" />
+        <menuitem id="menu_em_hms_day"
+            name="Week Days"
+            parent="menu_em_hms_admin_root"
+            action="emata_hms.em_hms_day_action"
+            sequence="6" />
+
+        <menuitem id="menu_em_hms_medical_service_items"
+            name="Medical Service Items"
+            parent="menu_em_hms_admin_root"
+            sequence="20" />
+        <menuitem id="menu_em_hms_product_medication"
+            name="Medications"
+            parent="menu_em_hms_medical_service_items"
+            action="emata_hms.em_product_template_medication_action"
+            sequence="5" />
+        <menuitem id="menu_em_hms_product_birth_medication"
+            name="Birth Medications"
+            parent="menu_em_hms_medical_service_items"
+            action="emata_hms.em_product_template_birth_medication_action"
+            sequence="7" />
+        <menuitem id="menu_em_hms_product_medical_analysis"
+            name="Medical Analysis"
+            parent="menu_em_hms_medical_service_items"
+            action="emata_hms.em_product_template_medical_analysis_action"
+            sequence="10" />
+        <menuitem id="menu_em_hms_product_medical_imaging"
+            name="Medical Imaging"
+            parent="menu_em_hms_medical_service_items"
+            action="emata_hms.em_product_template_medical_imaging_action"
+            sequence="15" />
+
+        <menuitem id="menu_em_hms_rhs_helper_lists"
+            name="RH Master Data"
+            parent="menu_em_hms_admin_root"
+            sequence="34" />
+        <menuitem id="menu_em_hms_rhs_pathological_find"
+            name="Pathological Findings"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_pathological_find_action"
+            sequence="1" />
+        <menuitem id="menu_em_hms_rhs_postpartum_comp"
+            name="Postpartum Complications"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_postpartum_comp_action"
+            sequence="2" />
+        <menuitem id="menu_em_hms_rhs_wound"
+            name="Wounds"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_wound_action"
+            sequence="3" />
+        <menuitem id="menu_em_hms_rhs_edc_clinical_condition"
+            name="Clinical Conditions"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_edc_clinical_condition_action"
+            sequence="4" />
+        <menuitem id="menu_em_hms_rhs_edc_symptom"
+            name="Symptoms"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_edc_symptom_action"
+            sequence="5" />
+        <menuitem id="menu_em_hms_rhs_edc_sign"
+            name="Signs"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_edc_sign_action"
+            sequence="6" />
+        <menuitem id="menu_em_hms_rhs_edc_ascus"
+            name="ASCUS"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_edc_ascus_action"
+            sequence="7" />
+              <menuitem id="menu_em_hms_rhs_edc_plan"
+            name="Manegement And Follow-Up Plans"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_edc_plan_action"
+            sequence="8" />
+        <menuitem id="menu_em_hms_rhs_fp_problem"
+            name="Method-Related Health Problems"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_fp_problem_action"
+            sequence="9" />
+        <menuitem id="menu_em_hms_rhs_fp_pregnancy_check"
+            name="Check For Pregnancy"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_fp_pregnancy_check_action"
+            sequence="10" />
+        <menuitem id="menu_em_hms_rhs_fp_medical_history"
+            name="Medical History And Habits"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_fp_medical_history_action"
+            sequence="11" />
+        <menuitem id="menu_em_hms_rhs_fp_complaint"
+            name="Complaints"
+            parent="menu_em_hms_rhs_helper_lists"
+            action="emata_hms.em_hms_rhs_fp_complaint_action"
+            sequence="12" />
+       <menuitem id="menu_em_hms_rhs_medical_sign"
+           name="Midecal Sign"
+           parent="menu_em_hms_rhs_helper_lists"
+           action="emata_hms.em_hms_medical_signs_action"
+           sequence="13" />
+      <menuitem id="menu_em_hms_rhs_fp_contraceptive_method"
+          name="Contraceptive Method"
+          parent="menu_em_hms_rhs_helper_lists"
+          action="emata_hms.em_hms_contraceptive_method_action"
+          sequence="14" />
+     
+        
+        <!-- General -->
+        <menuitem id="menu_em_hms_general_root"
+            name="General Clinic"
+            web_icon="emata_hms,static/description/icon-heart.png"
+            sequence="1"
+        />
+        <menuitem id="menu_em_hms_general_clinic_visit"
+            name="Clinic Visit"
+            parent="menu_em_hms_general_root"
+            action="emata_hms.em_hms_general_clinic_visit_action"
+            sequence="11" />
+
+        <!-- Dialysis -->
+        <menuitem id="menu_em_hms_dial_root"
+            name="Dialysis"
+            web_icon="emata_hms,static/description/icon-hms.png"
+            sequence="4"
+        />
+        <menuitem id="menu_em_hms_dial_nephrology"
+                  name="Nephrology Clinic"
+                  parent="menu_em_hms_dial_root"
+                  action="emata_hms.em_hms_dial_nephrology_action"
+                  sequence="41" />
+        <menuitem id="menu_em_hms_dial_urology"
+                  name="Urology Clinic"
+                  parent="menu_em_hms_dial_root"
+                  action="emata_hms.em_hms_dial_urology_action"
+                  sequence="42" />
+        <menuitem id="menu_em_hms_dial_lithotripsy"
+                  name="Lithotripsy"
+                  parent="menu_em_hms_dial_root"
+                  action="emata_hms.em_hms_dial_lithotripsy_action"
+                  sequence="43" />
+        <menuitem id="menu_em_hms_dial_prescription"
+                  name="Dialysis Prescription"
+                  parent="menu_em_hms_dial_root"
+                  action="emata_hms.em_hms_dial_prescription_action"
+                  sequence="44" />
+        <menuitem id="menu_em_hms_dial_kidney_history"
+                  name="Kidney disease history"
+                  parent="menu_em_hms_dial_root"
+                  action="emata_hms.em_hms_dial_kidney_history_action"
+                  sequence="45" />
+        <menuitem id="menu_em_hms_dial_visit"
+                  name="Dialysis visit"
+                  parent="menu_em_hms_dial_root"
+                  action="emata_hms.em_hms_dial_visit_action"
+                  sequence="46" />
+
+        <!-- Mental Health -->
+        <menuitem id="menu_em_hms_mh_root"
+            name="Mental Health"
+            web_icon="emata_hms,static/description/icon-hms.png"
+            sequence="2"
+        />
+        <menuitem id="menu_em_hms_mh_referral"
+            name="Referral"
+            parent="menu_em_hms_mh_root"
+            action="emata_hms.em_hms_mh_referral_action"
+            sequence="21" />
+        <menuitem id="menu_em_hms_mh_gap"
+            name="Gap"
+            parent="menu_em_hms_mh_root"
+            action="emata_hms.em_hms_mh_gap_action"
+            sequence="22" />
+        <menuitem id="menu_em_hms_mh_awareness"
+            name="Group Awareness Session"
+            parent="menu_em_hms_mh_root"
+            action="emata_hms.em_hms_mh_awareness_action"
+            sequence="23" />
+        <menuitem id="menu_em_hms_mh_psplus"
+            name="PM+"
+            parent="menu_em_hms_mh_root"
+            action="emata_hms.em_hms_mh_pmplus_action"
+            sequence="24" />
+
+        <!-- RH Service -->
+        <menuitem id="menu_em_hms_rhs_root"
+            name="RH Service"
+            web_icon="emata_hms,static/description/icon-hms.png"
+            sequence="3"
+        />
+        <menuitem id="menu_em_hms_rhs_anc"
+            name="ANC"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_anc_action"
+            sequence="31" />
+        <menuitem id="menu_em_hms_rhs_pnc"
+            name="PNC"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_pnc_action"
+            sequence="32" />
+        <menuitem id="menu_em_hms_rhs_delivery"
+            name="Delivery"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_delivery_action"
+            sequence="33" />
+        <menuitem id="menu_em_hms_rhs_edc"
+            name="EDC"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_edc_action"
+            sequence="34" />
+        <menuitem id="menu_em_hms_rhs_infertility_treatment"
+            name="Infertility Treatment"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_infertility_treatment_action"
+            sequence="35" />
+        <menuitem id="menu_em_hms_rhs_gynochological_clinic_visit"
+            name="Gynochological Clinic Visit"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_gynochological_clinic_visit_action"
+            sequence="36" />
+        <menuitem id="menu_em_hms_rhs_awareness"
+            name="Awareness"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_awareness_action"
+            sequence="37" />
+        <menuitem id="menu_em_hms_rhs_fp"
+            name="FP"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_fp_action"
+            sequence="38" />
+        <menuitem id="menu_em_hms_rhs_hospitalization"
+            name="Hospitalization"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_hospitalization_action"
+            sequence="39" />
+        <menuitem id="menu_em_hms_rhs_surgery"
+            name="Surgery"
+            parent="menu_em_hms_rhs_root"
+            action="emata_hms.em_hms_rhs_surgery_action"
+            sequence="40" />
+        
+        <menuitem id="menu_em_hms_rhs_reporting_tables"
+            name="Reporting Tables"
+            parent="menu_em_hms_rhs_root"
+            sequence="41" />
+        <menuitem id="menu_em_hms_rhs_anc_visit"
+            name="ANC Visits"
+            parent="menu_em_hms_rhs_reporting_tables"
+            action="emata_hms.em_hms_rhs_anc_visit_action"
+            sequence="1" />
+        <menuitem id="menu_em_hms_rhs_pnc_visit"
+            name="PNC Visits"
+            parent="menu_em_hms_rhs_reporting_tables"
+            action="emata_hms.em_hms_rhs_pnc_visit_action"
+            sequence="2" />
+        <menuitem id="menu_em_hms_rhs_vital_signs"
+            name="Vital Signs"
+            parent="menu_em_hms_rhs_reporting_tables"
+            action="emata_hms.em_hms_vital_signs_action"
+            sequence="3" />
+        <menuitem id="menu_em_hms_labor"
+            name="Labor Monitoring"
+            parent="menu_em_hms_rhs_reporting_tables"
+            action="emata_hms.em_hms_labor_action"
+            sequence="4" />
+        <menuitem id="menu_em_hms_rhs_delivery_post_birth"
+            name="Post-Surgery Monitoring"
+            parent="menu_em_hms_rhs_reporting_tables"
+            action="emata_hms.em_hms_post_surgery_action"
+            sequence="5" />
+
+        <!-- Nutrition -->
+        <menuitem id="menu_em_hms_nutrition_root"
+            name="Nutrition"
+            web_icon="emata_hms,static/description/icon-hms.png"
+            sequence="4"
+        />
+        <menuitem id="menu_em_hms_group_session_root"
+            name="Group Sessions"
+            parent="menu_em_hms_nutrition_root"
+            sequence="41" />
+        <menuitem id="menu_em_hms_nutrition_group_session"
+            name="Group Sessions"
+            parent="menu_em_hms_group_session_root"
+            action="emata_hms.em_hms_nutrition_group_session_action"
+            sequence="1" />
+        <menuitem id="menu_em_hms_nutrition_mtmsg"
+            name="MTMSG"
+            parent="menu_em_hms_group_session_root"
+            action="emata_hms.em_hms_nutrition_mtmsg_session_action"
+            sequence="2" />
+        <menuitem id="menu_em_hms_nutrition_ftfsg"
+            name="FTFSG"
+            parent="menu_em_hms_group_session_root"
+            action="emata_hms.em_hms_nutrition_ftfsg_session_action"
+            sequence="3" />
+
+        <menuitem id="menu_em_hms_malnutrition_screening"
+            name="Malnutrition Screening"
+            parent="menu_em_hms_nutrition_root"
+            sequence="42" />
+        <menuitem id="menu_em_hms_screening_child"
+            name="Children"
+            parent="menu_em_hms_malnutrition_screening"
+            action="emata_hms.em_hms_nutrition_screening_child_action"
+            sequence="1" />
+        <menuitem id="menu_em_hms_screening_woman"
+            name="Women"
+            parent="menu_em_hms_malnutrition_screening"
+            action="emata_hms.em_hms_nutrition_screening_woman_action"
+            sequence="2" />
+
+        <menuitem id="menu_em_hms_nutrition_stabilization_center"
+            name="Stabilization Center"
+            parent="menu_em_hms_nutrition_root"
+            action="emata_hms.em_hms_nutrition_stabilization_center_action"
+            sequence="43" />
+        
+        <menuitem id="menu_em_hms_nutrition_master_data"
+            name="Nutrition Master Data"
+            parent="menu_em_hms_admin_root"
+            sequence="47" />
+        <menuitem id="menu_em_hms_nutrition_team"
+            name="Nutrition Teams"
+            parent="menu_em_hms_nutrition_master_data"
+            action="emata_hms.em_hms_nutrition_team_action"
+            sequence="1" />
+        <menuitem id="menu_em_hms_nutrition_topic"
+            name="Session Topics"
+            parent="menu_em_hms_nutrition_master_data"
+            action="emata_hms.em_hms_nutrition_topic_action"
+            sequence="2" />
+        <!-- <menuitem id="menu_em_hms_nutrition_group_session_bnf"
+            name="Beneficiaries"
+            parent="menu_em_hms_nutrition_master_data"
+            action="emata_hms.em_hms_nutrition_group_session_bnf_action"
+            sequence="3" /> -->
+        <menuitem id="menu_em_hms_nutrition_bnf_visit"
+            name="Visits"
+            parent="menu_em_hms_nutrition_master_data"
+            action="emata_hms.em_hms_nutrition_bnf_visit_action"
+            sequence="4" />
+        <menuitem id="menu_em_hms_nutrition_danger_sign_child"
+            name="Danger Signs On Children"
+            parent="menu_em_hms_nutrition_master_data"
+            action="emata_hms.em_hms_nutrition_danger_sign_child_action"
+            sequence="5" />
+        <menuitem id="menu_em_hms_chw_master_data"
+            name="CHW Master Data"
+            parent="menu_em_hms_admin_root"
+            sequence="47" />
+        <menuitem id="menu_em_hms_nutrition_team"
+            name="CHW Session Group Beneficiaries"
+            parent="menu_em_hms_chw_master_data"
+            action="emata_hms.em_hms_chw_group_session_bnf_action"
+            sequence="1" />
+        <menuitem id="menu_em_hms_patient_admission_master_data"
+            name="Patient Admission Master Data"
+            parent="menu_em_hms_admin_root"
+            sequence="48" />
+        <menuitem id="menu_em_hms_surgical_procedure"
+            name="Surgical Procedures"
+            parent="menu_em_hms_patient_admission_master_data"
+            action="emata_hms.em_hms_surgical_procedure_action"
+            sequence="1" />
+        <menuitem id="menu_em_hms_surgical_subcategory"
+            name="Surgical Sub-Categories"
+            parent="menu_em_hms_patient_admission_master_data"
+            action="emata_hms.em_hms_surgical_subcategory_action"
+            sequence="2" />
+        <menuitem id="menu_em_hms_daily_necessity"
+            name="Daily Necessity"
+            parent="menu_em_hms_patient_admission_master_data"
+            action="emata_hms.em_hms_daily_necessity_action"
+            sequence="3" />
+        <menuitem id="menu_em_hms_necessity_giving"
+            name="Necessity Giving"
+            parent="menu_em_hms_patient_admission_master_data"
+            action="emata_hms.em_hms_necessity_giving_action"
+            sequence="4" />
+        <menuitem id="menu_em_hms_pediatric_master_data"
+            name="Pediatric Master Data"
+            parent="menu_em_hms_admin_root"
+            sequence="49" />
+        <menuitem id="menu_em_hms_child_care"
+            name="Child Care"
+            parent="menu_em_hms_pediatric_master_data"
+            action="emata_hms.em_hms_child_care_action"
+            sequence="1" />
+        
+            
+        <!-- CHW -->
+        <menuitem id="menu_em_hms_chw_root"
+            name="CHW"
+            web_icon="emata_hms,static/description/icon-hms.png"
+            sequence="5"
+        />
+        <menuitem id="menu_em_hms_chw_group_session"
+            name="Group Sessions"
+            parent="menu_em_hms_chw_root"
+            action="emata_hms.em_hms_chw_group_session_action"
+            sequence="51" />
+        <menuitem id="menu_em_hms_chw_individual_session"
+            name="Individual Sessions"
+            parent="menu_em_hms_chw_root"
+            action="emata_hms.em_hms_chw_individual_session_action"
+            sequence="52" />
+        
+        <!-- Patients Admission -->
+        <menuitem id="menu_em_hms_patient_admission_root"
+            name="Patients Admission"
+            web_icon="emata_hms,static/description/icon-hms.png"
+            sequence="6"
+        />
+        <menuitem id="menu_em_hms_patient_admission"
+            name="Patients Admission"
+            parent="menu_em_hms_patient_admission_root"
+            action="emata_hms.em_hms_patient_admission_action"
+        sequence="1" />
+        <menuitem id="menu_em_hms_patient_admission_reporting_tables"
+            name="Reporting Tables"
+            parent="menu_em_hms_patient_admission_root"
+            sequence="2" />
+        <menuitem id="menu_em_hms_patient_admission_surgery"
+            name="Surgeries"
+            parent="menu_em_hms_patient_admission_reporting_tables"
+            action="emata_hms.em_hms_patient_admission_surgery_action"
+            sequence="1" />
+        <menuitem id="menu_em_hms_patient_admission_visit"
+            name="Doctor Visits"
+            parent="menu_em_hms_patient_admission_reporting_tables"
+            action="emata_hms.em_hms_patient_admission_visit_action"
+            sequence="2" />
+        
+        <!-- Pediatric -->
+        <menuitem id="menu_em_hms_pediatric_root"
+            name="Pediatric"
+            web_icon="emata_hms,static/description/icon-hms.png"
+            sequence="7"
+        />
+        <menuitem id="menu_em_hms_pediatric_incubator_admission"
+            name="Incubator Admission"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_incubator_admission_action"
+            sequence="1"
+        />
+        <menuitem id="menu_em_hms_pediatric_ward_admission"
+            name="Ward Admission"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_ward_admission_action"
+            sequence="2"
+        />
+        <menuitem id="menu_em_hms_surgery_admission"
+            name="Surgery"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_surgery_action"
+            sequence="3"
+        />
+        <menuitem id="menu_em_hms_clinic_admission"
+            name="Clinic"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_clinic_action"
+            sequence="4"
+        />
+        <menuitem id="menu_em_hms_surgery_clinic_admission"
+            name="Surgery Clinic"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_surgery_clinic_action"
+            sequence="5"
+        />
+        <menuitem id="menu_em_hms_phototherapy_admission"
+            name="Phototherapy"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_phototherapy_action"
+            sequence="6"
+        />
+        <menuitem id="menu_em_hms_icu"
+            name="ICU"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_icu_action"
+            sequence="7"
+        />
+        <menuitem id="menu_em_hms_nicu"
+            name="NICU"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_nicu_action"
+            sequence="8"
+        />
+        <menuitem id="menu_em_hms_newborn_examination_admission"
+            name="Newborn Examination"
+            parent="menu_em_hms_pediatric_root"
+            action="emata_hms.em_hms_pediatric_newborn_examination_action"
+            sequence="9"
+        />
+
+        <!-- Pharmacy -->
+        <menuitem id="menu_em_hms_pharmacy_root"
+            name="Pharmacy"
+            web_icon="emata_hms,static/description/icon-pharmacy.png"
+            sequence="40"
+        />
+        <menuitem id="menu_em_hms_medication_request_line"
+            name="Medication Requests"
+            parent="menu_em_hms_pharmacy_root"
+            action="sale.action_quotations_with_onboarding"
+            sequence="10"
+        />
+        <menuitem id="menu_em_hms_medication_reporting_lines"
+            name="Reporting Lines"
+            parent="menu_em_hms_pharmacy_root"
+            sequence="90"
+        />
+        <menuitem id="menu_em_hms_medication_request_line_line"
+            name="Medication Request Lines"
+            parent="menu_em_hms_medication_reporting_lines"
+            action="emata_hms.em_hms_medication_request_line_action"
+            sequence="10"
+        />
+
+        <!-- Labaratory -->
+        <menuitem id="menu_em_hms_lab_root"
+            name="Labaratory"
+            web_icon="emata_hms,static/description/icon-lab.png"
+            sequence="42"
+        />
+        <menuitem id="menu_em_hms_analysis_request"
+            name="Analysis Requests"
+            parent="menu_em_hms_lab_root"
+            action="emata_hms.em_hms_analysis_request_action"
+            sequence="10"
+        />
+        <menuitem id="menu_em_hms_lab_reporting_lines"
+            name="Reporting Lines"
+            parent="menu_em_hms_lab_root"
+            sequence="90"
+        />
+        <menuitem id="menu_em_hms_analysis_request_line"
+            name="Analysis Request Lines"
+            parent="menu_em_hms_lab_reporting_lines"
+            action="emata_hms.em_hms_analysis_request_line_action"
+            sequence="10"
+        />
+
+        <!-- Imaging -->
+        <menuitem id="menu_em_hms_imaging_root"
+            name="Imaging"
+            web_icon="emata_hms,static/description/icon-imaging.png"
+            sequence="43"
+        />
+        <menuitem id="menu_em_hms_image_request"
+            name="Image Requests"
+            parent="menu_em_hms_imaging_root"
+            action="emata_hms.em_hms_image_request_action"
+            sequence="15"
+        />
+        <menuitem id="menu_em_hms_imaging_reporting_lines"
+            name="Reporting Lines"
+            parent="menu_em_hms_imaging_root"
+            sequence="90"
+        />
+        <menuitem id="menu_em_hms_image_request_line"
+            name="Image Request Lines"
+            parent="menu_em_hms_imaging_reporting_lines"
+            action="emata_hms.em_hms_image_request_line_action"
+            sequence="15"
+        />
+
+        <!-- Patients -->
+        <menuitem id="menu_em_hms_patient_root"
+            name="Patients"
+            web_icon="emata_hms,static/description/icon-patients.png"
+            sequence="44"
+        />
+        <menuitem id="menu_em_hms_patient"
+            name="Patients"
+            parent="menu_em_hms_patient_root"
+            action="emata_hms.action_em_res_partner_patient"
+            sequence="1" />
+        <menuitem id="menu_em_hms_patient_history_root"
+            name="Patient History"
+            parent="menu_em_hms_patient_root"
+            action="emata_hms.action_em_res_partner_patient"
+            sequence="5" />
+        <menuitem id="menu_em_hms_patient_medical_history"
+            name="Medical History"
+            parent="menu_em_hms_patient_history_root"
+            action="emata_hms.em_hms_medical_history_action"
+            sequence="5" />
+        <menuitem id="menu_em_hms_patient_medication_history"
+            name="Medication History"
+            parent="menu_em_hms_patient_history_root"
+            action="emata_hms.em_hms_medication_history_action"
+            sequence="7" />
+        <menuitem id="menu_em_hms_patient_allergic_history"
+            name="Allergic History"
+            parent="menu_em_hms_patient_history_root"
+            action="emata_hms.em_hms_allergic_history_action"
+            sequence="9" />
+        <menuitem id="menu_em_hms_patient_surgical_history"
+            name="Surgical History"
+            parent="menu_em_hms_patient_history_root"
+            action="emata_hms.em_hms_surgical_history_action"
+            sequence="11" />
+
+        <!-- Referral -->
+        <menuitem id="menu_em_hms_referral_root"
+            name="Referral"
+            web_icon="emata_hms,static/description/icon-hms.png"
+            sequence="52"
+        />
+        <menuitem id="menu_em_hms_referral"
+            name="Referral"
+            parent="menu_em_hms_referral_root"
+            action="emata_hms.em_hms_referral_action"
+            sequence="1" />
+    </data>
+</odoo>

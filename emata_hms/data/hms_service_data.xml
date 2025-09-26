@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="em_hms_service_rhs" model="em.hms.service">
+            <field name="name">RH Service</field>
+        </record>
+        <record id="em_hms_service_pediatric" model="em.hms.service">
+            <field name="name">Pediatric</field>
+        </record>
+        <record id="em_hms_service_patient_admission" model="em.hms.service">
+            <field name="name">Patient Admission</field>
+        </record>
+        <record id="em_hms_service_clinic" model="em.hms.service">
+            <field name="name">General Clinic</field>
+        </record>
+        <record id="em_hms_service_nutrition" model="em.hms.service">
+            <field name="name">Nutrition</field>
+        </record>
+        <record id="em_hms_service_dial" model="em.hms.service">
+            <field name="name">Dialysis</field>
+        </record>
+        <record id="em_hms_service_mh" model="em.hms.service">
+            <field name="name">Mental Health</field>
+        </record>
+        <record id="em_hms_service_chw" model="em.hms.service">
+            <field name="name">CHW</field>
+        </record>
+    </data>
+</odoo>

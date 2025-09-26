@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_pediatric_ward_admission_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.pediatric.ward.admission.view.tree</field>
+        <field name="model">em.hms.pediatric.ward.admission</field>
+        <field name="arch" type="xml">
+            <tree string="Ward Admission">
+                <field name="project_id" optional="show" />
+                <field name="patient_id" />
+                <field name="admitting_doctor_id" />
+                <field name="admitting_nurse_id"  optional="hide" />
+                <field name="admission_datetime" />
+                <field name="main_complaint" />
+                <field name="complaint_details" optional="hide" />
+                <field name="diagnosis_id" optional="hide" />
+                <field name="pregnancy_childbirth" optional="hide" />
+                <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="surgical_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="family_history" optional="hide" />
+                <field name="nutrition" optional="hide" />
+                <field name="vaccines" optional="hide" />
+                <field name="weight" optional="hide" />
+                <field name="height" optional="hide" />
+                <field name="cranial_circumference" optional="hide" />
+                <field name="graduation_to" optional="hide" />
+                <field name="graduation_date" optional="hide" />
+                <field name="medical_recommendations" optional="hide" />
+                <field name="consultations" optional="hide" />
+                <field name="notes" optional="hide" />
+                <field name="observation_ids" widget="many2many_tags" optional="hide" />
+                <field name="vital_sign_ids" widget="many2many_tags" optional="hide" />
+                <field name="necessity_ids" widget="many2many_tags" optional="hide" />
+                <field name="commitment_ids" widget="many2many_tags" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_pediatric_ward_admission_view_form" model="ir.ui.view">
+        <field name="name">em.hms.pediatric.ward.admission.view.form</field>
+        <field name="model">em.hms.pediatric.ward.admission</field>
+        <field name="arch" type="xml">
+            <form string="Ward Admission">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="bnf_status" readonly="1" />
+                            <field name="allowed_project_ids" invisible="1" />
+                            <field name="admission_datetime" />
+                            <field name="patient_id" />
+                        </group>
+                        <group>
+                            <field name="admitting_doctor_id" />
+                            <field name="admitting_nurse_id" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="main_complaint" widget="text" />
+                        <field name="complaint_details" widget="text" />
+                    </group>
+                    <group>
+                        <group>
+                            <field name="diagnosis_id" />
+                            <field name="pregnancy_childbirth" widget="text" />
+                        </group>
+                        <group>
+                            <field name="nutrition" widget="text" />
+                            <field name="vaccines" widget="text" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="medical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="surgical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="family_history" widget="text" />
+                        </group>
+                        <group>
+                            <field name="weight" />
+                            <field name="height" />
+                            <field name="cranial_circumference" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="graduation_to" />
+                            <field name="graduation_date" />
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="medical_recommendations" />
+                        <field name="consultations" widget="text" />
+                        <field name="notes" widget="text" />
+                    </group>
+                    <group>
+                        <field name="analysis_request_line_ids" />
+                        <field name="image_request_line_ids" />
+                    </group>
+                    <group>
+                        <field name="vital_sign_ids" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1">
+                                <field name="delivery_id" optional="hide" />
+                                <field name="hospitalization_id" optional="hide" />
+                                <field name="surgery_id" optional="hide" />
+                                <field name="icu_id" optional="hide" />
+                                <field name="nicu_id" optional="hide" />
+                                <field name="ward_admission_id" optional="hide" />
+                                <field name="patient_admission_id" optional="hide" />
+                                <field name="patient_id" />
+                                <field name="datetime" />
+                                <field name="pressure" optional="hide" />
+                                <field name="pulse" optional="hide" />
+                                <field name="oxygen" optional="hide" />
+                                <field name="temperature" optional="hide" />
+                                <field name="awareness" optional="hide" />
+                                <field name="stool" optional="hide" />
+                                <field name="urine" optional="hide" />
+                                <field name="breathing" optional="hide" />
+                                <field name="cyan" optional="hide" />
+                                <field name="seizures" optional="hide" />
+                                <field name="vomiting" optional="hide" />
+                                <field name="blood_sugar" optional="hide" />
+                                <field name="feeding_type" optional="hide" />
+                                <field name="breastfeeding" optional="hide" />
+                                <field name="ngt" optional="hide" />
+                                <field name="explosives" optional="hide" />
+                                <field name="oral_intake" optional="hide" />
+                                <field name="hair_reed" optional="hide" />
+                                <field name="notes" optional="hide" />
+                                <field name="company_id" optional="hide" />
+                            </tree>
+                        </field>
+                        <field name="observation_ids" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1">
+                                <field name="incubator_admission_id" optional="hide" />
+                                <field name="ward_admission_id" optional="hide" />
+                                <field name="responsible_nurse1_id" optional="hide" />
+                                <field name="responsible_nurse2_id" optional="hide" />
+                                <field name="resident_doctor_id" optional="hide" />
+                                <field name="specialist_doctor_id" optional="hide" />
+                                <field name="patient_id" />
+                                <field name="viewing_datetime" />
+                                <field name="testing_evaluation" optional="hide" />
+                                <field name="oral_nutrition" optional="hide" />
+                                <field name="company_id" optional="hide" />
+                            </tree>
+                        </field>
+                        <field name="necessity_ids" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1">
+                                <field name="patient_admission_id" optional="hide" />
+                                <field name="hospitalization_id" optional="hide" />
+                                <field name="incubator_admission_id" optional="hide" />
+                                <field name="ward_admission_id" optional="hide" />
+                                <field name="pediatric_surgery_id" optional="hide" />
+                                <field name="pediatric_clinic_id" optional="hide" />
+                                <field name="phototherapy_id" optional="hide" />
+                                <field name="icu_id" optional="hide" />
+                                <field name="nicu_id" optional="hide" />
+                                <field name="necessity_datetime" optional="hide" />
+                                <field name="patient_id" />
+                                <field name="ward_nurse_id" />
+                                <!-- <field name="medication_request_id" optional="hide" /> -->
+                                <field name="medication_id" optional="hide" />
+                                <field name="dosage" optional="hide" />
+                                <field name="rate" optional="hide" />
+                                <field name="dose_taking_way" optional="hide" />
+                                <field name="doctor_id" />
+                                <field name="company_id" optional="hide" />
+                            </tree>
+                        </field>
+                        <field name="commitment_ids" context="{'default_patient_id': patient_id}">
+                            <tree create="1" delete="1">
+                                <field name="patient_admission_id" optional="hide" />
+                                <field name="hospitalization_id" optional="hide" />
+                                <field name="incubator_admission_id" optional="hide" />
+                                <field name="ward_admission_id" optional="hide" />
+                                <field name="pediatric_surgery_id" optional="hide" />
+                                <field name="pediatric_clinic_id" optional="hide" />
+                                <field name="phototherapy_id" optional="hide" />
+                                <field name="icu_id" optional="hide" />
+                                <field name="nicu_id" optional="hide" />
+                                <field name="patient_id" />
+                                <field name="doctor_id" />
+                                <field name="necessity_id" optional="hide" />
+                                <field name="notes" optional="hide" />
+                                <field name="company_id" optional="hide" />
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_pediatric_ward_admission_search" model="ir.ui.view">
+        <field name="name">em.hms.pediatric.ward.admission.view.search</field>
+        <field name="model">em.hms.pediatric.ward.admission</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <field name="admitting_doctor_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                    <filter string="Admitting Doctor" name="admitting_doctor_id" context="{'group_by': 'admitting_doctor_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_pediatric_ward_admission_action" model="ir.actions.act_window">
+        <field name="name">Ward Admission</field>
+        <field name="res_model">em.hms.pediatric.ward.admission</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

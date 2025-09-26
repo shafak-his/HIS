@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_mh_awareness_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.mh.awareness.view.tree</field>
+        <field name="model">em.hms.mh.awareness</field>
+        <field name="arch" type="xml">
+            <tree string="Group Awareness Sessions">
+                <field name="project_id" optional="show" />
+                <field name="session_date" />
+                <field name="facilitator_name" />
+                <field name="activity_name" />
+                <field name="boys_count" optional="hide" />
+                <field name="men_count" optional="hide" />
+                <field name="girls_count" optional="hide" />
+                <field name="women_count" optional="hide" />
+                <field name="company_id" readonly="1" force_save="1" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_mh_awareness_view_form" model="ir.ui.view">
+        <field name="name">em.hms.mh.awareness.view.form</field>
+        <field name="model">em.hms.mh.awareness</field>
+        <field name="arch" type="xml">
+            <form string="Group Awareness Session">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="allowed_project_ids" invisible="1" />
+                            <field name="session_date" widget="date" />
+                            <field name="facilitator_name" />
+                            <field name="activity_name" widget="radio" />
+                        </group>
+                        <group>
+                            <field name="boys_count" />
+                            <field name="men_count" />
+                            <field name="girls_count" />
+                            <field name="women_count" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_mh_awareness_search" model="ir.ui.view">
+        <field name="name">em.hms.mh.awareness.view.search</field>
+        <field name="model">em.hms.mh.awareness</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="activity_name" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Activity Name" name="activity_name" context="{'group_by': 'activity_name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_mh_awareness_action" model="ir.actions.act_window">
+        <field name="name">Group Awareness Sessions</field>
+        <field name="res_model">em.hms.mh.awareness</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

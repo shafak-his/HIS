@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="em_hms_mh_referral_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.mh.referral.view.tree</field>
+        <field name="model">em.hms.mh.referral</field>
+        <field name="arch" type="xml">
+            <tree string="Referrals">
+                <field name="project_id" optional="show" />
+                <field name="referral_date" />
+                <field name="patient_id" />
+                <field name="referral_path" />
+                <field name="referred_via" />
+                <field name="severity" />
+                <field name="referral_code" />
+                <field name="privacy_confidentiality" optional="hide" />
+                <field name="key_protection_risks" optional="hide" />
+                <field name="referred_by_entity" optional="hide" />
+                <field name="referred_by_address" optional="hide" />
+                <field name="referred_by_telephone" optional="hide" />
+                <field name="referred_by_email" optional="hide" />
+                <field name="referred_to_entity" optional="hide" />
+                <field name="referred_to_address" optional="hide" />
+                <field name="referred_to_telephone" optional="hide" />
+                <field name="referred_to_email" optional="hide" />
+                <field name="services_required" optional="hide" />
+                <field name="where_to_submit_the_referral" optional="hide" />
+                <field name="phone_privacy" optional="hide" />
+                <field name="is_bnf_receive_referral_contact" optional="hide" />
+                <field name="is_bnf_receive_sp_contact" optional="hide" />
+                <field name="case_response" optional="hide" />
+                <field name="service_providing_date" optional="hide" />
+                <field name="service_confirmed_by" optional="hide" />
+                <field name="not_confirmed_service_response" optional="hide" />
+                <field name="other_not_confirmed_service_response" optional="hide" />
+                <field name="referrer_id" optional="hide" />
+                <field name="referee_manager_id" optional="hide" />
+                <field name="company_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_mh_referral_view_form" model="ir.ui.view">
+        <field name="name">em.hms.mh.referral.view.form</field>
+        <field name="model">em.hms.mh.referral</field>
+        <field name="arch" type="xml">
+            <form string="Referral">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
+                            <field name="bnf_status" readonly="1" />
+                            <field name="allowed_project_ids" invisible="1" />
+                            <field name="patient_id" />
+                            <field name="referral_date" widget="date" />
+                        </group>
+                        <group>
+                            <field name="referral_path" />
+                            <field name="referred_via" widget="radio" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="severity" widget="radio" />
+                            <field name="referral_code" />
+                        </group>
+                        <group>
+                            <field name="privacy_confidentiality" widget="radio" />
+                            <field name="key_protection_risks" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="referred_by_entity" />
+                            <field name="referred_by_address" />
+                            <field name="referred_by_telephone" />
+                            <field name="referred_by_email" widget="email" />
+                        </group>
+                        <group>
+                            <field name="referred_to_entity" />
+                            <field name="referred_to_address" />
+                            <field name="referred_to_telephone" />
+                            <field name="referred_to_email" widget="email" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="services_required" />
+                            <field name="where_to_submit_the_referral" />
+                            <field name="phone_privacy" widget="radio" />
+                        </group>
+                        <group>
+                            <field name="is_bnf_receive_referral_contact"
+                                widget="boolean_toggle" />
+                            <field name="is_bnf_receive_sp_contact"
+                                widget="boolean_toggle" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="case_response" />
+                            <field name="service_providing_date" widget="date" />
+                        </group>
+                        <group>
+                            <field name="service_confirmed_by" widget="radio" />
+                            <field name="not_confirmed_service_response"
+                                invisible="service_confirmed_by != 'not_confirmed'" />
+                            <field name="other_not_confirmed_service_response"
+                                invisible="not_confirmed_service_response != 'other'" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="referrer_id" />
+                            <field name="referee_manager_id" />
+                        </group>
+                        <group>
+                            <field name="company_id" readonly="1" force_save="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="em_hms_mh_referral_search" model="ir.ui.view">
+        <field name="name">em.hms.mh.referral.view.search</field>
+        <field name="model">em.hms.mh.referral</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="patient_id" icon="fa fa-filter"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="em_hms_mh_referral_action" model="ir.actions.act_window">
+        <field name="name">Referrals</field>
+        <field name="res_model">em.hms.mh.referral</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

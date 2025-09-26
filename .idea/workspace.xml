@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5269f131-d4c1-4cd1-8880-368281d645b6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/emata_hms/.vs/emata_hms/FileContentIndex/00b3a51b-8ff3-40fa-92ab-2e1d74ca32c4.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/.vs/emata_hms/FileContentIndex/4b2370a5-20fb-4238-9a9b-98a9b14977c4.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/.vs/emata_hms/FileContentIndex/a1d5f0bd-162d-4156-8d7e-1b8626504024.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/.vs/emata_hms/FileContentIndex/a5b574bf-90cf-4829-bf4e-ef1635992c01.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/.vs/emata_hms/FileContentIndex/c829e69a-8089-4cdd-8647-f2291ede9f84.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/.vs/emata_hms/v17/.wsuo" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/.vs/emata_hms/v17/.wsuo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/.vs/slnx.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/data/hms_service_data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/data/hms_service_data.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/data/sequence_data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/data/sequence_data.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/allergic_history.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/allergic_history.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/analysis_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/analysis_request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/chw_group_session.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/chw_group_session.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/chw_individual_session.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/chw_individual_session.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/clinic.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/clinic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/daily_necessity.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/daily_necessity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/daily_observation.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/daily_observation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/dial_kidney_history.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/dial_kidney_history.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/dial_lithotripsy.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/dial_lithotripsy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/dial_nephrology.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/dial_nephrology.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/dial_prescription.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/dial_prescription.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/dial_urology.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/dial_urology.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/dial_visit.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/dial_visit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/em_common_form.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/em_common_form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/general_clinic_visit.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/general_clinic_visit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/icd10.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/icd10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/image_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/image_request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/labor_monitoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/labor_monitoring.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/master_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/master_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/medical_history.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/medical_history.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/medical_sign.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/medical_sign.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/medication_history.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/medication_history.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/medication_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/medication_request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/mh_awareness.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/mh_awareness.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/mh_gap.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/mh_gap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/mh_pmplus.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/mh_pmplus.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/mh_referral.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/mh_referral.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/necessity_giving.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/necessity_giving.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/nutrition_group_session.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/nutrition_group_session.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/nutrition_screening_child.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/nutrition_screening_child.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/nutrition_screening_woman.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/nutrition_screening_woman.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/nutrition_stabilization_center.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/nutrition_stabilization_center.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/patient_admission.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/patient_admission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/patient_admission_surgery.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/patient_admission_surgery.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/patient_admission_visit.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/patient_admission_visit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/pediatric_clinic.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/pediatric_clinic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/pediatric_icu.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/pediatric_icu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/pediatric_incubator_admission.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/pediatric_incubator_admission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/pediatric_newborn_examination.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/pediatric_newborn_examination.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/pediatric_nicu.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/pediatric_nicu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/pediatric_phototherapy.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/pediatric_phototherapy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/pediatric_surgery.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/pediatric_surgery.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/pediatric_surgery_clinic.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/pediatric_surgery_clinic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/pediatric_ward_admission.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/pediatric_ward_admission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/post_surgery.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/post_surgery.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/product.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/product.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/project.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/referral.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/referral.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/res_partner.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/res_partner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/rhs_anc.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/rhs_anc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/rhs_anc_previous_obstetrich_history.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/rhs_anc_previous_obstetrich_history.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/rhs_anc_visit.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/rhs_anc_visit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/rhs_araweness.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/rhs_araweness.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/rhs_delivery.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/rhs_delivery.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/rhs_edc.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/rhs_edc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/rhs_fp.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/rhs_fp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/rhs_gynochological_clinic_visit.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/rhs_gynochological_clinic_visit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/rhs_hospitalization.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/rhs_hospitalization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/rhs_hospitalization_monitoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/rhs_hospitalization_monitoring.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/rhs_infertility_treatment.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/rhs_infertility_treatment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/rhs_pnc.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/rhs_pnc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/rhs_pnc_visit.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/rhs_pnc_visit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/rhs_surgery.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/rhs_surgery.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/sale_order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/surgical_history.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/surgical_history.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/surgical_procedure.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/surgical_procedure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/models/vital_sign.py" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/models/vital_sign.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/security/global_security_rules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/security/global_security_rules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/security/ir.model.access.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/analysis_request_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/analysis_request_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/chw_group_session.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/chw_group_session.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/chw_individual_session.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/chw_individual_session.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/clinic_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/clinic_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/daily_necessity_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/daily_necessity_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/daily_observation_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/daily_observation_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/dial_kidney_history_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/dial_kidney_history_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/dial_lithotripsy_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/dial_lithotripsy_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/dial_nephrology_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/dial_nephrology_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/dial_prescription_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/dial_prescription_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/dial_urology_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/dial_urology_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/dial_visit_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/dial_visit_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/general_clinic_visit_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/general_clinic_visit_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/histories_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/histories_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/icd10_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/icd10_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/image_request_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/image_request_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/labor_monitoring_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/labor_monitoring_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/master_models_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/master_models_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/medication_request_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/medication_request_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/menus_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/menus_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/mh_awareness_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/mh_awareness_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/mh_gap_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/mh_gap_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/mh_pmplus_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/mh_pmplus_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/mh_referral_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/mh_referral_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/necessity_giving_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/necessity_giving_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/nutrition_group_session.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/nutrition_group_session.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/nutrition_screening_child.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/nutrition_screening_child.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/nutrition_screening_woman.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/nutrition_screening_woman.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/nutrition_stabilization_center.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/nutrition_stabilization_center.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/patient_admission_surgery_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/patient_admission_surgery_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/patient_admission_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/patient_admission_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/patient_admission_visit_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/patient_admission_visit_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/pediatric_clinic_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/pediatric_clinic_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/pediatric_icu_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/pediatric_icu_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/pediatric_incubator_admission_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/pediatric_incubator_admission_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/pediatric_newborn_examination_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/pediatric_newborn_examination_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/pediatric_nicu_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/pediatric_nicu_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/pediatric_phototherapy_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/pediatric_phototherapy_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/pediatric_surgery_clinic_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/pediatric_surgery_clinic_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/pediatric_surgery_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/pediatric_surgery_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/pediatric_ward_admission_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/pediatric_ward_admission_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/post_surgery_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/post_surgery_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/product_template_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/product_template_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/project_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/project_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/referral_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/referral_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/res_partner_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/res_partner_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/rh_awareness.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/rh_awareness.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/rhs_anc_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/rhs_anc_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/rhs_anc_visit_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/rhs_anc_visit_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/rhs_delivery_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/rhs_delivery_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/rhs_edc_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/rhs_edc_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/rhs_fp_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/rhs_fp_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/rhs_gynochological_clinic_visit_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/rhs_gynochological_clinic_visit_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/rhs_hospitalization_monitoring_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/rhs_hospitalization_monitoring_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/rhs_hospitalization_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/rhs_hospitalization_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/rhs_infertility_treatment_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/rhs_infertility_treatment_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/rhs_pnc_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/rhs_pnc_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/rhs_pnc_visit_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/rhs_pnc_visit_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/rhs_surgery_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/rhs_surgery_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/surgical_procedure_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/surgical_procedure_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emata_hms/views/vital_signs_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emata_hms/views/vital_signs_view.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="30jttk0F1SuTHA27nz0dL2jP3Kd" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5269f131-d4c1-4cd1-8880-368281d645b6" name="Default Changelist" comment="" />
+      <created>1754153031946</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754153031946</updated>
+    </task>
+    <servers />
+  </component>
+</project>
