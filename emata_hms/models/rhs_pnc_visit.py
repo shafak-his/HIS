@@ -33,13 +33,13 @@ class EmHmsRHSPNCVisit(models.Model):
     
     pnc_id = fields.Many2one('em.hms.rhs.pnc', string='PNC', required=True)
     patient_id = fields.Many2one('res.partner', 'Patient Name', related='pnc_id.patient_id')
-    doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
+    doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True, required=True)
     visit_date = fields.Date('Date Of Visit', required=True, tracking=True)
     duration_since_birth = fields.Selection([
         ('less_49hour', 'Less Than 48 Hour'),
         ('from_2_to_42day', 'From 2 To 42 Day'),
        
-    ], string='Duration Since Birth', tracking=True)
+    ], string='Duration Since Birth', tracking=True, required=True)
     arterial_pressure = fields.Float('Arterial Pressure', tracking=True)
     arterial_pressure_new = fields.Char('Arterial Pressure', tracking=True ,default='0/0')
     temperature = fields.Float('Temperature', tracking=True)
@@ -48,11 +48,11 @@ class EmHmsRHSPNCVisit(models.Model):
         ('exclusive_parenting', 'Exclusive Parenting'),
         ('non_exclusive_parenting', 'Non-Exclusive Parenting'),
         ('artificial_breastfeeding', 'Artificial Breastfeeding')
-    ], string='Breastfeeding', tracking=True)
+    ], string='Breastfeeding', tracking=True, required=True)
     is_tetanus_vaccined = fields.Boolean('Tetanus Vaccine', tracking=True)
     patient_complaint = fields.Char('Patient Complaint If Any', tracking=True)
     echo_findings = fields.Char('Echo Findings', tracking=True)
-    examiner_name = fields.Char('Name Of Examiner', tracking=True)
+    examiner_name = fields.Char('Name Of Examiner', tracking=True, required=True)
     pathological_finding_ids = fields.Many2many('em.hms.rhs.pathological.find', 'rhs_pnc_visit_pathological_find_rel', 'pnc_visit_id', 'path_find_id', string='Pathological Findings',)
     postpartum_complication_ids = fields.Many2many('em.hms.rhs.postpartum.comp', 'rhs_pnc_visit_postpartum_comp_rel', 'pnc_visit_id', 'post_comp_id', string='Postpartum Complications')
     wound_ids = fields.Many2many('em.hms.rhs.wound', 'rhs_pnc_visit_wound_rel', 'pnc_visit_id', 'wound_id', string='Existing Wounds')

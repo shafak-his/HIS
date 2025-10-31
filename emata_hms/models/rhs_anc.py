@@ -1,5 +1,5 @@
 from odoo import _, api, fields, models, exceptions, tools
-
+from odoo.exceptions import ValidationError
 
 
 class EmHmsRHSANC(models.Model):
@@ -24,8 +24,8 @@ class EmHmsRHSANC(models.Model):
     is_referral = fields.Boolean('Has There Been A Referral?', tracking=True)
     referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason?', tracking=True)
     previous_complications = fields.Char('Previous Pregnancy And Birth Complications', tracking=True)
-    last_menstrual_date = fields.Date('First Day Of Last Menstrual Period', tracking=True)
-    expected_due_date = fields.Date('Expected Due Date', tracking=True)
+    last_menstrual_date = fields.Date('First Day Of Last Menstrual Period', tracking=True, required=True)
+    expected_due_date = fields.Date('Expected Due Date', tracking=True, required=True)
     medical_history_ids = fields.Many2many('em.hms.medical.history', 'rhs_anc_medical_history_rel', 'anc_id', 'medical_history_id', string='Medical History' ,compute= '_compute_medical_history')
     medication_history_ids = fields.Many2many('em.hms.medication.history', 'rhs_anc_medication_history_rel', 'anc_id', 'medication_history_id', string='Medication History' ,compute= '_compute_medication_history')
     allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'rhs_anc_allergic_history_rel', 'anc_id', 'allergic_history_id', string='Allergic History' ,compute= '_compute_allergic_history')
@@ -74,6 +74,18 @@ class EmHmsRHSANC(models.Model):
     def _compute_visits_count(self):
         for record in self:
             record.visits_count = len(record.visit_ids)
+            
+    @api.model
+    def create(self, vals):
+        # نتحقق من عدد السجلات المضافة في One2many
+        visits = vals.get('visit_ids', [])
+        count = len([v for v in visits if v[0] == 0])  # أوامر إضافة سجلات جديدة فقط
+        
+        if count <1:
+            raise ValidationError("يجب إضافة زيارة واحدة على الاقل.")
+
+        # نسمح لأودو بإنشاء السجل
+        return super(EmHmsRHSANC, self).create(vals)
             
     def action_get_anc_visits_record(self):
         self.ensure_one()

@@ -9,15 +9,15 @@ class EmHmsRHSDelivery(models.Model):
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     admission_date = fields.Date('Date Of Admission', required=True, tracking=True)
-    admitting_midwife_id = fields.Many2one('hr.employee', string='Name Of Admitting Midwife')
-    doctor_id = fields.Many2one('hr.employee', string='Name Of Admitting Physician')
+    admitting_midwife_id = fields.Many2one('hr.employee', string='Name Of Admitting Midwife', required=True)
+    doctor_id = fields.Many2one('hr.employee', string='Name Of Admitting Physician', required=True)
     husband_name = fields.Char('Name Of Husband', tracking=True)
     guardian_name = fields.Char('Name Of Patient\'s Guardian', tracking=True)
     medical_history_ids = fields.Many2many('em.hms.medical.history', 'delivery_medical_history_rel', 'delivery_id', 'medical_history_id', string='Medical History' ,compute= '_compute_medical_history')
     surgical_history_ids = fields.Many2many('em.hms.surgical.history', 'delivery_surgical_history_rel', 'delivery_id', 'surgical_history_id', string='Surgical History',compute= '_compute_surgical_history')
     medication_history_ids = fields.Many2many('em.hms.medication.history', 'delivery_medication_history_rel', 'delivery_id', 'medication_history_id', string='Medication History',compute= '_compute_medication_history')
     allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'delivery_allergic_history_rel', 'delivery_id', 'allergic_history_id', string='Allergic History',compute= '_compute_allergic_history')
-    initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True)
+    initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True, required=True)
     child_name = fields.Char('Name Of Child', tracking=True)
     
     medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'delivery_visit_id', string='Medication Requests')

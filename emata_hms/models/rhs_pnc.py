@@ -1,5 +1,5 @@
 from odoo import _, api, fields, models, exceptions, tools
-
+from odoo.exceptions import ValidationError
 
 class EmHmsRHSPNC(models.Model):
     _name = 'em.hms.rhs.pnc'
@@ -10,12 +10,12 @@ class EmHmsRHSPNC(models.Model):
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     husband_name = fields.Char('Husband\'s Name', tracking=True)
     
-    birth_date = fields.Date('Date Of Birth', tracking=True)
+    birth_date = fields.Date('Date Of Birth', tracking=True, required=True)
     birth_type = fields.Selection([
         ('natural', 'Natural'),
         ('cesarean', 'Cesarean'),
         ('aided', 'Aided')
-    ], string='Type Of Birth', tracking=True)
+    ], string='Type Of Birth', tracking=True, required=True)
     is_baby_alive = fields.Boolean('Is The Baby Alive?', tracking=True)
     body_weight = fields.Float('Body Weight', tracking=True)
     is_full_term_pregnancy = fields.Boolean('Is Full Term Pregnancy (<37 weeks)?')
@@ -23,7 +23,7 @@ class EmHmsRHSPNC(models.Model):
         ('home', 'Home'),
         ('medical_care_center', 'Medical Care Center'),
         ('hospital', 'Hospital')
-    ], string='Place Of Birth', tracking=True)
+    ], string='Place Of Birth', tracking=True, required=True)
     previous_complications = fields.Char('Previous Pregnancy And Birth Complications', tracking=True)
     is_referral = fields.Boolean('Has There Been A Referral?', tracking=True)
     referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason?', tracking=True)
@@ -47,4 +47,16 @@ class EmHmsRHSPNC(models.Model):
             'domain': [('pnc_id', '=', self.id)],
             'context': "{'create': False}"
         }
+        
+    @api.model
+    def create(self, vals):
+        # نتحقق من عدد السجلات المضافة في One2many
+        visits = vals.get('visit_ids', [])
+        count = len([v for v in visits if v[0] == 0])  # أوامر إضافة سجلات جديدة فقط
+        
+        if count <1:
+            raise ValidationError("يجب إضافة زيارة واحدة على الاقل.")
+
+        # نسمح لأودو بإنشاء السجل
+        return super(EmHmsRHSPNC, self).create(vals)
     

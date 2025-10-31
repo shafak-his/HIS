@@ -10,23 +10,23 @@ class EmHmsRHSGynochologicalClinicVisit(models.Model):
     visit_datetime = fields.Datetime('Visit Date/Time', required=True, tracking=True)
     patient_id = fields.Many2one('res.partner', string='Patient Name', required=True, domain=[('is_patient','=',True)], tracking=True)
     clinic_id = fields.Many2one('em.hms.clinic', string='Clinic Name', tracking=True)
-    current_complaint = fields.Char('Current Complaint', tracking=True)
-    diagnosis_id = fields.Many2one('em.hms.icd10', string='Diagnosis', tracking=True)
-    procedures_followed = fields.Char('Procedures Followed', tracking=True)
+    current_complaint = fields.Char('Current Complaint', tracking=True, required=True)
+    diagnosis_id = fields.Many2one('em.hms.icd10', string='Diagnosis', tracking=True, required=True)
+    procedures_followed = fields.Char('Procedures Followed', tracking=True, required=True)
     is_referral = fields.Boolean('Has There Been A Referral?', tracking=True)
     referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason?', tracking=True)
     procedure_type = fields.Selection([
         ('emergency', 'Emergency'),
         ('non_emergency', 'Non-Emergency'),
         ('other', 'Other')
-    ], string='Type Of Procedure', tracking=True)
+    ], string='Type Of Procedure', tracking=True, required=True)
     other_procedure_type = fields.Char('Other Type Of Procedure', tracking=True)
     graduation_to = fields.Selection([
         ('home', 'Home'),
         ('acceptance', 'Acceptance'),
         ('Referral', 'referral')
-    ], string='Graduation To', tracking=True)
-    doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
+    ], string='Graduation To', tracking=True, required=True)
+    doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True, required=True)
     medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'gynochological_visit_id', string='Medication Requests')
     analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'gynochological_visit_id', string='Analysis Requests')
     image_request_line_ids = fields.One2many('em.hms.image.request.line', 'gynochological_visit_id', string='Image Requests')

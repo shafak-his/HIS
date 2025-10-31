@@ -15,13 +15,13 @@ class PreviousObstetricHistory(models.Model):
         ('premature', 'Premature'),
         ('miscarriage', 'Miscarriage'),
         ('stillborn', 'Stillborn')
-        ], string='Type Of Previous Births', tracking=True)
+        ], string='Type Of Previous Births', tracking=True, required=True)
   nature_of_previous_birth = fields.Selection([
        ('natural', 'Natural'),
         ('cesarean', 'Cesarean'),
         ('aided', 'Aided'),
         ('courtage', 'Courtage')
-        ], string='Nature Of Previous Births', tracking=True)
+        ], string='Nature Of Previous Births', tracking=True, required=True)
   is_deformities = fields.Boolean('is Deformities', tracking=True)
   additional_notes = fields.Char('Additional_notes', tracking=True)
   company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

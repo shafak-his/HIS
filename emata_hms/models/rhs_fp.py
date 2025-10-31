@@ -49,14 +49,14 @@ class EmHmsRHSFP(models.Model):
     births = fields.Integer('# Births', tracking=True)
     miscarriages_count = fields.Integer('# Miscarriages', tracking=True)
     live_births = fields.Integer('Live Births', tracking=True)
-    last_birth_date = fields.Date('Last Birth Date', tracking=True)
+    last_birth_date = fields.Date('Last Birth Date', tracking=True, required=True)
     is_last_birth_alive = fields.Boolean('Is Last Birth Alive', tracking=True)
     breastfeeding_method = fields.Selection([
         ('normal', 'Normal'),
         ('artificial', 'Artificial'),
         ('mixed', 'Mixed')
-    ], string='Breastfeeding Method', tracking=True)
-    last_menstrual_date = fields.Date('First Day Of Last Menstrual Period', tracking=True)
+    ], string='Breastfeeding Method', tracking=True, required=True)
+    last_menstrual_date = fields.Date('First Day Of Last Menstrual Period', tracking=True, required=True)
     is_contraceptive_method = fields.Boolean('Any Previous Contraceptive Method', tracking=True)
     contraceptive_method_ids = fields.Many2many('em.hms.rhs.fp.contraceptive.method', 'fp_contraceptive_method_rel', 'fp_id', 'contraceptive_method_id', string='Contraceptive Method', tracking=True)
     contraceptive_method = fields.Selection([
@@ -80,13 +80,13 @@ class EmHmsRHSFP(models.Model):
     stopping_reason = fields.Char('Stopping Reason', tracking=True)
     is_referral = fields.Boolean('Has There Been A Referral?', tracking=True)
     referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason?', tracking=True)
-    pregnancy_check_ids = fields.Many2many('em.hms.rhs.fp.pregnancy.check', 'fp_pregnancy_check_rel', 'fp_id', 'pregnancy_check_id', string='Check For Current Pregnancy', tracking=True)
+    pregnancy_check_ids = fields.Many2many('em.hms.rhs.fp.pregnancy.check', 'fp_pregnancy_check_rel', 'fp_id', 'pregnancy_check_id', string='Check For Current Pregnancy', tracking=True, required=True)
     medical_history_ids = fields.Many2many('em.hms.rhs.fp.medical.history', 'fp_medical_history_rel', 'fp_id', 'medical_history_id', string='Medical History And Habits', tracking=True)
     current_complaint_ids = fields.Many2many('em.hms.rhs.fp.complaint', 'fp_complaint_rel', 'fp_id', 'complaint_id', string='Any Current Complaint', tracking=True)
     
     recommendations = fields.Char('Recommendations And Treatment', tracking=True)
-    examiner_id = fields.Many2one('hr.employee', string='Name Of Examiner', tracking=True)
-    next_visit_date = fields.Date('Next Visit Date', tracking=True)
+    examiner_id = fields.Many2one('hr.employee', string='Name Of Examiner', tracking=True, required=True)
+    next_visit_date = fields.Date('Next Visit Date', tracking=True, required=True)
     notes = fields.Char('Notes', tracking=True)
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
