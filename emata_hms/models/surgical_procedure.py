@@ -32,5 +32,6 @@ class EmHmsSurgicalProcedure(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
     name = fields.Char('Name', required=True, translate=True)
+    surgery_id = fields.Char('em.hms.rhs.surgery', required=True, translate=True)
     subcategory_id = fields.Many2one('em.hms.surgical.subcategory', string='Sub-Category', required=True)
     category = fields.Selection(SURGICAL_CATEGORIES, string='Category', related='subcategory_id.category')

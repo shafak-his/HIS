@@ -18,7 +18,7 @@ class EmHmsRHSSurgery(models.Model):
     surgical_history_ids = fields.Many2many('em.hms.surgical.history', 'rhs_surgery_surgical_history_rel', 'surgery_id', 'surgical_history_id', string='Surgical History' ,compute= '_compute_surgical_history')
     medication_history_ids = fields.Many2many('em.hms.medication.history', 'rhs_surgery_medication_history_rel', 'surgery_id', 'medication_history_id', string='Medication History' ,compute= '_compute_medication_history')
     allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'rhs_surgery_allergic_history_rel', 'surgery_id', 'allergic_history_id', string='Allergic History' ,compute= '_compute_allergic_history')
-    surgery_type_ids = fields.Many2many('em.hms.surgical.procedure', 'rhs_surgery_surgical_procedure_rel', 'surgery_id', 'surgical_procedure_id', string='Type Of Surgery', tracking=True)
+    surgery_type_ids = fields.One2many('em.hms.surgical.procedure','surgery_id', string='Type Of Surgery', tracking=True)
     other_surgery_type = fields.Char('Other Surgery Type', tracking=True)
     initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True)
     child_name = fields.Char('Name Of Child', tracking=True)

@@ -54,7 +54,7 @@
                         <field name="state_id" options="{'no_create': True, 'no_quick_create': True}" />
                         <field name="district_id" domain="[('state_id', '=', state_id)]" options="{'no_create': True, 'no_quick_create': True}" />
                         <field name="sub_district_id" domain="[('district_id', '=', district_id)]" options="{'no_create': True, 'no_quick_create': True}" />
-                        <field name="location_id" options="{'no_create': True, 'no_quick_create': True}" />
+                        <field name="location_id" domain="[('sub_district_id', '=', sub_district_id)]" options="{'no_create': True, 'no_quick_create': True}" />
                         <field name="is_location_camp" />
                         <field name="camp_name" invisible="is_location_camp == False" required="is_location_camp == True" />
                     </group>

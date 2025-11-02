@@ -74,11 +74,16 @@ class EmHmsCHWIndividualSession(models.Model):
         ),
     ]
     
+    
+    
+    
     @api.onchange('sub_district_id')
     def _onchange_sub_district_update_location_domain(self):
         if self.sub_district_id:
             return {'domain': {'location_id': [('sub_district_id', '=', self.sub_district_id.id)]}}
         return {'domain': {'location_id': [(1, '=', 1)]}}
+    
+
 
     @api.onchange('location_id')
     def _onchange_location_id(self):

@@ -9,7 +9,7 @@ class EmHmsRHSGynochologicalClinicVisit(models.Model):
     
     visit_datetime = fields.Datetime('Visit Date/Time', required=True, tracking=True)
     patient_id = fields.Many2one('res.partner', string='Patient Name', required=True, domain=[('is_patient','=',True)], tracking=True)
-    clinic_id = fields.Many2one('em.hms.clinic', string='Clinic Name', tracking=True)
+    clinic_id = fields.Many2one('em.hms.clinic', string='Clinic Name', tracking=True,required=True)
     current_complaint = fields.Char('Current Complaint', tracking=True, required=True)
     diagnosis_id = fields.Many2one('em.hms.icd10', string='Diagnosis', tracking=True, required=True)
     procedures_followed = fields.Char('Procedures Followed', tracking=True, required=True)
