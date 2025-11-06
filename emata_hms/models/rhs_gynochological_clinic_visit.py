@@ -44,7 +44,8 @@ class EmHmsRHSGynochologicalClinicVisit(models.Model):
         ('feet', 'Feet'),
         ('cross', 'Cross'),
         ('frontal', 'Frontal'),
-        ('facial', 'Facial')
+        ('facial', 'Facial'),
+       ('unknow', 'unknow')
     ], string='Arrival', tracking=True)
     eco_auscultation = fields.Integer('Eco Auscultation', tracking=True)
     eco_auscultation_new =fields.Selection([

@@ -1,6 +1,8 @@
 from odoo import _, api, fields, models, exceptions, tools
 from odoo.osv import expression
-
+from odoo.exceptions import ValidationError
+from datetime import date
+from dateutil.relativedelta import relativedelta
 class ResPartner(models.Model):
     _inherit = 'res.partner'
     
@@ -41,6 +43,8 @@ class ResPartner(models.Model):
     ], string='Marital Status')
     doc_number = fields.Char('Document Number')
     notes = fields.Char('Notes')
+    
+    
 
     medical_history_ids = fields.One2many('em.hms.medical.history', 'patient_id', string='Medical History')
     surgical_history_ids = fields.One2many('em.hms.surgical.history', 'patient_id', string='Surgical History')
@@ -577,4 +581,27 @@ class ResPartner(models.Model):
 
     def action_get_em_hms_general_clinic_visit(self):
         return self._action_get_service_records('em.hms.general.clinic.visit')
+    
+    
+    @api.constrains('birth_date')
+    def _check_birth_date(self):
+        for record in self:
+            if record.birth_date:
+                today = date.today()
+                age = relativedelta(today, record.birth_date).years
+                
+                if age > 110:
+                    raise ValidationError('العمر لا يمكن أن يتجاوز 110 سنة!')
+                
+                if record.birth_date > today:
+                    raise ValidationError('تاريخ الميلاد لا يمكن أن يكون في المستقبل!')
+                
+                
+    _sql_constraints = [
+        (
+            'check_registration_date',
+            'CHECK (registration_date <= CURRENT_DATE)',
+            'تاريخ الزيارة لايمكن ان يكون اكبر من اليوم الحالي'
+        ),
+    ]
     

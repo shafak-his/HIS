@@ -61,7 +61,8 @@ class EmHmsCHWIndividualSession(models.Model):
         ('mixed_breastfeeding', 'Mixed Breastfeeding'),
         ('breastfeeding_malnutrition', 'Malnutrition Of A Breastfeeding woman'),
         ('pregnant_malnutrition', 'Malnutrition Of A Pregnant Woman'),
-        ('chronic_diseases', 'The Target Of The Session Suffers From A Chronic Disease')
+        ('chronic_diseases', 'The Target Of The Session Suffers From A Chronic Disease'),
+        ('nothing', 'nothing')
     ], string='Comments', required=True, tracking=True)
     notes = fields.Char('Notes', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)

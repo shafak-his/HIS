@@ -45,7 +45,8 @@ class EmHmsRHSANCVisit(models.Model):
         ('feet', 'Feet'),
         ('cross', 'Cross'),
         ('frontal', 'Frontal'),
-        ('facial', 'Facial')
+        ('facial', 'Facial'),
+        ('unknow', 'unknow')
     ], string='Presence', tracking=True, required=True)
     fluid = fields.Selection([
         ('good', 'Good'),

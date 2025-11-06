@@ -36,7 +36,7 @@ class EmHmsGeneralClinicVisit(models.Model):
     referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason?', tracking=True)
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
     medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'general_visit_id', string='Medication Requests')
-    analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'general_visit_id', string='Analysis Requests')
+    analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'general_visit_id', string='Analysis Requests', tracking=True)
     image_request_line_ids = fields.One2many('em.hms.image.request.line', 'general_visit_id', string='Image Requests')
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)
     notes = fields.Char('Notes', tracking=True)
