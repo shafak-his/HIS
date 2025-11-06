@@ -1,7 +1,5 @@
 from odoo import _, api, fields, models, exceptions, tools
-from odoo.exceptions import ValidationError
-from datetime import date
-from dateutil.relativedelta import relativedelta
+
 
 class EmHmsCHWGroupSession(models.Model):
     _name = 'em.hms.chw.group.session'
@@ -76,7 +74,7 @@ class EmHmsCHWGroupSessionBNF(models.Model):
     
     session_id = fields.Many2one('em.hms.chw.group.session', string='Session', ondelete='cascade')
     name = fields.Char('Beneficiary Name', required=True, tracking=True)
-   
+    name_lang = fields.Char('Arabic Name', required=True)
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female')
@@ -130,17 +128,3 @@ class EmHmsCHWGroupSessionBNF(models.Model):
             self.sub_district_id = self.location_id.sub_district_id.id
             self.district_id = self.location_id.sub_district_id.district_id.id
             self.state_id = self.location_id.sub_district_id.district_id.state_id.id
-            
-            
-    @api.constrains('birth_date')
-    def _check_birth_date(self):
-        for record in self:
-            if record.birth_date:
-                today = date.today()
-                age = relativedelta(today, record.birth_date).years
-                
-                if age > 110:
-                    raise ValidationError('العمر لا يمكن أن يتجاوز 110 سنة!')
-                
-                if record.birth_date > today:
-                    raise ValidationError('تاريخ الميلاد لا يمكن أن يكون في المستقبل!')
