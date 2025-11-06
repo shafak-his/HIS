@@ -13,6 +13,7 @@
                 <field name="registration_date"/>
                 <field name="sex"/>
                 <field name="mobile"/>
+                <field name="create_uid"/>
             </tree>
         </field>
     </record>
