@@ -19,7 +19,7 @@ class EmHmsMedicationRequestLine(models.Model):
     pediatric_clinic_id = fields.Many2one('em.hms.pediatric.clinic', string='Pediatric Clinic')
     pediatric_surgery_clinic_id = fields.Many2one('em.hms.pediatric.surgery.clinic', string='Pediatric Surgery Clinic')
     icu_id = fields.Many2one('em.hms.pediatric.icu', string='ICU')
-    hospitalization_id = fields.Many2one('em.hms.rhs.hospitalization', string='Hospitalization')
+   
     rhs_surgery_id = fields.Many2one('em.hms.rhs.surgery', string='RHS Surgery')
 
     doctor_id = fields.Many2one('hr.employee', string='Doctor', compute='_compute_doctor_id', compute_sudo=True)
