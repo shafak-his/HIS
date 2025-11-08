@@ -5,6 +5,7 @@ class SaleOrder(models.Model):
     
     general_visit_id = fields.Many2one('em.hms.general.clinic.visit', string='General Clinic Visit')
     hospitalization_id = fields.Many2one('em.hms.rhs.hospitalization', string='hospitalization Visit')
+    delivery_visit_id = fields.Many2one('em.hms.rhs.delivery', string='Delivery Visit')
     gynochological_visit_id = fields.Many2one('em.hms.rhs.gynochological.clinic.visit', string='Gynochological Visit')
     pnc_visit_id = fields.Many2one('em.hms.rhs.pnc.visit', string='PNC Visit')
     mh_gap_id = fields.Many2one('em.hms.mh.gap', string='MH Gap')
