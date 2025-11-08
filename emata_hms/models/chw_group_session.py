@@ -66,6 +66,12 @@ class EmHmsCHWGroupSession(models.Model):
         ),
     ]
     
+    @api.model
+    def create(self, vals):
+       
+            vals['name'] = self.env['ir.sequence'].next_by_code('em.hms.chw.group.session.code')
+            return super(EmHmsCHWGroupSession, self).create(vals)
+    
 class EmHmsCHWGroupSessionBNF(models.Model):
     _name = 'em.hms.chw.group.session.bnf'
     _description = 'CHW Group Session Beneficiary'

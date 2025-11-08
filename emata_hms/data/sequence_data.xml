@@ -41,6 +41,15 @@
             <field eval="1" name="number_increment"/>
             <field eval="False" name="company_id"/>
         </record>
+         <record id="em_hms_chw_group_session_code_seq" model="ir.sequence">
+            <field name="name">CHW Group Session Code Sequence</field>
+            <field name="code">em.hms.chw.group.session.code</field>
+            <field name="prefix">Chw-Gs-</field>
+            <field eval="3" name="padding"/>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="False" name="company_id"/>
+        </record>
 
     </data>
 </odoo>
