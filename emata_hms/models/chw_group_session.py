@@ -80,7 +80,6 @@ class EmHmsCHWGroupSessionBNF(models.Model):
     
     session_id = fields.Many2one('em.hms.chw.group.session', string='Session', ondelete='cascade')
     name = fields.Char('Beneficiary Name', required=True, tracking=True)
-    name_lang = fields.Char('Arabic Name', required=True)
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female')

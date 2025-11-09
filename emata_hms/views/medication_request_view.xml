@@ -16,6 +16,7 @@
                 <field name="dose_way" />
                 <field name="doctor_id" />
                 <field name="notes" />
+               
                 
                 <field name="general_visit_id" column_invisible="1" />
                 <field name="gynochological_visit_id" column_invisible="1" />
