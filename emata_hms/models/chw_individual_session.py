@@ -52,7 +52,8 @@ class EmHmsCHWIndividualSession(models.Model):
         ('smoking', 'SMOKING'),
         ('pregnancy_care', 'PREGNANCY CARE'),
         ('proper_nutrition', 'PROPER NUTRITION'),
-        ('pre_marriage_counseling', 'PRE-MARRIAGE COUNSELING')
+        ('pre_marriage_counseling', 'PRE-MARRIAGE COUNSELING'),
+        ('breast_cancer_awareness', 'Breast Cancer Awareness')
     ], string='Session Title', required=True, tracking=True)
     comments = fields.Selection([
         ('sam_suffering', 'The Child Suffers From Severe Acute Malnutrition'),
