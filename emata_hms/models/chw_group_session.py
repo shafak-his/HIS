@@ -45,7 +45,8 @@ class EmHmsCHWGroupSession(models.Model):
         ('smoking', 'SMOKING'),
         ('pregnancy_care', 'PREGNANCY CARE'),
         ('proper_nutrition', 'PROPER NUTRITION'),
-        ('pre_marriage_counseling', 'PRE-MARRIAGE COUNSELING')
+        ('pre_marriage_counseling', 'PRE-MARRIAGE COUNSELING'),
+        ('breast_cancer_awareness', 'Breast Cancer Awareness')
     ], string='Session Title', required=True, tracking=True)
     target_group = fields.Selection([
         ('caregiver', 'CAREGIVER'),
