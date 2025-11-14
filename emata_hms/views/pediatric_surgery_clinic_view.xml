@@ -26,6 +26,7 @@
                 <field name="medical_recommendations" optional="hide" />
                 <field name="consultations" optional="hide" />
                 <field name="notes" optional="hide" />
+                <field name="state"  widget="badge" decoration-success="state =='done'"  decoration-danger="state == 'draft'" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -36,8 +37,8 @@
         <field name="model">em.hms.pediatric.surgery.clinic</field>
         <field name="arch" type="xml">
             <form string="Surgery Clinic">
-                <header>
-                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+                 <header>
+                    <button string="اكمال الطلب" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
 
                     <field name="state" widget="statusbar" />
                 </header>

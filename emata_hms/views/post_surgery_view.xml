@@ -27,6 +27,9 @@
         <field name="model">em.hms.post.surgery</field>
         <field name="arch" type="xml">
             <form string="Post-Birth Monitoring">
+                 <header>
+                   
+                </header>
                 <sheet>
                     <group>
                         <group>

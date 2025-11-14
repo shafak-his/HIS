@@ -44,6 +44,7 @@
                 <field name="post_surgery_ids" widget="many2many_tags" optional="hide" />
                 <field name="is_referral" optional="hide" />
                 <field name="referral_center_reason" optional="hide" />
+                <field name="state"  widget="badge" decoration-success="state =='done'"  decoration-danger="state == 'draft'" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -55,6 +56,11 @@
         <field name="arch" type="xml">
             <form string="Surgery">
                 <header>
+                    
+                    <button string="اكمال الطلب" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
+               
                     <div name="button_box" position="inside">
                         <!-- <button class="oe_stat_button" type="object" icon="fa-edit"
                             name="action_get_surgery_labors_record">

@@ -47,6 +47,7 @@
                 <field name="post_birth_ids" widget="many2many_tags" optional="hide" />
                 <field name="is_referral" optional="hide" />
                 <field name="referral_center_reason" optional="hide" />
+                <field name="state"  widget="badge" decoration-success="state =='done'"  decoration-danger="state == 'draft'" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -58,6 +59,11 @@
         <field name="arch" type="xml">
             <form string="Delivery">
                 <header>
+               
+                    <button string="اكمال الطلب" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
+             
                     <div name="button_box" position="inside">
                         <!-- <button class="oe_stat_button" type="object" icon="fa-edit"
                             name="action_get_delivery_labors_record">
@@ -73,6 +79,7 @@
 <!--                        </button>-->
                     </div>
                 </header>
+                <sheet>
                 <group>
                     <group>
                         <field name="project_id" required="1" domain="[('id', 'in', allowed_project_ids)]" options="{'no_create': True, 'no_quick_create': True}" />
@@ -249,6 +256,7 @@
                 <field name="notes" widget="text" />
                 <field name="company_id" readonly="1" force_save="1" />
               </group>
+              </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" />
                     <field name="activity_ids" widget="mail_activity" />

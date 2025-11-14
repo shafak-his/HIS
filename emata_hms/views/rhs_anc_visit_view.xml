@@ -29,6 +29,7 @@
                 <field name="next_visit_date" optional="hide" />
                 <field name="examiner_name" optional="hide" />
                 <field name="additional_notes" optional="hide" />
+                <field name="state"  widget="badge" decoration-success="state =='done'"  decoration-danger="state == 'draft'" />
                 <field name="company_id"  readonly="1" force_save="1" />
             </tree>
         </field>
@@ -39,6 +40,11 @@
         <field name="model">em.hms.rhs.anc.visit</field>
         <field name="arch" type="xml">
             <form string="ANC Visit">
+                 <header>
+                    <button string="اكمال الطلب" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
+                </header>
                 <sheet>
                     <group>
                         <group>

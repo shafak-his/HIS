@@ -11,6 +11,7 @@
                 <field name="medical_history" optional="hide" />
                 <field name="current_complaint" optional="hide" />
                 <field name="doctor_id" optional="hide" />
+                <field name="state"  widget="badge" decoration-success="state =='done'"  decoration-danger="state == 'draft'" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -21,8 +22,8 @@
         <field name="model">em.hms.dial.nephrology</field>
         <field name="arch" type="xml">
             <form string="Nephrology">
-                <header>
-                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+                 <header>
+                    <button string="اكمال الطلب" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
 
                     <field name="state" widget="statusbar" />
                 </header>

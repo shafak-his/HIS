@@ -38,6 +38,7 @@
                 <field name="vital_sign_ids" widget="many2many_tags" optional="hide" />
                 <field name="necessity_ids" widget="many2many_tags" optional="hide" />
                 <field name="commitment_ids" widget="many2many_tags" optional="hide" />
+                <field name="state"  widget="badge" decoration-success="state =='done'"  decoration-danger="state == 'draft'" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -49,7 +50,7 @@
         <field name="arch" type="xml">
             <form string="ICU">
                 <header>
-                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+                    <button string="اكمال الطلب" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
 
                     <field name="state" widget="statusbar" />
                 </header>

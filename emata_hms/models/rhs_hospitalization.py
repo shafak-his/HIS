@@ -100,7 +100,10 @@ class EmHmsRHSHospitalization(models.Model):
     necessities_count = fields.Integer(compute='_compute_necessities_count', string='Daily Necessity Count')
     commitment_ids = fields.One2many('em.hms.necessity.giving', 'hospitalization_id', string='Necessity Giving')
     commitments_count = fields.Integer(compute='_compute_commitments_count', string='Necessity Giving Count')
-    
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='Status', required=True, default='draft')
     @api.onchange('patient_id')
     def _onchange_patient_id(self):
         if self.patient_id:
@@ -204,15 +207,11 @@ class EmHmsRHSHospitalization(models.Model):
           
            rec.surgical_history_ids = [(5, 0, 0)]
 
-    @api.model
-    def create(self, vals):
-         record = super().create(vals)
-       
-         record.request_service()
-         return record
-
-    def request_service(self):
-        
-         self.medication_request_line_ids.generate_sale_order()
-         self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
-         self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids) 
+    def confirm_record(self):
+        self.ensure_one()
+        self.medication_request_line_ids.generate_sale_order()
+        self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+        self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
+        self.write({
+            'state': 'done'
+        })

@@ -50,6 +50,7 @@
                 <field name="hysteroscopy_result" optional="hide" />
                 <field name="hysteroscopy_attachment" optional="hide" />
                 <field name="image_request_line_ids" widget="many2many_tags" optional="hide" />
+                <field name="state"  widget="badge" decoration-success="state =='done'"  decoration-danger="state == 'draft'" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -61,7 +62,9 @@
         <field name="arch" type="xml">
             <form string="Infertility Treatment">
                 <header>
-                  
+                    <button string="اكمال الطلب" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+
+                    <field name="state" widget="statusbar" />
                 </header>
                 <sheet>
                     <group>

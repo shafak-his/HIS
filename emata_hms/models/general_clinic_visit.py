@@ -51,18 +51,17 @@ class EmHmsGeneralClinicVisit(models.Model):
         for record in self:
             record.allowed_project_ids = self.env['em.project.support.line'].get_project_ids(record.company_id, self._name, self.clinic_id, fields.Date.today()).ids
 
-    @api.model
-    def create(self, vals):
-         record = super().create(vals)
-       
-         record.request_service()
-         return record
 
-    def request_service(self):
-        
-         self.medication_request_line_ids.generate_sale_order()
-         self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
-         self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
+    
+    def confirm_record(self):
+        self.ensure_one()
+        self.medication_request_line_ids.generate_sale_order()
+        self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+        self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
+        self.write({
+            'state': 'done'
+        })
+    
 
  
     @api.depends('patient_id')

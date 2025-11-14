@@ -87,17 +87,19 @@ class EmHmsRHSANCVisit(models.Model):
     analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'anc_visit_id', string='Analysis Requests')
     image_request_line_ids = fields.One2many('em.hms.image.request.line', 'anc_visit_id', string='Image Requests')
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='Status', required=True, default='draft')
 
-    @api.model
-    def create(self, vals):
-         record = super().create(vals)
-       
-         record.request_service()
-         return record
+   
 
-    def request_service(self):
-        
-         self.medication_request_line_ids.generate_sale_order()
-         self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
-         self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
-         
+    def confirm_record(self):
+        self.ensure_one()
+        self.medication_request_line_ids.generate_sale_order()
+        self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+        self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
+        self.write({
+            'state': 'done'
+        })
+    

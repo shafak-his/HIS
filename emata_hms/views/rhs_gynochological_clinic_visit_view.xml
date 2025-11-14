@@ -22,6 +22,7 @@
                 <field name="notes" optional="hide" />
                 <field name="is_referral" optional="hide" />
                 <field name="referral_center_reason" optional="hide" />
+                <field name="state"  widget="badge" decoration-success="state =='done'"  decoration-danger="state == 'draft'" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -33,7 +34,7 @@
         <field name="arch" type="xml">
             <form string="Gynochological Clinic Visit">
                 <header>
-                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+                    <button string="اكمال الطلب" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
 
                     <field name="state" widget="statusbar" />
                 </header>

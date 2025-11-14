@@ -71,17 +71,14 @@ class EmHmsRHSInfertilityTreatment(models.Model):
         ('check_last_marriage_date', 'CHECK (last_marriage_date <= CURRENT_DATE)', 'Last Marriage Date Must Not Be Newer Than Today.'),
     ]
   
-    @api.model
-    def create(self, vals):
-         record = super().create(vals)
-       
-         record.request_service()
-         return record
-
-    def request_service(self):
-        
-         self.medication_request_line_ids.generate_sale_order()
-         self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+    def confirm_record(self):
+        self.ensure_one()
+        self.medication_request_line_ids.generate_sale_order()
+        self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+        self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
+        self.write({
+            'state': 'done'
+        })
          
 
     @api.depends('patient_id')

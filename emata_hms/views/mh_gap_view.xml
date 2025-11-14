@@ -22,6 +22,7 @@
                 <field name="post_gaf" optional="hide" />
                 <field name="closure_reason" optional="hide" />
                 <field name="other_closure_reason" optional="hide" />
+                <field name="state"  widget="badge" decoration-success="state =='done'"  decoration-danger="state == 'draft'" />
                 <field name="company_id" optional="hide" />
                 <field name="service_provider_id" optional="hide" />
             </tree>
@@ -34,7 +35,7 @@
         <field name="arch" type="xml">
             <form string="Gap">
                 <header>
-                    <button string="Confirm &amp; Close" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+                    <button string="اكمال الطلب" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
 
                     <field name="state" widget="statusbar" />
                 </header>
