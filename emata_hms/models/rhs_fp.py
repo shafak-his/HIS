@@ -68,7 +68,7 @@ class EmHmsRHSFP(models.Model):
         ('implants', '6-Implants')
     ], string=' contraceptive Method', tracking=True)
 
-    states = fields.Selection([
+    state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
     ], string='Status', required=True, default='draft')
