@@ -68,7 +68,10 @@ class EmHmsRHSFP(models.Model):
         ('implants', '6-Implants')
     ], string=' contraceptive Method', tracking=True)
 
-
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='Status', required=True, default='draft')
 
 
 
@@ -90,14 +93,12 @@ class EmHmsRHSFP(models.Model):
     examiner_id = fields.Many2one('hr.employee', string='Name Of Examiner', tracking=True, required=True)
     next_visit_date = fields.Date('Next Visit Date', tracking=True, required=True)
     
-    state = fields.Selection([
-        ('draft', 'Draft'),
-        ('done', 'Done'),
-    ], string='Status', required=True, default='draft')
+   
     notes = fields.Char('Notes', tracking=True)
     
 
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
+    
     
     _sql_constraints = [
         (
