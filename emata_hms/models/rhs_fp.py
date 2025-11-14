@@ -68,11 +68,7 @@ class EmHmsRHSFP(models.Model):
         ('implants', '6-Implants')
     ], string=' contraceptive Method', tracking=True)
 
-    state = fields.Selection([
-        ('draft', 'Draft'),
-        ('done', 'Done'),
-    ], string='Status', required=True, default='draft')
-
+   
 
 
     is_method_staisfying = fields.Boolean('Satisfaction With Method', tracking=True)

@@ -125,9 +125,6 @@
             <form string="FP">
                 <header>
                  
-                    <button string="اكمال الطلب" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
-
-                    <field name="state" widget="statusbar" />
              
                 </header>
                 <sheet>
