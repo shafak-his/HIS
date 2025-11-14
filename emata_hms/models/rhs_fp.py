@@ -123,12 +123,7 @@ class EmHmsRHSFP(models.Model):
             'check_stopping_date',
             'CHECK (stopping_date <= CURRENT_DATE)',
             'Stopping Date Must Not Be Newer Than Today.'
-        ),
-        (
-            'check_next_visit_date',
-            'CHECK (next_visit_date >= CURRENT_DATE)',
-            'Next Visit Date Must Not Be Older Than Today.'
-        ),
+        )
     ]
 
     @api.onchange('patient_id')
