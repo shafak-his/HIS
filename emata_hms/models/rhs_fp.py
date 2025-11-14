@@ -90,10 +90,7 @@ class EmHmsRHSFP(models.Model):
     examiner_id = fields.Many2one('hr.employee', string='Name Of Examiner', tracking=True, required=True)
     next_visit_date = fields.Date('Next Visit Date', tracking=True, required=True)
     notes = fields.Char('Notes', tracking=True)
-    state = fields.Selection([
-        ('draft', 'Draft'),
-        ('done', 'Done'),
-    ], string='Status',  default='draft')
+    
 
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
