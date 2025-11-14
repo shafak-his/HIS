@@ -93,7 +93,7 @@ class EmHmsRHSFP(models.Model):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
-    ], string='Status', required=True, default='draft')
+    ], string='Status',  default='draft')
 
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     

@@ -110,7 +110,7 @@
                 <field name="current_complaint_ids" widget="many2many_tags" optional="hide" />
                 <field name="recommendations" optional="hide" />
                 <field name="examiner_id" optional="hide" />
-                <field name="next_visit_date"  />
+                <field name="next_visit_date"  optional="hide"/>
                 <field name="state"  widget="badge" decoration-success="state =='done'"  decoration-danger="state == 'draft'" />
                 <field name="notes" optional="hide" />
                 <field name="company_id" optional="hide" />
@@ -201,7 +201,6 @@
                             <field name="recommendations" />
                             <field name="examiner_id" />
                             <field name="next_visit_date" />
-                           
                             <field name="notes" widget="text" />
 
                           
