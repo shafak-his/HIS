@@ -88,7 +88,10 @@ class EmHmsRHSFP(models.Model):
     recommendations = fields.Char('Recommendations And Treatment', tracking=True)
     examiner_id = fields.Many2one('hr.employee', string='Name Of Examiner', tracking=True, required=True)
     next_visit_date = fields.Date('Next Visit Date', tracking=True, required=True)
-   
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='Status',  default='draft')
    
     notes = fields.Char('Notes', tracking=True)
     
