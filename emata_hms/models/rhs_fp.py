@@ -68,7 +68,7 @@ class EmHmsRHSFP(models.Model):
         ('implants', '6-Implants')
     ], string=' contraceptive Method', tracking=True)
 
-    state = fields.Selection([
+    states = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
     ], string='Status', required=True, default='draft')
@@ -100,6 +100,15 @@ class EmHmsRHSFP(models.Model):
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
     
+    def confirm_record(self):
+        self.ensure_one()
+        self.medication_request_line_ids.generate_sale_order()
+        self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+        self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
+        self.write({
+            'state': 'done'
+        })
+    
     _sql_constraints = [
         (
             'check_last_birth_date',
@@ -129,12 +138,5 @@ class EmHmsRHSFP(models.Model):
             self.medical_history_ids = [(6, 0, [record.id for record in self.patient_id.medical_history_ids])]
             
             
-    def confirm_record(self):
-        self.ensure_one()
-        self.medication_request_line_ids.generate_sale_order()
-        self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
-        self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
-        self.write({
-            'state': 'done'
-        })
+    
     
