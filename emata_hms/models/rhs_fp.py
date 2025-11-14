@@ -83,12 +83,18 @@ class EmHmsRHSFP(models.Model):
     pregnancy_check_ids = fields.Many2many('em.hms.rhs.fp.pregnancy.check', 'fp_pregnancy_check_rel', 'fp_id', 'pregnancy_check_id', string='Check For Current Pregnancy', tracking=True, required=True)
     medical_history_ids = fields.Many2many('em.hms.rhs.fp.medical.history', 'fp_medical_history_rel', 'fp_id', 'medical_history_id', string='Medical History And Habits', tracking=True)
     current_complaint_ids = fields.Many2many('em.hms.rhs.fp.complaint', 'fp_complaint_rel', 'fp_id', 'complaint_id', string='Any Current Complaint', tracking=True)
-    
+    medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'fp_visit_id', string='Medication Requests')
+    analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'fp_visit_id', string='Analysis Requests')
+    image_request_line_ids = fields.One2many('em.hms.image.request.line', 'fp_visit_id', string='Image Requests')
     recommendations = fields.Char('Recommendations And Treatment', tracking=True)
     examiner_id = fields.Many2one('hr.employee', string='Name Of Examiner', tracking=True, required=True)
     next_visit_date = fields.Date('Next Visit Date', tracking=True, required=True)
     notes = fields.Char('Notes', tracking=True)
-    
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='Status', required=True, default='draft')
+
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
     _sql_constraints = [
@@ -118,3 +124,14 @@ class EmHmsRHSFP(models.Model):
     def _onchange_patient_id(self):
         if self.patient_id:
             self.medical_history_ids = [(6, 0, [record.id for record in self.patient_id.medical_history_ids])]
+            
+            
+    def confirm_record(self):
+        self.ensure_one()
+        self.medication_request_line_ids.generate_sale_order()
+        self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+        self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
+        self.write({
+            'state': 'done'
+        })
+    

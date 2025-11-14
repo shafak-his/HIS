@@ -50,6 +50,7 @@ class EmHmsImageRequestLine(models.Model):
     rhs_surgery_id = fields.Many2one('em.hms.rhs.surgery', string='Surgery Visit')
     pnc_visit_id = fields.Many2one('em.hms.rhs.pnc.visit', string='PNC Visit')
     anc_visit_id = fields.Many2one('em.hms.rhs.anc.visit', string='ANC Visit')
+    fp_visit_id = fields.Many2one('em.hms.rhs.fp', string='FP Visit')
     hospitalization_id = fields.Many2one('em.hms.rhs.hospitalization', string='Hospitalization Visit')
     delivery_visit_id = fields.Many2one('em.hms.rhs.delivery', string='Delivery Visit ')
     dial_urology_id = fields.Many2one('em.hms.dial.urology', string='Urology Visit')
