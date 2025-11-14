@@ -13,7 +13,7 @@ class EmHmsImageRequest(models.Model):
     res_id = fields.Integer('Record ID')
     notes = fields.Char('Notes')
     state = fields.Selection([
-        ('draft', 'Pending'),
+        ('draft', 'Draft'),
         ('done', 'Done'),
     ], string='Status', required=True, default='draft')
 
