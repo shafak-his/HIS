@@ -111,7 +111,7 @@
                 <field name="recommendations" optional="hide" />
                 <field name="examiner_id" optional="hide" />
                 <field name="next_visit_date"  optional="hide"/>
-                <field name="state"  widget="badge" decoration-success="state =='done'"  decoration-danger="state == 'draft'" />
+               
                 <field name="notes" optional="hide" />
                 <field name="company_id" optional="hide" />
             </tree>
@@ -125,9 +125,7 @@
             <form string="FP">
                 <header>
                  
-                    <button string="اكمال الطلب" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
-
-                    <field name="state" widget="statusbar" />
+                  
              
                 </header>
                 <sheet>
