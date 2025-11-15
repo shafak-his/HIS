@@ -19,6 +19,7 @@
                 <field name="is_referral" optional="hide" />
                 <field name="referral_center_reason" optional="hide" />
                 <field name="previous_complications" optional="hide" />
+                <field name="visits_count" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -107,10 +108,9 @@
                       
                    
                     <separator string="Periodic Visits" />
-                    <field name="visit_ids">
+                    <field name="visit_ids"  >
                         <tree create="1" delete="1">
-                            <field name="visit_date" />
-                            
+                            <field name="visit_date"/>
                             <field name="arterial_pressure" optional="hide" />
                             <field name="weight" optional="hide" />
                             <field name="pulse_rate" optional="hide" />

@@ -79,7 +79,7 @@ class EmHmsRHSANC(models.Model):
     def create(self, vals):
         # نتحقق من عدد السجلات المضافة في One2many
         visits = vals.get('visit_ids', [])
-        count = len([v for v in visits if v[0] == 0])  # أوامر إضافة سجلات جديدة فقط
+        count = len(visits)  # أوامر إضافة سجلات جديدة فقط
         
         if count <1:
             raise ValidationError("يجب إضافة زيارة واحدة على الاقل.")

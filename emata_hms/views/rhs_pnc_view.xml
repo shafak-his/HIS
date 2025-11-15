@@ -9,14 +9,15 @@
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="husband_name" />
-                <field name="birth_date" optional="hide" />
-                <field name="birth_type" optional="hide" />
+                <field name="birth_date" />
+                <field name="birth_type"  />
                 <field name="is_baby_alive" optional="hide" />
                 <field name="body_weight" optional="hide" />
-                <field name="is_full_term_pregnancy" optional="hide" />
+                <field name="is_full_term_pregnancy"  />
                 <field name="previous_complications" optional="hide" />
                 <field name="is_referral" optional="hide" />
                 <field name="referral_center_reason" optional="hide" />
+                 <field name="visits_count" />
                 <field name="company_id" optional="hide" />
             </tree>
         </field>

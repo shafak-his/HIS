@@ -16,7 +16,7 @@ class EmHmsRHSANCVisit(models.Model):
     _rec_name = 'anc_id'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'em.common.form']
     
-    anc_id = fields.Many2one('em.hms.rhs.anc', string='ANC')
+    anc_id = fields.Many2one('em.hms.rhs.anc', string='ANC', required=True)
     patient_id = fields.Many2one('res.partner', 'Patient Name', related='anc_id.patient_id')
     visit_date = fields.Date('Date Of Visit', required=True, tracking=True)
     visit_type = fields.Selection([

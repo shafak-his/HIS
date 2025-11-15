@@ -31,7 +31,7 @@ class EmHmsRHSPNCVisit(models.Model):
     _rec_name = 'pnc_id'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'em.common.form']
     
-    pnc_id = fields.Many2one('em.hms.rhs.pnc', string='PNC')
+    pnc_id = fields.Many2one('em.hms.rhs.pnc', string='PNC', required=True)
     patient_id = fields.Many2one('res.partner', 'Patient Name', related='pnc_id.patient_id')
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True, required=True)
     visit_date = fields.Date('Date Of Visit', required=True, tracking=True)
