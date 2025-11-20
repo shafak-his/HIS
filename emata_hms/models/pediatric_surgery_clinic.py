@@ -53,10 +53,18 @@ class EmHmsPediatricSurgeryClinic(models.Model):
     medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'pediatric_surgery_clinic_id', string='Medication Requests')
     analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'pediatric_surgery_clinic_id', string='Analysis Requests')
     image_request_line_ids = fields.One2many('em.hms.image.request.line', 'pediatric_surgery_clinic_id', string='Image Requests')
-    state = fields.Selection([
+    state_medication = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
-    ], string='Status', required=True, default='draft')
+    ], string='medication Status Request', required=True, default='draft')
+    state_analysis = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='analysis Status Request', required=True, default='draft')
+    state_image = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='image Status Request', required=True, default='draft')
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
@@ -81,11 +89,22 @@ class EmHmsPediatricSurgeryClinic(models.Model):
             self.medication_history_ids = [(6, 0, [record.id for record in self.patient_id.medication_history_ids])]
             self.allergic_history_ids = [(6, 0, [record.id for record in self.patient_id.allergic_history_ids])]
 
-    def confirm_record(self):
+    def confirm_record_medication(self):
         self.ensure_one()
         self.medication_request_line_ids.generate_sale_order()
+        self.write({
+            'state_medication': 'done'
+        })
+        
+    def confirm_record_analysis(self):
+        self.ensure_one()
         self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+        self.write({
+            'state_analysis': 'done'
+        })
+    def confirm_record_image(self):
+        self.ensure_one()
         self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
         self.write({
-            'state': 'done'
+            'state_image': 'done'
         })

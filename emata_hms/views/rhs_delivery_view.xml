@@ -47,7 +47,7 @@
                 <field name="post_birth_ids" widget="many2many_tags" optional="hide" />
                 <field name="is_referral" optional="hide" />
                 <field name="referral_center_reason" optional="hide" />
-                <field name="state"  widget="badge" decoration-success="state =='done'"  decoration-danger="state == 'draft'" />
+               
                 <field name="company_id" optional="hide" />
             </tree>
         </field>
@@ -60,9 +60,13 @@
             <form string="Delivery">
                 <header>
                
-                    <button string="اكمال الطلب" name="confirm_record" type="object" class="oe_highlight" invisible="state != 'draft'" />
+                    <button string="تأكيد طلب الادوية" name="confirm_record_medication" type="object" class="oe_highlight" invisible="state_medication != 'draft'" />
+                   <button string="تأكيد طلب التحليل" name="confirm_record_analysis" type="object" class="oe_highlight" invisible="state_analysis != 'draft'" />
+                   <button string="تأكيد طلب الصور" name="confirm_record_image" type="object" class="oe_highlight" invisible="state_image != 'draft'" />
 
-                    <field name="state" widget="statusbar" />
+                    <field name="state_medication" invisible="1"/>
+                    <field name="state_analysis" invisible="1"/>
+                    <field name="state_image" invisible="1"/>
              
                     <div name="button_box" position="inside">
                         <!-- <button class="oe_stat_button" type="object" icon="fa-edit"

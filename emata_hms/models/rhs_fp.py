@@ -88,10 +88,18 @@ class EmHmsRHSFP(models.Model):
     recommendations = fields.Char('Recommendations And Treatment', tracking=True)
     examiner_id = fields.Many2one('hr.employee', string='Name Of Examiner', tracking=True, required=True)
     next_visit_date = fields.Date('Next Visit Date', tracking=True, required=True)
-    state = fields.Selection([
+    state_medication = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
-    ], string='Status',  default='draft')
+    ], string='medication Status Request', required=True, default='draft')
+    state_analysis = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='analysis Status Request', required=True, default='draft')
+    state_image = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='image Status Request', required=True, default='draft')
    
     notes = fields.Char('Notes', tracking=True)
     
@@ -99,13 +107,24 @@ class EmHmsRHSFP(models.Model):
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
     
-    def confirm_record(self):
+    def confirm_record_medication(self):
         self.ensure_one()
         self.medication_request_line_ids.generate_sale_order()
+        self.write({
+            'state_medication': 'done'
+        })
+        
+    def confirm_record_analysis(self):
+        self.ensure_one()
         self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+        self.write({
+            'state_analysis': 'done'
+        })
+    def confirm_record_image(self):
+        self.ensure_one()
         self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
         self.write({
-            'state': 'done'
+            'state_image': 'done'
         })
     
     _sql_constraints = [

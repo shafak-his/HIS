@@ -59,10 +59,18 @@ class EmHmsRHSInfertilityTreatment(models.Model):
     hysteroscopy_attachment = fields.Binary('Hysteroscopy Attachment', tracking=True)
     analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'infertility_treatment_id', string='Analysis Request')
     image_request_line_ids = fields.One2many('em.hms.image.request.line', 'infertility_treatment_id', string='Request An X-Ray')
-    state = fields.Selection([
+    state_medication = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
-    ], string='Status', required=True, default='draft')
+    ], string='medication Status Request', required=True, default='draft')
+    state_analysis = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='analysis Status Request', required=True, default='draft')
+    state_image = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='image Status Request', required=True, default='draft')
     notes = fields.Char('Notes', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
@@ -71,13 +79,24 @@ class EmHmsRHSInfertilityTreatment(models.Model):
         ('check_last_marriage_date', 'CHECK (last_marriage_date <= CURRENT_DATE)', 'Last Marriage Date Must Not Be Newer Than Today.'),
     ]
   
-    def confirm_record(self):
+    def confirm_record_medication(self):
         self.ensure_one()
         self.medication_request_line_ids.generate_sale_order()
+        self.write({
+            'state_medication': 'done'
+        })
+        
+    def confirm_record_analysis(self):
+        self.ensure_one()
         self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+        self.write({
+            'state_analysis': 'done'
+        })
+    def confirm_record_image(self):
+        self.ensure_one()
         self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
         self.write({
-            'state': 'done'
+            'state_image': 'done'
         })
          
 
