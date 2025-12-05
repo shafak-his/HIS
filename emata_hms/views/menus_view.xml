@@ -458,6 +458,11 @@
             parent="menu_em_hms_chw_root"
             action="emata_hms.em_hms_chw_individual_session_action"
             sequence="52" />
+        <menuitem id="menu_em_hms_chw_group_session_bnf"
+            name="CHW Group Session Beneficiaries"
+            parent="menu_em_hms_chw_root"
+            action="em_hms_chw_group_session_bnf_action"
+            sequence="53" />
         
         <!-- Patients Admission -->
         <menuitem id="menu_em_hms_patient_admission_root"
