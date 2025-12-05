@@ -90,7 +90,11 @@ class EmProjectSupportLine(models.Model):
     def get_common_models(self):
         return [
             'em.hms.referral'
+            
         ]
+        
+    @api.model
+    
 
     @api.model
     def get_project_ids(self, company_id, model_name, clinic_id, operation_date):

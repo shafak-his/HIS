@@ -48,7 +48,9 @@ class EmCommonForm(models.AbstractModel):
         for model_name in same_service_models:
             if 'patient_id' not in self.env[model_name]._fields:
                 continue
-
+            if 'project_id' not in self.env[model_name]._fields:
+                continue
+            
             domain = [('project_id', '=', self.project_id.id),('patient_id', '=', self.patient_id.id)]
             if model_name == self._name:
                 domain += [('id', '!=', self.id)]

@@ -6,7 +6,7 @@ class EmHmsRHSANC(models.Model):
     _name = 'em.hms.rhs.anc'
     _description = 'ANC'
     _rec_name = 'patient_id'
-    _inherit = ['mail.thread', 'mail.activity.mixin', 'em.common.form']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     cesarean_sections_count = fields.Integer('# Previous Cesarean Sections', tracking=True)
