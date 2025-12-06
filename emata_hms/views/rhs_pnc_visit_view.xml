@@ -69,6 +69,7 @@
                 <field name="doctor_id" />
                 <field name="duration_since_birth" />
                 <field name="visit_date" />
+                <field name="bnf_status" />
                 <field name="arterial_pressure_new" optional="hide" />
                 <field name="temperature" optional="hide" />
                 <field name="pulse" optional="hide" />

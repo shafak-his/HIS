@@ -86,6 +86,7 @@
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="visit_date" />
+                <field name="bnf_status" />
                 <field name="husband_name" />
                 <field name="pregnancies_count" optional="hide" />
                 <field name="births" optional="hide" />

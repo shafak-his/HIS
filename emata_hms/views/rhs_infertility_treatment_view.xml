@@ -10,6 +10,7 @@
                 <field name="patient_id" />
                 <field name="doctor_id" />
                 <field name="visit_date" />
+                <field name="bnf_status" />
                 <field name="husband_name" />
                 <field name="miarriages_count" optional="hide" />
                 <field name="pregnancies_count" optional="hide" />

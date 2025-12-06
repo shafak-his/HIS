@@ -10,6 +10,7 @@
                 <field name="patient_id" />
                 <field name="doctor_id" />
                 <field name="admission_date" />
+                <field name="bnf_status" />
                 <field name="admitting_midwife_id" optional="hide" />
                 <field name="admitting_physician_id" optional="hide" />
                 <field name="husband_name" />

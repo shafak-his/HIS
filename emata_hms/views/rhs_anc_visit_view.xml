@@ -11,6 +11,7 @@
                 <field name="patient_id" />
                 <field name="visit_date" />
                 <field name="visit_type" />
+                <field name="bnf_status" />
                 <field name="mother_pressure" optional="hide" />
                 <field name="weight" optional="hide" />
                 <field name="pulse_rate" optional="hide" />

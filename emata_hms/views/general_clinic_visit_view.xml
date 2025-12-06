@@ -10,6 +10,7 @@
                 <field name="visit_datetime" />
                 <field name="patient_id" />
                 <field name="clinic_id" />
+                <field name="bnf_status" />
                 <field name="is_pregnant" optional="hide"/>
                 <field name="is_lactating" optional="hide"/>
                 <field name="temperature" optional="hide" />

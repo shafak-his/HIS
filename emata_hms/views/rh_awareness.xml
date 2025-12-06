@@ -10,6 +10,7 @@
             <tree string="RH Awareness">
                 <field name="patient_id" />
                 <field name="session_date" />
+                <field name="bnf_status" />
                 <field name="community_health_worker_name" optional="hide" />
                 <field name="project_id" optional="show" />
                 <field name="center" optional="hide" />

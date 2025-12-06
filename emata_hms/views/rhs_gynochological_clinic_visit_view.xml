@@ -8,6 +8,7 @@
             <tree string="Gynochological Clinic Visit">
                 <field name="project_id" optional="show" />
                 <field name="visit_datetime" />
+                <field name="bnf_status" />
                 <field name="patient_id" />
                 <field name="clinic_id" />
                 <field name="current_complaint" optional="hide" />
