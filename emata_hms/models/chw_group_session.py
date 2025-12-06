@@ -94,7 +94,7 @@ class EmHmsCHWGroupSessionBNF(models.Model):
         ('host', 'Host'),
         ('idp', 'IDP')
     ], string='Displacement Status', required=True, tracking=True)
-    is_special_needs = fields.Binary('Does The Beneficiary Have Special Needs?', tracking=True)
+    is_special_needs = fields.Boolean('Does The Beneficiary Have Special Needs?', tracking=True)
     
     state_id = fields.Many2one('res.country.state', string='Governorate', domain="[('country_id.code','in',['SY'])]", required=True, tracking=True)
     district_id = fields.Many2one('em.country.district', string='District', required=True, tracking=True)
