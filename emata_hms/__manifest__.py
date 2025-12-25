@@ -89,7 +89,6 @@
         'views/pediatric_nicu_view.xml',
         'views/pediatric_newborn_examination_view.xml',
         'views/referral_view.xml',
-
         'data/sequence_data.xml',
         'data/hms_service_data.xml',
 
