@@ -97,7 +97,7 @@
                         <group>
                             <field name="product_template_id" />
                             <field name="result" />
-                            <field name="attach_file" filename="attach_file_name" />
+                            <field name="attach_file" filename="attach_file_name" widget="image" options="{'size': (50, 50)}"/>
                             <field name="attach_file_name" invisible="1" />
                             <field name="notes" />
                         </group> 
