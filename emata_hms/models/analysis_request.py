@@ -67,7 +67,7 @@ class EmHmsAnalysisRequestLine(models.Model):
     delivery_visit_id = fields.Many2one('em.hms.rhs.delivery', string='Delivery Visit ')
     rhs_surgery_id = fields.Many2one('em.hms.rhs.surgery', string='RHS Surgery')
 
-    result = fields.Char('Result', tracking=True)
+    result = fields.Char('Result')
     attach_file = fields.Binary('Attachment')
     attach_file_name = fields.Char('Attachment Name')
     
