@@ -69,7 +69,7 @@ class EmHmsAnalysisRequestLine(models.Model):
 
     result = fields.Char('Result', tracking=True)
     attach_file = fields.Binary('Attachment')
-    attach_file_name = fields.Char('Attachment Name', tracking=True)
+    attach_file_name = fields.Char('Attachment Name')
     
     product_template_id = fields.Many2one('product.template', string='Product', domain="[('is_medical_analysis', '=', True)]", required=True)
     notes = fields.Char('Notes')

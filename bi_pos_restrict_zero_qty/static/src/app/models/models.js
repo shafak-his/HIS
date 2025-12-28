@@ -34,10 +34,10 @@ patch(Order.prototype, {
                        }
                    }
                    if (prd.type == 'product'){
-                       if(prd.qty_available <= 0){
+                       if(prd.qty_available < 0){
                            restrict = true;
                            call_super = false;
-                           let warning = prd.display_name + ' is out of stock.';
+                           let warning = prd.display_name + ' لايمكن صرف كمية سالبة';
                            this.env.services.pos.popup.add(ErrorPopup, {
                                title: _t('Zero Quantity Not allowed'),
                                body: _t(warning),
@@ -49,7 +49,7 @@ patch(Order.prototype, {
                        $.each(prod_used_qty, function( i, pq ){
                            let product = self.env.services.pos.db.get_product_by_id(i);
                            let check = pq[0] - pq[1];
-                           let warning = product.display_name + ' is out of stock.';
+                           let warning = product.display_name + ' الصنف غير متوفر في المخزن';
                            if (product.type == 'product'){
                                if (check < 0){
                                    call_super = false;
