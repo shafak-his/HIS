@@ -172,6 +172,7 @@
                             <field name="method_problem_ids" widget="many2many_tags"
                                 invisible="is_contraceptive_method == False"
                                 required="is_contraceptive_method == True" />
+                             <field name="current_contraceptive_method" />
                         </group>
                         <group>
                             <field name="usage_duration"

@@ -16,6 +16,8 @@
                 <field name="procedures_followed" optional="hide" />
                 <field name="procedure_type" optional="hide" />
                 <field name="other_procedure_type" optional="hide" />
+                <field name="is_pregnant" optional="hide" />
+                <field name="is_lactating"  optional="hide"/>
                 <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
                 <field name="allergic_history_ids" widget="many2many_tags" optional="hide" />
                 <field name="graduation_to" optional="hide" />
@@ -52,6 +54,8 @@
                             <field name="allowed_project_ids" invisible="1" />
                             <field name="visit_datetime" />
                             <field name="patient_id" />
+                            <field name="is_pregnant" widget="checkbox" />
+                            <field name="is_lactating" widget="checkbox" />
                         </group>
                         <group>
                             <field name="doctor_id" />

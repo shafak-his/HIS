@@ -67,7 +67,15 @@ class EmHmsRHSFP(models.Model):
         ('condoms', '5-Condoms'),
         ('implants', '6-Implants')
     ], string=' contraceptive Method', tracking=True)
-
+    current_contraceptive_method = fields.Selection([
+        ('coc', '1-COC'),
+        ('poc', '2-POC'),
+        ('iud', '3-IUD'),
+        ('injections', '4-Injections'),
+        ('condoms', '5-Condoms'),
+        ('implants', '6-Implants'),
+        ('nothing', 'Nothing')
+    ], string=' Current contraceptive Method', tracking=True,required=True)
    
 
 

@@ -18,6 +18,14 @@ class EmHmsRHSDelivery(models.Model):
     medication_history_ids = fields.Many2many('em.hms.medication.history', 'delivery_medication_history_rel', 'delivery_id', 'medication_history_id', string='Medication History',compute= '_compute_medication_history')
     allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'delivery_allergic_history_rel', 'delivery_id', 'allergic_history_id', string='Allergic History',compute= '_compute_allergic_history')
     initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True, required=True)
+    delivery_type= fields.Selection([
+        ('normal_delivery', 'Normal Delivery'),
+        ('c_section_elective', 'C-Section Elective'),
+        ('c_section_emergency', 'C-Section Emergency'),
+      
+    ], string='Type Of Delivery', tracking=True,required=True)
+    reason_of_c_section=fields.Char('Reason Of C-Section', tracking=True, required=True)
+    number_of_newborn=fields.Integer('Number Of Newborn', tracking=True,required=True)
     child_name = fields.Char('Name Of Child', tracking=True)
     
     medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'delivery_visit_id', string='Medication Requests')
@@ -93,6 +101,7 @@ class EmHmsRHSDelivery(models.Model):
     patient_condition = fields.Selection([
         ('to_home', 'To Home'),
         ('another_hospital', 'Another Hospital'),
+        ('deathCaseMother', 'Death Case Mother'),
         ('other', 'Other')
     ], string='Patient''s Condition', tracking=True)
     newborn_condition = fields.Selection([
@@ -100,8 +109,9 @@ class EmHmsRHSDelivery(models.Model):
         ('another_hospital', 'Another Hospital'),
         ('transfer_to_care', 'Transfer To Care'),
         ('transfer_to_incubators', 'Transfer To Incubators'),
-        ('deceased', 'Deceased')
+        ('deathCaseNewborn', 'Death Case Newborn')
     ], string='Newborn''s Condition', tracking=True)
+    deathCase_report_number=fields.Char('Death Case Report number', tracking=True)
     patient_companion_name = fields.Char('Patient''s Companion''s Name', tracking=True)
     patient_companion_relationship = fields.Char('Relationship', tracking=True)
     notes = fields.Char('Notes', tracking=True)

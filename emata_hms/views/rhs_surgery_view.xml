@@ -95,6 +95,8 @@
                         <field name="referral_center_reason" invisible="is_referral != True" widget="text" />
                         <field name="surgery_type_ids" widget="many2many_tags"/>
                         <field name="other_surgery_type" />
+                        <field name="is_pregnant" widget="checkbox" />
+                        <field name="is_lactating" widget="checkbox" />
                     </group>
                     <group>
                         <field name="husband_name" />

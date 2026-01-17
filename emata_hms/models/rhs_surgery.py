@@ -22,7 +22,8 @@ class EmHmsRHSSurgery(models.Model):
     other_surgery_type = fields.Char('Other Surgery Type', tracking=True)
     initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True)
     child_name = fields.Char('Name Of Child', tracking=True)
-    
+    is_pregnant = fields.Boolean('Is Pregnant?', tracking=True)
+    is_lactating = fields.Boolean('Is Lactating?', tracking=True)
     natural_births_count = fields.Integer('# Natural Births', tracking=True)
     cesarean_births_count = fields.Integer('# Cesarean Births', tracking=True)
     miscarriages_count = fields.Integer('# Miscarriages', tracking=True)
