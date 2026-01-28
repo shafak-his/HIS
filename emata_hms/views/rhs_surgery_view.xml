@@ -223,15 +223,11 @@
                                 <field name="surgery_datetime" widget="datetime" />
                                 <field name="surgery_medication_ids" widget="many2many_tags" />
                                 <field name="surgery_report" widget="text" />
-                                <field name="is_cesarean_surgery" />
+                                
                                 
                             </group>
                             <group>
-                                <field name="newborn_general_condition" invisible="is_cesarean_surgery == False" required = "is_cesarean_surgery == True" />
-                                <field name="child_name"  invisible="is_cesarean_surgery == False" required = "is_cesarean_surgery == True"/>
-                                <field name="newborn_gender" widget="radio" invisible="is_cesarean_surgery == False" required = "is_cesarean_surgery == True" />
-                                <field name="newborn_weight" invisible="is_cesarean_surgery == False" required = "is_cesarean_surgery == True" />
-                                <field name="is_breastfeeding_first_hour" widget="checkbox" invisible="is_cesarean_surgery == False" required = "is_cesarean_surgery == True" />
+                             
                             </group>
                         </group>
                     </page>

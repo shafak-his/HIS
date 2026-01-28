@@ -73,7 +73,7 @@ class EmHmsRHSFP(models.Model):
         ('t11', 'لولب - مستخدم لأول مرة'),
         ('t12', 'واقي - مستخدم قديم'),
         ('t13', 'واقي - مستخدم لأول مرة')
-    ], string=' contraceptive Method', tracking=True)
+    ], string=' contraceptive Method', tracking=True,required=True)
     current_contraceptive_method = fields.Selection([
       ('t1', 'بروجسترون أحادي الطور - مستخدم قديم'),
         ('t2', 'بروجسترون أحادي الطور - مستخدم لأول مرة'),
