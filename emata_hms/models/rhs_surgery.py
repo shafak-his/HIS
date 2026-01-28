@@ -20,6 +20,19 @@ class EmHmsRHSSurgery(models.Model):
     allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'rhs_surgery_allergic_history_rel', 'surgery_id', 'allergic_history_id', string='Allergic History' ,compute= '_compute_allergic_history')
     surgery_type_ids = fields.One2many('em.hms.surgical.procedure','surgery_id', string='Type Of Surgery', tracking=True)
     other_surgery_type = fields.Char('Other Surgery Type', tracking=True)
+    abortionReason = fields.Selection([
+        ('t1', ' اجهاض بعد اغتصاب'),
+        ('t2', 'اجهاض دوائي'),
+        ('t3', 'اجهاض عفوي'),
+        ('t4', 'تهديد اجهاض'),
+        ('t5', 'رعاية مابعد الإجهاض'),
+        ('t6', 'كورتاج')
+       
+    ], string='في حال كانت العملية اجهاض ماهو السبب؟', tracking=True)
+    
+    
+    
+    
     initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True)
     child_name = fields.Char('Name Of Child', tracking=True)
     is_pregnant = fields.Boolean('Is Pregnant?', tracking=True)

@@ -53,9 +53,9 @@ class EmHmsRHSPNCVisit(models.Model):
     patient_complaint = fields.Char('Patient Complaint If Any', tracking=True)
     echo_findings = fields.Char('Echo Findings', tracking=True)
     examiner_name = fields.Char('Name Of Examiner', tracking=True, required=True)
-    pathological_finding_ids = fields.Many2many('em.hms.rhs.pathological.find', 'rhs_pnc_visit_pathological_find_rel', 'pnc_visit_id', 'path_find_id', string='Pathological Findings',)
-    postpartum_complication_ids = fields.Many2many('em.hms.rhs.postpartum.comp', 'rhs_pnc_visit_postpartum_comp_rel', 'pnc_visit_id', 'post_comp_id', string='Postpartum Complications')
-    wound_ids = fields.Many2many('em.hms.rhs.wound', 'rhs_pnc_visit_wound_rel', 'pnc_visit_id', 'wound_id', string='Existing Wounds')
+    pathological_finding_ids = fields.Many2many('em.hms.rhs.pathological.find', 'rhs_pnc_visit_pathological_find_rel', 'pnc_visit_id', 'path_find_id', string='Pathological Findings',required=True)
+    postpartum_complication_ids = fields.Many2many('em.hms.rhs.postpartum.comp', 'rhs_pnc_visit_postpartum_comp_rel', 'pnc_visit_id', 'post_comp_id', string='Postpartum Complications',required=True)
+    wound_ids = fields.Many2many('em.hms.rhs.wound', 'rhs_pnc_visit_wound_rel', 'pnc_visit_id', 'wound_id', string='Existing Wounds',required=True)
     
     medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'pnc_visit_id', string='Medication Requests')
     analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'pnc_visit_id', string='Analysis Requests')

@@ -60,21 +60,34 @@ class EmHmsRHSFP(models.Model):
     is_contraceptive_method = fields.Boolean('Any Previous Contraceptive Method', tracking=True)
     contraceptive_method_ids = fields.Many2many('em.hms.rhs.fp.contraceptive.method', 'fp_contraceptive_method_rel', 'fp_id', 'contraceptive_method_id', string='Contraceptive Method', tracking=True)
     contraceptive_method = fields.Selection([
-        ('coc', '1-COC'),
-        ('poc', '2-POC'),
-        ('iud', '3-IUD'),
-        ('injections', '4-Injections'),
-        ('condoms', '5-Condoms'),
-        ('implants', '6-Implants')
+        ('t1', 'بروجسترون أحادي الطور - مستخدم قديم'),
+        ('t2', 'بروجسترون أحادي الطور - مستخدم لأول مرة'),
+        ('t3', 'حبوب مركبة - مستخدم قديم'),
+        ('t4', 'حبوب مركبة - مستخدم لأول مرة'),
+        ('t5', 'استشارات حول منع الحمل'),
+        ('t6', 'حبوب منع طارئة'),
+        ('t7', 'غرسات - مستخدم قديم'),
+        ('t8', 'غرسات - مستخدم لأول مرة'),
+        ('t9', 'موانع الحمل عن طريق الحقن - مستخدم لأول مرة'),
+        ('t10', 'لولب - مستخدم قديم'),
+        ('t11', 'لولب - مستخدم لأول مرة'),
+        ('t12', 'واقي - مستخدم قديم'),
+        ('t13', 'واقي - مستخدم لأول مرة')
     ], string=' contraceptive Method', tracking=True)
     current_contraceptive_method = fields.Selection([
-        ('coc', '1-COC'),
-        ('poc', '2-POC'),
-        ('iud', '3-IUD'),
-        ('injections', '4-Injections'),
-        ('condoms', '5-Condoms'),
-        ('implants', '6-Implants'),
-        ('nothing', 'Nothing')
+      ('t1', 'بروجسترون أحادي الطور - مستخدم قديم'),
+        ('t2', 'بروجسترون أحادي الطور - مستخدم لأول مرة'),
+        ('t3', 'حبوب مركبة - مستخدم قديم'),
+        ('t4', 'حبوب مركبة - مستخدم لأول مرة'),
+        ('t5', 'استشارات حول منع الحمل'),
+        ('t6', 'حبوب منع طارئة'),
+        ('t7', 'غرسات - مستخدم قديم'),
+        ('t8', 'غرسات - مستخدم لأول مرة'),
+        ('t9', 'موانع الحمل عن طريق الحقن - مستخدم لأول مرة'),
+        ('t10', 'لولب - مستخدم قديم'),
+        ('t11', 'لولب - مستخدم لأول مرة'),
+        ('t12', 'واقي - مستخدم قديم'),
+        ('t13', 'واقي - مستخدم لأول مرة')
     ], string=' Current contraceptive Method', tracking=True,required=True)
    
 

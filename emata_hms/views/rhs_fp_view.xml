@@ -158,36 +158,15 @@
                             <field name="referral_center_reason" invisible="is_referral != True" widget="text" />
                         </group>
                     </group>
-                    <separator string="Contraceptive Method" />
+                  
                     <group>
                         <group>
-                            <field name="is_contraceptive_method" />
-                            <field name="contraceptive_method"
-                                invisible="is_contraceptive_method == False"
-                                required="is_contraceptive_method == True"
-                               />
-                            <field name="is_method_staisfying"
-                                invisible="is_contraceptive_method == False"
-                                required="is_contraceptive_method == True" />
-                            <field name="method_problem_ids" widget="many2many_tags"
-                                invisible="is_contraceptive_method == False"
-                                required="is_contraceptive_method == True" />
+                          
+                           
                              <field name="current_contraceptive_method" />
                         </group>
                         <group>
-                            <field name="usage_duration"
-                                invisible="is_contraceptive_method == False"
-                                required="is_contraceptive_method == True" />
-                            <field name="is_method_stopped"
-                                invisible="is_contraceptive_method == False"
-                                required="is_contraceptive_method == True" />
-                            <field name="stopping_date"
-                                invisible="is_contraceptive_method == False or is_method_stopped == False"
-                                required="is_contraceptive_method == True and is_method_stopped == True" />
-                            <field name="stopping_reason"
-                                invisible="is_contraceptive_method == False or is_method_stopped == False"
-                                required="is_contraceptive_method == True and is_method_stopped == True" />
-
+                           
 
                         
                         </group>

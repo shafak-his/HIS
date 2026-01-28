@@ -24,8 +24,37 @@ class EmHmsRHSDelivery(models.Model):
         ('c_section_emergency', 'C-Section Emergency'),
       
     ], string='Type Of Delivery', tracking=True,required=True)
-    reason_of_c_section=fields.Char('Reason Of C-Section', tracking=True, required=True)
-    number_of_newborn=fields.Integer('Number Of Newborn', tracking=True,required=True)
+    type_of_feeding = fields.Selection([
+        ('breastfeeding', 'BreastFeeding'),
+        ('artificial feeding', 'ArtificialFeeding'),
+        ('combinationfeeding', 'CombinationFeeding')
+        
+      
+        ], string='Type Of Feedings', tracking=True,required=True)
+    reason_of_c_section=fields.Selection([
+        ('t1', 'انبثاق أغشية باكر'),
+        ('t2', 'انسمام حملي'),
+        ('t3', 'انفصال مشيمة'),
+        ('t4', 'تألم جنين (اضطراب اصغاء)'),
+        ('t5', 'حمل عزيز'),
+        ('t6', 'حمل مديد'),
+        ('t7', 'خلع ورك خلقي عند الأم'),
+        ('t8', 'عدم تناسب حوضي جنيني'),
+        ('t9', 'عمليتين قصيريتين أو أكثر'),
+        ('t10', 'فشل اتساع'),
+        ('t11', 'فشل تقدم'),
+         ('t12', 'مجيئ معيب عند المخاض'),
+        ('t13', 'مشيمة مركزية'),
+        ('t14', 'وجود انحلال في الدم أو نقص صفائح'),
+        ('t15', 'وجود تمزق رحم حالي'),
+         ('t16', 'وجود عدوى الإيدز أو فيروسية أخرى'),
+        ('t17', 'وجود عمل جراحي سابق في الرحم'),
+        ('other', 'اسباب اخرى')
+    
+    ], string='Reason Of C-Section', tracking=True, required=True)
+    medical_signs_ids =fields.Many2many('em.hms.medical.sign', 'rhs_delivery_medicals_sign_rel', 'medical_signs_id', string='Medical Signs', tracking=True, required=True)
+    
+    number_of_newborn=fields.Integer('Number Of Newborn', tracking=True,required=True,default='1')
     child_name = fields.Char('Name Of Child', tracking=True)
     
     medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'delivery_visit_id', string='Medication Requests')
@@ -47,7 +76,7 @@ class EmHmsRHSDelivery(models.Model):
         ('none', 'None')
     ], string='Pregnancy-Related Diseases In Previous Pregnancies', tracking=True)
     
-    gestational_age = fields.Integer('Gestational Age In Weeks', tracking=True)
+    gestational_age = fields.Char('Gestational Age In Weeks', tracking=True,required=True)
     arrival = fields.Selection([
         ('vertical', 'Vertical'),
         ('completely_crippled', 'Completely Crippled'),
@@ -90,7 +119,7 @@ class EmHmsRHSDelivery(models.Model):
     newborn_gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female')
-    ], string='Gender Of The Newborn', tracking=True)
+    ], string='Gender Of The Newborn', tracking=True,required=True)
     newborn_weight = fields.Float('Weight Of The Newborn', tracking=True)
     is_breastfeeding_first_hour = fields.Boolean('Breastfeeding Within The First Hour', tracking=True)
     is_referral = fields.Boolean('Has There Been A Referral?', tracking=True)
@@ -103,14 +132,14 @@ class EmHmsRHSDelivery(models.Model):
         ('another_hospital', 'Another Hospital'),
         ('deathCaseMother', 'Death Case Mother'),
         ('other', 'Other')
-    ], string='Patient''s Condition', tracking=True)
+    ], string='Patient''s Condition', tracking=True ,required=True)
     newborn_condition = fields.Selection([
         ('to_home', 'To Home'),
         ('another_hospital', 'Another Hospital'),
         ('transfer_to_care', 'Transfer To Care'),
         ('transfer_to_incubators', 'Transfer To Incubators'),
         ('deathCaseNewborn', 'Death Case Newborn')
-    ], string='Newborn''s Condition', tracking=True)
+    ], string='Newborn''s Condition', tracking=True,required=True)
     deathCase_report_number=fields.Char('Death Case Report number', tracking=True)
     patient_companion_name = fields.Char('Patient''s Companion''s Name', tracking=True)
     patient_companion_relationship = fields.Char('Relationship', tracking=True)
@@ -135,6 +164,8 @@ class EmHmsRHSDelivery(models.Model):
         ('draft', 'Draft'),
         ('done', 'Done'),
     ], string='image Status Request', required=True, default='draft')
+    
+    
     @api.onchange('patient_id')
     def _onchange_patient_id(self):
         if self.patient_id:
