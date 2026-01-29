@@ -105,7 +105,7 @@
                             <field name="is_violence_or_abuse_signs" required="is_death_or_defaulter == False" />
                             <field name="is_danger_signs" invisible="is_pbw == False" required="is_pbw == True" />
                             <field name="danger_signs_ids" invisible="is_pbw == False or is_danger_signs == False"
-                                required="is_pbw == True and is_danger_signs == True">
+                                required="is_pbw == True and is_danger_signs == True" widget="many2many_tags">
                                 <tree create="0" delete="0" editable="bottom">
                                     <field name="name" />
                                 </tree>
