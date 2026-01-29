@@ -98,11 +98,10 @@
                             <field name="is_bilateral_edema" />
                             <field name="is_danger_signs" />
                             <field name="danger_signs_ids" invisible="is_danger_signs == False"
-                                required="is_danger_signs == True">
-                                <tree create="0" delete="0" editable="bottom">
-                                    <field name="name" />
-                                </tree>
-                            </field>
+                                required="is_danger_signs == True" widget="many2many_tags" />
+                                
+                            
+                            <field name="child_risk_factors" />
                         </group>
                         <group>
                             <field name="child_condition_at_first_visit"

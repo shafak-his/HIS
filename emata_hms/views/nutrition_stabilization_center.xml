@@ -52,6 +52,7 @@
                             <field name="bnf_status" readonly="1" />
                             <field name="allowed_project_ids" invisible="1" />
                             <field name="service_place" />
+                            <field name="camp_name"  invisible="service_place == 'fixed'"/>
                             <field name="visit_date" widget="date" />
                             <field name="is_child_accepted" />
                             <field name="age_in_months" readonly="1" force_save="1" />

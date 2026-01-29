@@ -89,6 +89,7 @@
                             <field name="session_presenter_name" invisible="session_type != 'ftfsg'" required="session_type == 'ftfsg'"/>
                             <field name="team_id" />
                             <field name="service_place" />
+                            <field name="camp_name" invisible="service_place == 'fixed'"/>
                             <field name="session_type" invisible="1" />
                         </group>
                         <group>
@@ -96,7 +97,7 @@
                             <field name="district_id" domain="[('state_id', '=', state_id)]" options="{'no_create': True, 'no_quick_create': True}" />
                             <field name="sub_district_id" domain="[('district_id', '=', district_id)]" options="{'no_create': True, 'no_quick_create': True}" />
                             <field name="location_id" options="{'no_create': True, 'no_quick_create': True}" />
-                            <field name="camp_name" />
+                       
                         </group>
                     </group>
                     <group>

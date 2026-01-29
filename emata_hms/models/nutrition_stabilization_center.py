@@ -13,6 +13,7 @@ class EmHmsNutritionStabilizationCenter(models.Model):
         ('fixed', 'Fixed'),
         ('mobile', 'Mobile')
     ], string='Place Where The Service Is Provided', required=True, tracking=True)
+    camp_name = fields.Char('Camp Name', required=True, tracking=True)
     visit_date = fields.Date('Date Of Visit', required=True, tracking=True)
     is_child_accepted = fields.Boolean('Has It Been Accepted?', tracking=True)
     age_in_months = fields.Integer(compute='_compute_age_in_months', string='Child''s Age In Months')
