@@ -53,20 +53,6 @@ class EmHmsNutritionScreeningWoman(models.Model):
               
     is_committed_to_examinations = fields.Boolean('Mother Committed To Undergoing Periodic Examinations At The Center?', tracking=True)         
     is_violence_or_abuse_signs = fields.Boolean('Any Visible Signs Of Any Violence Or Abuse?', tracking=True)
-    womens_risk_factors = fields.Selection([
-        ('severe_headache_and_blurred_vision', 'Severe headache and blurred vision'),
-        ('bleeding_or_fluid_discharge', 'Bleeding or fluid discharge'),
-        ('severe_lower_abdominal_pain', 'Severe lower abdominal pain'),
-        ('lack_of_fetal_movement', 'Lack of fetal movement'),
-        ('swelling_in_the_hands_legs_and_face', 'Swelling in the hands, legs, and face'),
-        ('biscpersistent_vomitinguits', 'Persistent vomiting'),
-        ('fever', 'Fever'),
-        ('burning_urination', 'Burning urination'),
-        ('paleness', 'Paleness'),
-        ('extreme_fatigue_and_dizziness', 'Extreme fatigue and dizziness'),
-        ('none', 'None')
-     
-    ], string='Womens Risk Factors', tracking=True)
     is_danger_signs = fields.Boolean('Does The Beneficiary (Pregnant) Have Any Dnger Signs?', tracking=True)
     danger_signs_ids = fields.Many2many('em.hms.nutrition.danger.sign.woman', 'screening_danger_sign_woman_rel', 'screening_woman_id', 'danger_sign_woman_id', string='Danger Signs', tracking=True)
     

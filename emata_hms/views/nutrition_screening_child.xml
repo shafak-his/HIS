@@ -101,7 +101,7 @@
                                 required="is_danger_signs == True" widget="many2many_tags" />
                                 
                             
-                            <field name="child_risk_factors" />
+                           
                         </group>
                         <group>
                             <field name="child_condition_at_first_visit"

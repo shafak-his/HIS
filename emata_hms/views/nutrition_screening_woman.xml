@@ -115,8 +115,7 @@
                     </group>
                     <group invisible="is_death_or_defaulter == True">
                         <group>
-                            <field name="womens_risk_factors"
-                               />
+                           
                                 <field name="is_committed_to_examinations"
                                 required="is_death_or_defaulter == False" />
                             <field name="is_beneficiary_referred"

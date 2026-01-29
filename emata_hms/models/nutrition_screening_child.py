@@ -60,24 +60,7 @@ class EmHmsNutritionScreeningChild(models.Model):
         ('sam_complications', 'SAM With Complications')
     ], string='Nature Of SAM', tracking=True)
     is_violence_or_abuse_signs = fields.Boolean('Are There Any Visible Signs Of Any Violence Or Abuse?', tracking=True)
-    child_risk_factors = fields.Selection([
-        ('seizures','Seizures'),
-        ('drowsiness_or_loss_of_consciousness','Drowsiness or loss of consciousness'),
-        ('loss_of_appetite','Loss of appetite'),
-        ('persistent_vomiting','Persistent vomiting'),
-        ('persistent_diarrhea','Persistent diarrhea'),
-        ('blood_in_the_stool','Blood in the stool'),
-        ('cyanosis','Cyanosis'),
-        ('rapid_and_labored_breathing','Rapid and labored breathing'),
-        ('sinking_chest','Sinking chest'),
-        ('dehydration','Dehydration'),
-        ('refusal_to_feed','Refusal to feed'),
-        ('convulsions','Convulsions'),
-        ('fever','Fever'),
-        ('bleeding_from_the_umbilicus','Bleeding from the umbilicus'),
-        ('bulging_fontanelle','Bulging fontanelle'),
-        ('none', 'None')
-         ], string='Child Risk Factors', tracking=True)
+
     is_beneficiary_referred = fields.Boolean('Based On The Beneficiary''s Condition, Has The Beneficiary Been Referred?', tracking=True)
     referral_place = fields.Char('Place Of Referral Beneficiary', default='Shafak', tracking=True)
     is_supplements_distributed = fields.Boolean('Were Nutritional Supplements Distributed To The Beneficiary?')
