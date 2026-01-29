@@ -33,6 +33,7 @@
         </field>
     </record>
 
+
     <record id="em_hms_nutrition_topic_action" model="ir.actions.act_window">
         <field name="name">Group Session Topics</field>
         <field name="res_model">em.hms.nutrition.topic</field>
@@ -40,6 +41,26 @@
         <field name="domain">[]</field>
         <field name="context">{}</field>
     </record>
+
+    <record id="em_hms_nutrition_iycftopic_view_tree" model="ir.ui.view">
+        <field name="name">em.hms.nutrition.iycftopic.view.tree</field>
+        <field name="model">em.hms.nutrition.iycftopic</field>
+        <field name="arch" type="xml">
+            <tree string="IYCF Session Topics" editable="bottom">
+                <field name="name" />
+                <field name="parent_id" domain="[('parent_id','=',False)]" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="em_hms_nutrition_iycftopic_action" model="ir.actions.act_window">
+        <field name="name">IYCF Session Topics</field>
+        <field name="res_model">em.hms.nutrition.iycftopic</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
 
 
     <!-- Main -->

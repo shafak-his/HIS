@@ -383,6 +383,11 @@
             parent="menu_em_hms_nutrition_master_data"
             action="emata_hms.em_hms_nutrition_topic_action"
             sequence="2" />
+        <menuitem id="menu_em_hms_nutrition_iycftopic"
+            name="IYCF Topics"
+            parent="menu_em_hms_nutrition_master_data"
+            action="emata_hms.em_hms_nutrition_iycftopic_action"
+            sequence="3" />
         <!-- <menuitem id="menu_em_hms_nutrition_group_session_bnf"
             name="Beneficiaries"
             parent="menu_em_hms_nutrition_master_data"
@@ -398,6 +403,11 @@
             parent="menu_em_hms_nutrition_master_data"
             action="emata_hms.em_hms_nutrition_danger_sign_child_action"
             sequence="5" />
+        <menuitem id="menu_em_hms_nutrition_danger_sign_womans"
+            name="Danger Signs On  Womans"
+            parent="menu_em_hms_nutrition_master_data"
+            action="em_hms_nutrition_danger_sign_woman_action"
+            sequence="6" />
         <menuitem id="menu_em_hms_chw_master_data"
             name="CHW Master Data"
             parent="menu_em_hms_admin_root"

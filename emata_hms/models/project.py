@@ -67,6 +67,7 @@ class EmProjectSupportLine(models.Model):
             'em.hms.nutrition.group.session': 'emata_hms.em_hms_service_nutrition',
             'em.hms.nutrition.bnf.visit': 'emata_hms.em_hms_service_nutrition',
             'em.hms.nutrition.topic': 'emata_hms.em_hms_service_nutrition',
+            'em.hms.nutrition.iycftopic': 'emata_hms.em_hms_service_nutrition',
             'em.hms.nutrition.team': 'emata_hms.em_hms_service_nutrition',
             'em.hms.necessity.giving': 'emata_hms.em_hms_service_mh',
             'em.hms.mh.referral': 'emata_hms.em_hms_service_mh',

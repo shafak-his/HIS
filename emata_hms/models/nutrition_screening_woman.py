@@ -6,7 +6,15 @@ class EmHmsNutritionDangerSignWoman(models.Model):
     _rec_name = 'name'
 
     name = fields.Char('Name', required=True, translate=True)
+class EmHmsNutritionIycfTopic(models.Model):
+    _name = 'em.hms.nutrition.iycftopic'
+    _description = 'IYCF Session  Topic'
+    _rec_name = 'name'
 
+    name = fields.Char('Name', required=True, translate=True)
+    parent_id = fields.Many2one('em.hms.nutrition.iycftopic', string='Parent')
+    child_ids = fields.One2many('em.hms.nutrition.iycftopic', 'parent_id', string='Items')
+    
 class EmHmsNutritionScreeningWoman(models.Model):
     _name = 'em.hms.nutrition.screening.woman'
     _description = 'Woman Screening for Acute Malnutrition'
@@ -152,8 +160,8 @@ class EmHmsNutritionGroupSessionTopic(models.Model):
     _description = 'Woman Screening for Acute Malnutrition Topic'
     
     session_id = fields.Many2one('em.hms.nutrition.screening.woman', string='Session', ondelete='cascade')
-    topic_id = fields.Many2one('em.hms.nutrition.topic', string='Main Topic', required=True)
-    sub_topic_ids = fields.Many2many('em.hms.nutrition.topic', 'em_nutrition_screening_women_topic_rel', 'topic_id', 'sub_topic_id', string='Sub-Topic', required=True)
+    topic_id = fields.Many2one('em.hms.nutrition.iycftopic', string='Main Topic', required=True)
+    sub_topic_ids = fields.Many2many('em.hms.nutrition.iycftopic', 'em_nutrition_screening_women_iycftopic_rel', 'topic_id', 'sub_topic_id', string='Sub-Topic', required=True)
     other_sub_topics = fields.Char('Other Sub-Topics')
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company, required=True)    
     
