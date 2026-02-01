@@ -1,3 +1,4 @@
+
 from odoo import _, api, fields, models, exceptions, tools
 BLOOD_TYPES = [
     ('A+', 'A+'),
@@ -46,6 +47,7 @@ class EmHmsRHSANCVisit(models.Model):
         ('cross', 'Cross'),
         ('frontal', 'Frontal'),
         ('facial', 'Facial'),
+        ('new_pregnancy', 'New pregnancy'),
         ('unknow', 'unknow')
     ], string='Presence', tracking=True, required=True)
     fluid = fields.Selection([
@@ -53,6 +55,7 @@ class EmHmsRHSANCVisit(models.Model):
         ('fluid_scarcity', 'Liquid Scarcity'),
         ('no_fluid', 'No Fluid'),
         ('amniotic_hydrocephalus', 'Amniotic Hydrocephalus')
+        ('new_pregnancy', 'New pregnancy'),
     ], string='Fluid', tracking=True, required=True)
     deformities = fields.Char('Deformities', tracking=True)
     child_blood_group = fields.Selection(BLOOD_TYPES, string='Child Blood Group', tracking=True)
@@ -73,6 +76,7 @@ class EmHmsRHSANCVisit(models.Model):
         ('low', 'Low'),
         ('marginal', 'Marginal'),
         ('central', 'Central'),
+        ('new_pregnancy', 'New pregnancy'),
         ('front', 'Front')
     ], string='Placenta', tracking=True, required=True)
     if_done_explain = fields.Char('If Done Explain', tracking=True)
