@@ -61,7 +61,7 @@ class EmHmsNutritionGroupSession(models.Model):
     number_male_caregivers_gte_18 = fields.Integer('# Male Caregivers >= 18 Years', tracking=True)
     number_male_caregivers_lt_18 = fields.Integer('# Male Caregivers < 18 Years', tracking=True)
 
-    topic_ids = fields.One2many('em.hms.nutrition.group.session.topic', 'session_id', string='Topics')
+    topic_ids = fields.One2many('em.hms.nutrition.group.session.topic', 'session_id', string='Topics', required=True)
 
     number_mothers_educated_muac_gte_18 = fields.Integer('# Mothers MUAC Educated >= 18', required=True, tracking=True)
     number_mothers_educated_muac_lt_18 = fields.Integer('# Mothers MUAC Educated On Their MUAC Measurement < 18', required=True, tracking=True)

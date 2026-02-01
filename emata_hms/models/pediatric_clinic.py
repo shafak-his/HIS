@@ -25,9 +25,9 @@ class EmHmsPediatricClinic(models.Model):
         ('cold', 'Cold'),
         ('emergency', 'Emergency')
     ], string='Type Of Case', tracking=True)
-    main_complaint = fields.Char('Main Complaint', tracking=True)
+    main_complaint = fields.Char('Main Complaint', tracking=True, required=True)
     complaint_details = fields.Char('Complaint Details', tracking=True)
-    diagnosis_id = fields.Many2one('em.hms.icd10', string='Diagnosis', tracking=True)
+    diagnosis_id = fields.Many2one('em.hms.icd10', string='Diagnosis', tracking=True, required=True)
     medical_history_ids = fields.Many2many('em.hms.medical.history', 'pediatric_clinic_medical_history_rel', 'clinic_id', 'medical_history_id', string='Medical History')
     allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'pediatric_clinic_allergic_history_rel', 'clinic_id', 'allergic_history_id', string='Allergic History')
     
@@ -36,12 +36,12 @@ class EmHmsPediatricClinic(models.Model):
         ('acceptance', 'Acceptance'),
         ('temporary_acceptance', 'Temporary Acceptance'),
         ('referral', 'Referral To Another Hospital')
-    ], string='Graduation To', tracking=True)
+    ], string='Graduation To', tracking=True, required=True)
     graduation_date = fields.Date('Graduation Date', tracking=True)
     medical_recommendations = fields.Char('Medical Recommendations At Graduation', tracking=True)
     consultations = fields.Char('Consultations', tracking=True)
     notes = fields.Char('Notes', tracking=True)
-    doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
+    doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True, required=True)
     
     medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'pediatric_clinic_id', string='Medication Requests')
     analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'pediatric_clinic_id', string='Analysis Requests')

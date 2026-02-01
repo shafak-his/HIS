@@ -20,7 +20,7 @@ class EmHmsPatientAdmission(models.Model):
 
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     visit_date = fields.Date('Visit Date', required=True, tracking=True)
-    doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
+    doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True, required=True)
     ward_nurse_id = fields.Many2one('hr.employee', string='Name Of The Ward Nurse', tracking=True)
     admission_type = fields.Selection([
         ('temporary', 'Temporary'),
@@ -38,8 +38,8 @@ class EmHmsPatientAdmission(models.Model):
     allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'patient_admission_allergic_history_rel', 'patient_admission_id', 'allergic_history_id', string='Allergic History')
     
     clinic_examination = fields.Char('Clinical Examination', tracking=True)
-    complaint_details = fields.Char('Details Of The Medical Complaint', tracking=True)
-    diagnosis_id = fields.Many2one('em.hms.icd10', string='Diagnosis', tracking=True)
+    complaint_details = fields.Char('Details Of The Medical Complaint', tracking=True, required=True)
+    diagnosis_id = fields.Many2one('em.hms.icd10', string='Diagnosis', tracking=True, required=True)
     
     medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'patient_admission_id', string='Medication Requests')
     analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'patient_admission_id', string='Analysis Requests')

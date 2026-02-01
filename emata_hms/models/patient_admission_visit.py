@@ -11,7 +11,7 @@ class EmHmsPatientAdmissionVisit(models.Model):
     
     visit_datetime = fields.Datetime('Visit Date/Time', required=True, tracking=True)
     patient_id = fields.Many2one('res.partner', 'Patient Name', related='patient_admission_id.patient_id')
-    doctor_id = fields.Many2one('hr.employee', 'Doctor', related='patient_admission_id.doctor_id')
+    doctor_id = fields.Many2one('hr.employee', 'Doctor', related='patient_admission_id.doctor_id', required=True,tracking=True)
     ward_nurse_id = fields.Many2one('hr.employee', string='Name Of The Ward Nurse', tracking=True)
     pulse = fields.Float('Pulse', tracking=True)
     oxygenation = fields.Float('Oxygenation', tracking=True)
