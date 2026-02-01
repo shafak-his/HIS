@@ -110,7 +110,7 @@
                             <field name="session_presenter_name" invisible="session_type != 'ftfsg'" required="session_type == 'ftfsg'"/>
                             <field name="team_id" />
                             <field name="service_place" />
-                            <field name="camp_name" invisible="service_place == 'fixed'"/>
+                            <field name="camp_name" invisible="service_place == 'fixed'" required="service_place == 'mobile'"/>
                             <field name="session_type" invisible="1" />
                         </group>
                         <group>

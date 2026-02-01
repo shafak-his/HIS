@@ -45,7 +45,7 @@ class EmHmsNutritionGroupSession(models.Model):
     district_id = fields.Many2one('em.country.district', string='District', required=True, tracking=True)
     sub_district_id = fields.Many2one('em.country.sub.district', string='Sub-District', required=True, tracking=True)
     location_id = fields.Many2one('em.location', string='Village / City', required=True, tracking=True)
-    camp_name = fields.Char('Camp Name', required=True, tracking=True)
+    camp_name = fields.Char('Camp Name',  tracking=True)
     
     team_id = fields.Many2one('em.hms.nutrition.team', string='Team', required=True, tracking=True)
     service_place = fields.Selection([
