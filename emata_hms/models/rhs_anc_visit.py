@@ -54,7 +54,7 @@ class EmHmsRHSANCVisit(models.Model):
         ('good', 'Good'),
         ('fluid_scarcity', 'Liquid Scarcity'),
         ('no_fluid', 'No Fluid'),
-        ('amniotic_hydrocephalus', 'Amniotic Hydrocephalus')
+        ('amniotic_hydrocephalus', 'Amniotic Hydrocephalus'),
         ('new_pregnancy', 'New pregnancy'),
     ], string='Fluid', tracking=True, required=True)
     deformities = fields.Char('Deformities', tracking=True)
