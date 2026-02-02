@@ -132,14 +132,14 @@ class EmHmsRHSDelivery(models.Model):
         ('another_hospital', 'Another Hospital'),
         ('deathCaseMother', 'Death Case Mother'),
         ('other', 'Other')
-    ], string='Patient''s Condition', tracking=True ,required=True)
+    ], string='Patient''s Condition', tracking=True )
     newborn_condition = fields.Selection([
         ('to_home', 'To Home'),
         ('another_hospital', 'Another Hospital'),
         ('transfer_to_care', 'Transfer To Care'),
         ('transfer_to_incubators', 'Transfer To Incubators'),
         ('deathCaseNewborn', 'Death Case Newborn')
-    ], string='Newborn''s Condition', tracking=True,required=True)
+    ], string='Newborn''s Condition', tracking=True)
     deathCase_report_number=fields.Char('Death Case Report number', tracking=True)
     patient_companion_name = fields.Char('Patient''s Companion''s Name', tracking=True)
     patient_companion_relationship = fields.Char('Relationship', tracking=True)
