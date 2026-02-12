@@ -93,7 +93,7 @@
                         <field name="admitting_physician_id" />
                         <field name="is_referral" widget="checkbox" />
                         <field name="referral_center_reason" invisible="is_referral != True" widget="text" />
-                        <field name="surgery_type_ids" widget="many2many_tags"/>
+                        <field name="surgery_type_ids" />
                         <field name="other_surgery_type" />
                         <field name="abortionReason" />
                         <field name="is_pregnant" widget="checkbox" />
