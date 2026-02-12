@@ -18,7 +18,8 @@ class EmHmsRHSSurgery(models.Model):
     surgical_history_ids = fields.Many2many('em.hms.surgical.history', 'rhs_surgery_surgical_history_rel', 'surgery_id', 'surgical_history_id', string='Surgical History' ,compute= '_compute_surgical_history')
     medication_history_ids = fields.Many2many('em.hms.medication.history', 'rhs_surgery_medication_history_rel', 'surgery_id', 'medication_history_id', string='Medication History' ,compute= '_compute_medication_history')
     allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'rhs_surgery_allergic_history_rel', 'surgery_id', 'allergic_history_id', string='Allergic History' ,compute= '_compute_allergic_history')
-    surgery_type_ids = fields.Many2one('em.hms.surgical.procedure','surgery_id', string='Type Of Surgery', tracking=True,required=True)
+    surgery_type_ids = fields.One2many('em.hms.surgical.procedure','surgery_id', string='Type Of Surgery', tracking=True,required=True)
+    surgery_type_id = fields.Many2one('em.hms.surgical.procedure','surgery_id', string='Type Of Surgery', tracking=True,required=True)
     other_surgery_type = fields.Char('Other Surgery Type', tracking=True)
     abortionReason = fields.Selection([
         ('t1', ' اجهاض بعد اغتصاب'),

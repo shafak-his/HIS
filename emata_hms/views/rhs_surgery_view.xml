@@ -15,11 +15,11 @@
                 <field name="admitting_physician_id" optional="hide" />
                 <field name="husband_name" />
                 <field name="guardian_name" optional="hide" />
-                <field name="allergic_history_ids" widget="many2many_tags" optional="hide" />
-                <field name="medication_history_ids" widget="many2many_tags" optional="hide" />
-                <field name="surgical_history_ids" widget="many2many_tags" optional="hide" />
-                <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
-                <field name="surgery_type_ids" widget="many2many_tags" optional="hide" />
+                <field name="allergic_history_ids"  optional="hide" />
+                <field name="medication_history_ids"  optional="hide" />
+                <field name="surgical_history_ids"  optional="hide" />
+                <field name="medical_history_ids"  optional="hide" />
+                <field name="surgery_type_id" optional="hide" />
                 <field name="other_surgery_type" optional="hide" />
                 <field name="initial_diagnosis" optional="hide" />
                 <field name="child_name" optional="hide" />
@@ -40,9 +40,9 @@
                 <field name="patient_companion_name" optional="hide" />
                 <field name="patient_companion_relationship" optional="hide" />
                 <field name="birth_certificate" optional="hide" />
-                <field name="vital_sign_ids" widget="many2many_tags" optional="hide" />
-                <field name="labor_ids" widget="many2many_tags" optional="hide" />
-                <field name="post_surgery_ids" widget="many2many_tags" optional="hide" />
+                <field name="vital_sign_ids"  optional="hide" />
+                <field name="labor_ids"  optional="hide" />
+                <field name="post_surgery_ids"  optional="hide" />
                 <field name="is_referral" optional="hide" />
                 <field name="referral_center_reason" optional="hide" />
                
@@ -93,7 +93,7 @@
                         <field name="admitting_physician_id" />
                         <field name="is_referral" widget="checkbox" />
                         <field name="referral_center_reason" invisible="is_referral != True" widget="text" />
-                        <field name="surgery_type_ids" />
+                        <field name="surgery_type_id" />
                         <field name="other_surgery_type" />
                         <field name="abortionReason" />
                         <field name="is_pregnant" widget="checkbox" />
