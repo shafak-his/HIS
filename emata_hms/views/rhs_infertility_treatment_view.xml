@@ -5,7 +5,7 @@
         <field name="name">em.hms.rhs.infertility.treatment.view.tree</field>
         <field name="model">em.hms.rhs.infertility.treatment</field>
         <field name="arch" type="xml">
-            <tree string="Infertility Treatments">
+            <tree string="Infertility Treatments" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="doctor_id" />

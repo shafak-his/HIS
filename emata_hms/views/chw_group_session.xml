@@ -7,7 +7,7 @@
         <field name="name">em.hms.chw.group.session.view.tree</field>
         <field name="model">em.hms.chw.group.session</field>
         <field name="arch" type="xml">
-            <tree string="Group Sessions">
+            <tree string="Group Sessions" duplicate="false">
                 <field name="name" />
                 <field name="project_id" optional="show" />
                 <field name="service_place" />
@@ -103,7 +103,7 @@
         <field name="name">em.hms.chw.group.session.bnf.view.tree</field>
         <field name="model">em.hms.chw.group.session.bnf</field>
         <field name="arch" type="xml">
-            <tree string="CHW Group Session Beneficiaries" editable="bottom">
+            <tree string="CHW Group Session Beneficiaries" editable="bottom" duplicate="false">
                 <field name="session_id" />
                 <field name="name" />
                 <field name="gender" />

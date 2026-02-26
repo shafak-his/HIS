@@ -5,7 +5,7 @@
         <field name="name">em.hms.rhs.hospitalization.monitoring.view.tree</field>
         <field name="model">em.hms.rhs.hospitalization.monitoring</field>
         <field name="arch" type="xml">
-            <tree string="Monitoring">
+            <tree string="Monitoring" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="hospitalization_id" />
                 <field name="patient_id" />

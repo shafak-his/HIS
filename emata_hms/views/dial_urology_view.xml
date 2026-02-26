@@ -5,7 +5,7 @@
         <field name="name">em.hms.dial.urology.view.tree</field>
         <field name="model">em.hms.dial.urology</field>
         <field name="arch" type="xml">
-            <tree string="Urology">
+            <tree string="Urology" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="medical_history" optional="hide" />

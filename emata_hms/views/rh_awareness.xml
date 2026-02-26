@@ -7,7 +7,7 @@
         <field name="name">em.hms.rhs.awareness.view.tree</field>
         <field name="model">em.hms.rhs.awareness</field>
         <field name="arch" type="xml">
-            <tree string="RH Awareness">
+            <tree string="RH Awareness" duplicate="false">
                 <field name="patient_id" />
                 <field name="session_date" />
                 <field name="bnf_status" />

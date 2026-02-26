@@ -5,7 +5,7 @@
         <field name="name">em.hms.pediatric.ward.admission.view.tree</field>
         <field name="model">em.hms.pediatric.ward.admission</field>
         <field name="arch" type="xml">
-            <tree string="Ward Admission">
+            <tree string="Ward Admission" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="admitting_doctor_id" />

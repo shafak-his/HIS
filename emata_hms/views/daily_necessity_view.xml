@@ -5,7 +5,7 @@
         <field name="name">em.hms.daily.necessity.view.tree</field>
         <field name="model">em.hms.daily.necessity</field>
         <field name="arch" type="xml">
-            <tree string="Daily Necessities">
+            <tree string="Daily Necessities" duplicate="false">
                 <field name="patient_admission_id" optional="hide" />
                 <field name="hospitalization_id" optional="hide" />
                 <field name="incubator_admission_id" optional="hide" />

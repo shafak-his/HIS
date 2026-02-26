@@ -62,7 +62,7 @@
         <field name="name">em.hms.rhs.pnc.visit.view.tree</field>
         <field name="model">em.hms.rhs.pnc.visit</field>
         <field name="arch" type="xml">
-            <tree string="PNC Visits">
+            <tree string="PNC Visits" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="pnc_id" />
                 <field name="patient_id" />

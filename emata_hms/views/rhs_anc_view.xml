@@ -5,7 +5,7 @@
         <field name="name">em.hms.rhs.anc.view.tree</field>
         <field name="model">em.hms.rhs.anc</field>
         <field name="arch" type="xml">
-            <tree string="ANCs">
+            <tree string="ANCs" duplicate="false">
                
                 <field name="patient_id" />
                 <field name="cesarean_sections_count" />

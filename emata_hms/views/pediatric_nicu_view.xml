@@ -5,7 +5,7 @@
         <field name="name">em.hms.pediatric.nicu.view.tree</field>
         <field name="model">em.hms.pediatric.nicu</field>
         <field name="arch" type="xml">
-            <tree string="NICU">
+            <tree string="NICU" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="admitting_doctor_id" />

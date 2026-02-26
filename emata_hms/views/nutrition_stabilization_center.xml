@@ -7,7 +7,7 @@
         <field name="name">em.hms.nutrition.stabilization.center.view.tree</field>
         <field name="model">em.hms.nutrition.stabilization.center</field>
         <field name="arch" type="xml">
-            <tree string="Stabilization Center">
+            <tree string="Stabilization Center" duplicate="false">
                 <field name="patient_id" />
                 <field name="project_id" optional="show" />
                 <field name="service_place" />

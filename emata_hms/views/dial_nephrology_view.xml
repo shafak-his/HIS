@@ -5,7 +5,7 @@
         <field name="name">em.hms.dial.nephrology.view.tree</field>
         <field name="model">em.hms.dial.nephrology</field>
         <field name="arch" type="xml">
-            <tree string="Nephrology">
+            <tree string="Nephrology" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="medical_history" optional="hide" />

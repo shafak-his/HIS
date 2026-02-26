@@ -5,7 +5,7 @@
         <field name="name">em.hms.daily.observation.view.tree</field>
         <field name="model">em.hms.daily.observation</field>
         <field name="arch" type="xml">
-            <tree string="Daily Observations">
+            <tree string="Daily Observations" duplicate="false">
                 <field name="incubator_admission_id" optional="hide" />
                 <field name="ward_admission_id" optional="hide" />
                 <field name="pediatric_surgery_id" optional="hide" />

@@ -5,7 +5,7 @@
         <field name="name">em.hms.post.surgery.view.tree</field>
         <field name="model">em.hms.post.surgery</field>
         <field name="arch" type="xml">
-            <tree string="Post-Birth Monitoring">
+            <tree string="Post-Birth Monitoring" duplicate="false">
                 <field name="delivery_id" optional="hide"/>
                 <field name="surgery_id" optional="hide" />
                 <field name="patient_id" />

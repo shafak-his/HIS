@@ -5,7 +5,7 @@
         <field name="name">em.hms.rhs.hospitalization.view.tree</field>
         <field name="model">em.hms.rhs.hospitalization</field>
         <field name="arch" type="xml">
-            <tree string="Hospitalization">
+            <tree string="Hospitalization" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="admission_date" />
@@ -208,7 +208,7 @@
                     </page>
                     <page name="monitorings_page" string="Monitoring Table">
                         <field name="monitoring_ids">
-                            <tree string="Monitoring">
+                            <tree string="Monitoring" duplicate="false">
                                 <field name="monitoring_time" />
                                 <field name="arterial_pressure" optional="hide" />
                                 <field name="pulse" optional="hide" />

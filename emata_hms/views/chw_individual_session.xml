@@ -7,7 +7,7 @@
         <field name="name">em.hms.chw.individual.session.view.tree</field>
         <field name="model">em.hms.chw.individual.session</field>
         <field name="arch" type="xml">
-            <tree string="Individual Sessions">
+            <tree string="Individual Sessions" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="session_date" />

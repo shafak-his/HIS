@@ -5,7 +5,7 @@
         <field name="name">em.res.partner.patient.view.tree</field>
         <field name="model">res.partner</field>
         <field name="arch" type="xml">
-            <tree string="Patients">
+            <tree string="Patients" duplicate="false">
                 <field name="code"/>
                 <field name="name"/>
                 <field name="doc_number"/>

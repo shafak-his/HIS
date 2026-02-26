@@ -82,7 +82,7 @@
         <field name="name">em.hms.rhs.fp.view.tree</field>
         <field name="model">em.hms.rhs.fp</field>
         <field name="arch" type="xml">
-            <tree string="FPs">
+            <tree string="FPs" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="visit_date" />

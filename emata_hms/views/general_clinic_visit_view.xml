@@ -5,7 +5,7 @@
         <field name="name">em.hms.general.clinic.visit.view.tree</field>
         <field name="model">em.hms.general.clinic.visit</field>
         <field name="arch" type="xml">
-            <tree string="General Clinic Visit">
+            <tree string="General Clinic Visit" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="visit_datetime" />
                 <field name="patient_id" />

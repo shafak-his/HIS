@@ -5,7 +5,7 @@
         <field name="name">em.hms.pediatric.icu.view.tree</field>
         <field name="model">em.hms.pediatric.icu</field>
         <field name="arch" type="xml">
-            <tree string="ICU">
+            <tree string="ICU" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="technician_doctor_id" />

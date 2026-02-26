@@ -5,7 +5,7 @@
         <field name="name">em.hms.clinic.view.tree</field>
         <field name="model">em.hms.clinic</field>
         <field name="arch" type="xml">
-            <tree string="Clinics" editable="bottom">
+            <tree string="Clinics" editable="bottom" duplicate="false">
                 <field name="name" />
                 <field name="company_ids" widget="many2many_tags" />
             </tree>

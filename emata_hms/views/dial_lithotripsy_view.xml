@@ -5,7 +5,7 @@
         <field name="name">em.hms.dial.lithotripsy.view.tree</field>
         <field name="model">em.hms.dial.lithotripsy</field>
         <field name="arch" type="xml">
-            <tree string="Lithotripsy">
+            <tree string="Lithotripsy" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="stone_location" optional="hide" />

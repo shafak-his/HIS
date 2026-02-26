@@ -5,7 +5,7 @@
         <field name="name">em.hms.dial.kidney.history.view.tree</field>
         <field name="model">em.hms.dial.kidney.history</field>
         <field name="arch" type="xml">
-            <tree string="Kidney history">
+            <tree string="Kidney history" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="cause_ckd" optional="hide" />

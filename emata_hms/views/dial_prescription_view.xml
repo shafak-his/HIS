@@ -5,7 +5,7 @@
         <field name="name">em.hms.dial.prescription.view.tree</field>
         <field name="model">em.hms.dial.prescription</field>
         <field name="arch" type="xml">
-            <tree string="Dialysis prescription">
+            <tree string="Dialysis prescription" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="prescription_datetime" optional="hide" />
@@ -82,7 +82,7 @@
         <field name="name">em.hms.day.view.tree</field>
         <field name="model">em.hms.day</field>
         <field name="arch" type="xml">
-            <tree string="Days" editable="bottom">
+            <tree string="Days" editable="bottom" duplicate="false">
                 <field name="name" />
             </tree>
         </field>

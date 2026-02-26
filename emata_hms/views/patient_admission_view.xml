@@ -5,7 +5,7 @@
         <field name="name">em.hms.patient.admission.view.tree</field>
         <field name="model">em.hms.patient.admission</field>
         <field name="arch" type="xml">
-            <tree string="Patient Admission">
+            <tree string="Patient Admission" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="visit_date" />

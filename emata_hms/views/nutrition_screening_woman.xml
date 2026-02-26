@@ -25,7 +25,7 @@
         <field name="name">em.hms.nutrition.screening.woman.view.tree</field>
         <field name="model">em.hms.nutrition.screening.woman</field>
         <field name="arch" type="xml">
-            <tree string="Woman Screening for Acute Malnutrition">
+            <tree string="Woman Screening for Acute Malnutrition" duplicate="false">
                 <field name="patient_id" />
                 <field name="project_id" optional="show" />
                 <field name="visit_date" />

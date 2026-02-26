@@ -5,7 +5,7 @@
         <field name="name">em.hms.dial.visit.view.tree</field>
         <field name="model">em.hms.dial.visit</field>
         <field name="arch" type="xml">
-            <tree string="Dialysis visit">
+            <tree string="Dialysis visit" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="patient_condition" optional="hide" />
@@ -56,7 +56,7 @@
                         </group>
                     </group>
                     <group>
-                        <field name="session_info_ids">
+                        <field name="session_info_ids" duplicate="false">
                             <tree create="1" delete="1" editable="bottom">
                                 <field name="hour"  />
                                 <field name="vp" />
@@ -69,7 +69,7 @@
                             </tree>
                         </field>
                         <field name="transfusion_ids">
-                             <tree create="1" delete="1" editable="bottom">
+                             <tree create="1" delete="1" editable="bottom" duplicate="false">
                                     <field name="unit_number" />
                                     <field name="blood_donation_date" />
                                     <field name="expiry_date" />

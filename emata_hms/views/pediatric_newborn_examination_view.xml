@@ -23,7 +23,7 @@
         <field name="name">em.hms.pediatric.newborn.examination.view.tree</field>
         <field name="model">em.hms.pediatric.newborn.examination</field>
         <field name="arch" type="xml">
-            <tree string="Newborn Examination">
+            <tree string="Newborn Examination" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="doctor_id" />

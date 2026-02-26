@@ -5,7 +5,7 @@
         <field name="name">em.hms.rhs.delivery.view.tree</field>
         <field name="model">em.hms.rhs.delivery</field>
         <field name="arch" type="xml">
-            <tree string="Deliveries">
+            <tree string="Deliveries" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="admission_date" />
@@ -146,7 +146,7 @@
                 <notebook>
                     <page name="vital_signs_page" string="Vital Signs">
                         <field name="vital_sign_ids" context="{'default_patient_id': patient_id}">
-                            <tree string="Vital Signs">
+                            <tree string="Vital Signs" duplicate="false">
                                 <field name="delivery_id" optional="hide" />
                                 <field name="hospitalization_id" optional="hide" />
                                 <field name="surgery_id" optional="hide" />

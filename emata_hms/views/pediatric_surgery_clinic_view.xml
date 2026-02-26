@@ -5,7 +5,7 @@
         <field name="name">em.hms.pediatric.surgery.clinic.view.tree</field>
         <field name="model">em.hms.pediatric.surgery.clinic</field>
         <field name="arch" type="xml">
-            <tree string="Surgery Clinics">
+            <tree string="Surgery Clinics" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="doctor_id" />

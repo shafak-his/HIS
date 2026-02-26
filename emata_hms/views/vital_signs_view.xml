@@ -5,7 +5,7 @@
         <field name="name">em.hms.vital.sign.view.tree</field>
         <field name="model">em.hms.vital.sign</field>
         <field name="arch" type="xml">
-            <tree string="Vital Signs Monitoring" create="0" delete="0">
+            <tree string="Vital Signs Monitoring" create="0" delete="0" duplicate="false">
                 <field name="delivery_id" optional="hide" />
                 <field name="hospitalization_id" optional="hide" />
                 <field name="surgery_id" optional="hide" />
