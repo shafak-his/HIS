@@ -146,7 +146,7 @@
         <field name="name">em.hms.rhs.edc.view.tree</field>
         <field name="model">em.hms.rhs.edc</field>
         <field name="arch" type="xml">
-            <tree string="EDCs">
+            <tree string="EDCs" duplicate="false">
                 <field name="project_id" optional="show" />
                 <field name="patient_id" />
                 <field name="session_date" />
