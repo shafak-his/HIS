@@ -97,7 +97,7 @@
                 <field name="breastfeeding_method" />
                 <field name="last_menstrual_date" optional="hide" />
                 <field name="is_referral" optional="hide" />
-                <field name="referral_center_reason" optional="hide" />
+                <field name="referral_type" optional="hide" />
                 <field name="is_contraceptive_method" optional="hide" />
                 <field name="contraceptive_method"  optional="hide"  />
                 <field name="is_method_staisfying" optional="hide" />
@@ -155,7 +155,7 @@
                             <field name="breastfeeding_method" />
                             <field name="last_menstrual_date" />
                             <field name="is_referral" widget="checkbox" />
-                            <field name="referral_center_reason" invisible="is_referral != True" widget="text" />
+                            <field name="referral_type" invisible="is_referral != True" />
                         </group>
                     </group>
                   

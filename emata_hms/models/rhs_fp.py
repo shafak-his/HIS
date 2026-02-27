@@ -49,12 +49,13 @@ class EmHmsRHSFP(models.Model):
     births = fields.Integer('# Births', tracking=True)
     miscarriages_count = fields.Integer('# Miscarriages', tracking=True)
     live_births = fields.Integer('Live Births', tracking=True)
-    last_birth_date = fields.Date('Last Birth Date', tracking=True, required=True)
+    last_birth_date = fields.Date('Last Birth Date', tracking=True)
     is_last_birth_alive = fields.Boolean('Is Last Birth Alive', tracking=True)
     breastfeeding_method = fields.Selection([
         ('normal', 'Normal'),
         ('artificial', 'Artificial'),
-        ('mixed', 'Mixed')
+        ('mixed', 'Mixed'),
+        ('no_breastfeeding', 'No breastfeeding'),
     ], string='Breastfeeding Method', tracking=True, required=True)
     last_menstrual_date = fields.Date('First Day Of Last Menstrual Period', tracking=True, required=True)
     is_contraceptive_method = fields.Boolean('Any Previous Contraceptive Method', tracking=True)
@@ -100,6 +101,17 @@ class EmHmsRHSFP(models.Model):
     stopping_reason = fields.Char('Stopping Reason', tracking=True)
     is_referral = fields.Boolean('Has There Been A Referral?', tracking=True)
     referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason?', tracking=True)
+    referral_type=fields.Selection([
+        ('incoming_referrals_from_phc', 'احالة واردة من مركز عناية صحية أولية'),
+        ('incoming_referrals_from_hospital', 'احالة واردة من مشفى اخر'),
+        ('incoming_referrals_from_mobile_clinic', 'احالة واردة من عيادة جوالة'),
+        ('referral_for_delivery_to_sdp_paid', 'احالة صادرة للولادة في مركز مدفوع'),
+        ('referral_for_delivery_to_sdp_notpaid', 'احالة صادرة للولادة في مركز مجاني'),
+        ('referral_to_GBV_advanced_services', 'احالة صادرة لخدمات GBV'),
+        ('referral_to_advanced_services', 'احالة صادرة الى خدمات متقدمة'),
+        ('referral_to_turkey', 'احالة الى تركيا')
+       
+    ], string='To Which Center Were You Referred And What Was The Reason?')
     pregnancy_check_ids = fields.Many2many('em.hms.rhs.fp.pregnancy.check', 'fp_pregnancy_check_rel', 'fp_id', 'pregnancy_check_id', string='Check For Current Pregnancy', tracking=True, required=True)
     medical_history_ids = fields.Many2many('em.hms.rhs.fp.medical.history', 'fp_medical_history_rel', 'fp_id', 'medical_history_id', string='Medical History And Habits', tracking=True)
     current_complaint_ids = fields.Many2many('em.hms.rhs.fp.complaint', 'fp_complaint_rel', 'fp_id', 'complaint_id', string='Any Current Complaint', tracking=True)

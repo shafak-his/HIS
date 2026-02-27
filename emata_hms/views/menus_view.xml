@@ -156,6 +156,11 @@
           parent="menu_em_hms_rhs_helper_lists"
           action="emata_hms.em_hms_contraceptive_method_action"
           sequence="14" />
+      <menuitem id="menu_em_hms_rhs_otherRHservice"
+          name="otherRHservice"
+          parent="menu_em_hms_rhs_helper_lists"
+          action="em_hms_rhs_otherRHservice_action"
+          sequence="15" />
      
         
         <!-- General -->

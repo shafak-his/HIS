@@ -22,6 +22,7 @@ class EmHmsRHSDelivery(models.Model):
         ('normal_delivery', 'Normal Delivery'),
         ('c_section_elective', 'C-Section Elective'),
         ('c_section_emergency', 'C-Section Emergency'),
+        ('assisted_vaginal_delivery', 'Assisted Vaginal Delivery'),
       
     ], string='Type Of Delivery', tracking=True,required=True)
     type_of_feeding = fields.Selection([
@@ -104,11 +105,16 @@ class EmHmsRHSDelivery(models.Model):
         ('good', 'Good'),
         ('fluid_scarcity', 'Liquid Scarcity'),
         ('no_fluid', 'No Fluid'),
-        ('amniotic_hydrocephalus', 'Amniotic Hydrocephalus')
+        ('amniotic_hydrocephalus', 'Amniotic Hydrocephalus'),
+        ('inability_fluid_level1', 'Inability fluid level1'),
+        ('inability_fluid_level2', 'Inability fluid level2'),
+        ('inability_fluid_level3', 'Inability fluid level3'),
+        ('severe_inability_fluid', 'severe inability fluid')
     ], string='Amniotic Fluid', tracking=True)
     
     birth_datetime = fields.Datetime('Date And Time Of Birth', tracking=True)
-    birth_medication_ids = fields.Many2many('product.template', 'rhs_delivery_product_birth_medication_rel', 'delivery_id', 'product_id', string='Medications Used During Birth', domain="[('is_birth_medication', '=', True)]")
+    birth_medication_ids = fields.Many2many('product.template', 'rhs_delivery_product_birth_medication_rel', 'delivery_id', 'product_id', string='Medications Used During Birth', domain="[('is_birth_medication', '=', True)]") #for delete
+    birth_medications =fields.Text('Medications Used During Birth', tracking=True)
     birth_report = fields.Char('Birth Report', tracking=True)
     newborn_general_condition = fields.Selection([
         ('good_vitality', 'Good Vitality'),
@@ -118,12 +124,27 @@ class EmHmsRHSDelivery(models.Model):
     ], string='General Condition Of The Child', tracking=True)
     newborn_gender = fields.Selection([
         ('male', 'Male'),
-        ('female', 'Female')
+        ('female', 'Female'),
+        ('two_males', 'Two Males'),
+        ('two_females', 'Two Females'),
+        ('one_male_and_one_female', 'One Male and one Female'),
+        ('three_or_more', 'Three Newborn or more')
     ], string='Gender Of The Newborn', tracking=True,required=True)
     newborn_weight = fields.Float('Weight Of The Newborn', tracking=True)
     is_breastfeeding_first_hour = fields.Boolean('Breastfeeding Within The First Hour', tracking=True)
     is_referral = fields.Boolean('Has There Been A Referral?', tracking=True)
     referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason?', tracking=True)
+    referral_type=fields.Selection([
+        ('incoming_referrals_from_phc', 'احالة واردة من مركز عناية صحية أولية'),
+        ('incoming_referrals_from_hospital', 'احالة واردة من مشفى اخر'),
+        ('incoming_referrals_from_mobile_clinic', 'احالة واردة من عيادة جوالة'),
+        ('referral_for_delivery_to_sdp_paid', 'احالة صادرة للولادة في مركز مدفوع'),
+        ('referral_for_delivery_to_sdp_notpaid', 'احالة صادرة للولادة في مركز مجاني'),
+        ('referral_to_GBV_advanced_services', 'احالة صادرة لخدمات GBV'),
+        ('referral_to_advanced_services', 'احالة صادرة الى خدمات متقدمة'),
+        ('referral_to_turkey', 'احالة الى تركيا')
+       
+    ], string='To Which Center Were You Referred And What Was The Reason?')
     discharge_datetime = fields.Datetime('Date Of Discharge And Time', tracking=True)
     discharge_supervising_physician_id = fields.Many2one('hr.employee', string='Supervising Physician')
     discharge_duty_midwife_id = fields.Many2one('hr.employee', string='Midwife On Duty')
@@ -138,7 +159,8 @@ class EmHmsRHSDelivery(models.Model):
         ('another_hospital', 'Another Hospital'),
         ('transfer_to_care', 'Transfer To Care'),
         ('transfer_to_incubators', 'Transfer To Incubators'),
-        ('deathCaseNewborn', 'Death Case Newborn')
+        ('deathCaseNewborn', 'Death Case Newborn'),
+        ('deaths_inside_facility', 'Neonatal Deaths inside the Health Facility'),
     ], string='Newborn''s Condition', tracking=True)
     deathCase_report_number=fields.Char('Death Case Report number', tracking=True)
     patient_companion_name = fields.Char('Patient''s Companion''s Name', tracking=True)

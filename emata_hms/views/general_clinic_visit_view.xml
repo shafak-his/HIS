@@ -28,7 +28,7 @@
                 <field name="procedure_type" optional="hide"/>
                 <field name="other_procedure_type" optional="hide"/>
                 <field name="is_referral" optional="hide" />
-                <field name="referral_center_reason" optional="hide" />
+                <field name="referral_type" optional="hide" />
                
                 <field name="company_id"  />
                 <field name="notes" optional="hide" />
@@ -77,7 +77,7 @@
                             <field name="height" widget="float" />
                             <field name="respiratory_rate" widget="integer" />
                             <field name="is_referral" widget="checkbox" />
-                            <field name="referral_center_reason" invisible="is_referral != True" widget="text" />
+                            <field name="referral_type" invisible="is_referral != True"  />
                         </group>
                     </group>
                     <group>

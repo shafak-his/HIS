@@ -16,7 +16,7 @@
                 <field name="is_full_term_pregnancy"  />
                 <field name="previous_complications" optional="hide" />
                 <field name="is_referral" optional="hide" />
-                <field name="referral_center_reason" optional="hide" />
+                <field name="referral_type" optional="hide" />
                  <field name="visits_count" />
                 <field name="company_id" optional="hide" />
             </tree>
@@ -52,7 +52,7 @@
                             <field name="birth_place" widget="radio" />
                             <field name="previous_complications" widget="text" />
                             <field name="is_referral" widget="checkbox" />
-                            <field name="referral_center_reason" invisible="is_referral != True" widget="text" />
+                            <field name="referral_type" invisible="is_referral != True" widget="text" />
                         </group>
                     </group>
                     <separator string="Periodic Visits" />

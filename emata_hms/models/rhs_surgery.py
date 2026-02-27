@@ -80,7 +80,11 @@ class EmHmsRHSSurgery(models.Model):
         ('good', 'Good'),
         ('fluid_scarcity', 'Liquid Scarcity'),
         ('no_fluid', 'No Fluid'),
-        ('amniotic_hydrocephalus', 'Amniotic Hydrocephalus')
+        ('amniotic_hydrocephalus', 'Amniotic Hydrocephalus'),
+        ('inability_fluid_level1', 'Inability fluid level1'),
+        ('inability_fluid_level2', 'Inability fluid level2'),
+        ('inability_fluid_level3', 'Inability fluid level3'),
+        ('severe_inability_fluid', 'severe inability fluid')
     ], string='Amniotic Fluid', tracking=True)
     
     surgery_datetime = fields.Datetime('Date And Time Of Surgery', tracking=True)
@@ -101,6 +105,17 @@ class EmHmsRHSSurgery(models.Model):
     is_breastfeeding_first_hour = fields.Boolean('Breastfeeding Within The First Hour', tracking=True)
     is_referral = fields.Boolean('Has There Been A Referral?', tracking=True)
     referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason?', tracking=True)
+    referral_type=fields.Selection([
+        ('incoming_referrals_from_phc', 'احالة واردة من مركز عناية صحية أولية'),
+        ('incoming_referrals_from_hospital', 'احالة واردة من مشفى اخر'),
+        ('incoming_referrals_from_mobile_clinic', 'احالة واردة من عيادة جوالة'),
+        ('referral_for_delivery_to_sdp_paid', 'احالة صادرة للولادة في مركز مدفوع'),
+        ('referral_for_delivery_to_sdp_notpaid', 'احالة صادرة للولادة في مركز مجاني'),
+        ('referral_to_GBV_advanced_services', 'احالة صادرة لخدمات GBV'),
+        ('referral_to_advanced_services', 'احالة صادرة الى خدمات متقدمة'),
+        ('referral_to_turkey', 'احالة الى تركيا')
+       
+    ], string='To Which Center Were You Referred And What Was The Reason?')
     discharge_datetime = fields.Datetime('Date Of Discharge And Time', tracking=True)
     discharge_supervising_physician_id = fields.Many2one('hr.employee', string='Supervising Physician')
     discharge_duty_midwife_id = fields.Many2one('hr.employee', string='Midwife On Duty')

@@ -33,7 +33,18 @@ class EmHmsGeneralClinicVisit(models.Model):
     ], string='Type Of Procedure', tracking=True)
     other_procedure_type = fields.Char('Other Type Of Procedure')
     is_referral = fields.Boolean('Has There Been A Referral?', tracking=True)
-    referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason?', tracking=True)
+    referral_center_reason = fields.Char('To Which Center Were You Referred And What Was The Reason?',tracking=True)
+    referral_type=fields.Selection([
+        ('incoming_referrals_from_phc', 'احالة واردة من مركز عناية صحية أولية'),
+        ('incoming_referrals_from_hospital', 'احالة واردة من مشفى اخر'),
+        ('incoming_referrals_from_mobile_clinic', 'احالة واردة من عيادة جوالة'),
+        ('referral_for_delivery_to_sdp_paid', 'احالة صادرة للولادة في مركز مدفوع'),
+        ('referral_for_delivery_to_sdp_notpaid', 'احالة صادرة للولادة في مركز مجاني'),
+        ('referral_to_GBV_advanced_services', 'احالة صادرة لخدمات GBV'),
+        ('referral_to_advanced_services', 'احالة صادرة الى خدمات متقدمة'),
+        ('referral_to_turkey', 'احالة الى تركيا')
+       
+    ], string='To Which Center Were You Referred And What Was The Reason?')
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True)
     medication_request_line_ids = fields.One2many('em.hms.medication.request.line', 'general_visit_id', string='Medication Requests')
     analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'general_visit_id', string='Analysis Requests', tracking=True)

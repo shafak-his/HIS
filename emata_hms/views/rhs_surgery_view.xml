@@ -44,7 +44,7 @@
                 <field name="labor_ids"  optional="hide" />
                 <field name="post_surgery_ids"  optional="hide" />
                 <field name="is_referral" optional="hide" />
-                <field name="referral_center_reason" optional="hide" />
+                <field name="referral_type" optional="hide" />
                
                 <field name="company_id" optional="hide" />
             </tree>
@@ -92,7 +92,7 @@
                         <field name="admitting_midwife_id" />
                         <field name="admitting_physician_id" />
                         <field name="is_referral" widget="checkbox" />
-                        <field name="referral_center_reason" invisible="is_referral != True" widget="text" />
+                        <field name="referral_type" invisible="is_referral != True"  />
                         <field name="surgery_type_id" />
                         <field name="other_surgery_type" />
                         <field name="abortionReason" />

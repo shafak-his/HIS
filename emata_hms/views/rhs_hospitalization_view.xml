@@ -42,7 +42,7 @@
                 <field name="necessity_ids" widget="many2many_tags" optional="hide" />
                 <field name="commitment_ids" widget="many2many_tags" optional="hide" />
                 <field name="is_referral" optional="hide" />
-                <field name="referral_center_reason" optional="hide" />
+                <field name="referral_type" optional="hide" />
                
                 <field name="company_id" optional="hide" />
             </tree>
@@ -94,7 +94,7 @@
                         <field name="guardian_name" />
                         <field name="current_diagnosis" />
                         <field name="is_referral" widget="checkbox" />
-                        <field name="referral_center_reason" invisible="is_referral != True" widget="text" />
+                        <field name="referral_type" invisible="is_referral != True" widget="text" />
                     </group>
                 </group>
                 <group>
