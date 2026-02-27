@@ -7,11 +7,12 @@
         <field name="arch" type="xml">
             <tree string="Gynochological Clinic Visit" duplicate="false">
                 <field name="project_id" optional="show" />
-                <field name="visit_datetime" />
-                <field name="bnf_status" />
+                <field name="visit_datetime" optional="show"/>
+                <field name="bnf_status" optional="show"/>
                 <field name="patient_id" />
                 <field name="clinic_id" />
                 <field name="current_complaint" optional="hide" />
+                <field name="other_RH_service" optional="show" />
                 <field name="diagnosis_id" optional="hide" />
                 <field name="procedures_followed" optional="hide" />
                 <field name="procedure_type" optional="hide" />
@@ -63,6 +64,7 @@
                     </group>
                     <group>
                         <group>
+                            <field name="other_RH_service"  />
                             <field name="current_complaint" widget="text" />
                         </group>
                         <group>
@@ -77,7 +79,7 @@
                                 invisible="procedure_type != 'other'" required="procedure_type == 'other'" />
                             <field name="graduation_to" />
                             <field name="is_referral" widget="checkbox" />
-                            <field name="referral_type" invisible="is_referral != True" widget="text" />  
+                            <field name="referral_type" invisible="is_referral != True"  />  
                             
                         </group>
                       <group>
