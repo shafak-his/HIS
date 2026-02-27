@@ -9,7 +9,7 @@ class EmHmsRHSHospitalization(models.Model):
     
     patient_id = fields.Many2one('res.partner', 'Patient Name', required=True, domain=[('is_patient','=',True)])
     admission_date = fields.Date('Date Of Admission', required=True, tracking=True)
-    admitting_midwife_id = fields.Many2one('hr.employee', string='Name Of Admitting Midwife')
+    admitting_midwife_id = fields.Many2one('hr.employee', string='اسم الطبيب المقيم')
     doctor_id = fields.Many2one('hr.employee', string='Name Of Admitting Physician')
     husband_name = fields.Char('Name Of Husband', tracking=True)
     guardian_name = fields.Char('Name Of Patient\'s Guardian', tracking=True)

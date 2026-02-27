@@ -52,7 +52,7 @@
                             <field name="birth_place" widget="radio" />
                             <field name="previous_complications" widget="text" />
                             <field name="is_referral" widget="checkbox" />
-                            <field name="referral_type" invisible="is_referral != True" widget="text" />
+                            <field name="referral_type" invisible="is_referral != True"  />
                         </group>
                     </group>
                     <separator string="Periodic Visits" />

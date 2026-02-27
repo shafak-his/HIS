@@ -49,7 +49,7 @@
                         </group>
                         <group>
                             <field name="is_referral" widget="checkbox" />
-                            <field name="referral_type" invisible="is_referral != True" widget="text" />
+                            <field name="referral_type" invisible="is_referral != True"  />
                             <field name="previous_complications" widget="text" />
                             <field name="last_menstrual_date" widget="date" />
                             <field name="expected_due_date" widget="date" />
