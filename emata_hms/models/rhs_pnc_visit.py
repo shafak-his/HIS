@@ -41,7 +41,7 @@ class EmHmsRHSPNCVisit(models.Model):
        
     ], string='Duration Since Birth', tracking=True, required=True)
     pnc_visit_reason= fields.Selection([
-        ('mastitis', 'Less Than 48 Hour'),
+        ('mastitis', 'Mastitis'),
         ('puerperal_fever', 'Puerperal fever'),
         ('puerperal_infection_after_C-section', 'Puerperal infection, after C-section'),
         ('puerperal_infection_after_vaginal_delivery', 'Puerperal infection,after vaginal delivery'),
