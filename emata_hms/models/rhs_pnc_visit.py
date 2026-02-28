@@ -40,6 +40,14 @@ class EmHmsRHSPNCVisit(models.Model):
         ('from_2_to_42day', 'From 2 To 42 Day'),
        
     ], string='Duration Since Birth', tracking=True, required=True)
+    pnc_visit_reason= fields.Selection([
+        ('mastitis', 'Less Than 48 Hour'),
+        ('puerperal_fever', 'Puerperal fever'),
+        ('puerperal_infection_after_C-section', 'Puerperal infection, after C-section'),
+        ('puerperal_infection_after_vaginal_delivery', 'Puerperal infection,after vaginal delivery'),
+        ('newborn_complications', 'Newborn Complications')
+       
+    ], string='PNC visit Reason', tracking=True, required=True)
     arterial_pressure = fields.Float('Arterial Pressure', tracking=True)
     arterial_pressure_new = fields.Char('Arterial Pressure', tracking=True ,default='0/0')
     temperature = fields.Float('Temperature', tracking=True)

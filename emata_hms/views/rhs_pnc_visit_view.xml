@@ -68,6 +68,7 @@
                 <field name="patient_id" />
                 <field name="doctor_id" />
                 <field name="duration_since_birth" />
+                <field name="pnc_visit_reason" />
                 <field name="visit_date" />
                 <field name="bnf_status" />
                 <field name="arterial_pressure_new" optional="hide" />
@@ -116,6 +117,7 @@
                             <field name="patient_id" />
                             <field name="doctor_id" />
                             <field name="duration_since_birth" />
+                            <field name="pnc_visit_reason" />
                             <field name="arterial_pressure_new" />
                             <field name="temperature" />
                             <field name="pulse" />
