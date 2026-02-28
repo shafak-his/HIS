@@ -100,7 +100,7 @@
                         <field name="initial_diagnosis" widget="text" />
                         <field name="delivery_type" />
                         <field name="type_of_feeding" />
-                        <field name="reason_of_c_section"  invisible="delivery_type == 'normal_delivery'"  required="True"/>
+                        <field name="reason_of_c_section"  invisible="delivery_type == 'normal_delivery' or delivery_type == 'assisted_vaginal_delivery' "  required="True"/>
                         <field name="number_of_newborn" />
                         <field name="newborn_gender"  />
                         <field name="newborn_weight" />
