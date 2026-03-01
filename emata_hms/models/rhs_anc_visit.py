@@ -67,7 +67,7 @@ class EmHmsRHSANCVisit(models.Model):
         ('inability_fluid_level2', 'Inability fluid level2'),
         ('inability_fluid_level3', 'Inability fluid level3'),
         ('severe_inability_fluid', 'severe inability fluid'),
-        ('new_pregnancy', 'New pregnancy'),
+        ('new_pregnancy', 'New pregnancy')
     ], string='Fluid', tracking=True, required=True)
     deformities = fields.Char('Deformities', tracking=True)
     child_blood_group = fields.Selection(BLOOD_TYPES, string='Child Blood Group', tracking=True)
