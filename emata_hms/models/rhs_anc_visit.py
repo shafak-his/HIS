@@ -95,7 +95,7 @@ class EmHmsRHSANCVisit(models.Model):
         ('right_side', 'Right side'),
         ('left_side', 'Left side'),
         ('back', 'Back'),
-        ('front', 'Front')و
+        ('front', 'Front'),
         ('new_pregnancy', 'New pregnancy')
     ], string='Placenta', tracking=True, required=True)
     if_done_explain = fields.Char('If Done Explain', tracking=True)
