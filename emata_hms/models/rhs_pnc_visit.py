@@ -45,7 +45,8 @@ class EmHmsRHSPNCVisit(models.Model):
         ('puerperal_fever', 'Puerperal fever'),
         ('puerperal_infection_after_C-section', 'Puerperal infection, after C-section'),
         ('puerperal_infection_after_vaginal_delivery', 'Puerperal infection,after vaginal delivery'),
-        ('newborn_complications', 'Newborn Complications')
+        ('newborn_complications', 'Newborn Complications'),
+        ('other_reason', 'Other Reasons')
        
     ], string='PNC visit Reason', tracking=True, required=True)
     arterial_pressure = fields.Float('Arterial Pressure', tracking=True)
