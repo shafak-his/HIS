@@ -33,7 +33,13 @@ class EmHmsRHSANCVisit(models.Model):
     medical_signs_ids =fields.Many2many('em.hms.medical.sign', 'rhs_anc_medicals_sign_rel', 'anc_id', 'medical_signs_id', string='Medical Signs')
     arterial_pressure = fields.Float('Arterial Pressure In Sitting Position', tracking=True)
     weight = fields.Float('Weight', tracking=True)
-    pulse_rate = fields.Float('Pulse Heart Rate (n/d)', tracking=True)
+    pulse_rate = fields.Float('Pulse Heart Rate (n/d)', tracking=True)#for deleet
+    eco_auscultation_new =fields.Selection([
+        ('negative', 'Negative'),
+        ('positive', 'Positive')
+      
+    ], string='auscultation', tracking=True)
+
     is_lactating=fields.Boolean('Is Lactating?', tracking=True)
     mother_pressure = fields.Char('Arterial Pressure In Sitting Position', tracking=True ,default='0/0')
     main_complaint = fields.Char('Main Complaint During This Visit', tracking=True, required=True)
@@ -41,6 +47,7 @@ class EmHmsRHSANCVisit(models.Model):
     thigh_length = fields.Float('Thigh Length', tracking=True)
     presence = fields.Selection([
         ('vertical', 'Vertical'),
+        ('inclined_vertical', 'inclined vertical'),
         ('completely_crippled', 'Completely Crippled'),
         ('incompletely_crippled', 'Incompletely crippled'),
         ('feet', 'Feet'),
@@ -52,16 +59,25 @@ class EmHmsRHSANCVisit(models.Model):
     ], string='Presence', tracking=True, required=True)
     fluid = fields.Selection([
         ('good', 'Good'),
+        ('accepted', 'Accepted'),
         ('fluid_scarcity', 'Liquid Scarcity'),
         ('no_fluid', 'No Fluid'),
         ('amniotic_hydrocephalus', 'Amniotic Hydrocephalus'),
+        ('inability_fluid_level1', 'Inability fluid level1'),
+        ('inability_fluid_level2', 'Inability fluid level2'),
+        ('inability_fluid_level3', 'Inability fluid level3'),
+        ('severe_inability_fluid', 'severe inability fluid'),
         ('new_pregnancy', 'New pregnancy'),
     ], string='Fluid', tracking=True, required=True)
     deformities = fields.Char('Deformities', tracking=True)
     child_blood_group = fields.Selection(BLOOD_TYPES, string='Child Blood Group', tracking=True)
     child_gender = fields.Selection([
-        ('male', 'Male'),
-        ('female', 'Female')
+         ('male', 'Male'),
+        ('female', 'Female'),
+        ('two_males', 'Two Males'),
+        ('two_females', 'Two Females'),
+        ('one_male_and_one_female', 'One Male and one Female'),
+        ('three_or_more', 'Three Newborn or more')
     ], string='Child Gender', tracking=True)
     genital_age_in_weeks = fields.Integer('Genital Age In Weeks', tracking=True, required=True)
     gestational_age_according_to_crl=fields.Integer('Genital Age according to CRL', tracking=True, required=True)
@@ -76,8 +92,11 @@ class EmHmsRHSANCVisit(models.Model):
         ('low', 'Low'),
         ('marginal', 'Marginal'),
         ('central', 'Central'),
-        ('new_pregnancy', 'New pregnancy'),
-        ('front', 'Front')
+        ('right_side', 'Right side'),
+        ('left_side', 'Left side'),
+        ('back', 'Back'),
+        ('front', 'Front')و
+        ('new_pregnancy', 'New pregnancy')
     ], string='Placenta', tracking=True, required=True)
     if_done_explain = fields.Char('If Done Explain', tracking=True)
     treatment = fields.Char('Treatment', tracking=True)
