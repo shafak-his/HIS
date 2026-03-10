@@ -36,6 +36,7 @@
                 <field name="newborn_general_condition" optional="hide" />
                 <field name="newborn_gender" optional="hide" />
                 <field name="newborn_weight" optional="hide" />
+                <field name="medical_signs_id" optional="hide" />
                 <field name="is_breastfeeding_first_hour" optional="hide" />
                 <field name="discharge_datetime" optional="hide" />
                 <field name="discharge_supervising_physician_id" optional="hide" />
@@ -104,7 +105,7 @@
                         <field name="number_of_newborn" />
                         <field name="newborn_gender"  />
                         <field name="newborn_weight" />
-                         <field name="medical_signs_ids" widget="many2many_tags"/>
+                         <field name="medical_signs_id" />
                         <field name="child_name" />
                         <field name="is_referral" widget="checkbox" />
                         <field name="referral_type" invisible="is_referral != True"  />

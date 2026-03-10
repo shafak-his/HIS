@@ -53,7 +53,8 @@ class EmHmsRHSDelivery(models.Model):
         ('other', 'اسباب اخرى')
     
     ], string='Reason Of C-Section', tracking=True, required=True)
-    medical_signs_ids =fields.Many2many('em.hms.medical.sign', 'rhs_delivery_medicals_sign_rel', 'medical_signs_id', string='Medical Signs', tracking=True, required=True)
+    medical_signs_ids =fields.Many2many('em.hms.medical.sign', 'rhs_delivery_medicals_sign_rel', 'medical_signs_id', string='Medical Signs', tracking=True, required=True)#for delete
+    medical_signs_id =fields.Many2one('em.hms.medical.sign', string='Medical Signs', tracking=True, required=True)
     
     number_of_newborn=fields.Integer('Number Of Newborn', tracking=True,required=True,default='1')
     child_name = fields.Char('Name Of Child', tracking=True)
