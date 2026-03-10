@@ -32,6 +32,15 @@ class EmHmsRHSDelivery(models.Model):
         
       
         ], string='Type Of Feedings', tracking=True,required=True)
+    
+    hiv_test = fields.Selection([
+        ('no', 'NO'),
+        ('yes', 'YES')
+       
+        
+      
+        ], string='HIV Test', tracking=True,required=True)
+    
     reason_of_c_section=fields.Selection([
         ('t1', 'انبثاق أغشية باكر'),
         ('t2', 'انسمام حملي'),

@@ -27,6 +27,7 @@
                 <field name="pregnancy_related_diseases" optional="hide" />
                 <field name="gestational_age" optional="hide" />
                 <field name="arrival" optional="hide" />
+                <field name="hiv_test" optional="hide" />
                 <field name="eco_auscultation_new" optional="hide" />
                 <field name="placenta" optional="hide" />
                 <field name="amniotic_fluid" optional="hide" />
@@ -107,6 +108,7 @@
                         <field name="newborn_weight" />
                          <field name="medical_signs_id" />
                         <field name="child_name" />
+                        <field name="hiv_test" />
                         <field name="is_referral" widget="checkbox" />
                         <field name="referral_type" invisible="is_referral != True"  />
                       
