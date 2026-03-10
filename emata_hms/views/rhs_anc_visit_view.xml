@@ -20,6 +20,8 @@
                 <field name="thigh_length" optional="hide" />
                 <field name="presence" optional="hide" />
                 <field name="fluid" optional="hide" />
+                <field name="is_referral" optional="hide" />
+                <field name="referral_type" optional="hide" />
                 <field name="deformities" optional="hide" />
                 <field name="genital_age_in_weeks" optional="hide" />
                 <field name="vaginal_examination" optional="hide" />
@@ -66,6 +68,8 @@
                             <field name="weight" />
                             <field name="eco_auscultation_new" />
                             <field name="is_lactating" />
+                            <field name="is_referral" widget="checkbox" />
+                            <field name="referral_type" invisible="is_referral != True"  />
                         </group>
                         <group>
                             <field name="main_complaint" widget="text" />

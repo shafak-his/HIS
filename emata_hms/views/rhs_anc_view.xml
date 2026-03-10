@@ -16,8 +16,7 @@
                 <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
                 <field name="medication_history_ids" widget="many2many_tags" optional="hide" />
                 <field name="allergic_history_ids" widget="many2many_tags" optional="hide" />
-                <field name="is_referral" optional="hide" />
-                <field name="referral_type" optional="hide" />
+               
                 <field name="previous_complications" optional="hide" />
                 <field name="visits_count" />
                 <field name="company_id" optional="hide" />
@@ -48,8 +47,7 @@
                             <field name="is_smoking" widget="checkbox" />
                         </group>
                         <group>
-                            <field name="is_referral" widget="checkbox" />
-                            <field name="referral_type" invisible="is_referral != True"  />
+                           
                             <field name="previous_complications" widget="text" />
                             <field name="last_menstrual_date" widget="date" />
                             <field name="expected_due_date" widget="date" />

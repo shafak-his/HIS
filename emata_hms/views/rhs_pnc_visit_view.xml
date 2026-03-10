@@ -74,6 +74,8 @@
                 <field name="arterial_pressure_new" optional="hide" />
                 <field name="temperature" optional="hide" />
                 <field name="pulse" optional="hide" />
+                <field name="is_referral" optional="hide" />
+                <field name="referral_type" optional="hide" />
                 <field name="pathological_finding_ids" widget="many2many_tags" optional="hide" />
                 <field name="postpartum_complication_ids" widget="many2many_tags" optional="hide" />
                 <field name="wound_ids" widget="many2many_tags" optional="hide" />
@@ -121,6 +123,8 @@
                             <field name="arterial_pressure_new" />
                             <field name="temperature" />
                             <field name="pulse" />
+                            <field name="is_referral" widget="checkbox" />
+                            <field name="referral_type" invisible="is_referral != True"  />
                         </group>
                         <group>
                             <field name="visit_date" widget="date" />

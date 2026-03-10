@@ -113,7 +113,7 @@
                         <field name="image_request_line_ids" />
                     </group>
                      
-                        <group name="eco_page" string="Eco When Admitting">
+                     <!--    <group name="eco_page" string="Eco When Admitting">
                           <group>
                             <field name="gestational_age" />
                             <field name="arrival" />
@@ -122,19 +122,20 @@
                           <group>
                             <field name="placenta" />
                             <field name="amniotic_fluid" />
-                          </group>
+                          </group>  
                     
                     <group>
-                        <field name="notes" widget="text" />
-                    </group>
+                        
+                    </group>   </group> -->
                    
                      
                       
                       
                         <group>
+                            <field name="notes" widget="text" />
                             <field name="company_id" readonly="1" force_save="1" />
                         </group>
-                    </group>
+                   
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" />
