@@ -49,14 +49,14 @@ class EmHmsRHSInfertilityTreatment(models.Model):
     is_ovulation_treatment3 = fields.Boolean('Monitoring Ovulation After Treatment (3rd Month)', tracking=True)
     ovum_measuring_treatment3 = fields.Integer('Measuring The Ovum (3rd Month)', tracking=True)
     
-    uterus_image = fields.Binary('Shadow Image Of The Uterus And Appendages', tracking=True)
+    uterus_image = fields.Binary('Shadow Image Of The Uterus And Appendages')
     is_intrauterine_injected = fields.Boolean('Intrauterine Injected?', tracking=True)
     is_laparoscopy = fields.Boolean('Laparoscopy?', tracking=True)
     laparoscopy_result = fields.Char('Laparoscopy Result', tracking=True)
-    laparoscopy_attachment = fields.Binary('Laparoscopy Attachment', tracking=True)
+    laparoscopy_attachment = fields.Binary('Laparoscopy Attachment')
     is_hysteroscopy = fields.Boolean('Hysteroscopy?', tracking=True)
     hysteroscopy_result = fields.Char('Hysteroscopy Result', tracking=True)
-    hysteroscopy_attachment = fields.Binary('Hysteroscopy Attachment', tracking=True)
+    hysteroscopy_attachment = fields.Binary('Hysteroscopy Attachment')
     analysis_request_line_ids = fields.One2many('em.hms.analysis.request.line', 'infertility_treatment_id', string='Analysis Request')
     image_request_line_ids = fields.One2many('em.hms.image.request.line', 'infertility_treatment_id', string='Request An X-Ray')
     state_medication = fields.Selection([

@@ -67,7 +67,7 @@ class EmHmsImageRequestLine(models.Model):
     nicu_id = fields.Many2one('em.hms.pediatric.nicu', string='NICU')
 
     result = fields.Char('Result', tracking=True)
-    attach_file = fields.Binary('Attachment', tracking=True)
+    attach_file = fields.Binary('Attachment')
     attach_file_name = fields.Char('Attachment Name', tracking=True)
 
     product_template_id = fields.Many2one('product.template', string='Product', domain="[('is_medical_imaging', '=', True)]", required=True)
