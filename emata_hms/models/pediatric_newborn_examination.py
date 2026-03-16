@@ -38,6 +38,19 @@ class EmHmsPediatricNewbornExamination(models.Model):
     ], string='Type Of Birth', tracking=True)
     child_care_ids = fields.Many2many('em.hms.child.care', 'newborn_examination_child_care_rel', 'newborn_examination_id', 'child_care_id', string='Routine Child Care')
     general_examination = fields.Char('General Examination Of The Child', tracking=True)
+    is_referral = fields.Boolean('Has There Been A Referral?', tracking=True)
+
+    referral_type=fields.Selection([
+        ('incoming_referrals_from_phc', 'احالة واردة من مركز عناية صحية أولية'),
+        ('incoming_referrals_from_hospital', 'احالة واردة من مشفى اخر'),
+        ('incoming_referrals_from_mobile_clinic', 'احالة واردة من عيادة جوالة'),
+        ('referral_for_delivery_to_sdp_paid', 'احالة صادرة للولادة في مركز مدفوع'),
+        ('referral_for_delivery_to_sdp_notpaid', 'احالة صادرة للولادة في مركز مجاني'),
+        ('referral_to_GBV_advanced_services', 'احالة صادرة لخدمات GBV'),
+        ('referral_to_advanced_services', 'احالة صادرة الى خدمات متقدمة'),
+        ('referral_to_turkey', 'احالة الى تركيا')
+       
+    ], string='To Which Center Were You Referred And What Was The Reason?')
     graduation_to = fields.Selection([
         ('home', 'Home'),
         ('care', 'Care'),

@@ -21,6 +21,8 @@
                 <field name="diagnosis_id" optional="hide" />
                 <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
                 <field name="allergic_history_ids" widget="many2many_tags" optional="hide" />
+                <field name="is_referral" optional="hide" />
+                <field name="referral_type" optional="hide" />
                 <field name="graduation_to" optional="hide" />
                 <field name="graduation_date" optional="hide" />
                 <field name="medical_recommendations" optional="hide" />
@@ -70,22 +72,22 @@
                         <field name="complaint_details" widget="text" />
                     </group>
                     <group>
-                        <field name="medical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                        <field name="medical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}"  widget="many2many_tags">
                             <tree create="1" delete="1" editable="bottom">
                                 <field name="name" />
                             </tree>
                         </field>
-                        <field name="allergic_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                        <field name="allergic_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}"  widget="many2many_tags">
                             <tree create="1" delete="1" editable="bottom">
                                 <field name="name" />
                             </tree>
                         </field>
-                        <field name="surgical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                        <field name="surgical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}"  widget="many2many_tags">
                             <tree create="1" delete="1" editable="bottom">
                                 <field name="name" />
                             </tree>
                         </field>
-                        <field name="medication_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                        <field name="medication_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}"  widget="many2many_tags">
                             <tree create="1" delete="1" editable="bottom">
                                 <field name="name" />
                             </tree>
@@ -96,6 +98,8 @@
                             <field name="diagnosis_id" />
                         </group>
                         <group>
+                           <field name="is_referral" widget="checkbox" />
+                            <field name="referral_type" invisible="is_referral != True"  />
                             <field name="graduation_to" />
                             <field name="graduation_date" />
                         </group>

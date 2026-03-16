@@ -29,6 +29,7 @@ class EmHmsPediatricSurgery(models.Model):
     complaint_details = fields.Char('Complaint Details', tracking=True)
     diagnosis_id = fields.Many2one('em.hms.icd10', string='Diagnosis', tracking=True)
     surgical_procedure_ids = fields.Many2many('em.hms.surgical.procedure', 'pediatric_surgery_surgical_procedure_rel', 'pediatric_surgery_id', 'surgical_procedure_id', string='Surgical Procedure', tracking=True)
+    surgical_procedure_id = fields.Many2many('em.hms.surgical.procedure', string='Surgical Procedure', tracking=True)
     medical_history_ids = fields.Many2many('em.hms.medical.history', 'pediatric_surgery_medical_history_rel', 'pediatric_surgery_id', 'medical_history_id', string='Medical History')
     surgical_history_ids = fields.Many2many('em.hms.surgical.history', 'pediatric_surgery_surgical_history_rel', 'pediatric_surgery_id', 'surgical_history_id', string='Surgical History')
     medication_history_ids = fields.Many2many('em.hms.medication.history', 'pediatric_surgery_medication_history_rel', 'pediatric_surgery_id', 'medication_history_id', string='Medication History')
@@ -41,6 +42,19 @@ class EmHmsPediatricSurgery(models.Model):
     guardian_name = fields.Char('Name Of Patient\'s Guardian', tracking=True)
     anesthesia_report = fields.Char('Anesthesia Report', tracking=True)
     surgical_procedure_report = fields.Char('Surgical Procedure Report', tracking=True)
+    is_referral = fields.Boolean('Has There Been A Referral?', tracking=True)
+
+    referral_type=fields.Selection([
+        ('incoming_referrals_from_phc', 'احالة واردة من مركز عناية صحية أولية'),
+        ('incoming_referrals_from_hospital', 'احالة واردة من مشفى اخر'),
+        ('incoming_referrals_from_mobile_clinic', 'احالة واردة من عيادة جوالة'),
+        ('referral_for_delivery_to_sdp_paid', 'احالة صادرة للولادة في مركز مدفوع'),
+        ('referral_for_delivery_to_sdp_notpaid', 'احالة صادرة للولادة في مركز مجاني'),
+        ('referral_to_GBV_advanced_services', 'احالة صادرة لخدمات GBV'),
+        ('referral_to_advanced_services', 'احالة صادرة الى خدمات متقدمة'),
+        ('referral_to_turkey', 'احالة الى تركيا')
+       
+    ], string='To Which Center Were You Referred And What Was The Reason?')
     graduation_to = fields.Selection([
         ('surgery', 'Surgery'),
         ('wing', 'Wing'),

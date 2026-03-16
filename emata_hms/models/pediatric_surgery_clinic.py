@@ -36,7 +36,19 @@ class EmHmsPediatricSurgeryClinic(models.Model):
     allergic_history_ids = fields.Many2many('em.hms.allergic.history', 'pediatric_surgery_clinic_allergic_history_rel', 'surgery_clinic_id', 'allergic_history_id', string='Allergic History')
     medication_history_ids = fields.Many2many('em.hms.medication.history', 'pediatric_surgery_clinic_medication_history_rel', 'surgery_clinic_id', 'medication_history_id', string='Medication History')
     surgical_history_ids = fields.Many2many('em.hms.surgical.history', 'pediatric_surgery_clinic_surgical_history_rel', 'surgery_clinic_id', 'surgical_history_id', string='Surgical History')
-    
+    is_referral = fields.Boolean('Has There Been A Referral?', tracking=True)
+
+    referral_type=fields.Selection([
+        ('incoming_referrals_from_phc', 'احالة واردة من مركز عناية صحية أولية'),
+        ('incoming_referrals_from_hospital', 'احالة واردة من مشفى اخر'),
+        ('incoming_referrals_from_mobile_clinic', 'احالة واردة من عيادة جوالة'),
+        ('referral_for_delivery_to_sdp_paid', 'احالة صادرة للولادة في مركز مدفوع'),
+        ('referral_for_delivery_to_sdp_notpaid', 'احالة صادرة للولادة في مركز مجاني'),
+        ('referral_to_GBV_advanced_services', 'احالة صادرة لخدمات GBV'),
+        ('referral_to_advanced_services', 'احالة صادرة الى خدمات متقدمة'),
+        ('referral_to_turkey', 'احالة الى تركيا')
+       
+    ], string='To Which Center Were You Referred And What Was The Reason?')
     graduation_to = fields.Selection([
         ('surgery', 'Surgery'),
         ('wing', 'Wing'),

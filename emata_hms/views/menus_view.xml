@@ -529,12 +529,12 @@
             action="emata_hms.em_hms_pediatric_surgery_action"
             sequence="3"
         />
-        <menuitem id="menu_em_hms_clinic_admission"
+      <!--  <menuitem id="menu_em_hms_clinic_admission"
             name="Clinic"
             parent="menu_em_hms_pediatric_root"
             action="emata_hms.em_hms_pediatric_clinic_action"
             sequence="4"
-        />
+        />--> 
         <menuitem id="menu_em_hms_surgery_clinic_admission"
             name="Surgery Clinic"
             parent="menu_em_hms_pediatric_root"

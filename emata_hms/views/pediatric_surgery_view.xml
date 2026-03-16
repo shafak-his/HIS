@@ -17,7 +17,7 @@
                 <field name="main_complaint" />
                 <field name="complaint_details" optional="hide" />
                 <field name="diagnosis_id" optional="hide" />
-                <field name="surgical_procedure_ids" widget="many2many_tags" optional="hide" />
+                <field name="surgical_procedure_id"  optional="hide" />
                 <field name="medical_history_ids" widget="many2many_tags" optional="hide" />
                 <field name="surgical_history_ids" widget="many2many_tags" optional="hide" />
                 <field name="medication_history_ids" widget="many2many_tags" optional="hide" />
@@ -26,6 +26,8 @@
                 <field name="anesthesia_report" optional="hide" />
                 <field name="surgical_procedure_report" optional="hide" />
                 <field name="guardian_name" optional="hide" />
+                <field name="is_referral" optional="hide" />
+                <field name="referral_type" optional="hide" />
                 <field name="graduation_to" optional="hide" />
                 <field name="graduation_date" optional="hide" />
                 <field name="medical_recommendations" optional="hide" />
@@ -76,29 +78,32 @@
                         <field name="complaint_details" widget="text" />
                     </group>
                     <group>
-                        <field name="surgical_procedure_ids" widget="many2many_tags" />
+                        <field name="surgical_procedure_id" />
                     </group>
                     <group>
-                        <field name="medical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                        <field name="medical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}" widget="many2many_tags" >
+                             <tree create="1" delete="1" editable="bottom">
+                                <field name="name" />
+                            </tree>
+                           </field>
+                        <field name="surgical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}" widget="many2many_tags" >
                             <tree create="1" delete="1" editable="bottom">
                                 <field name="name" />
                             </tree>
-                        </field>
-                        <field name="surgical_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                           </field>
+                            
+                        <field name="medication_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}" widget="many2many_tags" >
                             <tree create="1" delete="1" editable="bottom">
                                 <field name="name" />
                             </tree>
-                        </field>
-                        <field name="medication_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
+                           </field>
+                        
+                        <field name="allergic_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}" widget="many2many_tags" >
                             <tree create="1" delete="1" editable="bottom">
                                 <field name="name" />
                             </tree>
-                        </field>
-                        <field name="allergic_history_ids" domain="[('patient_id', '=', patient_id)]" context="{'default_patient_id': patient_id}">
-                            <tree create="1" delete="1" editable="bottom">
-                                <field name="name" />
-                            </tree>
-                        </field>
+                           </field>
+                           
                     </group>
                     <group>
                         <group>
@@ -107,6 +112,8 @@
                         </group>
                         <group>
                             <field name="guardian_name" />
+                           <field name="is_referral" widget="checkbox" />
+                            <field name="referral_type" invisible="is_referral != True"  />
                             <field name="graduation_to" />
                             <field name="graduation_date" />
                         </group>
@@ -123,40 +130,19 @@
                         <field name="analysis_request_line_ids" />
                         <field name="image_request_line_ids" />
                     </group>
-                    <group>
+                    <notebook>
+                         <page name="vital_signs_page" string="Vital Signs">
                         <field name="vital_sign_ids" context="{'default_patient_id': patient_id}">
-                            <tree create="1" delete="1">
-                                <field name="delivery_id" optional="hide" />
-                                <field name="hospitalization_id" optional="hide" />
-                                <field name="surgery_id" optional="hide" />
-                                <field name="icu_id" optional="hide" />
-                                <field name="nicu_id" optional="hide" />
-                                <field name="ward_admission_id" optional="hide" />
-                                <field name="patient_admission_id" optional="hide" />
-                                <field name="patient_id" />
-                                <field name="datetime" />
-                                <field name="pressure" optional="hide" />
-                                <field name="pulse" optional="hide" />
-                                <field name="oxygen" optional="hide" />
-                                <field name="temperature" optional="hide" />
-                                <field name="awareness" optional="hide" />
-                                <field name="stool" optional="hide" />
-                                <field name="urine" optional="hide" />
-                                <field name="breathing" optional="hide" />
-                                <field name="cyan" optional="hide" />
-                                <field name="seizures" optional="hide" />
-                                <field name="vomiting" optional="hide" />
-                                <field name="blood_sugar" optional="hide" />
-                                <field name="feeding_type" optional="hide" />
-                                <field name="breastfeeding" optional="hide" />
-                                <field name="ngt" optional="hide" />
-                                <field name="explosives" optional="hide" />
-                                <field name="oral_intake" optional="hide" />
-                                <field name="hair_reed" optional="hide" />
-                                <field name="notes" optional="hide" />
-                                <field name="company_id" optional="hide" />
+                             <tree string="Vital Signs" duplicate="false">
+                                <field name="patient_id" optional="show" />
+                                <field name="datetime" optional="show" />
+                                <field name="arterial_pressure" optional="show" />
+                                <field name="pulse" optional="show" />
+                                <field name="temperature" optional="show" />
+                                
                             </tree>
-                        </field>
+                        </field></page>
+                        <page name="observation" string="المشاهدة اليومية">
                         <field name="observation_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
                                 <field name="incubator_admission_id" optional="hide" />
@@ -171,7 +157,9 @@
                                 <field name="oral_nutrition" optional="hide" />
                                 <field name="company_id" optional="hide" />
                             </tree>
-                        </field>
+                        </field></page>
+
+                         <page name="necessities_page" string="Daily Necessity Table">
                         <field name="necessity_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
                                 <field name="patient_admission_id" optional="hide" />
@@ -194,7 +182,9 @@
                                 <field name="doctor_id" />
                                 <field name="company_id" optional="hide" />
                             </tree>
-                        </field>
+                        </field></page>
+
+                         <page name="commitments_page" string="Necessity Giving Table">
                         <field name="commitment_ids" context="{'default_patient_id': patient_id}">
                             <tree create="1" delete="1">
                                 <field name="patient_admission_id" optional="hide" />
@@ -212,8 +202,8 @@
                                 <field name="notes" optional="hide" />
                                 <field name="company_id" optional="hide" />
                             </tree>
-                        </field>
-                    </group>
+                        </field></page>
+                    </notebook>
                     <group>
                         <group>
                             <field name="company_id" readonly="1" force_save="1" />
