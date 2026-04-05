@@ -36,8 +36,8 @@ class EmHmsRHSPNCVisit(models.Model):
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True, required=True)
     visit_date = fields.Date('Date Of Visit', required=True, tracking=True)
     duration_since_birth = fields.Selection([
-        ('less_49hour', 'Less Than 48 Hour'),
-        ('from_2_to_42day', 'From 2 To 42 Day'),
+        ('less_24hour', 'Less Than 24 Hour'),
+        ('from_22_to_42day', 'From 24 To 42 Day'),
        
     ], string='Duration Since Birth', tracking=True, required=True)
     pnc_visit_reason= fields.Selection([
