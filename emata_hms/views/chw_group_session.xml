@@ -138,6 +138,8 @@
                         </group>
                         <group>
                             <field name="displacement_status" />
+                            <field name="marital_status" />
+
                             <field name="is_special_needs" />
                             <field name="phone_number" />
                             <field name="comments" />
