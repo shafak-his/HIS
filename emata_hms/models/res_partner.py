@@ -42,6 +42,7 @@ class ResPartner(models.Model):
         ('divorced', 'Divorced'),
     ], string='Marital Status')
     doc_number = fields.Char('Document Number')
+   
     notes = fields.Char('Notes')
     
     
@@ -234,6 +235,10 @@ class ResPartner(models.Model):
             'domain': [('patient_id', '=', self.id)],
             'context': {'default_patient_id': self.id}
         }
+        
+    def action_print(self):
+       
+        return self.env.ref('emata_hms.action_report_visit_receipt_print').report_action(self)
 
     @api.model
     def create(self, vals):

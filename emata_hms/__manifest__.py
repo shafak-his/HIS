@@ -93,5 +93,6 @@
         'data/hms_service_data.xml',
 
         'views/menus_view.xml',
+        'data/reports/visitors_template.xml',
     ],
 }
