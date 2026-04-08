@@ -191,13 +191,7 @@
                                 </td>
                             </tr>
                             
-                            <tr>
-                                <td class="info-label">تاريخ الميلاد :</td>
-                                <td class="info-value">
-                                    <t t-esc="doc.birth_date or '-'"/>
-                                </td>
-                            </tr>
-
+                            
                             <tr>
                                     <td class="info-label">العمر:</td>
                                        <td class="info-value">
