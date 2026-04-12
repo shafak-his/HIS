@@ -1,5 +1,4 @@
 
-import math
 from odoo.exceptions import ValidationError
 from odoo import _, api, fields, models, exceptions, tools
 BLOOD_TYPES = [
