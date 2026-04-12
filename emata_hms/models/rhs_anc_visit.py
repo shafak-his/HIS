@@ -166,9 +166,13 @@ class EmHmsRHSANCVisit(models.Model):
             if record.visit_date and record.anc_id.last_menstrual_date:
                 difference = (record.visit_date-record.anc_id.last_menstrual_date).days
                 resaults= math.ceil(difference/7)
-                if resaults>40 or resaults<1:
-                  raise ValidationError(_("يوجد خطأ في حساب العمر الحملي (يرجى التحقق من تاريخ اول يوم من اخر دورة شهرية او تاريخ الزيارة الحالي)"))
-                else:
-                 record.genital_age_in_weeks=resaults
+                record.genital_age_in_weeks=resaults
             else:
                 record.genital_age_in_weeks = 0
+                
+                
+    @api.constrains('genital_age_in_weeks')
+    def _check_gestational_age_limit(self):
+     for record in self:
+        if record.genital_age_in_weeks > 40 or record.genital_age_in_weeks < 1:
+            raise ValidationError(_("يوجد خطأ في حساب العمر الحملي (يجب أن يكون بين 1 و 40 أسبوعاً)."))
