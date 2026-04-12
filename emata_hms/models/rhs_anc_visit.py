@@ -170,8 +170,11 @@ class EmHmsRHSANCVisit(models.Model):
                 record.genital_age_in_weeks = 0
                 
                 
-    @api.constrains('genital_age_in_weeks')
-    def _check_gestational_age_limit(self):
-     for record in self:
-        if record.genital_age_in_weeks > 40 or record.genital_age_in_weeks < 1:
-            raise ValidationError(_("يوجد خطأ في حساب العمر الحملي (يجب أن يكون بين 1 و 40 أسبوعاً)."))
+    
+    _sql_constraints = [
+        (
+            'check_genital_age_in_weeks',
+            'CHECK (genital_age_in_weeks > 40 or genital_age_in_weeks <0 )',
+            'يوجد خطأ في حساب العمر الحملي (يجب أن يكون بين 1 و 40 أسبوعاً'
+        ),
+    ]
