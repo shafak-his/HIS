@@ -94,7 +94,7 @@ class EmHmsRHSANCVisit(models.Model):
         ('one_male_and_one_female', 'One Male and one Female'),
         ('three_or_more', 'Three Newborn or more')
     ], string='Child Gender', tracking=True)
-    genital_age_in_weeks = fields.Integer('Genital Age In Weeks',  compute='_compute_genital_age_in_weeks',tracking=True, required=True)
+    genital_age_in_weeks = fields.Integer('Genital Age In Weeks',  compute='_compute_genital_age_in_weeks',tracking=True, required=True,store=True)
     gestational_age_according_to_crl=fields.Integer('Genital Age according to CRL', tracking=True, required=True)
     gestational_age_according_to_gs=fields.Integer('Genital Age according to GS', tracking=True, required=True)
     vaginal_examination = fields.Selection([
