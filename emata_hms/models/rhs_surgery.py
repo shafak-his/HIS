@@ -27,12 +27,19 @@ class EmHmsRHSSurgery(models.Model):
         ('t3', 'اجهاض عفوي'),
         ('t4', 'تهديد اجهاض'),
         ('t5', 'رعاية مابعد الإجهاض'),
-        ('t6', 'كورتاج')
+        ('t6', 'كورتاج'),
+        ('t7', 'لايوجد اجهاض')
        
-    ], string='في حال كانت العملية اجهاض ماهو السبب؟', tracking=True)
+    ], string='في حال كانت العملية كورتاج ماهو السبب؟',required=True, tracking=True)
     
     
-    
+    hiv_test = fields.Selection([
+        ('no', 'NO'),
+        ('yes', 'YES')
+       
+        
+      
+        ], string='HIV Test', tracking=True,required=True)
     
     initial_diagnosis = fields.Char('Initial Diagnosis', tracking=True)
     child_name = fields.Char('Name Of Child', tracking=True)

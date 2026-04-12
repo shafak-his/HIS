@@ -83,6 +83,11 @@ class EmHmsPediatricNICU(models.Model):
         ('death', 'Death'),
         ('referral', 'Referral To Another Hospital')
     ], string='Graduation To', tracking=True)
+    age_at_death=fields.Selection([
+        ('less_than_24h', 'اقل من 24 ساعة'),
+        ('from_2day_to_27day', 'من 2 يوم حتى 27 يوم')
+       
+    ], string='العمر عند الوفاة', tracking=True)
     graduation_date = fields.Date('Graduation Date', tracking=True)
     medical_recommendations = fields.Char('Medical Recommendations At Graduation', tracking=True)
     
@@ -96,6 +101,20 @@ class EmHmsPediatricNICU(models.Model):
     notes = fields.Char('Notes', tracking=True)
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
     
+    state_medication = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='medication Status Request', required=True, default='draft')
+    state_analysis = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='analysis Status Request', required=True, default='draft')
+    state_image = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='image Status Request', required=True, default='draft')
+    
+    
     _sql_constraints = [
         (
             'check_admission_datetime',
@@ -108,4 +127,24 @@ class EmHmsPediatricNICU(models.Model):
             'Graduation Date Must Not Be Newer Than Today.'
         ),
     ]
+    
+    def confirm_record_medication(self):
+        self.ensure_one()
+        self.medication_request_line_ids.generate_sale_order()
+        self.write({
+            'state_medication': 'done'
+        })
+        
+    def confirm_record_analysis(self):
+        self.ensure_one()
+        self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+        self.write({
+            'state_analysis': 'done'
+        })
+    def confirm_record_image(self):
+        self.ensure_one()
+        self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
+        self.write({
+            'state_image': 'done'
+        })
 

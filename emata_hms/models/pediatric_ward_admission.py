@@ -69,6 +69,18 @@ class EmHmsPediatricWardAdmission(models.Model):
     commitment_ids = fields.One2many('em.hms.necessity.giving', 'ward_admission_id', string='Necessity Giving')
     
     company_id = fields.Many2one('res.company', 'Medical Center', default = lambda self: self.env.company)
+    state_medication = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='medication Status Request', required=True, default='draft')
+    state_analysis = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='analysis Status Request', required=True, default='draft')
+    state_image = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+    ], string='image Status Request', required=True, default='draft')
     
     _sql_constraints = [
         (
@@ -88,3 +100,24 @@ class EmHmsPediatricWardAdmission(models.Model):
         if self.patient_id:
             self.medical_history_ids = [(6, 0, [record.id for record in self.patient_id.medical_history_ids])]
             self.surgical_history_ids = [(6, 0, [record.id for record in self.patient_id.surgical_history_ids])]
+            
+            
+    def confirm_record_medication(self):
+        self.ensure_one()
+        self.medication_request_line_ids.generate_sale_order()
+        self.write({
+            'state_medication': 'done'
+        })
+        
+    def confirm_record_analysis(self):
+        self.ensure_one()
+        self.env['em.hms.analysis.request'].generate_order(self, self.analysis_request_line_ids)
+        self.write({
+            'state_analysis': 'done'
+        })
+    def confirm_record_image(self):
+        self.ensure_one()
+        self.env['em.hms.image.request'].generate_order(self, self.image_request_line_ids)
+        self.write({
+            'state_image': 'done'
+        })

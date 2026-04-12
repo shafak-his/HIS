@@ -1,4 +1,6 @@
 
+import math
+from odoo.exceptions import ValidationError
 from odoo import _, api, fields, models, exceptions, tools
 BLOOD_TYPES = [
     ('A+', 'A+'),
@@ -27,7 +29,8 @@ class EmHmsRHSANCVisit(models.Model):
         ('anc4', 'ANC4'),
         ('anc5', 'ANC5'),
         ('anc6', 'ANC6'),
-        ('anc7', 'ANC7')
+        ('anc7', 'ANC7'),
+        ('anc8', 'ANC8')
     ], string='Visit Type', tracking=True)
     doctor_id = fields.Many2one('hr.employee', string='Doctor', tracking=True, required=True)
     medical_signs_ids =fields.Many2many('em.hms.medical.sign', 'rhs_anc_medicals_sign_rel', 'anc_id', 'medical_signs_id', string='Medical Signs')
@@ -92,7 +95,7 @@ class EmHmsRHSANCVisit(models.Model):
         ('one_male_and_one_female', 'One Male and one Female'),
         ('three_or_more', 'Three Newborn or more')
     ], string='Child Gender', tracking=True)
-    genital_age_in_weeks = fields.Integer('Genital Age In Weeks', tracking=True, required=True)
+    genital_age_in_weeks = fields.Integer('Genital Age In Weeks',  compute='_compute_genital_age_in_weeks',tracking=True, required=True)
     gestational_age_according_to_crl=fields.Integer('Genital Age according to CRL', tracking=True, required=True)
     gestational_age_according_to_gs=fields.Integer('Genital Age according to GS', tracking=True, required=True)
     vaginal_examination = fields.Selection([
@@ -156,3 +159,16 @@ class EmHmsRHSANCVisit(models.Model):
         self.write({
             'state_image': 'done'
           })
+        
+    @api.depends('visit_date')
+    def _compute_genital_age_in_weeks(self):
+        for record in self:
+            if record.visit_date and record.anc_id.last_menstrual_date:
+                difference = (record.visit_date-record.anc_id.last_menstrual_date).days
+                resaults= math.ceil(difference/7)
+                if resaults>40 or resaults<1:
+                  raise ValidationError(_("يوجد خطأ في حساب العمر الحملي (يرجى التحقق من تاريخ اول يوم من اخر دورة شهرية او تاريخ الزيارة الحالي)"))
+                else:
+                 record.genital_age_in_weeks=resaults
+            else:
+                record.genital_age_in_weeks = 0

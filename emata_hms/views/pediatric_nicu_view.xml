@@ -60,6 +60,14 @@
         <field name="model">em.hms.pediatric.nicu</field>
         <field name="arch" type="xml">
             <form string="NICU">
+                 <header>
+                   
+                   <button string="تأكيد طلب التحليل" name="confirm_record_analysis" type="object" class="oe_highlight" invisible="state_analysis != 'draft'" />
+                   <button string="تأكيد طلب الصور" name="confirm_record_image" type="object" class="oe_highlight" invisible="state_image != 'draft'" />
+
+                    <field name="state_analysis" invisible="1"/>
+                    <field name="state_image" invisible="1"/>
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -124,6 +132,7 @@
                            <field name="is_referral" widget="checkbox" />
                             <field name="referral_type" invisible="is_referral != True"  />
                             <field name="graduation_to" />
+                            <field name="age_at_death" invisible="graduation_to != 'death'"  required="1"/>
                             <field name="graduation_date" />
                         </group>
                         <group>

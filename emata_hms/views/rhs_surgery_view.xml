@@ -26,6 +26,7 @@
                 <field name="natural_births_count" optional="hide" />
                 <field name="cesarean_births_count" optional="hide" />
                 <field name="miscarriages_count" optional="hide" />
+                <field name="hiv_test" optional="hide" />
                 <field name="pregnancy_related_diseases" optional="hide" />
                 <field name="gestational_age" optional="hide" />
                 <field name="arrival" optional="hide" />
@@ -96,6 +97,7 @@
                         <field name="surgery_type_id" />
                         <field name="other_surgery_type" />
                         <field name="abortionReason" />
+                        <field name="hiv_test" />
                         <field name="is_pregnant" widget="checkbox" />
                         <field name="is_lactating" widget="checkbox" />
                     </group>

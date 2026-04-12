@@ -60,6 +60,15 @@
         <field name="model">em.hms.pediatric.incubator.admission</field>
         <field name="arch" type="xml">
             <form string="Incubator Admission">
+                 <header>
+                  
+                   <button string="تأكيد طلب التحليل" name="confirm_record_analysis" type="object" class="oe_highlight" invisible="state_analysis != 'draft'" />
+                   <button string="تأكيد طلب الصور" name="confirm_record_image" type="object" class="oe_highlight" invisible="state_image != 'draft'" />
+
+                  
+                    <field name="state_analysis" invisible="1"/>
+                    <field name="state_image" invisible="1"/>
+                </header>
                 <sheet>
                     <group>
                         <group>
