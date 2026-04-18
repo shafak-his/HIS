@@ -82,6 +82,7 @@ class EmHmsPediatricNICU(models.Model):
         ('incubator', 'Incubator'),
         ('death', 'Death'),
         ('referral', 'Referral To Another Hospital')
+        ('Intermediate_care', 'Intermediate care')
     ], string='Graduation To', tracking=True)
     age_at_death=fields.Selection([
         ('less_than_24h', 'اقل من 24 ساعة'),
