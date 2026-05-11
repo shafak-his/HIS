@@ -131,7 +131,7 @@ class EmHmsRHSDelivery(models.Model):
         ('transfer_to_care', 'Transfer To Care'),
         ('transfer_to_incubators', 'Transfer To Incubators'),
         ('deceased', 'Deceased')
-    ], string='General Condition Of The Child', tracking=True)
+    ], string='General Condition Of The Child', tracking=True,required=True)
     newborn_gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female'),
