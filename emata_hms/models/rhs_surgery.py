@@ -129,6 +129,7 @@ class EmHmsRHSSurgery(models.Model):
     patient_condition = fields.Selection([
         ('to_home', 'To Home'),
         ('another_hospital', 'Another Hospital'),
+        ('operation_wing', 'Operation Wing'),
         ('other', 'Other')
     ], string='Patient''s Condition', tracking=True)
     newborn_condition = fields.Selection([
