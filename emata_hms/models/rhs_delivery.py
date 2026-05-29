@@ -163,6 +163,7 @@ class EmHmsRHSDelivery(models.Model):
         ('to_home', 'To Home'),
         ('another_hospital', 'Another Hospital'),
         ('deathCaseMother', 'Death Case Mother'),
+        ('operation_wing', 'Operation Wing'),
         ('other', 'Other')
     ], string='Patient''s Condition', tracking=True )
     newborn_condition = fields.Selection([
