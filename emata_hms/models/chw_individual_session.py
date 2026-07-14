@@ -34,7 +34,10 @@ class EmHmsCHWIndividualSession(models.Model):
         ('arshaf', 'Arshaf Center'),
         ('kfarghan', 'Kfarghan Center'),
         ('al_ziyadiah', 'Al-Ziyadiah Center'),
-        ('al_ziyadiah_rh', 'Reproductive Health Center In Al-Ziyadiya')
+        ('al_ziyadiah_rh', 'Reproductive Health Center In Al-Ziyadiya'),
+        ('aq_burhan', 'Aq Burhan PHC'),
+        ('freiriyeh', 'Freiriyeh PHC Center'),
+        ('maskana', 'Maskana PHC Center')
     ], string='Center', required=True, tracking=True)
     session_title = fields.Selection([
         ('baby_care', 'BABY CARE'),
