@@ -30,6 +30,8 @@ class EmHmsCHWGroupSession(models.Model):
         ('aq_burhan', 'Aq Burhan PHC'),
         ('freiriyeh', 'Freiriyeh PHC Center'),
         ('maskana', 'Maskana PHC Center')
+        ('alghabra', 'ALGhabra PHC Center'),
+        ('alkataa', 'ALKataa PHC Center')
     ], string='Center', required=True, tracking=True)
     community_health_worker_name  = fields.Char('Name Of Community Health Worker', required=True, tracking=True)
     session_title = fields.Selection([
